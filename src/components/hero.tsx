@@ -2,18 +2,18 @@
 
 import { useEffect, useRef } from 'react';
 import { PERSONAL } from '@/lib/data';
+import { useTheme } from '@/lib/theme-provider';
+import { GitHubIcon } from './icons';
+import ProtectedImage from './protected-image';
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
 
-  // Ambient particle animation
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const ctx = canvas.getContext('2d');
@@ -22,155 +22,139 @@ export default function Hero() {
     let animationId: number;
     const particles: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
     resize();
     window.addEventListener('resize', resize);
 
-    // Create particles
-    const count = Math.min(60, Math.floor(window.innerWidth / 25));
+    const count = Math.min(50, Math.floor(window.innerWidth / 30));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.5 + 0.5,
-        a: Math.random() * 0.3 + 0.1,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.2 + 0.4,
+        a: Math.random() * 0.2 + 0.05,
       });
     }
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.classList.contains('dark');
+      const dotColor = isDark ? '245, 158, 11' : '0, 0, 0';
+      const lineColor = isDark ? '74, 96, 144' : '180, 180, 180';
 
       particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
+        p.x += p.vx; p.y += p.vy;
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(245, 158, 11, ${p.a})`;
+        ctx.fillStyle = `rgba(${dotColor}, ${p.a})`;
         ctx.fill();
       });
 
-      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist < 110) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(74, 96, 144, ${0.15 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(${lineColor}, ${0.1 * (1 - dist / 110)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
       }
-
       animationId = requestAnimationFrame(animate);
     };
 
     animate();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
+    return () => { cancelAnimationFrame(animationId); window.removeEventListener('resize', resize); };
+  }, [resolvedTheme]);
 
   return (
-    <section
-      id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      aria-label="Presentación principal"
-    >
-      {/* Particle canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0"
-        aria-hidden="true"
-      />
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Presentación principal">
+      <canvas ref={canvasRef} className="absolute inset-0 z-0" aria-hidden="true" />
 
-      {/* Gradient orbs */}
+      {/* Background orbs */}
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-amber-500/5 blur-[160px] animate-pulse-glow" />
-        <div className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-navy-500/10 blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-amber-500/3 blur-[100px]" />
+        <div className="absolute -top-1/4 -left-1/4 w-[700px] h-[700px] rounded-full bg-accent-500/5 dark:bg-accent-500/5 blur-[150px] animate-pulse-glow" />
+        <div className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-gray-300/20 dark:bg-navy-500/10 blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 pt-24 pb-12 text-center lg:px-8">
         {/* Status badge */}
-        <div
-          className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-1.5 text-xs font-medium text-amber-400 mb-8 animate-fade-in"
-        >
+        <div className="inline-flex items-center gap-2 rounded-full border border-accent-500/20 bg-accent-500/5 px-4 py-1.5 text-xs font-medium text-accent-600 dark:text-accent-400 mb-8 animate-fade-in">
           <span className="relative flex h-2 w-2" aria-hidden="true">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-500 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
           </span>
           Disponible para proyectos
         </div>
 
+        {/* Profile photo — centered with glow ring */}
+        <div className="flex justify-center mb-8 animate-scale-in">
+          <div className="relative">
+            {/* Glow ring behind photo */}
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent-400 via-accent-500 to-orange-500 opacity-50 blur-md" aria-hidden="true" />
+            <div className="relative h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden ring-4 ring-white dark:ring-navy-900 shadow-2xl">
+              <ProtectedImage
+                src={PERSONAL.profileImage}
+                alt={`Fotografía de ${PERSONAL.name}`}
+                width={144}
+                height={144}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Main heading */}
         <h1
-          className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-slide-up"
+          className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl animate-slide-up"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           <span className="block">{PERSONAL.heroTagline.split(' ').slice(0, 2).join(' ')}</span>
-          <span className="block text-gradient mt-2">
-            {PERSONAL.heroTagline.split(' ').slice(2).join(' ')}
-          </span>
+          <span className="block text-gradient mt-2">{PERSONAL.heroTagline.split(' ').slice(2).join(' ')}</span>
         </h1>
 
         {/* Subtitle */}
-        <p
-          className="mx-auto mt-6 max-w-2xl text-lg text-navy-300 sm:text-xl leading-relaxed animate-slide-up"
-          style={{ animationDelay: '0.15s' }}
-        >
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-navy-300 sm:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.15s' }}>
           {PERSONAL.heroSubtitle}
         </p>
 
-        {/* Role & University */}
-        <div
-          className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-navy-400 animate-slide-up"
-          style={{ animationDelay: '0.25s' }}
-        >
+        {/* Info pills */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500 dark:text-navy-400 animate-slide-up" style={{ animationDelay: '0.25s' }}>
           <span className="flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+            <svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
             {PERSONAL.role}
           </span>
-          <span className="text-navy-600" aria-hidden="true">•</span>
+          <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
           <span className="flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+            <svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
             </svg>
             {PERSONAL.university}
           </span>
-          <span className="text-navy-600" aria-hidden="true">•</span>
+          <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
           <span>{PERSONAL.semester}</span>
         </div>
 
         {/* CTA Buttons */}
-        <div
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up"
-          style={{ animationDelay: '0.35s' }}
-        >
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
           <a
             href="#proyectos"
-            className="group inline-flex items-center gap-2 rounded-xl bg-amber-500 px-7 py-3.5 text-base font-bold text-navy-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-xl hover:shadow-amber-500/30 hover:-translate-y-0.5 active:scale-95"
+            className="group inline-flex items-center gap-2 rounded-xl bg-accent-500 px-7 py-3.5 text-base font-bold text-black shadow-lg shadow-accent-500/20 transition-all hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5 active:scale-95"
           >
             Ver mis proyectos
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -181,24 +165,18 @@ export default function Hero() {
             href={PERSONAL.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-navy-600 px-7 py-3.5 text-base font-medium text-navy-200 transition-all hover:border-navy-400 hover:text-white hover:bg-white/5 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-xl border border-gray-200 dark:border-navy-600 px-7 py-3.5 text-base font-medium text-gray-700 dark:text-navy-200 transition-all hover:border-gray-400 dark:hover:border-navy-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 active:scale-95"
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-            </svg>
+            <GitHubIcon className="w-5 h-5" />
             GitHub
           </a>
         </div>
 
         {/* Scroll indicator */}
-        <div
-          className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-navy-500"
-          style={{ animationDelay: '1s' }}
-          aria-hidden="true"
-        >
+        <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-gray-400 dark:text-navy-500" style={{ animationDelay: '1s' }} aria-hidden="true">
           <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
-          <div className="w-5 h-8 rounded-full border-2 border-navy-600 flex items-start justify-center p-1">
-            <div className="w-1 h-2 rounded-full bg-amber-400 animate-float" />
+          <div className="w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 flex items-start justify-center p-1">
+            <div className="w-1 h-2 rounded-full bg-accent-500 animate-float" />
           </div>
         </div>
       </div>

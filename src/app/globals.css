@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — Daniel Castillo Portfolio
-   Color System: Deep navy + Electric amber accent
+   DESIGN TOKENS — Daniel Fernando Castillo Mera Portfolio
+   Light: White primary + Black secondary
+   Dark: Deep navy + Amber accent
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
@@ -18,18 +19,14 @@
   --color-navy-100: #d0dbe8;
   --color-navy-50: #edf1f7;
 
-  --color-amber-500: #f59e0b;
-  --color-amber-400: #fbbf24;
-  --color-amber-300: #fcd34d;
-  --color-amber-600: #d97706;
+  --color-accent-600: #d97706;
+  --color-accent-500: #f59e0b;
+  --color-accent-400: #fbbf24;
+  --color-accent-300: #fcd34d;
 
-  --color-surface: #0f1629;
-  --color-surface-elevated: #151d38;
-  --color-surface-overlay: #1c2748;
-
-  --font-display: 'Clash Display', 'Satoshi', system-ui, sans-serif;
-  --font-body: 'Satoshi', 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -39,7 +36,30 @@
   --animate-scale-in: scale-in 0.5s var(--ease-out-expo) forwards;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
-  --animate-gradient-shift: gradient-shift 8s ease infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VIEW TRANSITIONS — Animated theme switch
+   ═══════════════════════════════════════════════════════════════ */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+  animation: theme-reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes theme-reveal {
+  from { clip-path: circle(0% at top right); }
+  to { clip-path: circle(150% at top right); }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -76,19 +96,13 @@
   50% { opacity: 0.8; }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   BASE STYLES
+   BASE — LIGHT THEME (default)
    ═══════════════════════════════════════════════════════════════ */
 
 html {
@@ -100,23 +114,35 @@ html {
 
 body {
   font-family: var(--font-body);
+  background-color: #ffffff;
+  color: #1a1a1a;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* DARK THEME */
+.dark body {
   background-color: var(--color-navy-950);
   color: var(--color-navy-100);
-  overflow-x: hidden;
 }
 
 ::selection {
+  background-color: rgba(245, 158, 11, 0.25);
+  color: #000;
+}
+
+.dark ::selection {
   background-color: rgba(245, 158, 11, 0.3);
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-amber-400);
+  outline: 2px solid var(--color-accent-400);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Skip to content link — WCAG 2.1 */
+/* Skip to content — WCAG 2.1 */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -124,8 +150,8 @@ body {
   transform: translateX(-50%);
   z-index: 9999;
   padding: 0.75rem 1.5rem;
-  background: var(--color-amber-500);
-  color: var(--color-navy-950);
+  background: var(--color-accent-500);
+  color: #000;
   font-weight: 700;
   font-size: 0.875rem;
   border-radius: 0 0 8px 8px;
@@ -137,36 +163,34 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   CUSTOM UTILITIES
+   THEME-AWARE UTILITIES
    ═══════════════════════════════════════════════════════════════ */
 
 /* Gradient text */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-amber-400), var(--color-amber-500), #f97316);
+  background: linear-gradient(135deg, var(--color-accent-400), var(--color-accent-500), #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass morphism card */
+/* Glass card — Light */
 .glass {
-  background: rgba(21, 29, 56, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Glass card — Dark */
+.dark .glass {
+  background: rgba(21, 29, 56, 0.6);
   border: 1px solid rgba(74, 96, 144, 0.2);
+  box-shadow: none;
 }
 
-/* Noise grain overlay */
-.grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Glow effect for cards on hover */
+/* Card hover glow */
 .card-glow {
   position: relative;
   transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
@@ -174,10 +198,14 @@ body {
 
 .card-glow:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card-glow:hover {
   box-shadow: 0 8px 40px rgba(245, 158, 11, 0.1);
 }
 
-/* Scroll reveal animation trigger */
+/* Reveal animation */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -189,7 +217,7 @@ body {
   transform: translateY(0);
 }
 
-/* Tech marquee */
+/* Marquee */
 .marquee-track {
   display: flex;
   width: max-content;
@@ -200,25 +228,57 @@ body {
   animation-play-state: paused;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* ═══════════════════════════════════════════════════════════════
+   IMAGE PROTECTION — Prevent copy, save, drag, screenshot overlay
+   ═══════════════════════════════════════════════════════════════ */
+
+.protected-image {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-navy-950);
+.protected-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-navy-600);
-  border-radius: 4px;
+/* Invisible overlay preventing right-click save */
+.protected-image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  pointer-events: auto;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-navy-500);
-}
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════ */
 
-/* Reduced motion preference — WCAG compliance */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+.dark ::-webkit-scrollbar-track { background: var(--color-navy-950); }
+.dark ::-webkit-scrollbar-thumb { background: var(--color-navy-600); }
+.dark ::-webkit-scrollbar-thumb:hover { background: var(--color-navy-500); }
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION — WCAG compliance
+   ═══════════════════════════════════════════════════════════════ */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -226,25 +286,14 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  .marquee-track {
-    animation: none !important;
-  }
-
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .marquee-track { animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none !important; }
 }
 
-/* High contrast mode support */
+/* High contrast mode */
 @media (forced-colors: active) {
-  .text-gradient {
-    -webkit-text-fill-color: CanvasText;
-    background: none;
-  }
-
-  .glass {
-    border: 2px solid CanvasText;
-  }
+  .text-gradient { -webkit-text-fill-color: CanvasText; background: none; }
+  .glass { border: 2px solid CanvasText; }
 }

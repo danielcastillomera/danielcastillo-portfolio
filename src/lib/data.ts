@@ -1,18 +1,26 @@
 /* ═══════════════════════════════════════════════════════════════
    PORTFOLIO DATA — Single source of truth
+   Daniel Fernando Castillo Mera
    ═══════════════════════════════════════════════════════════════ */
 
 export const PERSONAL = {
   name: 'Daniel Fernando Castillo Mera',
-  shortName: 'Daniel Castillo',
+  shortName: 'Daniel Fernando Castillo Mera',
+  initials: 'DC',
   role: 'Desarrollador Full-Stack Junior',
   university: 'Universidad de Guayaquil',
   career: 'Ingeniería en Software',
   semester: '6to de 10 semestres',
   location: 'Ecuador',
+  nationality: 'Ecuatoriana',
+  age: 22,
   whatsapp: 'https://wa.me/593981076185',
   github: 'https://github.com/danielcastillomera',
+  linkedin: 'https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a',
+  instagram: 'https://www.instagram.com/danielcastillomera',
+  facebook: 'https://www.facebook.com/Daniel288215',
   email: 'danielfcastillom@gmail.com',
+  profileImage: '/profile.png',
   bio: 'Estudiante de Ingeniería en Software con enfoque en el desarrollo de sistemas empresariales robustos. Apasionado por construir soluciones que resuelvan problemas reales con tecnologías modernas, código limpio y estándares profesionales.',
   heroTagline: 'Construyo sistemas empresariales que funcionan.',
   heroSubtitle:
@@ -76,16 +84,8 @@ export const PROJECTS: Project[] = [
       'Responsive mobile-first + Cross-browser compatible',
     ],
     links: [
-      {
-        label: 'Repositorio',
-        url: 'https://github.com/danielcastillomera/dashboard-enterprise',
-        icon: 'github',
-      },
-      {
-        label: 'Demo en vivo',
-        url: 'https://dashboard-enterprise-kappa.vercel.app',
-        icon: 'demo',
-      },
+      { label: 'Repositorio', url: 'https://github.com/danielcastillomera/dashboard-enterprise', icon: 'github' },
+      { label: 'Demo en vivo', url: 'https://dashboard-enterprise-kappa.vercel.app', icon: 'demo' },
     ],
     highlight: true,
     type: 'individual',
@@ -107,11 +107,7 @@ export const PROJECTS: Project[] = [
       'Control de versiones con Git/GitHub',
     ],
     links: [
-      {
-        label: 'Repositorio',
-        url: 'https://github.com/danielcastillomera/PROYECTO-UNIFICADO-AVANCE',
-        icon: 'github',
-      },
+      { label: 'Repositorio', url: 'https://github.com/danielcastillomera/PROYECTO-UNIFICADO-AVANCE', icon: 'github' },
     ],
     highlight: false,
     type: 'grupal',
@@ -165,22 +161,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ];
 
 export const TECH_MARQUEE = [
-  'Next.js',
-  'TypeScript',
-  'React',
-  'Tailwind CSS',
-  'Supabase',
-  'PostgreSQL',
-  'Prisma',
-  'Vercel',
-  'Node.js',
-  'Git',
-  'Resend',
-  'Zod',
-  'REST API',
-  'HTML5',
-  'CSS3',
-  'JavaScript',
+  'Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Supabase',
+  'PostgreSQL', 'Prisma', 'Vercel', 'Node.js', 'Git',
+  'Resend', 'Zod', 'REST API', 'HTML5', 'CSS3', 'JavaScript',
 ];
 
 export const EDUCATION = {
