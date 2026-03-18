@@ -2,6 +2,8 @@ import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
 import TechMarquee from '@/components/tech-marquee';
 import AboutMe from '@/components/about-me';
+import Services from '@/components/services';
+import TechGrid from '@/components/tech-grid';
 import Projects from '@/components/projects';
 import Skills from '@/components/skills';
 import Contact from '@/components/contact';
@@ -17,6 +19,8 @@ export default function HomePage() {
         <Hero />
         <TechMarquee />
         <AboutMe />
+        <Services />
+        <TechGrid />
         <Projects />
         <Skills />
         <Contact />

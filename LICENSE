@@ -28,12 +28,17 @@ TERMS AND CONDITIONS:
    maintain strict confidentiality of its source code, architecture, and
    implementation details.
 
-6. ENFORCEMENT: Any unauthorized use, reproduction, or distribution of this
+6. SCOPE: This license applies to this project and ALL other projects
+   authored by Daniel Fernando Castillo Mera, including but not limited to
+   Dashboard Enterprise, unless a separate license agreement is provided.
+
+7. ENFORCEMENT: Any unauthorized use, reproduction, or distribution of this
    software may result in civil and criminal penalties, and will be prosecuted
    to the maximum extent possible under the law.
 
 For licensing inquiries or permission requests, contact:
 Daniel Fernando Castillo Mera
+Email: danielfcastillom@gmail.com
 
 THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

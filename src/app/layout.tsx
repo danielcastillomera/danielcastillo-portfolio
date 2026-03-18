@@ -13,11 +13,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Daniel Fernando Castillo Mera — Desarrollador Full-Stack | Portfolio',
+  title: 'Daniel Fernando Castillo Mera — Junior Full Stack Engineer / Developer',
   description:
-    'Portafolio profesional de Daniel Fernando Castillo Mera. Desarrollador Full-Stack Junior especializado en Next.js, TypeScript, Supabase y sistemas empresariales. Universidad de Guayaquil — Ingeniería en Software.',
+    'Portafolio profesional de Daniel Fernando Castillo Mera. Junior Full Stack Engineer / Developer especializado en Next.js, TypeScript, Supabase y sistemas empresariales. Universidad de Guayaquil — Ingeniería en Software.',
   keywords: [
-    'Daniel Fernando Castillo Mera', 'Desarrollador Full-Stack', 'Next.js', 'TypeScript',
+    'Daniel Fernando Castillo Mera', 'Full Stack Developer', 'Full Stack Engineer', 'Next.js', 'TypeScript',
     'Supabase', 'Ecuador', 'Portafolio', 'Ingeniería en Software', 'Universidad de Guayaquil',
     'Dashboard Enterprise',
   ],
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_EC',
-    title: 'Daniel Fernando Castillo Mera — Desarrollador Full-Stack',
-    description: 'Portafolio profesional. Desarrollo de sistemas empresariales con Next.js, TypeScript, Supabase y Tailwind CSS.',
+    title: 'Daniel Fernando Castillo Mera — Junior Full Stack Engineer',
+    description: 'Portafolio profesional. Soluciones digitales con Next.js, TypeScript, Supabase y Tailwind CSS.',
     siteName: 'Daniel Fernando Castillo Mera — Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daniel Fernando Castillo Mera — Desarrollador Full-Stack',
-    description: 'Portafolio profesional. Desarrollo de sistemas empresariales con Next.js, TypeScript, Supabase y Tailwind CSS.',
+    title: 'Daniel Fernando Castillo Mera — Junior Full Stack Engineer',
+    description: 'Portafolio profesional. Soluciones digitales con Next.js, TypeScript, Supabase y Tailwind CSS.',
   },
   other: {
     'X-UA-Compatible': 'IE=edge',
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Daniel Fernando Castillo Mera',
-              jobTitle: 'Desarrollador Full-Stack Junior',
+              jobTitle: 'Junior Full Stack Engineer / Developer',
               description: 'Estudiante de Ingeniería en Software en la Universidad de Guayaquil.',
               url: 'https://danielcastillo.dev',
               nationality: { '@type': 'Country', name: 'Ecuador' },

@@ -89,17 +89,8 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 pt-24 pb-12 text-center lg:px-8">
-        {/* Status badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-accent-500/20 bg-accent-500/5 px-4 py-1.5 text-xs font-medium text-accent-600 dark:text-accent-400 mb-8 animate-fade-in">
-          <span className="relative flex h-2 w-2" aria-hidden="true">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-500 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
-          </span>
-          Disponible para proyectos
-        </div>
-
         {/* Profile photo — centered with glow ring */}
-        <div className="flex justify-center mb-8 animate-scale-in">
+        <div className="flex justify-center mb-4 animate-scale-in">
           <div className="relative">
             {/* Glow ring behind photo */}
             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent-400 via-accent-500 to-orange-500 opacity-50 blur-md" aria-hidden="true" />
@@ -114,6 +105,12 @@ export default function Hero() {
               />
             </div>
           </div>
+        </div>
+
+        {/* Availability badge — below photo, green checkmark */}
+        <div className="inline-flex items-center gap-2.5 rounded-full border border-green-500/25 bg-green-500/[0.06] px-5 py-2 text-xs font-semibold text-green-700 dark:text-green-400 mb-8 animate-fade-in">
+          <svg className="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+          Disponible para contratación inmediata y para realizar proyectos
         </div>
 
         {/* Main heading */}
@@ -148,15 +145,17 @@ export default function Hero() {
           </span>
           <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
           <span>{PERSONAL.semester}</span>
+          <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
+          <span>{PERSONAL.age} años · {PERSONAL.location}</span>
         </div>
 
         {/* CTA Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
           <a
-            href="#proyectos"
+            href="#servicios"
             className="group inline-flex items-center gap-2 rounded-xl bg-accent-500 px-7 py-3.5 text-base font-bold text-black shadow-lg shadow-accent-500/20 transition-all hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5 active:scale-95"
           >
-            Ver mis proyectos
+            Ver mis servicios
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

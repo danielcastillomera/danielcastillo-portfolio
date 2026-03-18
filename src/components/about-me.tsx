@@ -11,7 +11,7 @@ export default function AboutMe() {
   const stats = [
     { value: '10+', label: 'Módulos desarrollados' },
     { value: '2', label: 'Proyectos activos' },
-    { value: '2.5.0', label: 'Versión Dashboard' },
+    { value: '3.1.0', label: 'Versión Dashboard' },
     { value: '6/10', label: 'Semestre actual' },
   ];
 
@@ -93,7 +93,7 @@ export default function AboutMe() {
               Actualmente curso el <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.progress}</strong> de{' '}
               <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.degree}</strong> en la{' '}
               <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.institution}</strong>.
-              Mi proyecto principal, <em className="text-accent-600 dark:text-accent-400">Dashboard Enterprise</em>, es un sistema
+              Mi proyecto principal, <em className="text-accent-600 dark:text-accent-400 font-medium">Dashboard Enterprise v3.1.0</em>, es un sistema
               de gestión empresarial multi-tenant con facturación electrónica cumpliendo la normativa del SRI Ecuador.
             </p>
 

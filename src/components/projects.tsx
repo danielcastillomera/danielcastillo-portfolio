@@ -1,11 +1,30 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { PROJECTS } from '@/lib/data';
 import { useReveal } from '@/lib/use-reveal';
 import { GitHubIcon, ExternalLinkIcon } from './icons';
 
 export default function Projects() {
   const { ref: sectionRef, isVisible } = useReveal();
+  const [versions, setVersions] = useState<Record<string, string>>({});
+
+  // Auto-fetch latest version from GitHub for projects with githubApiUrl
+  useEffect(() => {
+    PROJECTS.forEach((p) => {
+      if (p.githubApiUrl) {
+        fetch(p.githubApiUrl)
+          .then((r) => r.json())
+          .then((pkg) => {
+            if (pkg?.version) {
+              setVersions((prev) => ({ ...prev, [p.id]: `v${pkg.version}` }));
+            }
+          })
+          .catch(() => {});
+      }
+    });
+  }, []);
+
   const featured = PROJECTS.find((p) => p.highlight);
   const others = PROJECTS.filter((p) => !p.highlight);
 
@@ -39,7 +58,7 @@ export default function Projects() {
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-500 animate-pulse" aria-hidden="true" />
                   {featured.status}
                 </span>
-                <span className="rounded-md bg-gray-100 dark:bg-navy-700/60 px-2.5 py-1 text-xs font-mono text-gray-600 dark:text-navy-300">{featured.version}</span>
+                <span className="rounded-md bg-gray-100 dark:bg-navy-700/60 px-2.5 py-1 text-xs font-mono text-gray-600 dark:text-navy-300">{versions[featured.id] || featured.version}</span>
               </div>
             </div>
 
@@ -108,7 +127,7 @@ export default function Projects() {
                   <span className="inline-flex items-center rounded-md bg-gray-100 dark:bg-navy-700/60 px-2 py-0.5 text-xs font-bold text-gray-600 dark:text-navy-300 uppercase tracking-wider">Proyecto Grupal</span>
                   <div className="flex items-center gap-2">
                     <span className="inline-flex items-center gap-1 rounded-full border border-accent-500/20 bg-accent-500/5 px-2.5 py-0.5 text-xs font-medium text-accent-600 dark:text-accent-400">{project.status}</span>
-                    <span className="rounded bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-xs font-mono text-gray-500 dark:text-navy-400">{project.version}</span>
+                    <span className="rounded bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-xs font-mono text-gray-500 dark:text-navy-400">{versions[project.id] || project.version}</span>
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>{project.title}</h3>

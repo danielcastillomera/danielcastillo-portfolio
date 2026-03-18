@@ -1,8 +1,8 @@
 {
   "name": "danielcastillo-portfolio",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "private": true,
-  "description": "Portafolio profesional de Daniel Fernando Castillo Mera — Desarrollador Full-Stack",
+  "description": "Portafolio profesional — Daniel Fernando Castillo Mera",
   "author": "Daniel Fernando Castillo Mera",
   "license": "UNLICENSED",
   "scripts": {
