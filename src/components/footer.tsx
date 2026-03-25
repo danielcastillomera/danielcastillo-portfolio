@@ -27,7 +27,7 @@ export default function Footer() {
               </div>
               {PERSONAL.name}
             </a>
-            <p className="text-xs text-gray-600 dark:text-navy-300 text-center sm:text-left">{PERSONAL.role} · {PERSONAL.university}</p>
+            <p className="text-xs text-gray-700 dark:text-white text-center sm:text-left">{PERSONAL.role} · {PERSONAL.university}</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -42,10 +42,10 @@ export default function Footer() {
         <div className="my-8 h-px bg-gray-200 dark:bg-navy-800/50" aria-hidden="true" />
 
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-          <p className="text-xs text-gray-700 dark:text-navy-300 text-center sm:text-left">
+          <p className="text-xs text-gray-800 dark:text-white text-center sm:text-left">
             &copy; 2024–{year} {PERSONAL.name}. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-gray-600 dark:text-navy-400 text-center sm:text-right max-w-sm">
+          <p className="text-xs text-gray-700 dark:text-gray-300 text-center sm:text-right max-w-sm">
             Queda estrictamente prohibida la clonación, copia o distribución de este proyecto sin previo permiso escrito del titular.
           </p>
         </div>

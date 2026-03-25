@@ -100,21 +100,18 @@ export default function AccessibilityWidget() {
         }
       `}</style>
 
-      {/* Trigger button — positioned bottom-left */}
+      {/* Trigger button — amber background, white icon */}
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className={`fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 ${
-          open
-            ? 'bg-accent-500 text-black scale-90'
-            : 'bg-white dark:bg-navy-800 text-blue-600 dark:text-blue-400 hover:bg-gray-50 dark:hover:bg-navy-700 hover:scale-105'
-        } ring-1 ring-gray-200 dark:ring-navy-600`}
+        className={`fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 bg-accent-500 text-white hover:bg-accent-400 ${
+          open ? 'scale-90 ring-2 ring-accent-300' : 'hover:scale-105'
+        }`}
         aria-expanded={open}
         aria-controls="a11y-panel"
         aria-label="Opciones de accesibilidad"
         title="Accesibilidad"
       >
-        {/* Universal accessibility icon — person with arms open inside circle */}
         <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2.5a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zm5 5.5l-3.5.7v2.8l2.1 4.2c.2.4 0 .8-.4 1h-.2c-.3 0-.5-.2-.6-.4L12 13.5l-2.4 4.8c-.1.2-.4.4-.6.4h-.2c-.4-.2-.6-.6-.4-1l2.1-4.2V10.7L7 10c-.4-.1-.6-.5-.5-.9.1-.3.5-.6.9-.5l4.1.8h1l4.1-.8c.4-.1.8.2.9.5.1.5-.1.8-.5.9z"/>
         </svg>

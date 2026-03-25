@@ -10,6 +10,7 @@ import Contact from '@/components/contact';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
 import AccessibilityWidget from '@/components/accessibility-widget';
+import ScrollButtons from '@/components/scroll-buttons';
 
 export default function HomePage() {
   return (
@@ -28,6 +29,7 @@ export default function HomePage() {
       <Footer />
       <WhatsAppFloat />
       <AccessibilityWidget />
+      <ScrollButtons />
     </>
   );
 }

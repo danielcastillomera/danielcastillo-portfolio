@@ -120,10 +120,10 @@ export default function Navbar() {
             aria-controls="mobile-menu"
             aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
-            <div className="flex flex-col items-center justify-center gap-1.5 w-5">
-              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
+            <div className="flex flex-col items-center justify-center gap-[6px] w-5">
+              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`} />
               <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 scale-0' : ''}`} />
-              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? '-rotate-45 -translate-y-[4px]' : ''}`} />
+              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`} />
             </div>
           </button>
         </div>

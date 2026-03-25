@@ -6,6 +6,47 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## v4.5.0 — Theme System Fix, Devicon Icons, Scroll Navigation, UX Polish
+
+### Critical Fix: Dark Mode
+- **Added `@custom-variant dark`** directive for Tailwind CSS v4. This was the root cause of ALL light-mode visibility issues — without this directive, every `dark:` utility class was being ignored by the Tailwind compiler. All `dark:text-*`, `dark:bg-*`, `dark:border-*` classes now work correctly across the entire application.
+
+### Tech Stack Icons
+- **Switched to Devicon CDN** (`cdn.jsdelivr.net/gh/devicons/devicon`) — all technology icons now display with their official full-color brand logos (CSS3, Java, VS Code, Node.js, etc.) instead of monochrome Simple Icons.
+
+### Skills Section
+- **Herramientas & Metodologías icon** replaced with icons8 maintenance wrench icon (`img.icons8.com`), with `dark:invert` for dark mode adaptation.
+
+### Accessibility Widget
+- **Button redesign** — Amber background (`#F59E0B`) with white person icon, consistent in both themes. No longer changes background color on theme switch.
+- **Panel** already adapts to theme via `bg-white dark:bg-navy-900`.
+
+### Mobile UX
+- **Hamburger menu X** — Fixed translate values (`translate-y-[8px]` with `gap-[6px]`) so the X forms correctly when menu opens on mobile.
+
+### Footer
+- **Text colors** — Copyright text now `text-gray-800 dark:text-white`, license text `text-gray-700 dark:text-gray-300`. Fully legible in both themes.
+
+### Scroll Navigation
+- **New: "Ir al final" button** — Appears centered at the top of the page when user is at the start. Scrolls smoothly to the bottom.
+- **New: "Ir al inicio" button** — Appears at bottom-right when user scrolls down. Scrolls smoothly back to top.
+- Both buttons adapt to light/dark theme.
+
+### Files Added
+- `src/components/scroll-buttons.tsx`
+
+### Files Modified
+- `src/app/globals.css` (added `@custom-variant dark` — critical fix)
+- `src/app/page.tsx` (added ScrollButtons)
+- `src/components/tech-grid.tsx` (rewritten with Devicon CDN)
+- `src/components/skills.tsx` (icons8 wrench)
+- `src/components/accessibility-widget.tsx` (amber + white redesign)
+- `src/components/navbar.tsx` (hamburger X fix)
+- `src/components/footer.tsx` (white text in dark mode)
+- `package.json` (version 4.5.0)
+
+---
+
 ## v4.0.0 — Visual Polish, Brand Icons, Theme Contrast, Mobile UX
 
 ### Accessibility Widget

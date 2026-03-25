@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind v4: enable class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ═══════════════════════════════════════════════════════════════
    DESIGN TOKENS — Daniel Fernando Castillo Mera Portfolio
    Light: White primary + Black secondary
