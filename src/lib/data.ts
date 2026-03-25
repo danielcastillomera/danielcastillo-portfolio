@@ -68,31 +68,32 @@ export interface TechItem {
   name: string;
   version?: string;
   iconSlug: string;
+  brandColor: string;
   category: 'frontend' | 'backend' | 'database' | 'tools' | 'language';
 }
 
 export const TECH_STACK: TechItem[] = [
-  { name: 'TypeScript', version: '5.9', iconSlug: 'typescript', category: 'language' },
-  { name: 'JavaScript', iconSlug: 'javascript', category: 'language' },
-  { name: 'HTML5', iconSlug: 'html5', category: 'language' },
-  { name: 'CSS3', iconSlug: 'css3', category: 'language' },
-  { name: 'Python', iconSlug: 'python', category: 'language' },
-  { name: 'Java', iconSlug: 'java', category: 'language' },
-  { name: 'React', version: '19', iconSlug: 'react', category: 'frontend' },
-  { name: 'Next.js', version: '16', iconSlug: 'nextdotjs', category: 'frontend' },
-  { name: 'Tailwind CSS', version: '4', iconSlug: 'tailwindcss', category: 'frontend' },
-  { name: 'Recharts', version: '3', iconSlug: 'chartdotjs', category: 'frontend' },
-  { name: 'Node.js', version: '18+', iconSlug: 'nodedotjs', category: 'backend' },
-  { name: 'Prisma', version: '5', iconSlug: 'prisma', category: 'backend' },
-  { name: 'Zod', version: '4', iconSlug: 'zod', category: 'backend' },
-  { name: 'Supabase', iconSlug: 'supabase', category: 'database' },
-  { name: 'PostgreSQL', iconSlug: 'postgresql', category: 'database' },
-  { name: 'Vercel', iconSlug: 'vercel', category: 'database' },
-  { name: 'Git', iconSlug: 'git', category: 'tools' },
-  { name: 'GitHub', iconSlug: 'github', category: 'tools' },
-  { name: 'Visual Studio Code', iconSlug: 'visualstudiocode', category: 'tools' },
-  { name: 'npm', iconSlug: 'npm', category: 'tools' },
-  { name: 'ESLint', iconSlug: 'eslint', category: 'tools' },
+  { name: 'TypeScript', version: '5.9', iconSlug: 'typescript', brandColor: '3178C6', category: 'language' },
+  { name: 'JavaScript', iconSlug: 'javascript', brandColor: 'F7DF1E', category: 'language' },
+  { name: 'HTML5', iconSlug: 'html5', brandColor: 'E34F26', category: 'language' },
+  { name: 'CSS3', iconSlug: 'css3', brandColor: '1572B6', category: 'language' },
+  { name: 'Python', iconSlug: 'python', brandColor: '3776AB', category: 'language' },
+  { name: 'Java', iconSlug: 'openjdk', brandColor: 'ED8B00', category: 'language' },
+  { name: 'React', version: '19', iconSlug: 'react', brandColor: '61DAFB', category: 'frontend' },
+  { name: 'Next.js', version: '16', iconSlug: 'nextdotjs', brandColor: '000000', category: 'frontend' },
+  { name: 'Tailwind CSS', version: '4', iconSlug: 'tailwindcss', brandColor: '06B6D4', category: 'frontend' },
+  { name: 'Recharts', version: '3', iconSlug: 'chartdotjs', brandColor: 'FF6384', category: 'frontend' },
+  { name: 'Node.js', version: '18+', iconSlug: 'nodedotjs', brandColor: '5FA04E', category: 'backend' },
+  { name: 'Prisma', version: '5', iconSlug: 'prisma', brandColor: '2D3748', category: 'backend' },
+  { name: 'Zod', version: '4', iconSlug: 'zod', brandColor: '3E67B1', category: 'backend' },
+  { name: 'Supabase', iconSlug: 'supabase', brandColor: '3FCF8E', category: 'database' },
+  { name: 'PostgreSQL', iconSlug: 'postgresql', brandColor: '4169E1', category: 'database' },
+  { name: 'Vercel', iconSlug: 'vercel', brandColor: '000000', category: 'database' },
+  { name: 'Git', iconSlug: 'git', brandColor: 'F05032', category: 'tools' },
+  { name: 'GitHub', iconSlug: 'github', brandColor: '181717', category: 'tools' },
+  { name: 'Visual Studio Code', iconSlug: 'visualstudiocode', brandColor: '007ACC', category: 'tools' },
+  { name: 'npm', iconSlug: 'npm', brandColor: 'CB3837', category: 'tools' },
+  { name: 'ESLint', iconSlug: 'eslint', brandColor: '4B32C3', category: 'tools' },
 ];
 
 export const TECH_MARQUEE = [

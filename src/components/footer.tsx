@@ -17,7 +17,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-gray-100 dark:border-navy-800/50 bg-white dark:bg-navy-950" role="contentinfo" aria-label="Pie de página">
+    <footer className="relative border-t border-gray-200 dark:border-navy-800/50 bg-gray-50 dark:bg-navy-950" role="contentinfo" aria-label="Pie de página">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           <div className="flex flex-col items-center sm:items-start gap-2">
@@ -27,25 +27,25 @@ export default function Footer() {
               </div>
               {PERSONAL.name}
             </a>
-            <p className="text-xs text-gray-500 dark:text-navy-500 text-center sm:text-left">{PERSONAL.role} · {PERSONAL.university}</p>
+            <p className="text-xs text-gray-600 dark:text-navy-300 text-center sm:text-left">{PERSONAL.role} · {PERSONAL.university}</p>
           </div>
 
           <div className="flex items-center gap-2">
             {socials.map((s) => (
-              <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className={`flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 dark:text-navy-400 transition-all ${s.color}`} aria-label={s.label}>
+              <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className={`flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 dark:text-navy-400 transition-all ${s.color}`} aria-label={s.label}>
                 {s.icon}
               </a>
             ))}
           </div>
         </div>
 
-        <div className="my-8 h-px bg-gray-100 dark:bg-navy-800/50" aria-hidden="true" />
+        <div className="my-8 h-px bg-gray-200 dark:bg-navy-800/50" aria-hidden="true" />
 
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-          <p className="text-xs text-gray-500 dark:text-navy-500 text-center sm:text-left">
+          <p className="text-xs text-gray-700 dark:text-navy-300 text-center sm:text-left">
             &copy; 2024–{year} {PERSONAL.name}. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-gray-400 dark:text-navy-600 text-center sm:text-right max-w-sm">
+          <p className="text-xs text-gray-600 dark:text-navy-400 text-center sm:text-right max-w-sm">
             Queda estrictamente prohibida la clonación, copia o distribución de este proyecto sin previo permiso escrito del titular.
           </p>
         </div>

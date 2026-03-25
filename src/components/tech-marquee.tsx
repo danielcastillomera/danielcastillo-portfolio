@@ -12,7 +12,7 @@ export default function TechMarquee() {
 
       <div className="marquee-track" role="marquee" aria-label="Tecnologías: Next.js, TypeScript, React, Tailwind CSS, Supabase, PostgreSQL, Prisma, Vercel, Node.js, Git, Resend, Zod, REST API, HTML5, CSS3, JavaScript">
         {items.map((tech, i) => (
-          <span key={`${tech}-${i}`} className="mx-6 text-sm font-semibold tracking-wide text-gray-400 dark:text-navy-400 whitespace-nowrap uppercase select-none flex items-center gap-2" aria-hidden={i >= TECH_MARQUEE.length}>
+          <span key={`${tech}-${i}`} className="mx-6 text-sm font-semibold tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap uppercase select-none flex items-center gap-2" aria-hidden={i >= TECH_MARQUEE.length}>
             <span className="w-1.5 h-1.5 rounded-full bg-accent-500/50" aria-hidden="true" />
             {tech}
           </span>

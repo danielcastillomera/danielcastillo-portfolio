@@ -58,7 +58,7 @@ export default function Projects() {
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-500 animate-pulse" aria-hidden="true" />
                   {featured.status}
                 </span>
-                <span className="rounded-md bg-gray-100 dark:bg-navy-700/60 px-2.5 py-1 text-xs font-mono text-gray-600 dark:text-navy-300">{versions[featured.id] || featured.version}</span>
+                <span className="rounded-md bg-gray-100 dark:bg-navy-700/60 px-2.5 py-1 text-xs font-mono text-gray-800 dark:text-gray-100">{versions[featured.id] || featured.version}</span>
               </div>
             </div>
 
@@ -72,13 +72,13 @@ export default function Projects() {
                     <h3 className="mt-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl" style={{ fontFamily: 'var(--font-display)' }}>{featured.title}</h3>
                   </div>
 
-                  <p className="text-base text-gray-600 dark:text-navy-300 leading-relaxed">{featured.longDescription}</p>
+                  <p className="text-base text-gray-800 dark:text-gray-100 leading-relaxed">{featured.longDescription}</p>
 
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-navy-400 mb-3">Stack tecnológico</h4>
                     <div className="flex flex-wrap gap-2" role="list" aria-label="Tecnologías">
                       {featured.techStack.map((tech) => (
-                        <span key={tech} role="listitem" className="rounded-md border border-gray-200 dark:border-navy-700/60 bg-gray-50 dark:bg-navy-800/40 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-navy-200">{tech}</span>
+                        <span key={tech} role="listitem" className="rounded-md border border-gray-200 dark:border-navy-700/60 bg-gray-50 dark:bg-navy-800/40 px-2.5 py-1 text-xs font-medium text-gray-900 dark:text-gray-100">{tech}</span>
                       ))}
                     </div>
                   </div>
@@ -89,7 +89,7 @@ export default function Projects() {
                         className={`inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-all active:scale-95 ${
                           link.icon === 'demo'
                             ? 'bg-accent-500 text-black hover:bg-accent-400 shadow-lg shadow-accent-500/20'
-                            : 'border border-gray-200 dark:border-navy-600 text-gray-700 dark:text-navy-200 hover:border-gray-400 dark:hover:border-navy-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5'
+                            : 'border border-gray-200 dark:border-navy-600 text-gray-900 dark:text-gray-100 hover:border-gray-400 dark:hover:border-navy-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5'
                         }`}
                       >
                         {link.icon === 'github' && <GitHubIcon className="w-4 h-4" />}
@@ -108,7 +108,7 @@ export default function Projects() {
                         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-500/10 text-accent-500 mt-0.5" aria-hidden="true">
                           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
                         </span>
-                        <span className="text-sm text-gray-700 dark:text-navy-200 leading-snug">{feature}</span>
+                        <span className="text-sm text-gray-900 dark:text-gray-100 leading-snug">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -124,22 +124,22 @@ export default function Projects() {
             {others.map((project) => (
               <article key={project.id} className="glass rounded-xl p-6 card-glow" aria-label={`Proyecto: ${project.title}`}>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center rounded-md bg-gray-100 dark:bg-navy-700/60 px-2 py-0.5 text-xs font-bold text-gray-600 dark:text-navy-300 uppercase tracking-wider">Proyecto Grupal</span>
+                  <span className="inline-flex items-center rounded-md bg-gray-100 dark:bg-navy-700/60 px-2 py-0.5 text-xs font-bold text-gray-800 dark:text-gray-100 uppercase tracking-wider">Proyecto Grupal</span>
                   <div className="flex items-center gap-2">
                     <span className="inline-flex items-center gap-1 rounded-full border border-accent-500/20 bg-accent-500/5 px-2.5 py-0.5 text-xs font-medium text-accent-600 dark:text-accent-400">{project.status}</span>
-                    <span className="rounded bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-xs font-mono text-gray-500 dark:text-navy-400">{versions[project.id] || project.version}</span>
+                    <span className="rounded bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-xs font-mono text-gray-600 dark:text-gray-300">{versions[project.id] || project.version}</span>
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>{project.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-navy-300 leading-relaxed mb-5">{project.description}</p>
+                <p className="text-sm text-gray-800 dark:text-gray-100 leading-relaxed mb-5">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {project.techStack.map((tech) => (
-                    <span key={tech} className="rounded border border-gray-200 dark:border-navy-700/40 bg-gray-50 dark:bg-navy-800/30 px-2 py-0.5 text-xs text-gray-500 dark:text-navy-400">{tech}</span>
+                    <span key={tech} className="rounded border border-gray-200 dark:border-navy-700/40 bg-gray-50 dark:bg-navy-800/30 px-2 py-0.5 text-xs text-gray-600 dark:text-gray-300">{tech}</span>
                   ))}
                 </div>
                 <div className="flex gap-3">
                   {project.links.map((link) => (
-                    <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-gray-200 dark:border-navy-600 px-4 py-2 text-sm font-medium text-gray-700 dark:text-navy-200 transition-all hover:border-gray-400 dark:hover:border-navy-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 active:scale-95">
+                    <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-gray-200 dark:border-navy-600 px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 transition-all hover:border-gray-400 dark:hover:border-navy-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 active:scale-95">
                       {link.icon === 'github' && <GitHubIcon className="w-4 h-4" />}
                       {link.label}
                     </a>

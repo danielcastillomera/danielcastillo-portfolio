@@ -107,16 +107,16 @@ export default function AccessibilityWidget() {
         className={`fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 ${
           open
             ? 'bg-accent-500 text-black scale-90'
-            : 'bg-white dark:bg-navy-800 text-gray-700 dark:text-navy-200 hover:bg-gray-50 dark:hover:bg-navy-700 hover:scale-105'
+            : 'bg-white dark:bg-navy-800 text-blue-600 dark:text-blue-400 hover:bg-gray-50 dark:hover:bg-navy-700 hover:scale-105'
         } ring-1 ring-gray-200 dark:ring-navy-600`}
         aria-expanded={open}
         aria-controls="a11y-panel"
         aria-label="Opciones de accesibilidad"
         title="Accesibilidad"
       >
-        {/* Universal accessibility icon */}
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a3 3 0 100 6 3 3 0 000-6zM12 8c-4 0-7 1.5-7 1.5l1.5 4.5h2L8 21h8l-.5-7h2L19 9.5S16 8 12 8z" />
+        {/* Universal accessibility icon — person with arms open inside circle */}
+        <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2.5a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zm5 5.5l-3.5.7v2.8l2.1 4.2c.2.4 0 .8-.4 1h-.2c-.3 0-.5-.2-.6-.4L12 13.5l-2.4 4.8c-.1.2-.4.4-.6.4h-.2c-.4-.2-.6-.6-.4-1l2.1-4.2V10.7L7 10c-.4-.1-.6-.5-.5-.9.1-.3.5-.6.9-.5l4.1.8h1l4.1-.8c.4-.1.8.2.9.5.1.5-.1.8-.5.9z"/>
         </svg>
       </button>
 
@@ -135,8 +135,8 @@ export default function AccessibilityWidget() {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-100 dark:border-navy-700 px-4 py-3">
           <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a3 3 0 100 6 3 3 0 000-6zM12 8c-4 0-7 1.5-7 1.5l1.5 4.5h2L8 21h8l-.5-7h2L19 9.5S16 8 12 8z" />
+            <svg className="w-4 h-4 text-accent-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2.5a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zm5 5.5l-3.5.7v2.8l2.1 4.2c.2.4 0 .8-.4 1h-.2c-.3 0-.5-.2-.6-.4L12 13.5l-2.4 4.8c-.1.2-.4.4-.6.4h-.2c-.4-.2-.6-.6-.4-1l2.1-4.2V10.7L7 10c-.4-.1-.6-.5-.5-.9.1-.3.5-.6.9-.5l4.1.8h1l4.1-.8c.4-.1.8.2.9.5.1.5-.1.8-.5.9z"/>
             </svg>
             Accesibilidad
           </h3>

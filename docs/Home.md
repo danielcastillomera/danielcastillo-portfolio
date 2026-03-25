@@ -16,7 +16,7 @@ Bienvenido a la documentación del portafolio profesional.
 | Stack | Next.js 15, React 19, TypeScript, Tailwind CSS 4 |
 | Deploy | Vercel |
 | Licencia | Propietaria |
-| Versión | 3.0.0 |
+| Versión | 4.0.0 |
 
 ## Enlaces
 

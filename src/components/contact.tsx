@@ -28,7 +28,7 @@ export default function Contact() {
         <h2 id="contact-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>
           ¿Tienes un proyecto en mente?
         </h2>
-        <p className="mt-4 text-lg text-gray-600 dark:text-navy-300 max-w-2xl mx-auto">
+        <p className="mt-4 text-lg text-gray-800 dark:text-gray-100 max-w-2xl mx-auto">
           Estoy disponible para colaboraciones, proyectos freelance, y oportunidades profesionales. Encuéntrame en mis redes sociales o escríbeme directamente.
         </p>
 
@@ -44,7 +44,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-base font-bold text-gray-900 dark:text-white">{card.title}</h3>
-                <p className="text-xs text-gray-500 dark:text-navy-400 mt-0.5">{card.sub}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-300 mt-0.5">{card.sub}</p>
               </div>
             </a>
           ))}

@@ -17,7 +17,14 @@ export default function TechGrid() {
   };
 
   const categories = ['language', 'frontend', 'backend', 'database', 'tools'] as const;
-  const iconColor = resolvedTheme === 'dark' ? 'ffffff' : '111827';
+
+  // Icons that are black/very dark and need white version in dark mode
+  const darkLogos = new Set(['000000', '181717', '2D3748']);
+
+  const getIconColor = (brandColor: string) => {
+    if (resolvedTheme === 'dark' && darkLogos.has(brandColor)) return 'ffffff';
+    return brandColor;
+  };
 
   return (
     <section className="relative py-20 sm:py-28" aria-labelledby="tech-heading">
@@ -35,7 +42,7 @@ export default function TechGrid() {
           if (items.length === 0) return null;
           return (
             <div key={cat} className="mb-8 last:mb-0">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-navy-400 mb-4">{categoryLabels[cat]}</h3>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 mb-4">{categoryLabels[cat]}</h3>
               <div className="flex flex-wrap gap-3">
                 {items.map((tech, i) => (
                   <div
@@ -45,16 +52,16 @@ export default function TechGrid() {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`https://cdn.simpleicons.org/${tech.iconSlug}/${iconColor}`}
+                      src={`https://cdn.simpleicons.org/${tech.iconSlug}/${getIconColor(tech.brandColor)}`}
                       alt={tech.name}
                       width={20}
                       height={20}
                       className="w-5 h-5 shrink-0"
                       loading="lazy"
                     />
-                    <span className="text-sm font-medium text-gray-800 dark:text-navy-100">{tech.name}</span>
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">{tech.name}</span>
                     {tech.version && (
-                      <span className="text-[10px] font-mono text-gray-400 dark:text-navy-500 bg-gray-100 dark:bg-navy-800 rounded px-1.5 py-0.5">
+                      <span className="text-[10px] font-mono text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-navy-800 rounded px-1.5 py-0.5">
                         v{tech.version}
                       </span>
                     )}

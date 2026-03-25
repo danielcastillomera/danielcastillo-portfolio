@@ -6,6 +6,48 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## v4.0.0 — Visual Polish, Brand Icons, Theme Contrast, Mobile UX
+
+### Accessibility Widget
+- **New icon** — Replaced generic icon with the official universal accessibility symbol (person with arms open inside circle), matching the ISO/W3C standard.
+- Icon renders in blue (`text-blue-600 dark:text-blue-400`) for immediate recognition.
+
+### Theme Contrast Fix
+- **Paragraph text** now uses `text-gray-800 dark:text-gray-100` — near-black in light mode, near-white in dark mode. No content "gets lost" on either background.
+- **Labels and secondary text** upgraded from `text-gray-400` to `text-gray-500`/`text-gray-600` for readability on white.
+- **Footer** — Background changed to `bg-gray-50 dark:bg-navy-950` with `text-gray-700 dark:text-navy-300` for copyright and `text-gray-600 dark:text-navy-400` for license text. Fully legible in both themes.
+- **Tech marquee**, **skills percentages**, **education dates**, and all secondary info upgraded for contrast.
+
+### Tech Stack Icons
+- **Original brand colors** — Each technology now displays its official brand color (TypeScript blue, React cyan, Node.js green, Git red, etc.) instead of a single monochrome color.
+- Dark logos (Next.js, Vercel, GitHub, Prisma) automatically switch to white in dark mode.
+
+### Skills Section
+- **Herramientas & Metodologías** icon replaced with wrench-and-hammer SVG (matching 🛠️ emoji).
+
+### Mobile UX
+- **Scroll indicator** — Desktop shows mouse scroll widget; mobile (`sm:hidden`) shows a phone with swipe-up gesture animation, matching mobile interaction patterns.
+
+### Dashboard Enterprise
+- Project information updated to reflect latest version (auto-fetched from GitHub API at runtime).
+
+### Files Modified
+- `src/components/accessibility-widget.tsx` (new icon SVG)
+- `src/components/tech-grid.tsx` (brand colors per icon)
+- `src/components/hero.tsx` (mobile scroll indicator)
+- `src/components/footer.tsx` (contrast fix)
+- `src/components/skills.tsx` (tools icon)
+- `src/components/about-me.tsx` (text contrast)
+- `src/components/contact.tsx` (text contrast)
+- `src/components/projects.tsx` (text contrast)
+- `src/components/services.tsx` (text contrast)
+- `src/components/tech-marquee.tsx` (text contrast)
+- `src/lib/data.ts` (brandColor field, project info)
+- `package.json` (version 4.0.0)
+- `CHANGELOG.md`, `README.md`, `SECURITY.md`, `docs/Home.md`
+
+---
+
 ## v3.0.0 — Services, Tech Stack, Auto-Version, Accessibility Overhaul
 
 ### New Sections

@@ -35,7 +35,7 @@ This project implements the following security measures:
 
 | Version | Supported |
 |---------|-----------|
-| 3.0.x   | Yes       |
+| 4.0.x   | Yes       |
 | 1.0.x   | No        |
 
 ## Disclaimer

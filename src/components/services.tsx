@@ -16,7 +16,7 @@ export default function Services() {
             Servicios profesionales
           </h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-orange-500" aria-hidden="true" />
-          <p className="mt-4 text-base text-gray-600 dark:text-navy-300 max-w-2xl">
+          <p className="mt-4 text-base text-gray-800 dark:text-gray-100 max-w-2xl">
             Ofrezco soluciones digitales y técnicas adaptadas a las necesidades del mercado ecuatoriano e internacional.
           </p>
         </div>
@@ -39,7 +39,7 @@ export default function Services() {
                   <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{svc.title}</h4>
                   <ul className="space-y-1" role="list">
                     {svc.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-xs text-gray-600 dark:text-navy-300">
+                      <li key={item} className="flex items-start gap-2 text-xs text-gray-800 dark:text-gray-100">
                         <svg className="w-3 h-3 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
                         {item}
                       </li>

@@ -52,7 +52,7 @@ npm run dev
 
 ```bash
 git add .
-git commit -m "v3.0.0"
+git commit -m "v4.0.0"
 git push origin main
 ```
 

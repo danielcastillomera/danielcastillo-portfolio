@@ -123,12 +123,12 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-navy-300 sm:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.15s' }}>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-800 dark:text-gray-100 sm:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.15s' }}>
           {PERSONAL.heroSubtitle}
         </p>
 
         {/* Info pills */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500 dark:text-navy-400 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.25s' }}>
           <span className="flex items-center gap-1.5">
             <svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -171,11 +171,28 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-gray-400 dark:text-navy-500" style={{ animationDelay: '1s' }} aria-hidden="true">
+        {/* Scroll indicator — mouse on desktop, phone swipe on mobile */}
+        <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-gray-600 dark:text-gray-300" style={{ animationDelay: '1s' }} aria-hidden="true">
           <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
-          <div className="w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 flex items-start justify-center p-1">
+          {/* Desktop: mouse */}
+          <div className="hidden sm:flex w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 items-start justify-center p-1">
             <div className="w-1 h-2 rounded-full bg-accent-500 animate-float" />
+          </div>
+          {/* Mobile: phone with swipe up gesture */}
+          <div className="flex sm:hidden flex-col items-center gap-1">
+            <svg className="w-7 h-10" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Phone body */}
+              <rect x="4" y="4" width="20" height="32" rx="4" stroke="currentColor" strokeWidth="1.5" fill="none" />
+              {/* Screen */}
+              <rect x="6" y="8" width="16" height="22" rx="1" fill="currentColor" opacity="0.08" />
+              {/* Home indicator */}
+              <rect x="10" y="33" width="8" height="1.5" rx="0.75" fill="currentColor" opacity="0.3" />
+              {/* Swipe up arrow */}
+              <path d="M14 25 L14 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="animate-float" />
+              <path d="M10 19 L14 15 L18 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="animate-float" />
+              {/* Hand/finger */}
+              <circle cx="14" cy="26" r="2.5" fill="currentColor" opacity="0.2" className="animate-float" />
+            </svg>
           </div>
         </div>
       </div>

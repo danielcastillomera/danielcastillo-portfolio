@@ -59,7 +59,7 @@ export default function AboutMe() {
               <div className="text-center sm:text-left">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{PERSONAL.name}</h3>
                 <p className="text-sm text-accent-600 dark:text-accent-400 font-medium">{PERSONAL.role}</p>
-                <div className="mt-2 flex flex-wrap gap-2 justify-center sm:justify-start text-xs text-gray-500 dark:text-navy-400">
+                <div className="mt-2 flex flex-wrap gap-2 justify-center sm:justify-start text-xs text-gray-600 dark:text-gray-300">
                   <span className="inline-flex items-center gap-1">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
                     {PERSONAL.location}
@@ -87,9 +87,9 @@ export default function AboutMe() {
               </div>
             </div>
 
-            <p className="text-lg leading-relaxed text-gray-700 dark:text-navy-200">{PERSONAL.bio}</p>
+            <p className="text-lg leading-relaxed text-gray-900 dark:text-gray-100">{PERSONAL.bio}</p>
 
-            <p className="text-base leading-relaxed text-gray-600 dark:text-navy-300">
+            <p className="text-base leading-relaxed text-gray-800 dark:text-gray-100">
               Actualmente curso el <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.progress}</strong> de{' '}
               <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.degree}</strong> en la{' '}
               <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.institution}</strong>.
@@ -97,7 +97,7 @@ export default function AboutMe() {
               de gestión empresarial multi-tenant con facturación electrónica cumpliendo la normativa del SRI Ecuador.
             </p>
 
-            <p className="text-base leading-relaxed text-gray-600 dark:text-navy-300">
+            <p className="text-base leading-relaxed text-gray-800 dark:text-gray-100">
               Me enfoco en escribir código limpio, seguro y mantenible. Cada módulo que desarrollo
               sigue estándares profesionales: validación robusta, seguridad a nivel de base de datos (RLS),
               headers HTTP de seguridad, diseño responsive mobile-first, y accesibilidad web (WCAG).
@@ -113,8 +113,8 @@ export default function AboutMe() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-gray-900 dark:text-white">{EDUCATION.institution}</h3>
-                  <p className="text-sm text-gray-600 dark:text-navy-300">{EDUCATION.degree}</p>
-                  <p className="mt-1 text-xs text-gray-400 dark:text-navy-400">{EDUCATION.period} · {EDUCATION.progress}</p>
+                  <p className="text-sm text-gray-800 dark:text-gray-100">{EDUCATION.degree}</p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{EDUCATION.period} · {EDUCATION.progress}</p>
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function AboutMe() {
                   style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: `opacity 0.6s ease ${i * 100}ms, transform 0.6s ease ${i * 100}ms` }}
                 >
                   <div className="text-2xl font-bold text-gradient sm:text-3xl" style={{ fontFamily: 'var(--font-display)' }}>{stat.value}</div>
-                  <div className="mt-1 text-xs font-medium text-gray-500 dark:text-navy-400 leading-tight">{stat.label}</div>
+                  <div className="mt-1 text-xs font-medium text-gray-600 dark:text-gray-300 leading-tight">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -144,7 +144,7 @@ export default function AboutMe() {
                 'Interfaces responsive y accesibles',
                 'Seguridad: RLS, CSP, HSTS',
               ].map((item) => (
-                <div key={item} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-navy-300">
+                <div key={item} className="flex items-start gap-2.5 text-sm text-gray-800 dark:text-gray-100">
                   <svg className="w-4 h-4 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
