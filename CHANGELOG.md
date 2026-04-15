@@ -1,211 +1,108 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+---
+**Idioma / Language:** Español (Latinoamérica) / English (United States)
 
+---
+
+All notable changes to this project will be documented in this file.  
+Este archivo documenta todos los cambios notables de este proyecto.  
 This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## v4.5.0 — Theme System Fix, Devicon Icons, Scroll Navigation, UX Polish
+## v5.0.0 — i18n (ES/EN) · Typewriter · Cookie Consent · Certificaciones · Community Manager · UI/UX · Bug Fixes
 
-### Critical Fix: Dark Mode
-- **Added `@custom-variant dark`** directive for Tailwind CSS v4. This was the root cause of ALL light-mode visibility issues — without this directive, every `dark:` utility class was being ignored by the Tailwind compiler. All `dark:text-*`, `dark:bg-*`, `dark:border-*` classes now work correctly across the entire application.
+### 🌐 Internacionalización / Internationalization (i18n ES/EN)
+- Soporte completo bilingüe ES/EN con detección automática de `navigator.language` / Full bilingual ES/EN support with automatic `navigator.language` detection
+- Preferencia guardada en `localStorage` / Preference saved in `localStorage`
+- Toggle de idioma en navbar (escritorio y móvil) con emoji de bandera / Language toggle in navbar (desktop + mobile) with flag emoji
+- `<html lang>` actualizado dinámicamente / `<html lang>` updated dynamically
+- Archivos: `src/lib/i18n.ts`, `src/lib/i18n-provider.tsx`, `src/components/language-toggle.tsx`
 
-### Tech Stack Icons
-- **Switched to Devicon CDN** (`cdn.jsdelivr.net/gh/devicons/devicon`) — all technology icons now display with their official full-color brand logos (CSS3, Java, VS Code, Node.js, etc.) instead of monochrome Simple Icons.
+### ⌨️ Efecto Typewriter / Typewriter Effect (Hero)
+- 7 frases rotativas alineadas con el CV / 7 rotating phrases aligned with CV
+- Escritura carácter a carácter con jitter realista (+/-15ms) / Character-by-character typing with realistic jitter
+- Pausa → borrar → siguiente frase / Pause → delete → next phrase loop
+- Cursor parpadeante CSS `blink-cursor` / Blinking cursor via CSS `blink-cursor` keyframe
+- Respeta `prefers-reduced-motion` / Fully respects `prefers-reduced-motion`
+- Accesible con `aria-live="polite"` y `aria-atomic="true"`
+- Altura mínima en `<h1>` para evitar CLS / Minimum height on `<h1>` to prevent CLS
 
-### Skills Section
-- **Herramientas & Metodologías icon** replaced with icons8 maintenance wrench icon (`img.icons8.com`), with `dark:invert` for dark mode adaptation.
+### 🍪 Cookie Consent GDPR
+- Banner no intrusivo bottom-center con delay 1.5s / Non-intrusive bottom-center banner with 1.5s delay
+- 3 categorías: Esencial / Analytics / Marketing
+- 3 acciones: Aceptar todo / Rechazar todo / Personalizar
+- Preferencia en `localStorage` / Preference stored in `localStorage`
+- Accesible `role="dialog"` / Bilingual ES/EN
 
-### Accessibility Widget
-- **Button redesign** — Amber background (`#F59E0B`) with white person icon, consistent in both themes. No longer changes background color on theme switch.
-- **Panel** already adapts to theme via `bg-white dark:bg-navy-900`.
+### 📜 Sección Certificaciones / Certifications Section
+- CS50x Harvard, UEES AI Talk, Épico PC Workshop, P4H Biorobotics Webinar
+- Badges de estado: En curso (pulse animado) / Activo / Completado
+- Completamente bilingüe / Fully bilingual
 
-### Mobile UX
-- **Hamburger menu X** — Fixed translate values (`translate-y-[8px]` with `gap-[6px]`) so the X forms correctly when menu opens on mobile.
+### 👨‍💼 Community Manager & UI/UX
+- Rol completo: "Junior Full Stack Engineer / Developer | Community Manager"
+- 2 nuevas categorías en Skills: Community Manager & Marketing Digital + Diseño UI/UX
+- Tags de rol en About Me: Community Manager, UI/UX Designer, Meta Business Suite, Figma
+- Datos actualizados con C#, Oracle, SQL Server, experiencia laboral
 
-### Footer
-- **Text colors** — Copyright text now `text-gray-800 dark:text-white`, license text `text-gray-700 dark:text-gray-300`. Fully legible in both themes.
+### 🔧 Bug Fixes
+1. **"Ir al final"**: Botón flotante que tapaba la foto eliminado / Floating button removed from hero
+2. **"Ir al inicio"**: Reposicionado a bottom-center (no solapaba WhatsApp) / Repositioned to bottom-center
+3. **Zod icon**: SVG inline con fondo azul oficial #3E67B1 / Custom inline SVG with official blue
+4. **Tech grid logos**: Devicon CDN colores oficiales, inversión en dark mode / Official brand colors, dark mode inversion
+5. **Skills icons**: Logos Devicon con fondo sólido en contenedor blanco / Solid-background Devicon logos
+6. **TypeScript error**: Fix `TranslationsType` para Vercel build / Fixed for Vercel deployment
 
-### Scroll Navigation
-- **New: "Ir al final" button** — Appears centered at the top of the page when user is at the start. Scrolls smoothly to the bottom.
-- **New: "Ir al inicio" button** — Appears at bottom-right when user scrolls down. Scrolls smoothly back to top.
-- Both buttons adapt to light/dark theme.
+### ✅ Nuevos estándares 2026 / New 2026 Standards
+- PWA Manifest (`/public/manifest.json`)
+- JSON-LD actualizado con `birthDate`, `address`, `email`
+- `alternateLocale: 'en_US'` en Open Graph
+- Badges de compliance en footer: WCAG 2.2, PWA, SEO, GDPR, CSP/HSTS, i18n ES/EN
+- Print media query
+- Script `type-check` en `package.json`
+- `aria-live="polite"` en typewriter
 
-### Files Added
-- `src/components/scroll-buttons.tsx`
+### Archivos añadidos / Files Added
+- `src/lib/i18n.ts`, `src/lib/i18n-provider.tsx`, `src/components/language-toggle.tsx`
+- `src/components/cookie-consent.tsx`, `src/components/certifications.tsx`
+- `public/manifest.json`
 
-### Files Modified
-- `src/app/globals.css` (added `@custom-variant dark` — critical fix)
-- `src/app/page.tsx` (added ScrollButtons)
-- `src/components/tech-grid.tsx` (rewritten with Devicon CDN)
-- `src/components/skills.tsx` (icons8 wrench)
-- `src/components/accessibility-widget.tsx` (amber + white redesign)
-- `src/components/navbar.tsx` (hamburger X fix)
-- `src/components/footer.tsx` (white text in dark mode)
-- `package.json` (version 4.5.0)
+### Archivos modificados / Files Modified
+- `src/lib/data.ts` · `src/app/layout.tsx` · `src/app/page.tsx` · `src/app/globals.css`
+- `src/components/hero.tsx` · `src/components/scroll-buttons.tsx` · `src/components/navbar.tsx`
+- `src/components/about-me.tsx` · `src/components/skills.tsx` · `src/components/tech-grid.tsx`
+- `src/components/services.tsx` · `src/components/projects.tsx` · `src/components/contact.tsx`
+- `src/components/footer.tsx` · `src/components/accessibility-widget.tsx` · `src/components/tech-marquee.tsx`
+- `package.json` · `next.config.ts` · `CHANGELOG.md` · `README.md` · `SECURITY.md` · `LICENSE`
 
 ---
+
+## v4.5.0 — Theme System Fix, Devicon Icons, Scroll Navigation, UX Polish
+- Fix crítico `@custom-variant dark` para Tailwind CSS v4
+- Iconos Devicon CDN con colores de marca
+- Botones de scroll "Ir al final" / "Ir al inicio"
+- Fix hamburger X en móvil, footer contraste
 
 ## v4.0.0 — Visual Polish, Brand Icons, Theme Contrast, Mobile UX
-
-### Accessibility Widget
-- **New icon** — Replaced generic icon with the official universal accessibility symbol (person with arms open inside circle), matching the ISO/W3C standard.
-- Icon renders in blue (`text-blue-600 dark:text-blue-400`) for immediate recognition.
-
-### Theme Contrast Fix
-- **Paragraph text** now uses `text-gray-800 dark:text-gray-100` — near-black in light mode, near-white in dark mode. No content "gets lost" on either background.
-- **Labels and secondary text** upgraded from `text-gray-400` to `text-gray-500`/`text-gray-600` for readability on white.
-- **Footer** — Background changed to `bg-gray-50 dark:bg-navy-950` with `text-gray-700 dark:text-navy-300` for copyright and `text-gray-600 dark:text-navy-400` for license text. Fully legible in both themes.
-- **Tech marquee**, **skills percentages**, **education dates**, and all secondary info upgraded for contrast.
-
-### Tech Stack Icons
-- **Original brand colors** — Each technology now displays its official brand color (TypeScript blue, React cyan, Node.js green, Git red, etc.) instead of a single monochrome color.
-- Dark logos (Next.js, Vercel, GitHub, Prisma) automatically switch to white in dark mode.
-
-### Skills Section
-- **Herramientas & Metodologías** icon replaced with wrench-and-hammer SVG (matching 🛠️ emoji).
-
-### Mobile UX
-- **Scroll indicator** — Desktop shows mouse scroll widget; mobile (`sm:hidden`) shows a phone with swipe-up gesture animation, matching mobile interaction patterns.
-
-### Dashboard Enterprise
-- Project information updated to reflect latest version (auto-fetched from GitHub API at runtime).
-
-### Files Modified
-- `src/components/accessibility-widget.tsx` (new icon SVG)
-- `src/components/tech-grid.tsx` (brand colors per icon)
-- `src/components/hero.tsx` (mobile scroll indicator)
-- `src/components/footer.tsx` (contrast fix)
-- `src/components/skills.tsx` (tools icon)
-- `src/components/about-me.tsx` (text contrast)
-- `src/components/contact.tsx` (text contrast)
-- `src/components/projects.tsx` (text contrast)
-- `src/components/services.tsx` (text contrast)
-- `src/components/tech-marquee.tsx` (text contrast)
-- `src/lib/data.ts` (brandColor field, project info)
-- `package.json` (version 4.0.0)
-- `CHANGELOG.md`, `README.md`, `SECURITY.md`, `docs/Home.md`
-
----
+- Icono accesibilidad estándar universal
+- Texto contraste corregido claro/oscuro
+- Iconos con colores de marca originales
+- Scroll indicator móvil (swipe up)
 
 ## v3.0.0 — Services, Tech Stack, Auto-Version, Accessibility Overhaul
-
-### New Sections
-- **Services section** — Two categories: "Soluciones Digitales (Software y Aplicaciones)" with 10 services (Sistematización, Dashboards, Facturación, Páginas Web, E-Commerce, SaaS, Software a la Medida, PWA, APIs, ERP/CRM) and "Soluciones Técnicas (Infraestructura y TI)" with 5 services (Reparación PC/Laptops, Soporte Técnico, Redes, Respaldo de Datos, Consultoría TI).
-- **Tech Grid section** — All technologies displayed as vector icons from cdn.simpleicons.org with name and version. Icons adapt automatically to light/dark theme. Categories: Languages, Frontend, Backend, Database & Cloud, Tools.
-
-### Profile Updates
-- **Role** updated: "Junior Full Stack Engineer / Developer"
-- **Age** corrected to 21 years
-- **Dashboard Enterprise** version updated to v3.1.0
-- **Auto-version fetch** — Dashboard Enterprise version is fetched automatically from the GitHub repository's package.json at runtime, ensuring the portfolio always displays the latest version without manual updates.
-
-### Hero Section
-- **Availability badge** moved below profile photo with green checkmark icon
-- **Badge text** updated: "Disponible para contratación inmediata y para realizar proyectos"
-- **CTA button** links to Services section
-- **Info pills** now display age and location
-
-### Accessibility (WCAG 2.1/2.2)
-- **Floating accessibility widget** (bottom-left) with 5 options: font size (3 levels), high contrast, reduced motion, link highlighting, large cursor
-- All preferences persisted in localStorage
-- Widget adapts to light/dark theme
-- Escape key closes the panel
-- ARIA roles, labels, and states throughout
-
-### Social Media Icons
-- All social icons (WhatsApp, GitHub, LinkedIn, Instagram, Facebook, Email) use `currentColor` SVG — automatically adapts to light/dark theme
-- Icons present in: About Me profile card, Contact section, Footer
-
-### Documentation
-- Added `CHANGELOG.md` with full version history
-- Added `SECURITY.md` with security policy and measures
-- Updated `LICENSE` — proprietary license covering this and all projects by Daniel Fernando Castillo Mera
-- Updated `README.md` with complete documentation
-- Added `docs/` wiki directory with Home, Architecture, Deployment, and Accessibility guides
-
-### Security
-- All HTTP security headers maintained (HSTS, CSP, X-Frame-Options, etc.)
-- Image protection (right-click, drag, copy prevention)
-- `poweredByHeader: false`
-
-### Files Added
-- `src/components/services.tsx`
-- `src/components/tech-grid.tsx`
-- `CHANGELOG.md`
-- `SECURITY.md`
-- `docs/Home.md`
-- `docs/Architecture.md`
-- `docs/Deployment.md`
-- `docs/Accessibility.md`
-
-### Files Modified
-- `src/lib/data.ts` (role, age, v3.1.0, services data, tech stack with CDN slugs)
-- `src/app/layout.tsx` (metadata updated to Junior Full Stack Engineer)
-- `src/app/page.tsx` (added Services and TechGrid sections)
-- `src/components/hero.tsx` (badge below photo, green checkmark, services CTA)
-- `src/components/about-me.tsx` (v3.1.0 reference)
-- `src/components/projects.tsx` (auto-version fetch from GitHub API)
-- `package.json` (version 3.0.0)
-- `LICENSE` (expanded scope)
-- `README.md` (complete rewrite)
-
----
+- Sección Servicios (10 digitales + 5 técnicas)
+- Tech Grid con iconos SVG CDN
+- Auto-versión Dashboard desde GitHub API
+- Widget accesibilidad WCAG 2.1/2.2
 
 ## v1.0.0 — Initial Release
-
-### Features
-- **Hero section** with particle animation, profile photo with glow ring, CTA buttons
-- **Tech Marquee** — infinite scrolling technology banner
-- **About Me** — profile card with photo, social links, education, stats grid
-- **Projects** — Dashboard Enterprise v2.5.0 (featured) and Proyecto Unificado POE
-- **Skills** — animated progress bars organized by category (Frontend, Backend, DB & Cloud, Tools)
-- **Contact** — 6 contact cards (WhatsApp, LinkedIn, GitHub, Instagram, Facebook, Email) with WhatsApp CTA
-- **Footer** — copyright, license notice, social links
-
-### Theme System
-- Light/Dark/System theme with View Transitions API animation
-- System theme respects browser/device preference
-- Theme persisted in localStorage
-- Inline script prevents flash of wrong theme (FOUC)
-
-### Accessibility (WCAG 2.1/2.2)
-- Skip-to-content link
-- ARIA roles, labels, and landmarks
-- `prefers-reduced-motion` support
-- `forced-colors` (high contrast) support
-- Focus-visible outlines
-- Semantic HTML structure
-
-### Image Protection
-- `ProtectedImage` component preventing right-click, drag, copy
-- Transparent overlay blocking context menu
-- CSS `user-select: none`, `pointer-events: none`, `-webkit-touch-callout: none`
-
-### SEO
-- Complete meta tags (Open Graph, Twitter Cards)
-- JSON-LD structured data (Person schema)
-- Dynamic sitemap
-- robots.txt
-
-### Security
-- HTTP security headers via next.config.ts (HSTS, CSP, X-Frame-Options, nosniff, XSS-Protection, Referrer-Policy, Permissions-Policy)
-- `poweredByHeader: false`
-
-### Cross-Browser Compatibility
-- Chrome 80+, Firefox 78+, Safari 14+, Edge 80+
-- `X-UA-Compatible: IE=edge`
-- Responsive mobile-first design
-
-### Stack
-- Next.js 15, React 19, TypeScript, Tailwind CSS 4
-- Deployed on Vercel via GitHub
-
-### Files
-- 23 source files, 0 junk files
-- Proprietary license (Daniel Fernando Castillo Mera)
+- Hero con partículas, foto perfil, CTA
+- Tech Marquee, About Me, Projects, Skills, Contact, Footer
+- Sistema tema claro/oscuro/sistema (View Transitions API)
+- SEO, JSON-LD, CSP/HSTS, protección de imágenes
 
 ---
 
-**Daniel Fernando Castillo Mera**
+**Daniel Fernando Castillo Mera** · danielfcastillom@gmail.com · https://danielcastillo-portfolio.vercel.app

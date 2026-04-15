@@ -4,15 +4,18 @@ import { PERSONAL, EDUCATION } from '@/lib/data';
 import { useReveal } from '@/lib/use-reveal';
 import { LinkedInIcon, InstagramIcon, FacebookIcon, GitHubIcon, WhatsAppIcon } from './icons';
 import ProtectedImage from './protected-image';
+import { useT, useI18n } from '@/lib/i18n-provider';
 
 export default function AboutMe() {
   const { ref: sectionRef, isVisible } = useReveal();
+  const t = useT();
+  const { locale } = useI18n();
 
   const stats = [
-    { value: '10+', label: 'Módulos desarrollados' },
-    { value: '2', label: 'Proyectos activos' },
-    { value: '3.1.0', label: 'Versión Dashboard' },
-    { value: '6/10', label: 'Semestre actual' },
+    { value: '10+', label: t.about.statsModules },
+    { value: '2', label: t.about.statsProjects },
+    { value: '3.1.0', label: t.about.statsVersion },
+    { value: '6/10', label: t.about.statsSemester },
   ];
 
   const socialLinks = [
@@ -22,6 +25,18 @@ export default function AboutMe() {
     { icon: <GitHubIcon className="w-4 h-4" />, url: PERSONAL.github, label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10' },
     { icon: <WhatsAppIcon className="w-4 h-4" />, url: PERSONAL.whatsapp, label: 'WhatsApp', color: 'hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-500/10' },
   ];
+
+  const education = locale === 'en' ? {
+    institution: EDUCATION.institutionEn,
+    degree: EDUCATION.degreeEn,
+    progress: EDUCATION.progressEn,
+    period: EDUCATION.periodEn,
+  } : {
+    institution: EDUCATION.institution,
+    degree: EDUCATION.degree,
+    progress: EDUCATION.progress,
+    period: EDUCATION.period,
+  };
 
   return (
     <section id="sobre-mi" className="relative py-24 sm:py-32" aria-labelledby="about-heading">
@@ -33,17 +48,23 @@ export default function AboutMe() {
       >
         {/* Section header */}
         <div className="mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">Conóceme</span>
-          <h2 id="about-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
-            Sobre mí
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">
+            {t.about.sectionLabel}
+          </span>
+          <h2
+            id="about-heading"
+            className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            {t.about.title}
           </h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
         </div>
 
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Left content — 3 cols */}
+          {/* Left — 3 cols */}
           <div className="lg:col-span-3 space-y-6">
-            {/* Profile card with photo */}
+            {/* Profile card */}
             <div className="glass rounded-xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5">
               <div className="shrink-0">
                 <div className="relative h-24 w-24 rounded-xl overflow-hidden ring-2 ring-accent-500/20 shadow-lg">
@@ -58,28 +79,23 @@ export default function AboutMe() {
               </div>
               <div className="text-center sm:text-left">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{PERSONAL.name}</h3>
-                <p className="text-sm text-accent-600 dark:text-accent-400 font-medium">{PERSONAL.role}</p>
+                {/* Full role including Community Manager */}
+                <p className="text-sm text-accent-600 dark:text-accent-400 font-medium leading-snug">
+                  {PERSONAL.role}
+                </p>
                 <div className="mt-2 flex flex-wrap gap-2 justify-center sm:justify-start text-xs text-gray-600 dark:text-gray-300">
                   <span className="inline-flex items-center gap-1">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
-                    {PERSONAL.location}
+                    {t.about.location}
                   </span>
                   <span>&bull;</span>
-                  <span>{PERSONAL.age} años</span>
+                  <span>{PERSONAL.age} {locale === 'en' ? 'years' : 'años'}</span>
                   <span>&bull;</span>
-                  <span>Nacionalidad {PERSONAL.nationality}</span>
+                  <span>{locale === 'en' ? 'Ecuadorian nationality' : `Nacionalidad ${t.about.nationality}`}</span>
                 </div>
-                {/* Social icons */}
                 <div className="mt-3 flex gap-1.5 justify-center sm:justify-start">
                   {socialLinks.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 dark:text-navy-400 transition-all ${s.color}`}
-                      aria-label={s.label}
-                    >
+                    <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className={`flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 dark:text-navy-400 transition-all ${s.color}`} aria-label={s.label}>
                       {s.icon}
                     </a>
                   ))}
@@ -87,21 +103,41 @@ export default function AboutMe() {
               </div>
             </div>
 
-            <p className="text-lg leading-relaxed text-gray-900 dark:text-gray-100">{PERSONAL.bio}</p>
+            {/* Bio */}
+            <p className="text-lg leading-relaxed text-gray-900 dark:text-gray-100">{t.about.bio}</p>
 
+            {/* Current studies */}
             <p className="text-base leading-relaxed text-gray-800 dark:text-gray-100">
-              Actualmente curso el <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.progress}</strong> de{' '}
-              <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.degree}</strong> en la{' '}
-              <strong className="text-gray-900 dark:text-white font-semibold">{EDUCATION.institution}</strong>.
-              Mi proyecto principal, <em className="text-accent-600 dark:text-accent-400 font-medium">Dashboard Enterprise v3.1.0</em>, es un sistema
-              de gestión empresarial multi-tenant con facturación electrónica cumpliendo la normativa del SRI Ecuador.
+              {t.about.currentlyStudying} <strong className="text-gray-900 dark:text-white font-semibold">{education.progress}</strong> {t.about.of}{' '}
+              <strong className="text-gray-900 dark:text-white font-semibold">{education.degree}</strong> {t.about.in}{' '}
+              <strong className="text-gray-900 dark:text-white font-semibold">{education.institution}</strong>.{' '}
+              {t.about.mainProject} <em className="text-accent-600 dark:text-accent-400 font-medium">{t.about.dashboard}</em>,{' '}
+              {t.about.is} {t.about.dashboardDesc}
             </p>
 
+            {/* Code standards */}
             <p className="text-base leading-relaxed text-gray-800 dark:text-gray-100">
-              Me enfoco en escribir código limpio, seguro y mantenible. Cada módulo que desarrollo
-              sigue estándares profesionales: validación robusta, seguridad a nivel de base de datos (RLS),
-              headers HTTP de seguridad, diseño responsive mobile-first, y accesibilidad web (WCAG).
+              {t.about.codeStandards}
             </p>
+
+            {/* Role tags */}
+            <div className="flex flex-wrap gap-2">
+              {[
+                { icon: '💻', label: 'Full Stack Developer' },
+                { icon: '📱', label: 'Community Manager' },
+                { icon: '🎨', label: 'UI/UX Designer' },
+                { icon: '📊', label: 'Meta Business Suite' },
+                { icon: '📐', label: 'Figma / Prototyping' },
+              ].map((tag) => (
+                <span
+                  key={tag.label}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 dark:bg-navy-800 border border-gray-200 dark:border-navy-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200"
+                >
+                  <span aria-hidden="true">{tag.icon}</span>
+                  {tag.label}
+                </span>
+              ))}
+            </div>
 
             {/* Education */}
             <div className="mt-4 glass rounded-xl p-6">
@@ -112,9 +148,9 @@ export default function AboutMe() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 dark:text-white">{EDUCATION.institution}</h3>
-                  <p className="text-sm text-gray-800 dark:text-gray-100">{EDUCATION.degree}</p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{EDUCATION.period} · {EDUCATION.progress}</p>
+                  <h3 className="text-base font-bold text-gray-900 dark:text-white">{education.institution}</h3>
+                  <p className="text-sm text-gray-800 dark:text-gray-100">{education.degree}</p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{education.period} · {education.progress}</p>
                 </div>
               </div>
             </div>
@@ -136,14 +172,10 @@ export default function AboutMe() {
             </div>
 
             <div className="mt-6 glass rounded-xl p-6 space-y-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400">Lo que hago</h3>
-              {[
-                'Sistemas empresariales multi-tenant',
-                'Facturación electrónica SRI Ecuador',
-                'APIs REST con validación robusta',
-                'Interfaces responsive y accesibles',
-                'Seguridad: RLS, CSP, HSTS',
-              ].map((item) => (
+              <h3 className="text-sm font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400">
+                {t.about.capabilities}
+              </h3>
+              {t.about.items.map((item) => (
                 <div key={item} className="flex items-start gap-2.5 text-sm text-gray-800 dark:text-gray-100">
                   <svg className="w-4 h-4 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />

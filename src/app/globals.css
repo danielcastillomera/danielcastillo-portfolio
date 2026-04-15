@@ -4,9 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ═══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — Daniel Fernando Castillo Mera Portfolio
-   Light: White primary + Black secondary
-   Dark: Deep navy + Amber accent
+   DESIGN TOKENS — Daniel Fernando Castillo Mera Portfolio v5.0.0
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
@@ -42,7 +40,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   VIEW TRANSITIONS — Animated theme switch
+   VIEW TRANSITIONS
    ═══════════════════════════════════════════════════════════════ */
 
 ::view-transition-old(root),
@@ -51,9 +49,7 @@
   mix-blend-mode: normal;
 }
 
-::view-transition-old(root) {
-  z-index: 1;
-}
+::view-transition-old(root) { z-index: 1; }
 
 ::view-transition-new(root) {
   z-index: 9999;
@@ -104,6 +100,12 @@
   to { transform: translateX(-50%); }
 }
 
+/* Typewriter cursor blink */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    BASE — LIGHT THEME (default)
    ═══════════════════════════════════════════════════════════════ */
@@ -123,7 +125,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* DARK THEME */
 .dark body {
   background-color: var(--color-navy-950);
   color: var(--color-navy-100);
@@ -145,7 +146,7 @@ body {
   border-radius: 4px;
 }
 
-/* Skip to content — WCAG 2.1 */
+/* Skip to content */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -161,15 +162,12 @@ body {
   transition: top 0.2s ease;
 }
 
-.skip-link:focus {
-  top: 0;
-}
+.skip-link:focus { top: 0; }
 
 /* ═══════════════════════════════════════════════════════════════
    THEME-AWARE UTILITIES
    ═══════════════════════════════════════════════════════════════ */
 
-/* Gradient text */
 .text-gradient {
   background: linear-gradient(135deg, var(--color-accent-400), var(--color-accent-500), #f97316);
   -webkit-background-clip: text;
@@ -177,7 +175,6 @@ body {
   background-clip: text;
 }
 
-/* Glass card — Light */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
@@ -186,14 +183,12 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* Glass card — Dark */
 .dark .glass {
   background: rgba(21, 29, 56, 0.6);
   border: 1px solid rgba(74, 96, 144, 0.2);
   box-shadow: none;
 }
 
-/* Card hover glow */
 .card-glow {
   position: relative;
   transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
@@ -208,7 +203,6 @@ body {
   box-shadow: 0 8px 40px rgba(245, 158, 11, 0.1);
 }
 
-/* Reveal animation */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -232,7 +226,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   IMAGE PROTECTION — Prevent copy, save, drag, screenshot overlay
+   IMAGE PROTECTION
    ═══════════════════════════════════════════════════════════════ */
 
 .protected-image {
@@ -253,7 +247,6 @@ body {
   user-select: none;
 }
 
-/* Invisible overlay preventing right-click save */
 .protected-image-wrapper::after {
   content: '';
   position: absolute;
@@ -279,7 +272,7 @@ body {
 .dark ::-webkit-scrollbar-thumb:hover { background: var(--color-navy-500); }
 
 /* ═══════════════════════════════════════════════════════════════
-   REDUCED MOTION — WCAG compliance
+   REDUCED MOTION — WCAG 2.2 compliance
    ═══════════════════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
@@ -299,4 +292,14 @@ body {
 @media (forced-colors: active) {
   .text-gradient { -webkit-text-fill-color: CanvasText; background: none; }
   .glass { border: 2px solid CanvasText; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PWA / PRINT
+   ═══════════════════════════════════════════════════════════════ */
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; color: black !important; }
+  .glass { background: white !important; border: 1px solid #ccc !important; }
 }

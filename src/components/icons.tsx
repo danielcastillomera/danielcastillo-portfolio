@@ -1,7 +1,5 @@
 'use client';
 
-/* Centralized social media SVG icons */
-
 export function WhatsAppIcon({ className = 'w-5 h-5' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

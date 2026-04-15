@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://danielcastillo.dev/sitemap.xml
+Sitemap: https://danielcastillo-portfolio.vercel.app/sitemap.xml

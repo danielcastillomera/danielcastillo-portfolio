@@ -7,10 +7,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
+      { protocol: 'https', hostname: '**' },
     ],
   },
   async headers() {
@@ -37,9 +34,11 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
+              // Allow devicon CDN, simpleicons, icons8 for tech logos
               "img-src 'self' data: https: blob:",
               "connect-src 'self' https:",
               "frame-src 'none'",
+              "worker-src 'self'",
             ].join('; '),
           },
         ],

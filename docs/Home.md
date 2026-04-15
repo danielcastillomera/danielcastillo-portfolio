@@ -1,29 +1,21 @@
-# Daniel Fernando Castillo Mera — Portfolio Wiki
-
-Bienvenido a la documentación del portafolio profesional.
+# Daniel Fernando Castillo Mera — Portfolio Wiki v5.0.0
 
 ## Páginas
+- [Arquitectura](./Architecture.md) — Stack, estructura, patrones
+- [Despliegue](./Deployment.md) — Instalación y deployment en Vercel
+- [Accesibilidad](./Accessibility.md) — WCAG 2.2 compliance
+- [i18n](./I18n.md) — Internacionalización ES/EN
 
-- [Arquitectura](./Architecture.md) — Stack tecnológico, estructura de archivos, patrones de diseño
-- [Despliegue](./Deployment.md) — Guía de instalación y deployment en Vercel
-- [Accesibilidad](./Accessibility.md) — Cumplimiento WCAG 2.1/2.2 y funcionalidades
-
-## Información General
-
+## Info General
 | Campo | Valor |
 |-------|-------|
 | Autor | Daniel Fernando Castillo Mera |
 | Stack | Next.js 15, React 19, TypeScript, Tailwind CSS 4 |
 | Deploy | Vercel |
-| Licencia | Propietaria |
-| Versión | 4.5.0 |
+| Versión | 5.0.0 |
+| Idiomas | ES (default), EN |
 
 ## Enlaces
-
 - [Repositorio](https://github.com/danielcastillomera/danielcastillo-portfolio)
 - [Portfolio en vivo](https://danielcastillo-portfolio.vercel.app)
 - [Dashboard Enterprise](https://github.com/danielcastillomera/dashboard-enterprise)
-
----
-
-Daniel Fernando Castillo Mera · Todos los derechos reservados.

@@ -2,7 +2,6 @@
 node_modules/
 .pnp
 .pnp.js
-.pnp.cjs
 
 # Build
 .next/
@@ -32,7 +31,6 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
-ehthumbs.db
 
 # TypeScript
 *.tsbuildinfo
