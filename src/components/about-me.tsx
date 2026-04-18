@@ -1,6 +1,6 @@
 'use client';
 
-import { PERSONAL, EDUCATION } from '@/lib/data';
+import { PERSONAL, EDUCATION, ADDITIONAL_SKILLS } from '@/lib/data';
 import { useReveal } from '@/lib/use-reveal';
 import { LinkedInIcon, InstagramIcon, FacebookIcon, GitHubIcon, WhatsAppIcon } from './icons';
 import ProtectedImage from './protected-image';
@@ -137,6 +137,22 @@ export default function AboutMe() {
                   {tag.label}
                 </span>
               ))}
+            </div>
+
+            {/* Sales / Customer Service */}
+            <div className="glass rounded-xl p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <svg className="w-4 h-4 text-accent-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400">{locale === 'en' ? ADDITIONAL_SKILLS.ventas.titleEn : ADDITIONAL_SKILLS.ventas.title}</h4>
+              </div>
+              <div className="space-y-1">
+                {(locale === 'en' ? ADDITIONAL_SKILLS.ventas.itemsEn : ADDITIONAL_SKILLS.ventas.items).map(item => (
+                  <div key={item} className="flex items-start gap-2 text-xs text-gray-700 dark:text-gray-200">
+                    <svg className="w-3 h-3 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Education */}

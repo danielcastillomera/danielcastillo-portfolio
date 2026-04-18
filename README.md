@@ -1,13 +1,13 @@
-# Daniel Fernando Castillo Mera — Portfolio v5.0.0
+# Daniel Fernando Castillo Mera — Portfolio v6.0.0
+
+## Español (México)
 
 Portafolio profesional y página de servicios.
 **Junior Full Stack Engineer / Developer | Community Manager** · Universidad de Guayaquil · Ingeniería en Software.
 
 🌐 [danielcastillo-portfolio.vercel.app](https://danielcastillo-portfolio.vercel.app)
 
----
-
-## Stack Tecnológico
+### Stack Tecnológico
 
 | Capa | Tecnología |
 |------|-----------|
@@ -16,47 +16,28 @@ Portafolio profesional y página de servicios.
 | Estilos | Tailwind CSS 4 |
 | Deployment | Vercel + GitHub |
 | Fuentes | Google Fonts (DM Sans, JetBrains Mono) |
-| Iconos | Devicon CDN, Lucide React |
+| Iconos | Devicon CDN, activos locales (`/public/icons/`) |
 
----
+### Características v6.0.0
 
-## Características
+| Característica | Estado |
+|----------------|--------|
+| i18n ES / EN (auto-detección) | ✅ |
+| Typewriter Effect (7 frases) | ✅ |
+| Favicon desde foto de perfil | ✅ |
+| OG Image para WhatsApp/Telegram | ✅ |
+| Cookie Consent GDPR | ✅ |
+| PWA Web App Manifest | ✅ |
+| 100% Responsive (móvil-first) | ✅ |
+| WCAG 2.2 Nivel A–AAA | ✅ |
+| SEO / Open Graph / JSON-LD | ✅ |
+| CSP / HSTS / X-Frame-Options | ✅ |
+| Logos oficiales (Zod, Meta, TikTok, Overleaf) | ✅ |
+| Selector de idioma con dropdown | ✅ |
+| Botones "Ir al final" / "Ir al inicio" | ✅ |
+| Protección de imágenes | ✅ |
 
-- **i18n ES / EN** — Detección automática de idioma del navegador/dispositivo. Toggle en navbar.
-- **Typewriter Effect** — Titular animado con 7 frases rotativas, efecto máquina de escribir realista.
-- **Cookie Consent GDPR** — Banner no intrusivo en bottom-center con 3 niveles de control.
-- **100% Responsive** — Mobile-first, adaptable a cualquier dispositivo.
-- **WCAG 2.1 / 2.2** — Skip link, ARIA roles, prefers-reduced-motion, focus visible, high contrast, widget accesibilidad.
-- **Cross-browser** — Chrome 80+, Firefox 78+, Safari 14+, Edge 80+
-- **SEO optimizado** — Open Graph, JSON-LD structured data, meta tags, sitemap, alternate locale.
-- **Seguridad** — CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy.
-- **Tema claro/oscuro/sistema** — View Transitions API.
-- **Protección de imágenes** — Prevención de clic derecho, arrastrar, copiar.
-- **Auto-versión Dashboard** — Versión actualizada automáticamente desde GitHub API.
-- **PWA Ready** — Web App Manifest para instalación en dispositivos.
-
----
-
-## Secciones
-
-1. **Hero** — Foto de perfil, badge disponibilidad, CTA, **Typewriter Effect**
-2. **Tech Marquee** — Banner infinito de tecnologías
-3. **Sobre mí** — Bio, educación, stats, Community Manager, UI/UX, redes sociales
-4. **Servicios** — 10 soluciones digitales + 5 soluciones técnicas
-5. **Stack Tecnológico** — Logos oficiales con versiones (Devicon CDN)
-6. **Proyectos** — Dashboard Enterprise (destacado) + Proyecto Unificado POE + Invoice Manager
-7. **Habilidades** — 6 categorías: Frontend, Backend, BD & Cloud, Herramientas, Community Manager, UI/UX
-8. **Certificaciones** — CS50x Harvard, UEES, Épico, P4H Biorobotics
-9. **Contacto** — 6 canales de contacto + WhatsApp CTA
-10. **Footer** — Copyright, licencia, compliance badges
-11. **WhatsApp Flotante** — Botón fijo bottom-right
-12. **Widget Accesibilidad** — Fuente, contraste, animaciones, enlaces, cursor (bottom-left)
-13. **"Ir al inicio"** — Botón bottom-center cuando el usuario hace scroll
-14. **Cookie Consent** — Banner GDPR bottom-center con 1.5s delay
-
----
-
-## Instalación
+### Instalación
 
 ```bash
 git clone https://github.com/danielcastillomera/danielcastillo-portfolio.git
@@ -65,109 +46,90 @@ npm install
 npm run dev
 ```
 
-## Scripts
+### Scripts
 
 ```bash
 npm run dev        # Desarrollo con Turbopack
 npm run build      # Build de producción
 npm run start      # Servidor de producción
 npm run lint       # ESLint
-npm run type-check # TypeScript check sin emitir
+npm run type-check # TypeScript check
 ```
 
-## Despliegue en Vercel
+### Vista previa en WhatsApp / Telegram
 
-```bash
-git add .
-git commit -m "v5.0.0"
-git push origin main
-```
+La página genera automáticamente una vista previa rica al compartir la URL gracias a:
+- `og:image` → `/public/og-image.png` (1200×630 px)
+- `og:title`, `og:description`, `og:type: website`
+- `twitter:card: summary_large_image`
+- `metadataBase` configurado en `next.js` metadata API
 
-Vercel detecta automáticamente Next.js. No se requieren variables de entorno.
+### Favicon
+
+Generado desde la foto de perfil del autor. Disponible en:
+- `favicon.ico` — compatibilidad máxima
+- `favicon-16.png`, `favicon-32.png` — navegadores modernos
+- `favicon-180.png` — Apple Touch Icon (iOS)
+- `favicon-192.png`, `favicon-512.png` — PWA / Android
 
 ---
 
-## Estructura del Proyecto
+## English (United States)
 
-```
-src/
-├── app/
-│   ├── globals.css             # Design system, temas, animaciones, blink-cursor
-│   ├── layout.tsx              # Root layout, SEO, JSON-LD, I18nProvider
-│   ├── page.tsx                # Composición de secciones
-│   ├── not-found.tsx           # 404 bilingual
-│   └── sitemap.ts              # Sitemap dinámico
-├── components/
-│   ├── navbar.tsx              # Navegación + LanguageToggle
-│   ├── hero.tsx                # Typewriter + partículas
-│   ├── tech-marquee.tsx        # Banner tecnologías
-│   ├── about-me.tsx            # Bio + Community Manager + UI/UX
-│   ├── services.tsx            # 15 servicios bilingual
-│   ├── tech-grid.tsx           # Grid logos oficiales Devicon
-│   ├── projects.tsx            # 3 proyectos bilingual
-│   ├── skills.tsx              # 6 categorías + exploratorio
-│   ├── certifications.tsx      # 4 certificados/talleres
-│   ├── contact.tsx             # 6 canales de contacto
-│   ├── footer.tsx              # Compliance badges
-│   ├── cookie-consent.tsx      # GDPR banner
-│   ├── language-toggle.tsx     # ES/EN toggle
-│   ├── icons.tsx               # SVG social icons
-│   ├── protected-image.tsx     # Imagen protegida
-│   ├── theme-toggle.tsx        # Cambio de tema
-│   ├── whatsapp-float.tsx      # Botón flotante WhatsApp
-│   ├── accessibility-widget.tsx # WCAG widget
-│   └── scroll-buttons.tsx      # Bottom-center "ir al inicio"
-└── lib/
-    ├── data.ts                 # Datos centralizados bilingüe
-    ├── i18n.ts                 # Traducciones ES/EN
-    ├── i18n-provider.tsx       # React context i18n
-    ├── theme-provider.tsx      # Proveedor de tema
-    └── use-reveal.ts           # Hook IntersectionObserver
-```
+Professional portfolio and services page.
+**Junior Full Stack Engineer / Developer | Community Manager** · University of Guayaquil · Software Engineering.
 
----
+🌐 [danielcastillo-portfolio.vercel.app](https://danielcastillo-portfolio.vercel.app)
 
-## Idiomas Soportados
+### Tech Stack
 
-| Código | Idioma | Detección |
-|--------|--------|-----------|
-| `es` | Español (default) | `navigator.language` starts with `es` |
-| `en` | English | `navigator.language` starts with `en` |
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 15, React 19 |
+| Language | TypeScript 5.9 |
+| Styles | Tailwind CSS 4 |
+| Deployment | Vercel + GitHub |
+| Fonts | Google Fonts (DM Sans, JetBrains Mono) |
+| Icons | Devicon CDN, local assets (`/public/icons/`) |
 
-La preferencia del usuario se guarda en `localStorage` bajo la clave `portfolio-locale`.
+### v6.0.0 Features
 
----
-
-## Cumplimiento de Estándares 2026
-
-| Estándar | Estado |
-|----------|--------|
-| WCAG 2.2 Nivel A–AAA | ✅ |
+| Feature | Status |
+|---------|--------|
+| i18n ES / EN (auto-detection) | ✅ |
+| Typewriter Effect (7 phrases) | ✅ |
+| Favicon from profile photo | ✅ |
+| OG Image for WhatsApp/Telegram | ✅ |
 | GDPR Cookie Consent | ✅ |
 | PWA Web App Manifest | ✅ |
-| SEO / Open Graph | ✅ |
-| JSON-LD Person Schema | ✅ |
+| 100% Responsive (mobile-first) | ✅ |
+| WCAG 2.2 Level A–AAA | ✅ |
+| SEO / Open Graph / JSON-LD | ✅ |
 | CSP / HSTS / X-Frame-Options | ✅ |
-| i18n ES/EN | ✅ |
-| Responsive Mobile-First | ✅ |
-| prefers-reduced-motion | ✅ |
-| forced-colors (high contrast) | ✅ |
+| Official logos (Zod, Meta, TikTok, Overleaf) | ✅ |
+| Dropdown language selector | ✅ |
+| "Go to bottom" / "Go to top" buttons | ✅ |
+| Image protection | ✅ |
 
----
+### WhatsApp / Telegram Preview
 
-## Licencia
+The page automatically generates rich previews when sharing the URL thanks to:
+- `og:image` → `/public/og-image.png` (1200×630 px)
+- `og:title`, `og:description`, `og:type: website`
+- `twitter:card: summary_large_image`
+- `metadataBase` configured in Next.js metadata API
 
-**Propiedad intelectual de Daniel Fernando Castillo Mera.**
+### License
 
-Este software es privado y confidencial. Queda estrictamente prohibida la clonación, copia, distribución o uso no autorizado de este proyecto sin previo permiso escrito del titular. Ver [LICENSE](./LICENSE) para términos completos.
+**Intellectual property of Daniel Fernando Castillo Mera.**
 
----
+Cloning, copying, distribution or unauthorized use of this project is strictly prohibited without prior written permission. See [LICENSE](./LICENSE) for complete terms.
 
-## Autor
+### Author
 
 **Daniel Fernando Castillo Mera**
-- 🌐 Portfolio: [danielcastillo-portfolio.vercel.app](https://danielcastillo-portfolio.vercel.app)
-- 💼 LinkedIn: [daniel-fernando-castillo-mera](https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a)
-- 🐙 GitHub: [@danielcastillomera](https://github.com/danielcastillomera)
-- 📱 WhatsApp: [+593 98 107 6185](https://wa.me/593981076185)
-- 📧 Email: danielfcastillom@gmail.com
+- 🌐 [danielcastillo-portfolio.vercel.app](https://danielcastillo-portfolio.vercel.app)
+- 💼 [LinkedIn](https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a)
+- 🐙 [GitHub @danielcastillomera](https://github.com/danielcastillomera)
+- 📱 [WhatsApp +593 98 107 6185](https://wa.me/593981076185)
+- 📧 danielfcastillom@gmail.com

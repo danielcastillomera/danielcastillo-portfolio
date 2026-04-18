@@ -6,52 +6,62 @@ import { useT } from '@/lib/i18n-provider';
 export default function ScrollButtons() {
   const t = useT();
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [atTop, setAtTop] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 600);
+      const y = window.scrollY;
+      setShowBackToTop(y > 600);
+      setAtTop(y < 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToBottom = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
   return (
     <>
-      {/*
-        "Ir al inicio" button:
-        - Positioned at BOTTOM-CENTER of viewport (not near WhatsApp button on right)
-        - Appears floating OVER content when user scrolls down
-        - Disappears when at top
-        - z-index below floating WhatsApp so they don't compete visually
-      */}
+      {/* "Ir al final" — bottom-center when at top, icon only + tooltip */}
+      <button
+        type="button"
+        onClick={scrollToBottom}
+        title={t.hero.irAlFinal}
+        aria-label={t.hero.irAlFinal}
+        className={`group fixed bottom-6 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 dark:bg-navy-800/90 backdrop-blur-sm shadow-xl ring-1 ring-gray-200/80 dark:ring-navy-600/80 transition-all duration-500 hover:bg-accent-500 hover:ring-accent-500 hover:shadow-accent-500/30 active:scale-95 ${
+          atTop ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-2'
+        }`}
+        style={{ left: '50%', transform: atTop ? 'translateX(-50%)' : 'translateX(-50%) translateY(8px)' }}
+      >
+        {/* Tooltip */}
+        <span className="pointer-events-none absolute bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-gray-900 dark:bg-navy-700 px-2.5 py-1 text-[10px] font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 select-none" aria-hidden="true">
+          {t.hero.irAlFinal}
+        </span>
+        <svg className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+
+      {/* "Ir al inicio" — bottom-center when scrolled, icon only + tooltip */}
       <button
         type="button"
         onClick={scrollToTop}
-        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 rounded-full bg-white/90 dark:bg-navy-800/90 backdrop-blur-sm px-5 py-2.5 text-xs font-semibold text-gray-700 dark:text-gray-200 shadow-xl shadow-black/10 dark:shadow-black/30 ring-1 ring-gray-200/80 dark:ring-navy-600/80 transition-all duration-500 hover:bg-white dark:hover:bg-navy-800 hover:shadow-2xl hover:-translate-x-1/2 hover:-translate-y-1 active:scale-95 ${
-          showBackToTop
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 translate-y-4 pointer-events-none'
-        }`}
-        style={{ transform: `translateX(-50%) ${showBackToTop ? 'translateY(0)' : 'translateY(16px)'}` }}
-        aria-label={t.hero.irAlInicio}
         title={t.hero.irAlInicio}
+        aria-label={t.hero.irAlInicio}
+        className={`group fixed bottom-6 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 dark:bg-navy-800/90 backdrop-blur-sm shadow-xl ring-1 ring-gray-200/80 dark:ring-navy-600/80 transition-all duration-500 hover:bg-accent-500 hover:ring-accent-500 hover:shadow-accent-500/30 active:scale-95 ${
+          showBackToTop ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-2'
+        }`}
+        style={{ left: '50%', transform: showBackToTop ? 'translateX(-50%)' : 'translateX(-50%) translateY(8px)' }}
       >
-        <svg
-          className="w-4 h-4 text-accent-500"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2.5}
-          aria-hidden="true"
-        >
+        {/* Tooltip */}
+        <span className="pointer-events-none absolute bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-gray-900 dark:bg-navy-700 px-2.5 py-1 text-[10px] font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 select-none" aria-hidden="true">
+          {t.hero.irAlInicio}
+        </span>
+        <svg className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
         </svg>
-        <span>{t.hero.irAlInicio}</span>
       </button>
     </>
   );

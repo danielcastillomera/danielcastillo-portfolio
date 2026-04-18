@@ -1,6 +1,56 @@
-# Security Policy
+# Política de Seguridad / Security Policy
 
-## Reporting a Vulnerability
+---
+
+## Español (México)
+
+### Reportar una Vulnerabilidad
+
+Si descubres una vulnerabilidad de seguridad en este proyecto, repórtala de forma responsable.
+
+**Contacto:** Daniel Fernando Castillo Mera  
+**Email:** danielfcastillom@gmail.com  
+**Tiempo de respuesta:** Dentro de 48 horas
+
+### Medidas de Seguridad
+
+#### Headers HTTP (via `next.config.ts`)
+| Header | Valor |
+|--------|-------|
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
+| `Content-Security-Policy` | Restringe scripts, estilos, fuentes e imágenes a fuentes confiables |
+| `X-Frame-Options` | `SAMEORIGIN` — previene clickjacking |
+| `X-Content-Type-Options` | `nosniff` |
+| `X-XSS-Protection` | `1; mode=block` |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` |
+| `Permissions-Policy` | Deshabilita cámara, micrófono y geolocalización |
+
+#### Seguridad de la Aplicación
+- Server-side rendering con Next.js (sin claves API expuestas)
+- Protección de imágenes contra copia no autorizada (clic derecho, arrastrar)
+- Sin formularios de entrada de usuario — sitio estático
+- `poweredByHeader: false` para evitar fingerprinting
+- Consentimiento de cookies GDPR — sin seguimiento de terceros sin consentimiento explícito
+- Favicon e imagen OG generados localmente (sin dependencias externas)
+
+#### Privacidad
+- Sin cookies de análisis ni seguimiento por defecto
+- Preferencias guardadas solo en `localStorage` del usuario
+- Sin recopilación de datos personales en el servidor
+
+### Versiones Soportadas
+
+| Versión | Soportada |
+|---------|-----------|
+| 6.0.x   | ✅ Sí    |
+| 5.0.x   | ❌ No    |
+| < 5.0   | ❌ No    |
+
+---
+
+## English (United States)
+
+### Reporting a Vulnerability
 
 If you discover a security vulnerability in this project, please report it responsibly.
 
@@ -8,11 +58,9 @@ If you discover a security vulnerability in this project, please report it respo
 **Email:** danielfcastillom@gmail.com  
 **Response Time:** Within 48 hours
 
----
+### Security Measures
 
-## Security Measures
-
-### HTTP Security Headers (via next.config.ts)
+#### HTTP Headers (via `next.config.ts`)
 | Header | Value |
 |--------|-------|
 | `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
@@ -21,44 +69,29 @@ If you discover a security vulnerability in this project, please report it respo
 | `X-Content-Type-Options` | `nosniff` — prevents MIME sniffing |
 | `X-XSS-Protection` | `1; mode=block` |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` |
-| `Permissions-Policy` | Disables camera, microphone, geolocation |
+| `Permissions-Policy` | Disables camera, microphone, and geolocation |
 
-### Application Security
+#### Application Security
 - Server-side rendering with Next.js (no exposed API keys or secrets)
-- Image protection against unauthorized copying (right-click, drag, context menu)
+- Image protection against unauthorized copying (right-click, drag)
 - No user input forms — static portfolio site
 - `poweredByHeader: false` to prevent technology fingerprinting
-- All external image sources allowlisted via `img-src` CSP directive
 - Cookie consent follows GDPR — no third-party tracking without explicit consent
+- Favicon and OG image generated locally (no external dependencies)
 
-### Privacy
+#### Privacy
 - No analytics or tracking cookies by default
-- Cookie consent stored in `localStorage` only
-- Language and theme preferences stored locally, never transmitted
-- No personal data collection, no server-side logging of user behavior
+- User preferences stored locally in `localStorage` only
+- No server-side personal data collection
 
-### Deployment
-- Deployed on Vercel with automatic HTTPS (TLS 1.3)
-- GitHub repository with automated deployments on push to `main`
-- No environment variables required — fully static configuration
-
----
-
-## Supported Versions
+### Supported Versions
 
 | Version | Supported |
 |---------|-----------|
-| 5.0.x   | ✅ Yes    |
-| 4.5.x   | ❌ No     |
-| < 4.5   | ❌ No     |
+| 6.0.x   | ✅ Yes   |
+| 5.0.x   | ❌ No    |
+| < 5.0   | ❌ No    |
 
 ---
 
-## Disclaimer
-
-This is a static portfolio website. It does not process sensitive data, authenticate users, or handle payments. The security measures above are implemented as industry best practices to demonstrate professional standards in web development.
-
----
-
-**Daniel Fernando Castillo Mera** · danielfcastillom@gmail.com  
-All rights reserved.
+**Daniel Fernando Castillo Mera** · danielfcastillom@gmail.com · All rights reserved.

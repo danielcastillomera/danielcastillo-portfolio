@@ -303,3 +303,27 @@ body {
   body { background: white !important; color: black !important; }
   .glass { background: white !important; border: 1px solid #ccc !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL IMAGE PROTECTION — All images, vectors, logos
+   ═══════════════════════════════════════════════════════════════ */
+img, svg image, canvas {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Re-enable pointer events only for interactive elements that have images */
+a img, button img, [role="button"] img {
+  pointer-events: none;
+}
+
+/* But the parent anchor/button must be clickable */
+a, button, [role="button"] {
+  pointer-events: auto;
+}
