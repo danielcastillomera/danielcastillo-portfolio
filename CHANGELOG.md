@@ -2,6 +2,34 @@
 
 ---
 
+## v7.0.1 — Foto de perfil actualizada
+
+- **Foto de perfil**
+- **Favicon** — Regenerado desde nueva foto V5 en todos los tamaños
+- **OG Image** — Regenerada con nueva foto V5
+
+---
+
+## v7.0.0 — Foto saco y corbata, Zod sin fondo, OG mejorada, PWA bloqueada, Nombre dos líneas, Doble clic fix, A11y fix, Bio CV, Exploratorio CV, CNE proyecto
+
+### Cambios v7.0.0
+
+1. **Foto de perfil** — Actualizada
+2. **Zod logo** — Reemplazado por `icon-Zod-dev-SIN-FONDO.png` (sin fondo negro)
+3. **OG Image** — Rediseñada: foto centrada en top, textos más grandes
+4. **PWA Install bloqueada** — `beforeinstallprompt` prevenido, `manifest.json` `display: browser`
+5. **Nombre en navbar** — Dos líneas: "Daniel Fernando / Castillo Mera" en móvil y escritorio
+6. **Doble clic** — `user-select: none` en body, `touch-action: manipulation` (evita zoom)
+7. **Alto contraste fix** — Usa `data-high-contrast` en lugar de `filter: contrast()` (no rompe z-index)
+8. **Widget accesibilidad** — Ícono más grande sin círculo blanco, textos más legibles
+9. **WhatsApp URL** — Actualizado a `api.whatsapp.com/send?phone=...&text=Hola...`
+10. **Bio actualizada** — Texto del CV 2026
+11. **Exploratorio actualizado** — Lista completa del CV con íconos y descripciones
+12. **CNE Figma** — Nuevo proyecto añadido con enlace al prototipo y documento
+13. **Favicon** — Regenerado desde nueva foto de perfil
+
+---
+
 ## Español (México)
 
 Todos los cambios notables se documentan en este archivo.

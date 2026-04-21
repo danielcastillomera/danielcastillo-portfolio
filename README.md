@@ -1,4 +1,4 @@
-# Daniel Fernando Castillo Mera — Portfolio v6.0.0
+# Daniel Fernando Castillo Mera — Portfolio v7.0.0
 
 ## Español (México)
 

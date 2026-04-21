@@ -37,7 +37,10 @@ export default function Navbar() {
     document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h);
   }, [isOpen]);
 
-  useEffect(() => { document.body.style.overflow = isOpen ? 'hidden' : ''; return () => { document.body.style.overflow = ''; }; }, [isOpen]);
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   return (
     <header role="banner" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass shadow-lg shadow-black/5 dark:shadow-navy-950/50' : 'bg-transparent'}`}>
@@ -47,7 +50,14 @@ export default function Navbar() {
           <div className="h-8 w-8 rounded-full overflow-hidden ring-2 ring-accent-500/30 shrink-0">
             <ProtectedImage src={PERSONAL.profileImage} alt={PERSONAL.name} width={32} height={32} className="h-full w-full object-cover" priority />
           </div>
-          <span className="hidden lg:inline text-sm font-bold text-gray-900 dark:text-white truncate max-w-[200px]">{PERSONAL.name}</span>
+          {/* Desktop: two-line name */}
+          <span className="hidden lg:inline text-sm font-bold text-gray-900 dark:text-white leading-tight">
+            Daniel Fernando<br />Castillo Mera
+          </span>
+          {/* Mobile: show abbreviated name — only on sm+, hidden on xs */}
+          <span className="hidden sm:inline lg:hidden text-sm font-bold text-gray-900 dark:text-white leading-tight">
+            Daniel Fernando<br />Castillo Mera
+          </span>
         </a>
 
         {/* Desktop nav */}
@@ -67,13 +77,11 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Right: Language + Theme + CTA + Hamburger */}
+        {/* Right */}
         <div className="flex items-center gap-1.5">
-          {/* Language toggle — visible on all screen sizes */}
           <LanguageToggle />
           <ThemeToggle />
-          <a href="#contacto" className="hidden md:inline-flex items-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-accent-400 hover:shadow-lg hover:shadow-accent-500/20 active:scale-95">{t.nav.contactame}</a>
-          {/* Hamburger */}
+          <a href="#contacto" className="hidden md:inline-flex items-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-accent-400 active:scale-95">{t.nav.contactame}</a>
           <button type="button" className="relative z-50 flex lg:hidden h-10 w-10 items-center justify-center rounded-lg text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
             onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-controls="mobile-menu" aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}>
             <div className="flex flex-col items-center justify-center gap-[6px] w-5">

@@ -4,7 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ═══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — Daniel Fernando Castillo Mera Portfolio v5.0.0
+   DESIGN TOKENS — Daniel Fernando Castillo Mera Portfolio v7.0.0
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
@@ -307,7 +307,7 @@ body {
 /* ═══════════════════════════════════════════════════════════════
    GLOBAL IMAGE PROTECTION — All images, vectors, logos
    ═══════════════════════════════════════════════════════════════ */
-img, svg image, canvas {
+img, svg image {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -315,15 +315,26 @@ img, svg image, canvas {
   user-drag: none;
   -webkit-user-select: none;
   user-select: none;
-  pointer-events: none;
+  -webkit-touch-callout: none;
+  /* pointer-events: none removed — breaks button/link clicks on mobile */
 }
 
-/* Re-enable pointer events only for interactive elements that have images */
-a img, button img, [role="button"] img {
-  pointer-events: none;
+/* Prevent double-click text selection on interactive elements and page */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Re-enable selection only for text content */
+p, h1, h2, h3, h4, h5, h6, span, li, td, th, blockquote, pre, code {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
 }
 
-/* But the parent anchor/button must be clickable */
-a, button, [role="button"] {
-  pointer-events: auto;
+/* Prevent double-click zoom on mobile (iOS) */
+html {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }

@@ -13,14 +13,14 @@ export const PERSONAL = {
   location: 'Ecuador',
   nationality: 'Ecuatoriana',
   age: 21,
-  whatsapp: 'https://wa.me/593981076185',
+  whatsapp: 'https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B',
   github: 'https://github.com/danielcastillomera',
   linkedin: 'https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a',
   instagram: 'https://www.instagram.com/danielcastillomera',
   facebook: 'https://www.facebook.com/Daniel288215',
   email: 'danielfcastillom@gmail.com',
   profileImage: '/profile.png',
-  bio: 'Ingeniero de Software en formación con enfoque en el desarrollo de sistemas empresariales robustos. Apasionado por construir soluciones digitales que resuelvan problemas reales con tecnologías modernas, código limpio y estándares profesionales de la industria.',
+  bio: 'Junior Full Stack Engineer/Developer con proyectos reales en producción, experiencia laboral activa en marketing digital y disponibilidad inmediata para contratación. Cursa Ingeniería en Software en la Universidad de Guayaquil, combinando formación académica con desarrollo profesional continuo. Aplica principios de Clean Code, SOLID, DRY y KISS, con experiencia en UI/UX y Community Manager activo.',
   heroSubtitle: 'Desde dashboards multi-tenant hasta facturación electrónica SRI — desarrollo software con estándares de industria, listo para contratación inmediata.',
 } as const;
 
@@ -149,7 +149,7 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'dashboard-enterprise', title: 'Dashboard Enterprise', version: 'v3.1.0',
+    id: 'dashboard-enterprise', title: 'Dashboard Enterprise', version: 'v3.4.0',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Sistema de gestión empresarial multi-tenant con facturación electrónica SRI Ecuador. 10+ módulos interconectados, arquitectura profesional con seguridad RLS.',
     descriptionEn: 'Multi-tenant enterprise management system with SRI Ecuador electronic invoicing. 10+ interconnected modules, professional architecture with RLS security.',
@@ -173,6 +173,22 @@ export const PROJECTS: Project[] = [
     features: ['Proyecto grupal colaborativo', 'Patrón MVC en C#', 'Programación Orientada a Eventos', 'Control de versiones Git'],
     featuresEn: ['Collaborative group project', 'MVC pattern in C#', 'Event-Driven Programming', 'Git version control'],
     links: [{ label: 'Repositorio', labelEn: 'Repository', url: 'https://github.com/WallUG/PROYECTO-UNIFICADO-AVANCE', icon: 'github' }],
+    highlight: false, type: 'grupal',
+  },
+  {
+    id: 'cne-redesign', title: 'Rediseño CNE — Figma', version: 'v1.0',
+    status: 'Completado', statusEn: 'Completed',
+    description: 'Análisis heurístico y rediseño del sitio web del Consejo Nacional Electoral (CNE) en Figma. Evaluación Nielsen + Material Design.',
+    descriptionEn: 'Heuristic analysis and redesign of the National Electoral Council (CNE) website in Figma. Nielsen evaluation + Material Design.',
+    longDescription: 'Proyecto grupal: evaluación heurística (Nielsen) y rediseño completo del CNE con estándares Material Design. Incluye Home y 2 flujos verticales internos transaccionales.',
+    longDescriptionEn: 'Group project: Nielsen heuristic evaluation and full CNE redesign with Material Design standards. Includes Home and 2 internal transactional vertical flows.',
+    techStack: ['Figma', 'Material Design', 'Nielsen Heuristics', 'UI/UX', 'Prototipado'],
+    features: ['Evaluación heurística Nielsen', 'Rediseño completo en Figma', 'Material Design', 'Prototipo interactivo', 'Análisis de usabilidad'],
+    featuresEn: ['Nielsen heuristic evaluation', 'Full redesign in Figma', 'Material Design standards', 'Interactive prototype', 'Usability analysis'],
+    links: [
+      { label: 'Prototipo Figma', labelEn: 'Figma Prototype', url: 'https://www.figma.com/proto/UX4YVzRkEWYoCSrJlGaafX/REDISE%C3%91O-DECNE?node-id=166-3&p=f&t=WYsPYS04mFjGnkLX-1&scaling=min-zoom&contentscaling=fixed&page-id=166%3A2', icon: 'external' },
+      { label: 'Documento', labelEn: 'Document', url: 'https://drive.google.com/file/d/1_lMmzLw91AdGLA38i8p7oZqaWBjE3lBj/view?usp=sharing', icon: 'external' },
+    ],
     highlight: false, type: 'grupal',
   },
   {
@@ -249,6 +265,23 @@ export const EXPERIENCE = [
 ];
 
 /* ═══ ADDITIONAL SKILLS ═══ */
+// Updated from CV v2026
+export const EXPLORATORY_SKILLS = [
+  { name: 'Node.js v20 LTS', desc: 'Backend runtime, base de Next.js API Routes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  { name: 'React 19 Standalone', desc: 'Standalone React sin Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+  { name: 'REST API Design', desc: 'Diseño y consumo de APIs RESTful', icon: null },
+  { name: 'Express.js v4/v5', desc: 'Framework backend Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
+  { name: 'Python (básico)', desc: 'Scripting y automatización', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+  { name: 'Docker (básico)', desc: 'Containerización, estándar DevOps moderno', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+  { name: 'Redis (básico)', desc: 'Caché y performance', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
+  { name: 'Jest / Vitest', desc: 'Pruebas unitarias JavaScript/TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg' },
+  { name: 'Microservicios', desc: 'Arquitectura de microservicios (conceptual)', icon: null },
+  { name: 'GitHub Actions', desc: 'CI/CD básico, automatización de pipelines', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg' },
+  { name: 'Overleaf / LaTeX', desc: 'Documentación técnica profesional', icon: '/icons/overleaf.svg' },
+  { name: 'Prompt Engineering', desc: 'AI-assisted development, Vibe Coding, GitHub Copilot, Claude Code, Cursor', icon: null },
+  { name: 'Infra. Enterprise', desc: 'Administración Infraestructura nivel Enterprise', icon: null },
+];
+
 export const ADDITIONAL_SKILLS = {
   ventas: {
     title: 'Ventas, Servicio y Atención al Cliente',
