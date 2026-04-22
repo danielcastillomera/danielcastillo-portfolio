@@ -9,7 +9,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0e1a' },
+    { media: '(prefers-color-scheme: dark)',  color: '#0a0e1a' },
   ],
 };
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any' },
     ],
-    apple: [{ url: '/favicon-180.png', sizes: '180x180', type: 'image/png' }],
+    apple:   [{ url: '/favicon-180.png', sizes: '180x180', type: 'image/png' }],
     shortcut: '/favicon-32.png',
   },
   openGraph: {
@@ -60,7 +60,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context':'https://schema.org','@type':'Person',name:'Daniel Fernando Castillo Mera',jobTitle:'Junior Full Stack Engineer / Developer | Community Manager',description:'Estudiante de Ingeniería en Software en la Universidad de Guayaquil.',url:BASE_URL,image:`${BASE_URL}/profile.png`,email:'danielfcastillom@gmail.com',birthDate:'2005-02-23',nationality:{'@type':'Country',name:'Ecuador'},address:{'@type':'PostalAddress',addressLocality:'Guayaquil',addressCountry:'EC'},sameAs:['https://github.com/danielcastillomera','https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a','https://www.instagram.com/danielcastillomera','https://www.facebook.com/Daniel288215','https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B'],alumniOf:{'@type':'CollegeOrUniversity',name:'Universidad de Guayaquil',sameAs:'https://www.ug.edu.ec'},knowsAbout:['Next.js','TypeScript','React','Supabase','Tailwind CSS','Prisma ORM','Node.js','PostgreSQL','Community Management','Meta Ads','TikTok Ads','UI/UX Design','Figma','Facturación electrónica SRI Ecuador'] }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context':'https://schema.org','@type':'Person',
+          name:'Daniel Fernando Castillo Mera',
+          jobTitle:'Junior Full Stack Engineer / Developer | Community Manager',
+          description:'Estudiante de Ingeniería en Software en la Universidad de Guayaquil.',
+          url:BASE_URL, image:`${BASE_URL}/profile.png`,
+          email:'danielfcastillom@gmail.com', birthDate:'2005-02-23',
+          nationality:{'@type':'Country',name:'Ecuador'},
+          address:{'@type':'PostalAddress',addressLocality:'Guayaquil',addressCountry:'EC'},
+          sameAs:['https://github.com/danielcastillomera','https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a','https://www.instagram.com/danielcastillomera','https://www.facebook.com/Daniel288215','https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B'],
+          alumniOf:{'@type':'CollegeOrUniversity',name:'Universidad de Guayaquil',sameAs:'https://www.ug.edu.ec'},
+          knowsAbout:['Next.js','TypeScript','React','Supabase','Tailwind CSS','Prisma ORM','Node.js','PostgreSQL','Community Management','Meta Ads','TikTok Ads','UI/UX Design','Figma','Facturación electrónica SRI Ecuador']
+        }) }} />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-screen antialiased">
@@ -69,14 +81,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <ThemeProvider>{children}</ThemeProvider>
         </I18nProvider>
         <script dangerouslySetInnerHTML={{ __html: `
-  // Block right-click on images
-  document.addEventListener('contextmenu',function(e){if(e.target.closest('.protected-image-wrapper')||e.target.tagName==='IMG'){e.preventDefault()}});
-  // Block drag on images
-  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'||e.target.closest('.protected-image-wrapper')){e.preventDefault()}});
-  // Block PWA install prompt
-  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();return false});
-  window.addEventListener('appinstalled',function(e){e.preventDefault()});
-`.replace(/\n\s*/g,'') }} />
+document.addEventListener('contextmenu',function(e){if(e.target.closest('.protected-image-wrapper')||e.target.tagName==='IMG'){e.preventDefault()}});
+document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'||e.target.closest('.protected-image-wrapper')){e.preventDefault()}});
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();return false});
+window.addEventListener('appinstalled',function(e){e.preventDefault()});
+`.replace(/\n/g,'') }} />
       </body>
     </html>
   );

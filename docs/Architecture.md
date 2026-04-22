@@ -1,10 +1,10 @@
-# Arquitectura / Architecture — v6.0.0
+# Arquitectura / Architecture — v7.5.0
 
 ---
 
 ## Español (México)
 
-### Stack Tecnológico
+### Stack
 
 | Capa | Tecnología | Versión |
 |------|-----------|---------|
@@ -12,80 +12,50 @@
 | UI Library | React | 19.x |
 | Lenguaje | TypeScript | 5.9 |
 | Estilos | Tailwind CSS | 4.x |
-| Iconos | Devicon CDN + activos locales | — |
 | Deployment | Vercel | — |
 
-### Estructura de Archivos
+### Sistema de Colores (CSS Custom Properties)
 
-```
-src/
-├── app/
-│   ├── globals.css          # Design system, temas, animaciones, protección de imágenes
-│   ├── layout.tsx           # Root layout, SEO, JSON-LD, favicon, OG image
-│   ├── page.tsx             # Composición de secciones
-│   ├── not-found.tsx        # Página 404 bilingüe
-│   └── sitemap.ts           # Sitemap dinámico
-├── components/
-│   ├── navbar.tsx           # Navegación + LanguageToggle (visible en móvil)
-│   ├── hero.tsx             # Typewriter + partículas animadas
-│   ├── about-me.tsx         # Bio + Community Manager + UI/UX + Ventas
-│   ├── services.tsx         # 15 servicios bilingüe
-│   ├── tech-grid.tsx        # Logos oficiales (Zod, Meta, TikTok, Overleaf)
-│   ├── projects.tsx         # Proyectos con version badge responsive
-│   ├── skills.tsx           # 6 categorías + exploratorio con logos
-│   ├── certifications.tsx   # Certificados sin duplicados
-│   ├── contact.tsx          # 6 canales de contacto
-│   ├── footer.tsx           # Compliance badges
-│   ├── cookie-consent.tsx   # GDPR: botón X + responsive
-│   ├── language-toggle.tsx  # Dropdown hover + visible en móvil
-│   ├── scroll-buttons.tsx   # Solo icono + tooltip
-│   ├── accessibility-widget.tsx
-│   ├── whatsapp-float.tsx
-│   ├── protected-image.tsx
-│   ├── theme-toggle.tsx
-│   └── icons.tsx
-└── lib/
-    ├── data.ts              # Datos + ADDITIONAL_SKILLS (Ventas/Atención)
-    ├── i18n.ts              # Traducciones ES/EN
-    ├── i18n-provider.tsx    # React context
-    ├── theme-provider.tsx
-    └── use-reveal.ts
-public/
-├── profile.png              # Foto de perfil
-├── og-image.png             # 1200×630 para WhatsApp/Telegram
-├── favicon.ico              # Favicon principal
-├── favicon-16.png           # 16×16
-├── favicon-32.png           # 32×32
-├── favicon-180.png          # Apple Touch Icon
-├── favicon-192.png          # PWA Android
-├── favicon-512.png          # PWA
-├── manifest.json            # PWA manifest
-├── robots.txt
-└── icons/
-    ├── zod.png              # Logo oficial Zod
-    ├── meta.svg             # Logo oficial Meta Platforms
-    ├── tiktok.png           # Logo oficial TikTok
-    └── overleaf.svg         # Logo oficial Overleaf
+```css
+:root {
+  --color-primary-500: #f59e0b;    /* Ámbar — color de marca */
+  --color-text-primary: #000000;   /* Texto — modo claro */
+  --color-body: #000000;           /* Párrafos — modo claro */
+}
+.dark {
+  --color-text-primary: #f5f6f8;   /* Texto — modo oscuro */
+  --color-body: #f5f6f8;           /* Párrafos — modo oscuro */
+}
 ```
 
-### Vista previa social (OG / WhatsApp)
-
-Al compartir la URL, plataformas como WhatsApp, Telegram y LinkedIn obtienen:
-1. `og:image` → `/public/og-image.png` (1200×630 px)
-2. `og:title` → Nombre + rol
-3. `og:description` → Descripción profesional
-4. `metadataBase` → `https://danielcastillo-portfolio.vercel.app`
+### Secciones (orden en page.tsx)
+1. Hero — Typewriter + partículas
+2. TechMarquee — Marquee de tecnologías
+3. AboutMe — Bio CV, primera persona, foto 35:45
+4. **Experience** — ★ NUEVO: 3 posiciones laborales
+5. Services — Servicios digitales y técnicos
+6. TechGrid — Grid de tecnologías con logos
+7. Projects — 5 proyectos con visor de estados
+8. Skills — 6 categorías + exploratorio
+9. Certifications — Visor PDF, sin iconos
+10. Contact — 6 canales de contacto
 
 ---
 
 ## English (United States)
 
-### Social Preview (OG / WhatsApp)
+### Color System (CSS Custom Properties)
 
-When sharing the URL, platforms like WhatsApp, Telegram and LinkedIn will fetch:
-1. `og:image` → `/public/og-image.png` (1200×630 px)
-2. `og:title` → Name + role
-3. `og:description` → Professional description
-4. `metadataBase` → `https://danielcastillo-portfolio.vercel.app`
+```css
+:root {
+  --color-primary-500: #f59e0b;    /* Amber — brand color */
+  --color-text-primary: #000000;   /* Text — light mode */
+  --color-body: #000000;           /* Paragraphs — light mode */
+}
+.dark {
+  --color-text-primary: #f5f6f8;   /* Text — dark mode */
+  --color-body: #f5f6f8;           /* Paragraphs — dark mode */
+}
+```
 
 **Daniel Fernando Castillo Mera** · All rights reserved.

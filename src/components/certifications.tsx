@@ -1,64 +1,132 @@
 'use client';
 
+import { useState } from 'react';
 import { CERTIFICATIONS } from '@/lib/data';
 import { useReveal } from '@/lib/use-reveal';
-import { useT } from '@/lib/i18n-provider';
+import { useT, useI18n } from '@/lib/i18n-provider';
+
+function PdfModal({ file, title, onClose }: { file: string; title: string; onClose: () => void }) {
+  const [zoom, setZoom] = useState(100);
+  return (
+    <div className="fixed inset-0 z-[200] flex flex-col bg-black/85 backdrop-blur-sm"
+      role="dialog" aria-modal="true" aria-label={title}
+      onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="flex items-center justify-between px-3 sm:px-5 py-3 bg-navy-950 border-b border-navy-700 shrink-0 gap-2 flex-wrap">
+        <h2 className="text-sm font-semibold text-white truncate max-w-[55%] min-w-0">{title}</h2>
+        <div className="flex items-center gap-1.5 shrink-0">
+          <button type="button" onClick={() => setZoom(z => Math.max(z-25,50))} disabled={zoom<=50} className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy-800 text-white hover:bg-navy-700 disabled:opacity-40 transition-colors touch-manipulation" aria-label="Zoom out">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" /></svg>
+          </button>
+          <button type="button" onClick={() => setZoom(100)} className="min-w-[3.5rem] h-8 px-2 rounded-lg bg-navy-800 text-xs font-mono text-white hover:bg-navy-700 transition-colors touch-manipulation" aria-label={`Zoom ${zoom}%`}>{zoom}%</button>
+          <button type="button" onClick={() => setZoom(z => Math.min(z+25,200))} disabled={zoom>=200} className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy-800 text-white hover:bg-navy-700 disabled:opacity-40 transition-colors touch-manipulation" aria-label="Zoom in">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+          </button>
+          <div className="w-px h-6 bg-navy-600 mx-0.5" aria-hidden="true" />
+          <button type="button" onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy-800 text-white hover:bg-red-600 transition-colors touch-manipulation" aria-label="Cerrar">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+      <div className="flex-1 overflow-auto bg-gray-900 p-2 sm:p-4 flex items-start justify-center">
+        <div style={{ width:`${Math.min(zoom,100)}%`, minWidth:'280px', maxWidth:'900px', transition:'width 0.2s ease' }}>
+          <iframe src={`${file}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`} title={title}
+            className="w-full rounded-lg shadow-2xl bg-white"
+            style={{ height:`calc(${zoom/100} * 82vh)`, minHeight:'420px', border:'none', display:'block' }}
+            sandbox="allow-same-origin allow-scripts" loading="lazy" />
+        </div>
+      </div>
+      <div className="px-4 py-1.5 bg-navy-950 border-t border-navy-700 text-center shrink-0">
+        <p className="text-[10px] text-gray-500">Documento de solo lectura — sin descarga · Read-only document — no download</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Certifications() {
   const { ref, isVisible } = useReveal();
   const t = useT();
+  const { locale } = useI18n();
+  const [openPdf, setOpenPdf] = useState<{ file: string; title: string } | null>(null);
 
-  const statusConfig = {
+  const statusCfg = {
     'in-progress': { label: t.certifications.status.inProgress, dot: 'bg-blue-500 animate-pulse', badge: 'border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400' },
-    active: { label: t.certifications.status.active, dot: 'bg-green-500', badge: 'border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400' },
-    completed: { label: t.certifications.status.completed, dot: 'bg-gray-400', badge: 'border-gray-400/30 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300' },
+    active:        { label: t.certifications.status.active,     dot: 'bg-green-500',              badge: 'border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400' },
+    completed:     { label: t.certifications.status.completed,  dot: 'bg-gray-400',               badge: 'border-gray-400/30 bg-gray-100 dark:bg-navy-800 text-gray-600 dark:text-gray-300' },
   };
 
-  // Filter out duplicate CS50x (only show the non-'in-progress' one if duplicated, here we just deduplicate by id)
-  const unique = CERTIFICATIONS.filter((c, i, arr) => arr.findIndex(x => x.id === c.id) === i);
-
   return (
-    <section id="certificaciones" className="relative py-24 sm:py-32" aria-labelledby="certs-heading">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/40 dark:via-navy-900/30 to-transparent" aria-hidden="true" />
-      <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.certifications.sectionLabel}</span>
-          <h2 id="certs-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>{t.certifications.title}</h2>
-          <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
-          <p className="mt-4 text-base text-gray-800 dark:text-gray-100 max-w-2xl">{t.certifications.subtitle}</p>
-        </div>
+    <>
+      <section id="certificaciones" className="relative py-24 sm:py-32" aria-labelledby="certs-heading">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/40 dark:via-navy-900/30 to-transparent" aria-hidden="true" />
+        <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="mb-16">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.certifications.sectionLabel}</span>
+            <h2 id="certs-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>{t.certifications.title}</h2>
+            <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
+            <p className="mt-4 text-base text-gray-900 dark:text-gray-100 max-w-2xl">{t.certifications.subtitle}</p>
+          </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          {unique.map((cert, i) => {
-            const status = statusConfig[cert.status];
-            return (
-              <article key={cert.id} className="glass rounded-xl p-5 card-glow"
-                style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms` }}
-                aria-label={cert.title}>
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xl shadow-sm" style={{ backgroundColor: `${cert.color}18`, border: `1px solid ${cert.color}30` }} aria-hidden="true">{cert.icon}</div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${status.badge}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${status.dot}`} aria-hidden="true" />
-                      {status.label}
-                    </span>
-                  </div>
-                  <span className="rounded-md bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-xs font-mono text-gray-600 dark:text-gray-300 shrink-0">{cert.hours}h</span>
-                </div>
-                <h3 className="text-sm font-bold text-gray-900 dark:text-white leading-snug mb-2">{cert.title}</h3>
-                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                  <svg className="w-3.5 h-3.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
-                  <span className="truncate">{cert.issuer}</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mt-1.5">
-                  <svg className="w-3.5 h-3.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
-                  <span>{cert.date}</span>
-                </div>
-              </article>
-            );
-          })}
+          <div className="grid gap-5 sm:grid-cols-2">
+            {CERTIFICATIONS.map((cert, i) => {
+              const s      = statusCfg[cert.status];
+              const title  = locale === 'en' ? cert.titleEn   : cert.title;
+              const issuer = locale === 'en' ? cert.issuerEn  : cert.issuer;
+              const loc    = locale === 'en' ? cert.locationEn: cert.location;
+              return (
+                <article key={cert.id} className="glass rounded-xl p-5 card-glow flex flex-col"
+                  style={{ opacity: isVisible?1:0, transform: isVisible?'translateY(0)':'translateY(20px)', transition:`opacity 0.5s ease ${i*100}ms,transform 0.5s ease ${i*100}ms` }}
+                  aria-label={title}>
+
+                  {/* Title — plain text, no icon/emoji */}
+                  <h3 className="text-sm font-bold text-gray-900 dark:text-white leading-snug mb-4">{title}</h3>
+
+                  {/* All details as definition list — NO icons anywhere */}
+                  <dl className="space-y-1.5 text-xs flex-1">
+                    <div className="flex gap-1.5 flex-wrap">
+                      <dt className="font-semibold text-gray-600 dark:text-gray-400 shrink-0 whitespace-nowrap">{t.certifications.issuer}:</dt>
+                      <dd className="text-gray-800 dark:text-gray-200">{issuer}</dd>
+                    </div>
+                    <div className="flex gap-1.5 flex-wrap">
+                      <dt className="font-semibold text-gray-600 dark:text-gray-400 shrink-0 whitespace-nowrap">{t.certifications.location}:</dt>
+                      <dd className="text-gray-800 dark:text-gray-200">{loc}</dd>
+                    </div>
+                    <div className="flex gap-1.5 flex-wrap">
+                      <dt className="font-semibold text-gray-600 dark:text-gray-400 shrink-0 whitespace-nowrap">{t.certifications.date}:</dt>
+                      <dd className="text-gray-800 dark:text-gray-200">{cert.date}</dd>
+                    </div>
+                    {/* Duration (horas) — at bottom as requested */}
+                    <div className="flex gap-1.5 flex-wrap">
+                      <dt className="font-semibold text-gray-600 dark:text-gray-400 shrink-0 whitespace-nowrap">{t.certifications.duration}:</dt>
+                      <dd className="text-gray-800 dark:text-gray-200">{cert.duration}</dd>
+                    </div>
+                    {/* Status — at bottom as requested */}
+                    <div className="flex gap-1.5 items-center flex-wrap pt-0.5">
+                      <dt className="font-semibold text-gray-600 dark:text-gray-400 shrink-0 whitespace-nowrap">{t.certifications.statusLabel}:</dt>
+                      <dd>
+                        <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold ${s.badge}`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} aria-hidden="true" />
+                          {s.label}
+                        </span>
+                      </dd>
+                    </div>
+                  </dl>
+
+                  {/* View PDF — text only, no icon */}
+                  {cert.pdfFile && (
+                    <button type="button"
+                      onClick={() => setOpenPdf({ file: cert.pdfFile!, title })}
+                      className="mt-4 self-start rounded-lg border border-accent-500/40 bg-accent-500/10 px-3 py-1.5 text-xs font-semibold text-accent-600 dark:text-accent-400 hover:bg-accent-500/20 transition-all active:scale-95 touch-manipulation">
+                      {t.certifications.viewPdf}
+                    </button>
+                  )}
+                </article>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {openPdf && <PdfModal file={openPdf.file} title={openPdf.title} onClose={() => setOpenPdf(null)} />}
+    </>
   );
 }

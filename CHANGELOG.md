@@ -2,156 +2,117 @@
 
 ---
 
-## v7.0.1 — Foto de perfil actualizada
-
-- **Foto de perfil**
-- **Favicon** — Regenerado desde nueva foto V5 en todos los tamaños
-- **OG Image** — Regenerada con nueva foto V5
-
----
-
-## v7.0.0 — Foto saco y corbata, Zod sin fondo, OG mejorada, PWA bloqueada, Nombre dos líneas, Doble clic fix, A11y fix, Bio CV, Exploratorio CV, CNE proyecto
-
-### Cambios v7.0.0
-
-1. **Foto de perfil** — Actualizada
-2. **Zod logo** — Reemplazado por `icon-Zod-dev-SIN-FONDO.png` (sin fondo negro)
-3. **OG Image** — Rediseñada: foto centrada en top, textos más grandes
-4. **PWA Install bloqueada** — `beforeinstallprompt` prevenido, `manifest.json` `display: browser`
-5. **Nombre en navbar** — Dos líneas: "Daniel Fernando / Castillo Mera" en móvil y escritorio
-6. **Doble clic** — `user-select: none` en body, `touch-action: manipulation` (evita zoom)
-7. **Alto contraste fix** — Usa `data-high-contrast` en lugar de `filter: contrast()` (no rompe z-index)
-8. **Widget accesibilidad** — Ícono más grande sin círculo blanco, textos más legibles
-9. **WhatsApp URL** — Actualizado a `api.whatsapp.com/send?phone=...&text=Hola...`
-10. **Bio actualizada** — Texto del CV 2026
-11. **Exploratorio actualizado** — Lista completa del CV con íconos y descripciones
-12. **CNE Figma** — Nuevo proyecto añadido con enlace al prototipo y documento
-13. **Favicon** — Regenerado desde nueva foto de perfil
-
----
-
 ## Español (México)
 
 Todos los cambios notables se documentan en este archivo.
-Este proyecto usa [Semantic Versioning](https://semver.org/).
+Este proyecto sigue [Semantic Versioning](https://semver.org/).
 
 ---
 
-### v6.0.0 — Foto de perfil, OG Image, Logos oficiales, Favicon, "Ir al final", Idioma desplegable, Cookies mejoradas
+## v7.5.0 — Foto CV, OG mejorada, Visor PDF, Experiencia Laboral, Colores semánticos, Accesibilidad, Certificados completos, Concordancia CV
 
-#### 1. Foto de perfil
-- La imagen `/public/profile.png` fue reemplazada con `Foto_actualV2.png`
-- Protección drag/contextmenu extendida a todos los `<img>` del sitio
+### Cambios v7.5.0
 
-#### 2. Favicon
-- Generado desde la foto de perfil en los tamaños: 16×16, 32×32, 48×48, 180×180, 192×192, 512×512
-- `favicon.ico` para compatibilidad máxima
-- `<link rel="apple-touch-icon">` para iOS
+#### 1. Foto de perfil — Proporción curricular estándar (35×45 mm / 3×4 cm)
+- Foto recortada y exportada en la proporción oficial 35:45 (ancho:alto) según normativa Ecuador y estándar internacional para CV.
+- Solo se incluye `profile.png` en la carpeta `public/` — no se distribuye la foto original de cuerpo completo.
+- La misma proporción se aplica al visor de la sección "Sobre mí" y al favicon.
 
-#### 3. Vista previa social (OG Image / WhatsApp / Telegram)
-- `metadataBase` configurado en `layout.tsx`
-- `og:image` → `/public/og-image.png` (1200×630)
-- `twitter:card: summary_large_image`
-- Imagen generada con: foto de perfil, nombre, rol, tecnologías y URL
+#### 2. Ícono de accesibilidad — SVG (formato óptimo)
+- Se eligió formato **SVG** por ser vectorial: escala sin pérdida de calidad, sin pixelado en zoom, peso mínimo.
+- Figura/persona de color blanco `#ffffff` sobre fondo ámbar `#f59e0b` (color primario del proyecto).
+- Archivo: `public/icons/accessibility.svg`.
 
-#### 4. Botón "Ir al final"
-- Restaurado: aparece en bottom-center cuando el usuario está en la parte superior
-- "Ir al inicio" continúa en bottom-center cuando el usuario hace scroll
+#### 3. Nombre visible en versión móvil (navbar)
+- Eliminado `hidden sm:inline` del span de nombre en navbar.
+- El nombre "Daniel Fernando / Castillo Mera" ahora se muestra en **todas** las resoluciones de pantalla.
 
-#### 5. Logos oficiales en Tech Grid
-- **Zod**: usa `/icons/zod.png` (logo oficial subido por el usuario)
-- **Overleaf**: usa `/icons/overleaf.svg` (logo oficial subido por el usuario)
-- **Meta Ads**: usa `/icons/meta.svg` (logo oficial Meta Platforms)
-- **TikTok Ads**: usa `/icons/tiktok.png` (logo oficial TikTok)
-- **Power BI**: eliminado de la categoría Diseño & Marketing
+#### 4. Sistema de colores semántico (CSS Custom Properties — estándar industria)
+- Implementado sistema completo de tokens de color:
+  - `--color-primary-*`: Ámbar/dorado (color de marca)
+  - `--color-secondary-*`: Navy azul (fondo dark)
+  - `--color-text-primary`: `#000000` en modo claro, `#f5f6f8` en modo oscuro
+  - `--color-heading`, `--color-body`, `--color-bg-base`, `--color-bg-surface`
+- Todos los textos y párrafos ahora usan el color correcto en ambos modos.
+- Widget de accesibilidad: textos corregidos a `text-gray-900 dark:text-gray-100`.
 
-#### 6. Iconos de Habilidades Técnicas
-- Cada categoría usa un ícono SVG contextual (no logos de tecnologías específicas)
-- Frontend: ícono de código `</>`
-- Backend: ícono de llave inglesa/herramienta
-- Base de Datos: ícono de base de datos cilíndrica
-- Herramientas: ícono de engranaje/herramientas
-- Community Manager: ícono de compartir/redes sociales
-- UI/UX: ícono de pincel/diseño
+#### 5. Limpieza de archivos innecesarios
+- Eliminadas fotos de perfil anteriores de la carpeta `public/`.
+- Solo se conserva `profile.png` (versión actual).
+- Sin archivos basura ni assets obsoletos.
 
-#### 7. Certificaciones
-- Eliminado duplicado de CS50x
+#### 6. Favicon y OG Image actualizados
+- Favicon regenerado desde la nueva foto de perfil (proporción circular, sin borde de color).
+- OG Image (1200×630 px) rediseñada: texto más grande, colores semánticos correctos, foto en proporción CV.
+- Aplica en WhatsApp, Telegram, LinkedIn y barra de dirección del navegador.
 
-#### 8. Protección de imágenes
-- `contextmenu` y `dragstart` bloqueados para todos los `<img>` del sitio
+#### 7. Visor de PDFs protegido
+- Implementado visor modal con `<iframe sandbox>` para todos los certificados y carta de recomendación.
+- Sin botón de descarga — solo lectura.
+- Controles nativos: **zoom in (+25%)**, **zoom out (-25%)**, **restablecer al 100%**.
+- Compatible con PC, móvil, tablet y demás dispositivos.
+- Carta de Recomendación — Agro Industrias Warsa C.A. añadida.
 
-#### 9. Selector de idioma (Language Toggle)
-- Nuevo diseño con ícono de globo terráqueo + nombre del idioma + chevron
-- Lista desplegable al hover (mouse) y click (táctil)
-- Ahora **visible en versión móvil** (era `hidden sm:block`, ahora siempre visible)
-- Opciones: 🇪🇨 Español / 🇺🇸 English
+#### 8. Logo Zod — sin fondo
+- Reemplazado `zod.png` por versión con fondo transparente (0% píxeles negros).
 
-#### 10. Cookie Consent mejorado
-- Añadido botón **X** para cerrar (rechaza todo)
-- Botones reorganizados en columna en móvil, fila en escritorio
-- Más compacto y no abusivo visualmente
+#### 9. OG Image — texto más grande y colores correctos
+- Nombre en 62px, rol en 36px, color de texto: `#f5f6f8` (modo oscuro estándar).
+- Tags de tecnología con colores de marca reales.
 
-#### 11. Sección "En Aprendizaje / Exploratorio"
-- Añadidos: **ABAP / SAP**, **COBOL**, **Prompt Engineering**
-- Logos usando Devicon CDN cuando disponibles
-- Estilo consistente con el resto de la página
+#### 10. Sección "Mi trabajo" — correcciones
+- Título "Dashboard Enterprise" siempre visible en móvil (eliminado truncado, usa `break-words`).
+- "Invoice Manager System" corregido a estado **"En desarrollo"** (concordante con CV).
+- Portafolio Web Personal añadido como proyecto.
 
-#### 12. Proyectos - version badge responsive
-- El badge de versión (ej: v3.1.0) ahora siempre visible en móvil
+#### 11. Sección "Certificados" — rediseño completo
+- **Sin iconos ni emojis** en ninguna tarjeta.
+- Información completa del CV: emisor, lugar (ciudad y país), fecha, duración (horas/minutos), estado.
+- **Estado y horas posicionados al final** de la tarjeta, debajo de todos los demás datos.
+- Carta de Recomendación incluida como documento verificable.
 
+#### 12. Nueva sección: Experiencia Laboral
+- Tres experiencias del CV: Community Manager, Pasante/Aux. Tesorería, Pasante/Aux. Sistemas (Soprisa S.A.).
+- Sin logo ni imagen — solo texto estructurado con timeline visual.
+- Bilingüe ES/EN, fechas y ubicaciones exactas del CV.
 
-#### 13. Experiencia en Ventas, Servicio y Atención al Cliente
-- Añadido en `data.ts` como `ADDITIONAL_SKILLS.ventas`
-- Visible en sección "Sobre mí" como tarjeta adicional de capacidades
-- Añadido en categoría "Community Manager" de Habilidades: Atención al Cliente + Ventas y Servicio
-- Bilingüe ES/EN
+#### 13. Corrección de coma en texto bio
+- Eliminada coma redundante: "Mi proyecto principal, Dashboard Enterprise v3.4.0, es un sistema…" → sin coma extra.
 
-#### 14. Botones "Ir al final" / "Ir al inicio" — Solo ícono
-- Texto eliminado, ahora solo contiene el ícono de flecha dentro de círculo
-- Tooltip aparece al pasar el cursor: "Ir al final" / "Ir al inicio"
-- Accesible con `title` y `aria-label`
-- Se colorea con `accent-500` al hover
+#### 14. Sección "Sobre mí" — concordancia total con CV
+- Redacción en **primera persona** (estándar portafolios 2024-2026, según tendencias Google, LinkedIn, Vercel, Stripe).
+- Bio y párrafos tomados directamente del CV 2026.
+- Proporción de foto: 35×45 mm (ancho:alto).
 
-#### 15. Wiki completado
-- `docs/Home.md`, `docs/Architecture.md`, `docs/I18n.md`, `docs/Deployment.md`, `docs/Accessibility.md`
-- Todos bilingüe ES/EN con formato consistente
+#### 15. Primera persona en toda la redacción
+- Todos los textos del portafolio reescritos en primera persona.
+- Orientación a logros (achievement-oriented), concordante con el CV.
 
-### Archivos añadidos
-- `public/profile.png` (foto actualizada)
-- `public/og-image.png` (imagen OG 1200×630)
-- `public/favicon.ico`, `favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `favicon-180.png`, `favicon-192.png`, `favicon-512.png`
-- `public/icons/zod.png`, `meta.svg`, `tiktok.png`, `overleaf.svg`
+#### 16. Datos actualizados al CV 2026
+- Número de proyectos: 5 (Dashboard Enterprise, Portafolio, CNE Figma, Proyecto Unificado, Invoice Manager).
+- Habilidades exploratorias: AWS, Docker, GitHub Actions, Flutter/Dart, GraphQL, JWT, Redis, Jest/Vitest, etc.
+- Soft skills y hard skills del CV incluidas.
 
-### Archivos modificados
-- `src/app/layout.tsx` — metadataBase, icons, OG, Twitter cards
-- `src/components/language-toggle.tsx` — dropdown con hover, visible en móvil
-- `src/components/scroll-buttons.tsx` — "ir al final" restaurado
-- `src/components/cookie-consent.tsx` — botón X, botones responsive
-- `src/components/tech-grid.tsx` — drag protection en imágenes
-- `src/components/skills.tsx` — iconos SVG contextuales, exploratorio mejorado
-- `src/components/certifications.tsx` — sin duplicados
-- `src/components/projects.tsx` — version badge responsive
-- `src/components/navbar.tsx` — LanguageToggle visible siempre
-- `src/lib/data.ts` — logos corregidos, Power BI eliminado de design
-- `package.json` — versión 6.0.0
-- `public/manifest.json` — íconos correctos
+#### 17. Documentos del repositorio actualizados
+- `CHANGELOG.md`, `README.md`, `LICENSE`, `SECURITY.md` y wiki (`docs/`) actualizados a v7.5.0.
+- Formato bilingüe ES/EN en todos los documentos.
 
----
-
-### v5.0.0 — i18n, Typewriter, Cookie Consent, Certificaciones, Community Manager, UI/UX
-*(Ver entradas anteriores)*
-
-### v4.5.0 — Theme Fix, Devicon, Scroll Navigation
-*(Ver entradas anteriores)*
-
-### v4.0.0 — Visual Polish, Brand Icons, Theme Contrast
-*(Ver entradas anteriores)*
-
-### v3.0.0 — Services, Tech Stack, Auto-Version, Accessibility
-*(Ver entradas anteriores)*
-
-### v1.0.0 — Lanzamiento inicial
-*(Ver entradas anteriores)*
+### Archivos modificados principales
+- `src/app/globals.css` — sistema de tokens CSS semánticos
+- `src/app/page.tsx` — sección Experience añadida
+- `src/lib/data.ts` — datos completos del CV
+- `src/lib/i18n.ts` — claves nuevas (experience, certifications.location, etc.)
+- `src/components/about-me.tsx` — primera persona, proporción foto CV
+- `src/components/experience.tsx` — **NUEVO** componente
+- `src/components/certifications.tsx` — sin iconos, info completa, visor PDF
+- `src/components/projects.tsx` — título móvil, Invoice Manager estado
+- `src/components/accessibility-widget.tsx` — colores de texto corregidos
+- `src/components/navbar.tsx` — nombre siempre visible
+- `public/profile.png` — proporción 35:45
+- `public/og-image.png` — texto grande, colores correctos
+- `public/icons/accessibility.svg` — figura blanca, formato SVG
+- `public/icons/zod.png` — sin fondo negro
+- `public/certs/carta-recomendacion.pdf` — añadido
 
 ---
 
@@ -162,121 +123,92 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-### v6.0.0 — Profile Photo, OG Image, Official Logos, Favicon, "Go to bottom", Dropdown Language, Improved Cookies
+## v7.5.0 — CV Photo, Enhanced OG, PDF Viewer, Work Experience, Semantic Colors, Accessibility, Full Certificates, CV Alignment
 
-#### 1. Profile photo
-- `/public/profile.png` replaced with `Foto_actualV2.png`
-- Drag/contextmenu protection extended to all `<img>` elements on the site
+### Changes v7.5.0
 
-#### 2. Favicon
-- Generated from profile photo in sizes: 16×16, 32×32, 48×48, 180×180, 192×192, 512×512
-- `favicon.ico` for maximum browser compatibility
-- `<link rel="apple-touch-icon">` for iOS devices
+#### 1. Profile photo — Standard CV proportion (35×45 mm / 3×4 cm)
+- Photo cropped and exported in the official 35:45 (width:height) ratio per Ecuador regulations and international CV standard.
+- Only `profile.png` is included in the `public/` folder — the original full-body photo is not distributed.
+- Same ratio applied in the "About me" section viewer and favicon.
 
-#### 3. Social media preview (OG Image / WhatsApp / Telegram)
-- `metadataBase` configured in `layout.tsx`
-- `og:image` → `/public/og-image.png` (1200×630)
-- `twitter:card: summary_large_image`
-- Image generated with: profile photo, name, role, tech stack and URL
+#### 2. Accessibility icon — SVG (optimal format)
+- **SVG** format chosen: vector-based, scales without quality loss, zero pixelation on zoom, minimal file size.
+- White `#ffffff` figure/person on amber `#f59e0b` background (project primary color).
+- File: `public/icons/accessibility.svg`.
 
-#### 4. "Go to bottom" button
-- Restored: appears at bottom-center when user is at the top of the page
-- "Go to top" continues to appear at bottom-center when user scrolls down
+#### 3. Name visible on mobile (navbar)
+- Removed `hidden sm:inline` from the navbar name span.
+- "Daniel Fernando / Castillo Mera" now shows on **all** screen sizes.
 
-#### 5. Official logos in Tech Grid
-- **Zod**: uses `/icons/zod.png` (official logo uploaded by user)
-- **Overleaf**: uses `/icons/overleaf.svg` (official logo uploaded by user)
-- **Meta Ads**: uses `/icons/meta.svg` (official Meta Platforms logo)
-- **TikTok Ads**: uses `/icons/tiktok.png` (official TikTok logo)
-- **Power BI**: removed from Design & Marketing category
+#### 4. Semantic color system (CSS Custom Properties — industry standard)
+- Full color token system implemented:
+  - `--color-primary-*`: Amber/gold (brand color)
+  - `--color-secondary-*`: Navy blue (dark background)
+  - `--color-text-primary`: `#000000` in light mode, `#f5f6f8` in dark mode
+  - `--color-heading`, `--color-body`, `--color-bg-base`, `--color-bg-surface`
+- All text and paragraphs now use the correct color in both modes.
+- Accessibility widget: text corrected to `text-gray-900 dark:text-gray-100`.
 
-#### 6. Skills section icons
-- Each category uses a contextual SVG icon (not specific technology logos)
-- Frontend: code icon `</>`
-- Backend: wrench/tool icon
-- Database: cylindrical database icon
-- Tools: gear/settings icon
-- Community Manager: share/social networks icon
-- UI/UX: brush/design icon
+#### 5. Cleanup of unnecessary files
+- Removed previous profile photos from the `public/` folder.
+- Only `profile.png` (current version) is kept.
+- No junk files or obsolete assets.
 
-#### 7. Certifications
-- Removed duplicate CS50x entry
+#### 6. Updated Favicon and OG Image
+- Favicon regenerated from the new profile photo (circular crop, no color border).
+- OG Image (1200×630 px) redesigned: larger text, correct semantic colors, CV-ratio photo.
+- Applies in WhatsApp, Telegram, LinkedIn and browser address bar.
 
-#### 8. Image protection
-- `contextmenu` and `dragstart` blocked for all `<img>` elements on the site
+#### 7. Protected PDF viewer
+- Modal viewer implemented with `<iframe sandbox>` for all certificates and recommendation letter.
+- No download button — read-only.
+- Native controls: **zoom in (+25%)**, **zoom out (-25%)**, **reset to 100%**.
+- Compatible with PC, mobile, tablet and other devices.
+- Letter of Recommendation — Agro Industrias Warsa C.A. added.
 
-#### 9. Language selector (Language Toggle)
-- New design with globe icon + language name + chevron dropdown indicator
-- Dropdown list on hover (mouse) and click (touch)
-- Now **visible on mobile** (was `hidden sm:block`, now always visible)
-- Options: 🇪🇨 Español / 🇺🇸 English
+#### 8. Zod logo — no background
+- Replaced `zod.png` with transparent background version (0% black pixels).
 
-#### 10. Improved Cookie Consent
-- Added **X** close button (rejects all cookies)
-- Buttons reorganized in column on mobile, row on desktop
-- More compact and less visually intrusive
+#### 9. OG Image — larger text and correct colors
+- Name at 62px, role at 36px, text color: `#f5f6f8` (dark mode standard).
+- Technology tags with real brand colors.
 
-#### 11. "Learning / Exploratory" section
-- Added: **ABAP / SAP**, **COBOL**, **Prompt Engineering**
-- Logos from Devicon CDN when available
-- Consistent style with the rest of the page
+#### 10. "My work" section — fixes
+- "Dashboard Enterprise" title always visible on mobile (removed truncation, uses `break-words`).
+- "Invoice Manager System" corrected to **"In development"** status (aligned with CV).
+- Personal Portfolio Web added as a project.
 
-#### 12. Projects — responsive version badge
-- Version badge (e.g., v3.1.0) now always visible on mobile
+#### 11. "Certificates" section — full redesign
+- **No icons or emojis** in any card.
+- Complete CV information: issuer, location (city and country), date, duration (hours/minutes), status.
+- **Status and hours positioned at the bottom** of the card, below all other data.
+- Letter of Recommendation included as a verifiable document.
 
+#### 12. New section: Work Experience
+- Three experiences from CV: Community Manager, Intern/Treasury Assistant, Intern/Systems Assistant (Soprisa S.A.).
+- No logo or image — structured text only with visual timeline.
+- Bilingual ES/EN, exact dates and locations from CV.
 
-#### 13. Sales, Service & Customer Support Experience
-- Added in `data.ts` as `ADDITIONAL_SKILLS.ventas`
-- Visible in "About me" section as additional capabilities card
-- Added in "Community Manager" skills category: Customer Support + Sales & Service
-- Bilingual ES/EN
+#### 13. Bio text comma fix
+- Removed redundant comma from bio paragraph.
 
-#### 14. "Go to bottom" / "Go to top" buttons — Icon only
-- Text removed, now only contains arrow icon inside circle
-- Tooltip appears on hover: "Ir al final" / "Ir al inicio" (or translated)
-- Accessible with `title` and `aria-label`
-- Colors with `accent-500` on hover
+#### 14. "About me" section — full CV alignment
+- Written in **first person** (2024-2026 portfolio standard, per Google, LinkedIn, Vercel, Stripe trends).
+- Bio and paragraphs taken directly from CV 2026.
+- Photo ratio: 35×45 mm (width:height).
 
-#### 15. Wiki completed
-- `docs/Home.md`, `docs/Architecture.md`, `docs/I18n.md`, `docs/Deployment.md`, `docs/Accessibility.md`
-- All bilingual ES/EN with consistent format
+#### 15. First-person voice throughout
+- All portfolio texts rewritten in first person.
+- Achievement-oriented writing, aligned with CV.
 
-### Files added
-- `public/profile.png` (updated photo)
-- `public/og-image.png` (OG image 1200×630)
-- `public/favicon.ico`, `favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `favicon-180.png`, `favicon-192.png`, `favicon-512.png`
-- `public/icons/zod.png`, `meta.svg`, `tiktok.png`, `overleaf.svg`
+#### 16. Data updated to CV 2026
+- Projects count: 5 (Dashboard Enterprise, Portfolio, CNE Figma, Unified Project, Invoice Manager).
+- Exploratory skills: AWS, Docker, GitHub Actions, Flutter/Dart, GraphQL, JWT, Redis, Jest/Vitest, etc.
 
-### Files modified
-- `src/app/layout.tsx` — metadataBase, icons, OG, Twitter cards
-- `src/components/language-toggle.tsx` — dropdown on hover, visible on mobile
-- `src/components/scroll-buttons.tsx` — "go to bottom" restored
-- `src/components/cookie-consent.tsx` — X button, responsive buttons
-- `src/components/tech-grid.tsx` — drag protection on images
-- `src/components/skills.tsx` — contextual SVG icons, improved exploratory section
-- `src/components/certifications.tsx` — no duplicates
-- `src/components/projects.tsx` — responsive version badge
-- `src/components/navbar.tsx` — LanguageToggle always visible
-- `src/lib/data.ts` — corrected logos, Power BI removed from design
-- `package.json` — version 6.0.0
-- `public/manifest.json` — correct icons
-
----
-
-### v5.0.0 — i18n, Typewriter, Cookie Consent, Certifications, Community Manager, UI/UX
-*(See previous entries)*
-
-### v4.5.0 — Theme Fix, Devicon Icons, Scroll Navigation
-*(See previous entries)*
-
-### v4.0.0 — Visual Polish, Brand Icons, Theme Contrast
-*(See previous entries)*
-
-### v3.0.0 — Services, Tech Stack, Auto-Version, Accessibility Overhaul
-*(See previous entries)*
-
-### v1.0.0 — Initial Release
-*(See previous entries)*
+#### 17. Repository documents updated
+- `CHANGELOG.md`, `README.md`, `LICENSE`, `SECURITY.md` and wiki (`docs/`) updated to v7.5.0.
+- Bilingual ES/EN format in all documents.
 
 ---
 

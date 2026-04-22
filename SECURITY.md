@@ -1,4 +1,4 @@
-# Política de Seguridad / Security Policy
+# Política de Seguridad / Security Policy — v7.5.0
 
 ---
 
@@ -6,15 +6,16 @@
 
 ### Reportar una Vulnerabilidad
 
-Si descubres una vulnerabilidad de seguridad en este proyecto, repórtala de forma responsable.
+Si descubres una vulnerabilidad de seguridad, repórtala de forma responsable.
 
-**Contacto:** Daniel Fernando Castillo Mera  
-**Email:** danielfcastillom@gmail.com  
+**Contacto:** Daniel Fernando Castillo Mera
+**Email:** danielfcastillom@gmail.com
 **Tiempo de respuesta:** Dentro de 48 horas
 
 ### Medidas de Seguridad
 
 #### Headers HTTP (via `next.config.ts`)
+
 | Header | Valor |
 |--------|-------|
 | `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
@@ -26,25 +27,25 @@ Si descubres una vulnerabilidad de seguridad en este proyecto, repórtala de for
 | `Permissions-Policy` | Deshabilita cámara, micrófono y geolocalización |
 
 #### Seguridad de la Aplicación
-- Server-side rendering con Next.js (sin claves API expuestas)
-- Protección de imágenes contra copia no autorizada (clic derecho, arrastrar)
-- Sin formularios de entrada de usuario — sitio estático
-- `poweredByHeader: false` para evitar fingerprinting
-- Consentimiento de cookies GDPR — sin seguimiento de terceros sin consentimiento explícito
-- Favicon e imagen OG generados localmente (sin dependencias externas)
+- Server-side rendering con Next.js (sin claves API expuestas).
+- Protección de imágenes contra copia no autorizada (clic derecho, arrastrar).
+- Visor PDF con `sandbox` — sin descarga de documentos.
+- Formularios de entrada: sitio estático, sin superficies de ataque.
+- `poweredByHeader: false` para evitar fingerprinting.
+- Consentimiento de cookies GDPR — sin seguimiento de terceros sin consentimiento.
 
 #### Privacidad
-- Sin cookies de análisis ni seguimiento por defecto
-- Preferencias guardadas solo en `localStorage` del usuario
-- Sin recopilación de datos personales en el servidor
+- Sin cookies de análisis ni seguimiento por defecto.
+- Preferencias guardadas solo en `localStorage` del usuario.
+- Sin recopilación de datos personales en el servidor.
 
 ### Versiones Soportadas
 
 | Versión | Soportada |
 |---------|-----------|
-| 6.0.x   | ✅ Sí    |
-| 5.0.x   | ❌ No    |
-| < 5.0   | ❌ No    |
+| 7.5.x   | ✅ Sí    |
+| 7.0.x   | ❌ No    |
+| < 7.0   | ❌ No    |
 
 ---
 
@@ -52,45 +53,45 @@ Si descubres una vulnerabilidad de seguridad en este proyecto, repórtala de for
 
 ### Reporting a Vulnerability
 
-If you discover a security vulnerability in this project, please report it responsibly.
+If you discover a security vulnerability, please report it responsibly.
 
-**Contact:** Daniel Fernando Castillo Mera  
-**Email:** danielfcastillom@gmail.com  
+**Contact:** Daniel Fernando Castillo Mera
+**Email:** danielfcastillom@gmail.com
 **Response Time:** Within 48 hours
 
 ### Security Measures
 
 #### HTTP Headers (via `next.config.ts`)
+
 | Header | Value |
 |--------|-------|
 | `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
 | `Content-Security-Policy` | Restricts scripts, styles, fonts, images to trusted sources |
 | `X-Frame-Options` | `SAMEORIGIN` — prevents clickjacking |
-| `X-Content-Type-Options` | `nosniff` — prevents MIME sniffing |
+| `X-Content-Type-Options` | `nosniff` |
 | `X-XSS-Protection` | `1; mode=block` |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` |
-| `Permissions-Policy` | Disables camera, microphone, and geolocation |
+| `Permissions-Policy` | Disables camera, microphone and geolocation |
 
 #### Application Security
-- Server-side rendering with Next.js (no exposed API keys or secrets)
-- Image protection against unauthorized copying (right-click, drag)
-- No user input forms — static portfolio site
-- `poweredByHeader: false` to prevent technology fingerprinting
-- Cookie consent follows GDPR — no third-party tracking without explicit consent
-- Favicon and OG image generated locally (no external dependencies)
+- Server-side rendering with Next.js (no exposed API keys).
+- Image protection against unauthorized copying (right-click, drag).
+- PDF viewer with `sandbox` — no document download.
+- `poweredByHeader: false` to prevent technology fingerprinting.
+- GDPR cookie consent — no third-party tracking without explicit consent.
 
 #### Privacy
-- No analytics or tracking cookies by default
-- User preferences stored locally in `localStorage` only
-- No server-side personal data collection
+- No analytics or tracking cookies by default.
+- User preferences stored locally in `localStorage` only.
+- No server-side personal data collection.
 
 ### Supported Versions
 
 | Version | Supported |
 |---------|-----------|
-| 6.0.x   | ✅ Yes   |
-| 5.0.x   | ❌ No    |
-| < 5.0   | ❌ No    |
+| 7.5.x   | ✅ Yes   |
+| 7.0.x   | ❌ No    |
+| < 7.0   | ❌ No    |
 
 ---
 

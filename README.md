@@ -1,4 +1,6 @@
-# Daniel Fernando Castillo Mera — Portfolio v7.0.0
+# Daniel Fernando Castillo Mera — Portfolio v7.5.0
+
+---
 
 ## Español (México)
 
@@ -18,24 +20,26 @@ Portafolio profesional y página de servicios.
 | Fuentes | Google Fonts (DM Sans, JetBrains Mono) |
 | Iconos | Devicon CDN, activos locales (`/public/icons/`) |
 
-### Características v6.0.0
+### Características v7.5.0
 
 | Característica | Estado |
 |----------------|--------|
 | i18n ES / EN (auto-detección) | ✅ |
 | Typewriter Effect (7 frases) | ✅ |
-| Favicon desde foto de perfil | ✅ |
-| OG Image para WhatsApp/Telegram | ✅ |
+| Foto perfil proporción 35×45 mm (estándar CV) | ✅ |
+| Favicon desde foto de perfil (circular, sin borde) | ✅ |
+| OG Image 1200×630 (WhatsApp/Telegram/LinkedIn) | ✅ |
+| Visor PDF protegido (zoom in/out, sin descarga) | ✅ |
+| Sección Experiencia Laboral (3 posiciones del CV) | ✅ |
+| Certificados completos con país/ciudad/horas | ✅ |
 | Cookie Consent GDPR | ✅ |
-| PWA Web App Manifest | ✅ |
-| 100% Responsive (móvil-first) | ✅ |
+| 100% Responsive (mobile-first) | ✅ |
 | WCAG 2.2 Nivel A–AAA | ✅ |
+| Sistema de colores semántico (CSS Custom Properties) | ✅ |
 | SEO / Open Graph / JSON-LD | ✅ |
 | CSP / HSTS / X-Frame-Options | ✅ |
-| Logos oficiales (Zod, Meta, TikTok, Overleaf) | ✅ |
-| Selector de idioma con dropdown | ✅ |
-| Botones "Ir al final" / "Ir al inicio" | ✅ |
-| Protección de imágenes | ✅ |
+| Ícono accesibilidad SVG (figura blanca, sin pixelado) | ✅ |
+| Primera persona — concordancia total con CV 2026 | ✅ |
 
 ### Instalación
 
@@ -56,21 +60,70 @@ npm run lint       # ESLint
 npm run type-check # TypeScript check
 ```
 
-### Vista previa en WhatsApp / Telegram
+### Estructura del Proyecto
 
-La página genera automáticamente una vista previa rica al compartir la URL gracias a:
-- `og:image` → `/public/og-image.png` (1200×630 px)
-- `og:title`, `og:description`, `og:type: website`
-- `twitter:card: summary_large_image`
-- `metadataBase` configurado en `next.js` metadata API
+```
+src/
+├── app/
+│   ├── globals.css          # Design tokens, colores semánticos, animaciones
+│   ├── layout.tsx           # Root layout, SEO, JSON-LD, favicon, OG
+│   ├── page.tsx             # Composición de secciones
+│   ├── not-found.tsx        # Página 404 bilingüe
+│   └── sitemap.ts           # Sitemap dinámico
+├── components/
+│   ├── navbar.tsx           # Navegación + nombre siempre visible
+│   ├── hero.tsx             # Typewriter + partículas animadas
+│   ├── about-me.tsx         # Bio CV + proporción foto 35:45
+│   ├── experience.tsx       # ★ NUEVO — Experiencia laboral (3 posiciones)
+│   ├── services.tsx         # Servicios bilingüe
+│   ├── tech-grid.tsx        # Logos oficiales de tecnologías
+│   ├── projects.tsx         # Proyectos + fix título móvil
+│   ├── skills.tsx           # Habilidades + exploratorio
+│   ├── certifications.tsx   # ★ Rediseñado — sin iconos, visor PDF
+│   ├── contact.tsx          # 6 canales de contacto
+│   ├── footer.tsx           # Compliance badges
+│   ├── accessibility-widget.tsx # Ícono SVG blanco, textos corregidos
+│   └── ...
+└── lib/
+    ├── data.ts              # Fuente única de verdad — concordante con CV
+    ├── i18n.ts              # Traducciones ES/EN
+    ├── i18n-provider.tsx    # React context
+    ├── theme-provider.tsx   # Tema claro/oscuro/sistema
+    └── use-reveal.ts        # Intersection Observer
+public/
+├── profile.png              # Foto de perfil (proporción 35:45 mm)
+├── og-image.png             # 1200×630 para WhatsApp/Telegram/LinkedIn
+├── favicon.ico + favicon-*.png
+├── manifest.json            # PWA manifest
+├── robots.txt
+├── certs/                   # PDFs de certificados (solo lectura)
+│   ├── cs50x.pdf
+│   ├── uees-talks.pdf
+│   ├── taller-pc.pdf
+│   ├── biorobotics.pdf
+│   └── carta-recomendacion.pdf
+└── icons/
+    ├── accessibility.svg    # ★ SVG — figura blanca sobre ámbar
+    ├── zod.png              # ★ Sin fondo negro
+    ├── meta.svg
+    ├── overleaf.svg
+    └── tiktok.svg
+```
 
-### Favicon
+### Licencia
 
-Generado desde la foto de perfil del autor. Disponible en:
-- `favicon.ico` — compatibilidad máxima
-- `favicon-16.png`, `favicon-32.png` — navegadores modernos
-- `favicon-180.png` — Apple Touch Icon (iOS)
-- `favicon-192.png`, `favicon-512.png` — PWA / Android
+**Propiedad intelectual de Daniel Fernando Castillo Mera.**
+
+Queda estrictamente prohibida la clonación, copia, distribución o uso no autorizado de este proyecto sin previo permiso escrito. Ver [LICENSE](./LICENSE) para los términos completos.
+
+### Autor
+
+**Daniel Fernando Castillo Mera**
+- 🌐 [danielcastillo-portfolio.vercel.app](https://danielcastillo-portfolio.vercel.app)
+- 💼 [LinkedIn](https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a)
+- 🐙 [GitHub @danielcastillomera](https://github.com/danielcastillomera)
+- 📱 [WhatsApp +593 98 107 6185](https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B)
+- 📧 danielfcastillom@gmail.com
 
 ---
 
@@ -92,32 +145,35 @@ Professional portfolio and services page.
 | Fonts | Google Fonts (DM Sans, JetBrains Mono) |
 | Icons | Devicon CDN, local assets (`/public/icons/`) |
 
-### v6.0.0 Features
+### v7.5.0 Features
 
 | Feature | Status |
 |---------|--------|
 | i18n ES / EN (auto-detection) | ✅ |
 | Typewriter Effect (7 phrases) | ✅ |
-| Favicon from profile photo | ✅ |
-| OG Image for WhatsApp/Telegram | ✅ |
+| Profile photo 35×45 mm ratio (CV standard) | ✅ |
+| Favicon from profile photo (circular, no border) | ✅ |
+| OG Image 1200×630 (WhatsApp/Telegram/LinkedIn) | ✅ |
+| Protected PDF viewer (zoom in/out, no download) | ✅ |
+| Work Experience section (3 positions from CV) | ✅ |
+| Full certificates with country/city/hours | ✅ |
 | GDPR Cookie Consent | ✅ |
-| PWA Web App Manifest | ✅ |
 | 100% Responsive (mobile-first) | ✅ |
 | WCAG 2.2 Level A–AAA | ✅ |
+| Semantic color system (CSS Custom Properties) | ✅ |
 | SEO / Open Graph / JSON-LD | ✅ |
 | CSP / HSTS / X-Frame-Options | ✅ |
-| Official logos (Zod, Meta, TikTok, Overleaf) | ✅ |
-| Dropdown language selector | ✅ |
-| "Go to bottom" / "Go to top" buttons | ✅ |
-| Image protection | ✅ |
+| SVG accessibility icon (white figure, no pixelation) | ✅ |
+| First person — full alignment with CV 2026 | ✅ |
 
-### WhatsApp / Telegram Preview
+### Installation
 
-The page automatically generates rich previews when sharing the URL thanks to:
-- `og:image` → `/public/og-image.png` (1200×630 px)
-- `og:title`, `og:description`, `og:type: website`
-- `twitter:card: summary_large_image`
-- `metadataBase` configured in Next.js metadata API
+```bash
+git clone https://github.com/danielcastillomera/danielcastillo-portfolio.git
+cd danielcastillo-portfolio
+npm install
+npm run dev
+```
 
 ### License
 
@@ -131,5 +187,5 @@ Cloning, copying, distribution or unauthorized use of this project is strictly p
 - 🌐 [danielcastillo-portfolio.vercel.app](https://danielcastillo-portfolio.vercel.app)
 - 💼 [LinkedIn](https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a)
 - 🐙 [GitHub @danielcastillomera](https://github.com/danielcastillomera)
-- 📱 [WhatsApp +593 98 107 6185](https://wa.me/593981076185)
+- 📱 [WhatsApp +593 98 107 6185](https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B)
 - 📧 danielfcastillom@gmail.com

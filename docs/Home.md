@@ -1,4 +1,4 @@
-# Wiki — Daniel Fernando Castillo Mera Portfolio v6.0.0
+# Wiki — Daniel Fernando Castillo Mera Portfolio v7.5.0
 
 ---
 
@@ -7,10 +7,10 @@
 Bienvenido a la documentación del portafolio profesional de Daniel Fernando Castillo Mera.
 
 ### Páginas del Wiki
-- [Arquitectura](./Architecture.md) — Stack tecnológico, estructura de archivos, patrones de diseño
-- [Despliegue](./Deployment.md) — Instalación local y deployment en Vercel
-- [Accesibilidad](./Accessibility.md) — Cumplimiento WCAG 2.2
-- [Internacionalización](./I18n.md) — Sistema i18n ES/EN
+- [Arquitectura](./Architecture.md) — Stack, estructura, patrones
+- [Despliegue](./Deployment.md) — Instalación y Vercel
+- [Accesibilidad](./Accessibility.md) — WCAG 2.2
+- [Internacionalización](./I18n.md) — Sistema ES/EN
 
 ### Información General
 
@@ -18,42 +18,29 @@ Bienvenido a la documentación del portafolio profesional de Daniel Fernando Cas
 |-------|-------|
 | Autor | Daniel Fernando Castillo Mera |
 | Stack | Next.js 15, React 19, TypeScript 5.9, Tailwind CSS 4 |
-| Deployment | Vercel + GitHub |
-| Versión | 6.0.0 |
+| Versión | 7.5.0 |
 | Idiomas | ES (default), EN |
 | Licencia | Propietaria |
 
-### Enlaces
-
-| Recurso | URL |
-|---------|-----|
-| Portafolio en vivo | https://danielcastillo-portfolio.vercel.app |
-| Repositorio | https://github.com/danielcastillomera/danielcastillo-portfolio |
-| Dashboard Enterprise | https://github.com/danielcastillomera/dashboard-enterprise |
-| LinkedIn | https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a |
-| WhatsApp | https://wa.me/593981076185 |
+### Novedades v7.5.0
+- Foto de perfil en proporción curricular 35×45 mm
+- Sección Experiencia Laboral (3 posiciones del CV)
+- Visor PDF protegido con zoom in/out
+- Ícono accesibilidad SVG (figura blanca)
+- Sistema de colores semántico (CSS Custom Properties)
+- Certificados completos con país/ciudad/horas/estado
+- Primera persona en toda la redacción
 
 ---
 
 ## English (United States)
 
-Welcome to the professional portfolio documentation of Daniel Fernando Castillo Mera.
+Welcome to the portfolio documentation of Daniel Fernando Castillo Mera.
 
 ### Wiki Pages
-- [Architecture](./Architecture.md) — Tech stack, file structure, design patterns
-- [Deployment](./Deployment.md) — Local installation and Vercel deployment
-- [Accessibility](./Accessibility.md) — WCAG 2.2 compliance
-- [Internationalization](./I18n.md) — i18n ES/EN system
+- [Architecture](./Architecture.md)
+- [Deployment](./Deployment.md)
+- [Accessibility](./Accessibility.md)
+- [Internationalization](./I18n.md)
 
-### General Information
-
-| Field | Value |
-|-------|-------|
-| Author | Daniel Fernando Castillo Mera |
-| Stack | Next.js 15, React 19, TypeScript 5.9, Tailwind CSS 4 |
-| Deployment | Vercel + GitHub |
-| Version | 6.0.0 |
-| Languages | ES (default), EN |
-| License | Proprietary |
-
-**Daniel Fernando Castillo Mera** · danielfcastillom@gmail.com · All rights reserved.
+**Daniel Fernando Castillo Mera** · danielfcastillom@gmail.com

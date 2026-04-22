@@ -2,11 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-interface UseRevealOptions {
-  threshold?: number;
-  rootMargin?: string;
-  once?: boolean;
-}
+interface UseRevealOptions { threshold?: number; rootMargin?: string; once?: boolean; }
 
 export function useReveal(options: UseRevealOptions = {}) {
   const { threshold = 0.15, rootMargin = '0px 0px -60px 0px', once = true } = options;
@@ -14,29 +10,15 @@ export function useReveal(options: UseRevealOptions = {}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (once) observer.unobserve(element);
-        } else if (!once) {
-          setIsVisible(false);
-        }
-      },
-      { threshold, rootMargin }
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setIsVisible(true); return; }
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setIsVisible(true); if (once) obs.unobserve(el); }
+      else if (!once) setIsVisible(false);
+    }, { threshold, rootMargin });
+    obs.observe(el);
+    return () => obs.disconnect();
   }, [threshold, rootMargin, once]);
 
   return { ref, isVisible };
