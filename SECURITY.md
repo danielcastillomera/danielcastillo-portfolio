@@ -1,98 +1,107 @@
-# Política de Seguridad / Security Policy — v7.5.0
-
----
+# Política de Seguridad / Security Policy
 
 ## Español (México)
 
-### Reportar una Vulnerabilidad
+### Versiones soportadas
 
-Si descubres una vulnerabilidad de seguridad, repórtala de forma responsable.
+| Versión | Soporte de seguridad |
+|---------|----------------------|
+| 7.5.5   | ✅ Activa (versión actual) |
+| 7.5.0   | ⚠️ Solo correcciones críticas |
+| < 7.5.0 | ❌ Sin soporte |
 
-**Contacto:** Daniel Fernando Castillo Mera
-**Email:** danielfcastillom@gmail.com
-**Tiempo de respuesta:** Dentro de 48 horas
+### Reporte de vulnerabilidades
 
-### Medidas de Seguridad
+Si descubres una vulnerabilidad de seguridad en este proyecto, **no la reportes como issue público**. Sigue el proceso de divulgación responsable:
 
-#### Headers HTTP (via `next.config.ts`)
+1. **Envía un correo** a: `danielfcastillom@gmail.com`
+2. **Asunto**: `[SECURITY] danielcastillo-portfolio — [descripción breve]`
+3. **Incluye** en el cuerpo del mensaje:
+   - Descripción detallada de la vulnerabilidad
+   - Pasos para reproducirla
+   - Impacto potencial estimado
+   - Tu nombre o alias (opcional, para crédito)
 
-| Header | Valor |
-|--------|-------|
-| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
-| `Content-Security-Policy` | Restringe scripts, estilos, fuentes e imágenes a fuentes confiables |
-| `X-Frame-Options` | `SAMEORIGIN` — previene clickjacking |
-| `X-Content-Type-Options` | `nosniff` |
-| `X-XSS-Protection` | `1; mode=block` |
-| `Referrer-Policy` | `strict-origin-when-cross-origin` |
-| `Permissions-Policy` | Deshabilita cámara, micrófono y geolocalización |
+### Tiempo de respuesta
 
-#### Seguridad de la Aplicación
-- Server-side rendering con Next.js (sin claves API expuestas).
-- Protección de imágenes contra copia no autorizada (clic derecho, arrastrar).
-- Visor PDF con `sandbox` — sin descarga de documentos.
-- Formularios de entrada: sitio estático, sin superficies de ataque.
-- `poweredByHeader: false` para evitar fingerprinting.
-- Consentimiento de cookies GDPR — sin seguimiento de terceros sin consentimiento.
+| Acción | Plazo estimado |
+|--------|----------------|
+| Confirmación de recepción | 48 horas hábiles |
+| Evaluación inicial | 5 días hábiles |
+| Corrección y despliegue | 15 días hábiles (según severidad) |
+| Divulgación pública | Tras corrección verificada |
 
-#### Privacidad
-- Sin cookies de análisis ni seguimiento por defecto.
-- Preferencias guardadas solo en `localStorage` del usuario.
-- Sin recopilación de datos personales en el servidor.
+### Medidas de seguridad implementadas
 
-### Versiones Soportadas
+- **Content Security Policy (CSP)** — restringe fuentes de scripts, estilos, imágenes, objetos e iframes
+- **HSTS** — `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+- **X-Frame-Options: SAMEORIGIN** — previene clickjacking
+- **X-Content-Type-Options: nosniff** — previene MIME sniffing
+- **Referrer-Policy: strict-origin-when-cross-origin** — control de información del referrer
+- **Permissions-Policy** — desactiva cámara, micrófono y geolocalización
+- **Protección de imágenes** — `contextmenu` y `dragstart` deshabilitados en imágenes de perfil
+- **No exposición de datos sensibles** — sin variables de entorno expuestas al cliente
+- **Headers de caché seguros** — distintos para PDFs, assets estáticos e imágenes dinámicas
 
-| Versión | Soportada |
-|---------|-----------|
-| 7.5.x   | ✅ Sí    |
-| 7.0.x   | ❌ No    |
-| < 7.0   | ❌ No    |
+### Alcance
+
+Esta política aplica únicamente al código fuente del repositorio `danielcastillomera/danielcastillo-portfolio` y a la instancia de producción en `https://danielcastillo-portfolio.vercel.app/`.
+
+No aplica a:
+- Infraestructura de Vercel (reportar directamente a Vercel)
+- Servicios de terceros integrados (GitHub API, Google Fonts, Google Docs viewer)
+
+---
 
 ---
 
 ## English (United States)
 
-### Reporting a Vulnerability
-
-If you discover a security vulnerability, please report it responsibly.
-
-**Contact:** Daniel Fernando Castillo Mera
-**Email:** danielfcastillom@gmail.com
-**Response Time:** Within 48 hours
-
-### Security Measures
-
-#### HTTP Headers (via `next.config.ts`)
-
-| Header | Value |
-|--------|-------|
-| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
-| `Content-Security-Policy` | Restricts scripts, styles, fonts, images to trusted sources |
-| `X-Frame-Options` | `SAMEORIGIN` — prevents clickjacking |
-| `X-Content-Type-Options` | `nosniff` |
-| `X-XSS-Protection` | `1; mode=block` |
-| `Referrer-Policy` | `strict-origin-when-cross-origin` |
-| `Permissions-Policy` | Disables camera, microphone and geolocation |
-
-#### Application Security
-- Server-side rendering with Next.js (no exposed API keys).
-- Image protection against unauthorized copying (right-click, drag).
-- PDF viewer with `sandbox` — no document download.
-- `poweredByHeader: false` to prevent technology fingerprinting.
-- GDPR cookie consent — no third-party tracking without explicit consent.
-
-#### Privacy
-- No analytics or tracking cookies by default.
-- User preferences stored locally in `localStorage` only.
-- No server-side personal data collection.
-
 ### Supported Versions
 
-| Version | Supported |
-|---------|-----------|
-| 7.5.x   | ✅ Yes   |
-| 7.0.x   | ❌ No    |
-| < 7.0   | ❌ No    |
+| Version | Security Support |
+|---------|-----------------|
+| 7.5.5   | ✅ Active (current version) |
+| 7.5.0   | ⚠️ Critical fixes only |
+| < 7.5.0 | ❌ No support |
 
----
+### Reporting a Vulnerability
 
-**Daniel Fernando Castillo Mera** · danielfcastillom@gmail.com · All rights reserved.
+If you discover a security vulnerability in this project, **do not report it as a public issue**. Follow responsible disclosure:
+
+1. **Send an email** to: `danielfcastillom@gmail.com`
+2. **Subject**: `[SECURITY] danielcastillo-portfolio — [brief description]`
+3. **Include** in the message body:
+   - Detailed description of the vulnerability
+   - Steps to reproduce it
+   - Estimated potential impact
+   - Your name or alias (optional, for credit)
+
+### Response Timeline
+
+| Action | Estimated Timeframe |
+|--------|---------------------|
+| Receipt confirmation | 48 business hours |
+| Initial assessment | 5 business days |
+| Fix and deployment | 15 business days (depending on severity) |
+| Public disclosure | After verified fix |
+
+### Implemented Security Measures
+
+- **Content Security Policy (CSP)** — restricts sources of scripts, styles, images, objects and iframes
+- **HSTS** — `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+- **X-Frame-Options: SAMEORIGIN** — prevents clickjacking
+- **X-Content-Type-Options: nosniff** — prevents MIME sniffing
+- **Referrer-Policy: strict-origin-when-cross-origin** — referrer information control
+- **Permissions-Policy** — disables camera, microphone and geolocation
+- **Image protection** — `contextmenu` and `dragstart` disabled on profile images
+- **No sensitive data exposure** — no environment variables exposed to client
+- **Secure cache headers** — different policies for PDFs, static assets and dynamic images
+
+### Scope
+
+This policy applies only to the source code of the `danielcastillomera/danielcastillo-portfolio` repository and the production instance at `https://danielcastillo-portfolio.vercel.app/`.
+
+Does not apply to:
+- Vercel infrastructure (report directly to Vercel)
+- Integrated third-party services (GitHub API, Google Fonts, Google Docs viewer)

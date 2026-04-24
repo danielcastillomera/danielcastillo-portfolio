@@ -23,7 +23,7 @@ export default function Skills() {
       <div ref={sectionRef} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.skills.sectionLabel}</span>
-          <h2 id="skills-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>{t.skills.title}</h2>
+          <h2 id="skills-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>{t.skills.title}</h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

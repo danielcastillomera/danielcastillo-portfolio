@@ -14,7 +14,7 @@ export default function AboutMe() {
   const stats = [
     { value: '10+', label: t.about.statsModules },
     { value: '5',   label: t.about.statsProjects },
-    { value: 'v7.5.0', label: t.about.statsVersion },
+    { value: 'v7.5.5', label: t.about.statsVersion },
     { value: '6/10', label: t.about.statsSemester },
   ];
 
@@ -28,12 +28,68 @@ export default function AboutMe() {
 
   const edu = EDUCATION[1]; // Universidad de Guayaquil
 
-  /* === BIO EN PRIMERA PERSONA, concordante con CV === */
-  const bioES = 'Soy Junior Full Stack Engineer/Developer con proyectos reales en producción, experiencia laboral activa en marketing digital, ventas y atención al cliente y disponibilidad inmediata para contratación. Curso Ingeniería en Software en la Universidad de Guayaquil (sexto semestre), combinando formación académica sólida con desarrollo profesional continuo, autodirigido y orientado a resultados.';
-  const bioEN = "I'm a Junior Full Stack Engineer/Developer with real production projects, active work experience in digital marketing, sales and customer service, and immediate availability for hiring. I study Software Engineering at the University of Guayaquil (sixth semester), combining solid academic training with continuous, self-directed and results-oriented professional development.";
+  /* Bio párrafo 1 */
+  const bioES = (
+    <>
+      Soy <strong className="font-bold text-accent-600 dark:text-accent-400">Junior Full Stack Engineer/Developer</strong> con{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">proyectos reales en producción</strong>, experiencia laboral activa en{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">marketing digital, ventas y atención al cliente</strong> y{' '}
+      disponibilidad inmediata para contratación. Curso{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Ingeniería en Software</strong> en la{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Universidad de Guayaquil</strong> (sexto semestre), combinando{' '}
+      formación académica sólida con desarrollo profesional continuo, autodirigido y orientado a resultados.
+    </>
+  );
+  const bioEN = (
+    <>
+      I&apos;m a <strong className="font-bold text-accent-600 dark:text-accent-400">Junior Full Stack Engineer/Developer</strong> with{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">real production projects</strong>, active work experience in{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">digital marketing, sales and customer service</strong>, and{' '}
+      immediate availability for hiring. I study{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Software Engineering</strong> at the{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">University of Guayaquil</strong> (sixth semester), combining solid academic training with continuous, self-directed and results-oriented professional development.
+    </>
+  );
 
-  const paraES = 'Diseñé, construí y desplegué en producción Dashboard Enterprise, sistema de gestión empresarial multi-módulo orientado al comercio y retail ecuatoriano, con motor de facturación electrónica certificado bajo normativa SRI Ecuador. Aplico principios de Clean Code, SOLID, DRY y KISS; trabajo con metodologías Agile y Scrum, control de versiones con Git y flujos de desarrollo asistido por IA (GitHub Copilot, Claude Code, Cursor).';
-  const paraEN = 'I designed, built and deployed to production Dashboard Enterprise, a multi-module enterprise management system oriented to Ecuadorian commerce and retail, with an electronic invoicing engine certified under SRI Ecuador regulations. I apply Clean Code, SOLID, DRY and KISS principles; I work with Agile and Scrum methodologies, version control with Git and AI-assisted development flows (GitHub Copilot, Claude Code, Cursor).';
+  /* Bio párrafo 2 */
+  const paraES = (
+    <>
+      Diseñé, construí y desplegué en producción{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Dashboard Enterprise</strong>, sistema de gestión empresarial{' '}
+      multi-módulo orientado al comercio y retail ecuatoriano, con{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">motor de facturación electrónica certificado bajo normativa SRI Ecuador</strong>.{' '}
+      Aplico principios de{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Clean Code, SOLID, DRY y KISS</strong>; trabajo con metodologías{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Agile y Scrum</strong>, control de versiones con{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Git</strong> y flujos de desarrollo asistido por IA{' '}
+      (GitHub Copilot, Claude Code, Cursor).
+    </>
+  );
+  const paraEN = (
+    <>
+      I designed, built and deployed to production{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Dashboard Enterprise</strong>, a multi-module enterprise management system oriented to Ecuadorian commerce and retail, with an{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">electronic invoicing engine certified under SRI Ecuador regulations</strong>.{' '}
+      I apply{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Clean Code, SOLID, DRY and KISS</strong> principles; I work with{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Agile and Scrum</strong> methodologies, version control with{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Git</strong> and AI-assisted development flows (GitHub Copilot, Claude Code, Cursor).
+    </>
+  );
+
+  /* Frase final */
+  const finalSentenceES = (
+    <>
+      Para mí, el código no es solo una carrera:{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">es la herramienta con la que construyo soluciones digitales reales, documentadas y escalables</strong>.
+    </>
+  );
+  const finalSentenceEN = (
+    <>
+      For me, code is not just a career:{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">it is the tool with which I build real, documented and scalable digital solutions</strong>.
+    </>
+  );
 
   return (
     <section id="sobre-mi" className="relative py-24 sm:py-32" aria-labelledby="about-heading">
@@ -42,7 +98,7 @@ export default function AboutMe() {
 
         <div className="mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.about.sectionLabel}</span>
-          <h2 id="about-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
+          <h2 id="about-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
             {t.about.title}
           </h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
@@ -54,12 +110,13 @@ export default function AboutMe() {
             {/* Profile card */}
             <div className="glass rounded-xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5">
               <div className="shrink-0">
-                <div className="relative overflow-hidden ring-2 ring-accent-500/20 shadow-lg rounded-lg" style={{ width: '80px', height: '103px' }}>
+                {/* Foto perfil: ratio 799x1238, se muestra como tarjeta proporcional */}
+                <div className="relative overflow-hidden ring-2 ring-accent-500/20 shadow-lg rounded-lg" style={{ width: '80px', height: '124px' }}>
                   <ProtectedImage
                     src={PERSONAL.profileImage}
                     alt={`Foto de perfil de ${PERSONAL.name}`}
                     width={80}
-                    height={103}
+                    height={124}
                     className="h-full w-full object-cover object-top"
                   />
                 </div>
@@ -89,9 +146,10 @@ export default function AboutMe() {
               </div>
             </div>
 
-            {/* Bio — primera persona, concordante con CV */}
+            {/* Bio */}
             <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100">{locale === 'en' ? bioEN : bioES}</p>
             <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100">{locale === 'en' ? paraEN : paraES}</p>
+            <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100 italic">{locale === 'en' ? finalSentenceEN : finalSentenceES}</p>
 
             {/* Role tags */}
             <div className="flex flex-wrap gap-2">
@@ -154,7 +212,7 @@ export default function AboutMe() {
             </div>
           </div>
 
-          {/* Right — stats */}
+          {/* Right — stats + idioma */}
           <div className="lg:col-span-2">
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
@@ -166,9 +224,25 @@ export default function AboutMe() {
               ))}
             </div>
 
-            {/* Idioma badge */}
+            {/* Inglés B1 — bandera siempre visible (desktop y móvil) */}
             <div className="mt-4 glass rounded-xl p-4 flex items-center gap-3">
-              <span className="text-2xl" aria-hidden="true">🇺🇸</span>
+              {/* Bandera USA SVG inline — siempre visible en cualquier dispositivo */}
+              <svg className="w-8 h-6 shrink-0 rounded-sm overflow-hidden shadow-sm" viewBox="0 0 60 40" fill="none" aria-hidden="true">
+                <rect width="60" height="40" fill="#B22234"/>
+                <rect y="3.08" width="60" height="3.08" fill="#fff"/>
+                <rect y="9.23" width="60" height="3.08" fill="#fff"/>
+                <rect y="15.38" width="60" height="3.08" fill="#fff"/>
+                <rect y="21.54" width="60" height="3.08" fill="#fff"/>
+                <rect y="27.69" width="60" height="3.08" fill="#fff"/>
+                <rect y="33.85" width="60" height="3.08" fill="#fff"/>
+                <rect width="24" height="21.54" fill="#3C3B6E"/>
+                {/* Stars simplified */}
+                {[...Array(6)].map((_, row) =>
+                  [...Array(row % 2 === 0 ? 6 : 5)].map((_, col) => (
+                    <circle key={`${row}-${col}`} cx={2 + col * 4 + (row % 2 === 0 ? 0 : 2)} cy={2 + row * 3.5} r="0.9" fill="#fff" />
+                  ))
+                )}
+              </svg>
               <div>
                 <p className="text-sm font-semibold text-gray-900 dark:text-white">{locale === 'en' ? 'English B1' : 'Inglés B1'}</p>
                 <p className="text-xs text-gray-700 dark:text-gray-300">{locale === 'en' ? 'Written, listening and spoken' : 'Escrito, escucha y hablado'}</p>

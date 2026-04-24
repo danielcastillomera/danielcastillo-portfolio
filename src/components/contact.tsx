@@ -23,7 +23,7 @@ export default function Contact() {
       </div>
       <div ref={sectionRef} className={`relative mx-auto max-w-5xl px-6 lg:px-8 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.contact.sectionLabel}</span>
-        <h2 id="contact-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>{t.contact.title}</h2>
+        <h2 id="contact-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl lg:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>{t.contact.title}</h2>
         <p className="mt-4 text-lg text-gray-900 dark:text-gray-100 max-w-2xl mx-auto">{t.contact.subtitle}</p>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map(c => (

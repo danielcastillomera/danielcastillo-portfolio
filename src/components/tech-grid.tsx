@@ -17,7 +17,7 @@ export default function TechGrid() {
       <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.techGrid.sectionLabel}</span>
-          <h2 id="tech-heading" className="mt-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl" style={{ fontFamily: 'var(--font-display)' }}>{t.techGrid.title}</h2>
+          <h2 id="tech-heading" className="mt-3 text-2xl font-bold tracking-tight section-title sm:text-3xl" style={{ fontFamily: 'var(--font-display)' }}>{t.techGrid.title}</h2>
         </div>
         {TECH_GRID_CATEGORIES.map(cat => (
           <div key={cat.key} className="mb-8 last:mb-0">

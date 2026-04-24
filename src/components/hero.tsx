@@ -80,26 +80,43 @@ export default function Hero() {
         <div className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-gray-300/20 dark:bg-navy-500/10 blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
       </div>
       <div className="relative z-10 mx-auto max-w-5xl px-6 pt-28 pb-16 text-center lg:px-8">
+
+        {/* Foto de perfil — mantiene ratio 799:1238, mostrada en círculo en el hero */}
         <div className="flex justify-center mb-4 animate-scale-in">
           <div className="relative">
             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent-400 via-accent-500 to-orange-500 opacity-50 blur-md" aria-hidden="true" />
-            {/* Profile: 35:45 ratio, circular display for hero */}
+            {/*
+              La imagen original es 799×1238px (ratio ~0.645).
+              En el héroe la mostramos como círculo — la foto se centra en object-top
+              para mostrar el rostro correctamente.
+            */}
             <div className="relative h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden ring-4 ring-white dark:ring-navy-900 shadow-2xl">
-              <ProtectedImage src={PERSONAL.profileImage} alt={`Foto de perfil de ${PERSONAL.name}`} width={144} height={144} className="h-full w-full object-cover object-top" priority />
+              <ProtectedImage
+                src={PERSONAL.profileImage}
+                alt={`Foto de perfil de ${PERSONAL.name}`}
+                width={144}
+                height={223}
+                className="h-full w-full object-cover object-top"
+                priority
+              />
             </div>
           </div>
         </div>
+
         <div className="inline-flex items-center gap-2.5 rounded-full border border-green-500/25 bg-green-500/[0.06] px-5 py-2 text-xs font-semibold text-green-700 dark:text-green-400 mb-8 animate-fade-in">
           <svg className="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
           {t.hero.badge}
         </div>
+
         <h1 className="min-h-[4.5rem] sm:min-h-[5rem] md:min-h-[7rem] text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-5xl lg:text-6xl animate-slide-up" style={{ fontFamily: 'var(--font-display)' }} aria-live="polite" aria-atomic="true">
           <span className="text-gradient">{displayText}</span>
           <span className="inline-block w-0.5 h-[0.85em] ml-1 align-middle bg-accent-500 rounded-sm" style={{ animation: isTyping ? 'none' : 'blink-cursor 1s step-end infinite' }} aria-hidden="true" />
         </h1>
+
         <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-900 dark:text-gray-100 sm:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.15s' }}>
           {t.hero.subtitle}
         </p>
+
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-700 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.25s' }}>
           <span className="flex items-center gap-1.5"><svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>{PERSONAL.roleShort}</span>
           <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
@@ -109,6 +126,7 @@ export default function Hero() {
           <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
           <span>{PERSONAL.age} años · {PERSONAL.location}</span>
         </div>
+
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
           <a href="#servicios" className="group inline-flex items-center gap-2 rounded-xl bg-accent-500 px-7 py-3.5 text-base font-bold text-black shadow-lg shadow-accent-500/20 transition-all hover:bg-accent-400 hover:-translate-y-0.5 active:scale-95">
             {t.hero.ctaServices}
@@ -118,9 +136,11 @@ export default function Hero() {
             <GitHubIcon className="w-5 h-5" />{t.hero.ctaGitHub}
           </a>
         </div>
+
+        {/* Scroll indicator — visible en móvil Y escritorio */}
         <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-gray-600 dark:text-gray-400" style={{ animationDelay: '1s' }} aria-hidden="true">
           <span className="text-xs font-medium uppercase tracking-widest">{t.hero.scroll}</span>
-          <div className="hidden sm:flex w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 items-start justify-center p-1">
+          <div className="flex w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 items-start justify-center p-1">
             <div className="w-1 h-2 rounded-full bg-accent-500 animate-float" />
           </div>
         </div>

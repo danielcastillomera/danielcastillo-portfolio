@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { NAV_LINKS, PERSONAL } from '@/lib/data';
 import ThemeToggle from './theme-toggle';
-import ProtectedImage from './protected-image';
 import LanguageToggle from './language-toggle';
 import { useT } from '@/lib/i18n-provider';
 
@@ -14,8 +13,8 @@ export default function Navbar() {
   const t = useT();
 
   const navLabels: Record<string, string> = {
-    inicio: t.nav.inicio, sobreMi: t.nav.sobreMi, servicios: t.nav.servicios,
-    proyectos: t.nav.proyectos, habilidades: t.nav.habilidades,
+    inicio: t.nav.inicio, sobreMi: t.nav.sobreMi, experiencia: t.nav.experiencia,
+    servicios: t.nav.servicios, proyectos: t.nav.proyectos, habilidades: t.nav.habilidades,
     certificaciones: t.nav.certificaciones, contacto: t.nav.contacto,
   };
 
@@ -46,12 +45,9 @@ export default function Navbar() {
   return (
     <header role="banner" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass shadow-lg shadow-black/5 dark:shadow-navy-950/50' : 'bg-transparent'}`}>
       <nav role="navigation" aria-label="Navegación principal" className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        {/* Logo — name always visible on all screen sizes */}
-        <a href="#inicio" className="group flex items-center gap-2.5 transition-opacity hover:opacity-80 shrink-0 min-w-0" aria-label="Ir al inicio">
-          <div className="h-8 w-8 rounded-full overflow-hidden ring-2 ring-accent-500/30 shrink-0">
-            <ProtectedImage src={PERSONAL.profileImage} alt={PERSONAL.name} width={32} height={32} className="h-full w-full object-cover profile-cv" priority />
-          </div>
-          {/* Name: always shown — two lines on all sizes */}
+
+        {/* Logo — solo nombre, sin foto de perfil */}
+        <a href="#inicio" className="group flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0 min-w-0" aria-label="Ir al inicio">
           <span className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight whitespace-nowrap">
             Daniel Fernando<br />Castillo Mera
           </span>
@@ -66,7 +62,11 @@ export default function Navbar() {
             return (
               <li key={link.href}>
                 <a href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${isActive ? 'text-accent-500' : 'text-gray-900 dark:text-navy-100 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'}`}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                    isActive
+                      ? 'text-accent-500'
+                      : 'text-gray-900 dark:text-white hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
+                  }`}
                   aria-current={isActive ? 'true' : undefined}>
                   {label}
                   {isActive && <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-4 bg-accent-500 rounded-full" aria-hidden="true" />}
@@ -108,7 +108,7 @@ export default function Navbar() {
             const label = navLabels[link.labelKey] ?? link.labelKey;
             return (
               <a key={link.href} href={link.href}
-                className={`text-2xl font-medium text-gray-900 dark:text-navy-100 transition-all duration-500 hover:text-accent-500 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+                className={`text-2xl font-medium text-gray-900 dark:text-white transition-all duration-500 hover:text-accent-500 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
                 style={{ transitionDelay: isOpen ? `${i * 60}ms` : '0ms' }}
                 onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1}>
                 {label}

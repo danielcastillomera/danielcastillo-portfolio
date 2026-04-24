@@ -13,38 +13,53 @@ export default function Experience() {
     <section id="experiencia" className="relative py-24 sm:py-32" aria-labelledby="exp-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/40 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
       <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+
+        {/* Encabezado */}
         <div className="mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.experience.sectionLabel}</span>
-          <h2 id="exp-heading" className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">
+            {t.experience.sectionLabel}
+          </span>
+          <h2 id="exp-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
             {t.experience.title}
           </h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
         </div>
 
+        {/* Timeline */}
         <div className="relative">
-          {/* Vertical timeline line */}
-          <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-500/60 via-accent-500/30 to-transparent" aria-hidden="true" />
+          {/* Línea vertical — decorativa, sin imagen */}
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-500/60 via-accent-500/20 to-transparent hidden sm:block" aria-hidden="true" />
 
           <div className="space-y-10">
             {WORK_EXPERIENCE.map((exp, i) => (
-              <article key={exp.id}
-                className="relative pl-12 sm:pl-20"
-                style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: `opacity 0.6s ease ${i * 120}ms, transform 0.6s ease ${i * 120}ms` }}
-                aria-label={`${locale === 'en' ? exp.titleEn : exp.title} — ${exp.company}`}>
-
-                {/* Timeline dot */}
-                <div className="absolute left-2 sm:left-6 top-5 flex items-center justify-center">
-                  <div className={`w-4 h-4 rounded-full border-2 border-white dark:border-navy-950 ${exp.type === 'active' ? 'bg-accent-500' : 'bg-navy-400 dark:bg-navy-500'}`} aria-hidden="true" />
-                  {exp.type === 'active' && <div className="absolute w-4 h-4 rounded-full bg-accent-500 animate-ping opacity-30" aria-hidden="true" />}
+              <article
+                key={exp.id}
+                className="relative sm:pl-10"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transition: `opacity 0.6s ease ${i * 120}ms, transform 0.6s ease ${i * 120}ms`,
+                }}
+                aria-label={`${locale === 'en' ? exp.titleEn : exp.title} — ${exp.company}`}
+              >
+                {/* Dot timeline — solo forma geométrica, sin iconos */}
+                <div className="absolute left-0 top-6 hidden sm:flex items-center justify-center -translate-x-[calc(50%-0.5px)]">
+                  <div className={`w-3 h-3 rounded-full border-2 border-white dark:border-navy-950 z-10 ${exp.type === 'active' ? 'bg-accent-500' : 'bg-gray-400 dark:bg-navy-500'}`} aria-hidden="true" />
+                  {exp.type === 'active' && (
+                    <div className="absolute w-3 h-3 rounded-full bg-accent-500 animate-ping opacity-25" aria-hidden="true" />
+                  )}
                 </div>
 
                 <div className="glass rounded-xl p-5 sm:p-6 card-glow">
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  {/* Cabecera */}
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div className="min-w-0">
                       <h3 className="text-base font-bold text-gray-900 dark:text-white leading-snug">
                         {locale === 'en' ? exp.titleEn : exp.title}
                       </h3>
-                      <p className="text-sm font-semibold text-accent-600 dark:text-accent-400 mt-0.5">{exp.company}</p>
+                      <p className="text-sm font-semibold text-accent-600 dark:text-accent-400 mt-0.5">
+                        {exp.company}
+                      </p>
                     </div>
                     <span className={`shrink-0 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${exp.type === 'active' ? 'border-accent-500/30 bg-accent-500/10 text-accent-600 dark:text-accent-400' : 'border-gray-400/30 bg-gray-100 dark:bg-navy-800 text-gray-600 dark:text-gray-300'}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${exp.type === 'active' ? 'bg-accent-500 animate-pulse' : 'bg-gray-400'}`} aria-hidden="true" />
@@ -52,23 +67,18 @@ export default function Experience() {
                     </span>
                   </div>
 
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4 text-xs text-gray-600 dark:text-gray-400">
-                    <span className="flex items-center gap-1">
-                      <svg className="w-3.5 h-3.5 text-accent-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5" /></svg>
-                      {locale === 'en' ? exp.periodEn : exp.period}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <svg className="w-3.5 h-3.5 text-accent-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
-                      {exp.location}
-                    </span>
+                  {/* Fecha y ubicación — solo texto, sin iconos ni imágenes */}
+                  <div className="flex flex-wrap gap-x-3 gap-y-0.5 mb-4 text-xs text-gray-600 dark:text-gray-400">
+                    <span>{locale === 'en' ? exp.periodEn : exp.period}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{exp.location}</span>
                   </div>
 
+                  {/* Tareas — solo texto con bullet decorativo mínimo */}
                   <ul className="space-y-2" role="list">
                     {(locale === 'en' ? exp.tasksEn : exp.tasks).map((task, ti) => (
-                      <li key={ti} className="flex items-start gap-2.5 text-sm text-gray-800 dark:text-gray-200">
-                        <svg className="w-4 h-4 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
+                      <li key={ti} className="flex items-start gap-2 text-sm text-gray-800 dark:text-gray-200">
+                        <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent-500/70 shrink-0" aria-hidden="true" />
                         {task}
                       </li>
                     ))}

@@ -6,6 +6,19 @@ import { useT } from '@/lib/i18n-provider';
 interface A11ySettings { fontSize: number; highContrast: boolean; reducedMotion: boolean; highlightLinks: boolean; largeCursor: boolean; }
 const DEFAULT: A11ySettings = { fontSize: 0, highContrast: false, reducedMotion: false, highlightLinks: false, largeCursor: false };
 
+// Icono ISO de accesibilidad — figura con brazos extendidos horizontalmente (no deformado)
+function AccessibilityIcon({ className, color = 'white' }: { className?: string; color?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill={color} aria-hidden="true" style={{ display:'block', flexShrink:0 }}>
+      <circle cx="50" cy="18" r="9" />
+      <rect x="13" y="35" width="74" height="8" rx="4" />
+      <rect x="46" y="35" width="8" height="31" rx="4" />
+      <rect x="46" y="62" width="8" height="28" rx="4" transform="rotate(18 50 65)" />
+      <rect x="46" y="62" width="8" height="28" rx="4" transform="rotate(-18 50 65)" />
+    </svg>
+  );
+}
+
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
   const [settings, setSettings] = useState<A11ySettings>(DEFAULT);
@@ -43,25 +56,18 @@ export default function AccessibilityWidget() {
 
   return (
     <>
-      {/* Trigger button — SVG icon with white figure, amber background */}
       <button type="button" onClick={() => setOpen(!open)}
         className={`fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition-all duration-300 bg-accent-500 hover:bg-accent-400 ${open ? 'scale-90 ring-2 ring-accent-300' : 'hover:scale-105'}`}
         aria-expanded={open} aria-controls="a11y-panel" aria-label={t.a11y.label} title={t.a11y.title}>
-        {/* Inline SVG: universal accessibility symbol, white figure */}
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-          <path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8 3.5-8 1.5-8-1.5-.4 2 4.4.8v3l-3 7 2 .7 2.8-6.5h.4l2.8 6.5 2-.7-3-7V7.8l4.4-.8z"/>
-        </svg>
+        <AccessibilityIcon className="w-7 h-7" color="white" />
       </button>
 
-      {/* Panel */}
       <div id="a11y-panel" role="dialog" aria-label={t.a11y.title} aria-modal="false"
         className={`fixed bottom-20 left-6 z-50 w-72 rounded-xl shadow-2xl transition-all duration-300 ${open ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-4 opacity-0 pointer-events-none'} bg-white dark:bg-navy-900 ring-1 ring-gray-200 dark:ring-navy-700`}>
 
         <div className="flex items-center justify-between border-b border-gray-100 dark:border-navy-700 px-4 py-3">
           <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <svg className="w-4 h-4 text-accent-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8 3.5-8 1.5-8-1.5-.4 2 4.4.8v3l-3 7 2 .7 2.8-6.5h.4l2.8 6.5 2-.7-3-7V7.8l4.4-.8z"/>
-            </svg>
+            <AccessibilityIcon className="w-4 h-4 text-accent-500" color="currentColor" />
             {t.a11y.title}
           </h3>
           <button type="button" onClick={reset} className="text-xs font-medium text-accent-500 hover:text-accent-600 transition-colors">{t.a11y.restore}</button>

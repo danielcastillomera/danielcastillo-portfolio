@@ -405,3 +405,11 @@ img, svg image {
   body { background: white !important; color: black !important; }
   .glass { background: white !important; border: 1px solid #ccc !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   v7.5.5 — SECTION TITLES amber #F59E0B (cambio 3)
+   Aplica a todos los h2 de sección principal del portafolio.
+   ═══════════════════════════════════════════════════════════════ */
+.section-title {
+  color: #F59E0B !important;
+}
