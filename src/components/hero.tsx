@@ -137,11 +137,36 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Scroll indicator — visible en móvil Y escritorio */}
+        {/* Scroll indicator — adaptativo por dispositivo (fix 4) */}
         <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-gray-600 dark:text-gray-400" style={{ animationDelay: '1s' }} aria-hidden="true">
           <span className="text-xs font-medium uppercase tracking-widest">{t.hero.scroll}</span>
-          <div className="flex w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 items-start justify-center p-1">
+          {/* Desktop/laptop: animación clásica de scroll en ventana */}
+          <div className="hidden lg:flex w-5 h-8 rounded-full border-2 border-gray-300 dark:border-navy-600 items-start justify-center p-1">
             <div className="w-1 h-2 rounded-full bg-accent-500 animate-float" />
+          </div>
+          {/* Tablet (md): dedo deslizando hacia arriba sobre pantalla — sugerencia táctil */}
+          <div className="hidden md:flex lg:hidden flex-col items-center gap-1">
+            <svg viewBox="0 0 40 52" className="w-8 h-10 text-gray-400 dark:text-navy-500" fill="none" stroke="currentColor" strokeWidth="1.5">
+              {/* Tablet/pantalla */}
+              <rect x="4" y="2" width="32" height="44" rx="4" strokeLinecap="round"/>
+              <circle cx="20" cy="42" r="2" fill="currentColor" stroke="none"/>
+              {/* Flecha scroll up */}
+              <path d="M20 30 L20 18 M16 22 L20 18 L24 22" strokeLinecap="round" strokeLinejoin="round" className="text-accent-500" stroke="#F59E0B"/>
+            </svg>
+          </div>
+          {/* Móvil (sm y menores): dedo deslizando hacia arriba en teléfono */}
+          <div className="flex md:hidden flex-col items-center gap-1">
+            <svg viewBox="0 0 36 58" className="w-7 h-12" fill="none">
+              {/* Teléfono */}
+              <rect x="3" y="1" width="30" height="52" rx="5" stroke="currentColor" strokeWidth="1.5" className="text-gray-400 dark:text-navy-500"/>
+              <rect x="12" y="4" width="12" height="2" rx="1" fill="currentColor" className="text-gray-400 dark:text-navy-500"/>
+              <circle cx="18" cy="49" r="2" fill="currentColor" className="text-gray-400 dark:text-navy-500"/>
+              {/* Dedo deslizando hacia arriba */}
+              <ellipse cx="18" cy="36" rx="4" ry="5" fill="#F59E0B" opacity="0.85"/>
+              <path d="M18 31 L18 22 M14 26 L18 22 L22 26" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <animateTransform attributeName="transform" type="translate" values="0,0;0,-4;0,0" dur="1.4s" repeatCount="indefinite"/>
+              </path>
+            </svg>
           </div>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function Navbar() {
             return (
               <li key={link.href}>
                 <a href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 whitespace-nowrap ${
                     isActive
                       ? 'text-accent-500'
                       : 'text-gray-900 dark:text-white hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'

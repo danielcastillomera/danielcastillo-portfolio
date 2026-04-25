@@ -28,7 +28,7 @@
 
 **URL de producción:** https://danielcastillo-portfolio.vercel.app/
 
-**Versión actual:** 7.5.5
+**Versión actual:** 7.6.0
 
 ---
 
@@ -200,7 +200,7 @@ worker-src 'self' blob:
 
 | Versión | Fecha | Resumen |
 |---------|-------|---------|
-| 7.5.5 | 2026-04-23 | Visor PDF, OG image, favicons, logros, limpieza |
+| 7.6.0 | 2026-04-25 | Visor PDF, OG image, favicons, logros, limpieza |
 | 7.5.0 | 2026-03-15 | Portafolio completo bilingüe inicial |
 
 Ver [CHANGELOG.md](CHANGELOG.md) para el historial detallado.
@@ -217,7 +217,7 @@ Ver [CHANGELOG.md](CHANGELOG.md) para el historial detallado.
 
 **Production URL:** https://danielcastillo-portfolio.vercel.app/
 
-**Current version:** 7.5.5
+**Current version:** 7.6.0
 
 ---
 
@@ -266,7 +266,7 @@ OG Image: 1200×630 px (Open Graph standard, compatible with WhatsApp, LinkedIn,
 
 | Version | Date | Summary |
 |---------|------|---------|
-| 7.5.5 | 2026-04-23 | PDF viewer, OG image, favicons, achievements, cleanup |
+| 7.6.0 | 2026-04-25 | PDF viewer, OG image, favicons, achievements, cleanup |
 | 7.5.0 | 2026-03-15 | Initial complete bilingual portfolio |
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed history.

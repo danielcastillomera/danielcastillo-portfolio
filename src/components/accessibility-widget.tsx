@@ -1,23 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { useT } from '@/lib/i18n-provider';
 
 interface A11ySettings { fontSize: number; highContrast: boolean; reducedMotion: boolean; highlightLinks: boolean; largeCursor: boolean; }
 const DEFAULT: A11ySettings = { fontSize: 0, highContrast: false, reducedMotion: false, highlightLinks: false, largeCursor: false };
-
-// Icono ISO de accesibilidad — figura con brazos extendidos horizontalmente (no deformado)
-function AccessibilityIcon({ className, color = 'white' }: { className?: string; color?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 100 100" fill={color} aria-hidden="true" style={{ display:'block', flexShrink:0 }}>
-      <circle cx="50" cy="18" r="9" />
-      <rect x="13" y="35" width="74" height="8" rx="4" />
-      <rect x="46" y="35" width="8" height="31" rx="4" />
-      <rect x="46" y="62" width="8" height="28" rx="4" transform="rotate(18 50 65)" />
-      <rect x="46" y="62" width="8" height="28" rx="4" transform="rotate(-18 50 65)" />
-    </svg>
-  );
-}
 
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
@@ -56,18 +44,37 @@ export default function AccessibilityWidget() {
 
   return (
     <>
+      {/* Botón trigger — usa el SVG adjunto sin deformar, solo cambia tamaño */}
       <button type="button" onClick={() => setOpen(!open)}
-        className={`fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition-all duration-300 bg-accent-500 hover:bg-accent-400 ${open ? 'scale-90 ring-2 ring-accent-300' : 'hover:scale-105'}`}
+        className={`fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:bg-accent-400 ${open ? 'scale-90 ring-2 ring-accent-300' : 'hover:scale-105'}`}
         aria-expanded={open} aria-controls="a11y-panel" aria-label={t.a11y.label} title={t.a11y.title}>
-        <AccessibilityIcon className="w-7 h-7" color="white" />
+        {/* SVG del archivo adjunto: solo se ajusta el tamaño, sin deformar */}
+        <Image
+          src="/icons/accessibility.svg"
+          alt={t.a11y.label}
+          width={48}
+          height={48}
+          className="h-12 w-12 object-contain"
+          style={{ display: 'block' }}
+          priority
+        />
       </button>
 
+      {/* Panel */}
       <div id="a11y-panel" role="dialog" aria-label={t.a11y.title} aria-modal="false"
         className={`fixed bottom-20 left-6 z-50 w-72 rounded-xl shadow-2xl transition-all duration-300 ${open ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-4 opacity-0 pointer-events-none'} bg-white dark:bg-navy-900 ring-1 ring-gray-200 dark:ring-navy-700`}>
 
         <div className="flex items-center justify-between border-b border-gray-100 dark:border-navy-700 px-4 py-3">
           <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <AccessibilityIcon className="w-4 h-4 text-accent-500" color="currentColor" />
+            {/* Mismo SVG en el título del panel, tamaño reducido */}
+            <Image
+              src="/icons/accessibility.svg"
+              alt=""
+              width={16}
+              height={16}
+              className="h-4 w-4 object-contain"
+              aria-hidden="true"
+            />
             {t.a11y.title}
           </h3>
           <button type="button" onClick={reset} className="text-xs font-medium text-accent-500 hover:text-accent-600 transition-colors">{t.a11y.restore}</button>

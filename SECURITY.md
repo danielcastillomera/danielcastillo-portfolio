@@ -6,9 +6,9 @@
 
 | Versión | Soporte de seguridad |
 |---------|----------------------|
-| 7.5.5   | ✅ Activa (versión actual) |
-| 7.5.0   | ⚠️ Solo correcciones críticas |
-| < 7.5.0 | ❌ Sin soporte |
+| 7.6.0   | ✅ Activa (versión actual) |
+| 7.5.x   | ⚠️ Solo correcciones críticas |
+| < 7.5.x | ❌ Sin soporte |
 
 ### Reporte de vulnerabilidades
 
@@ -61,9 +61,9 @@ No aplica a:
 
 | Version | Security Support |
 |---------|-----------------|
-| 7.5.5   | ✅ Active (current version) |
-| 7.5.0   | ⚠️ Critical fixes only |
-| < 7.5.0 | ❌ No support |
+| 7.6.0   | ✅ Active (current version) |
+| 7.5.x   | ⚠️ Critical fixes only |
+| < 7.5.x | ❌ No support |
 
 ### Reporting a Vulnerability
 

@@ -18,7 +18,7 @@ const BASE_URL = 'https://danielcastillo-portfolio.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: 'Daniel Fernando Castillo Mera — Junior Full Stack Engineer / Developer | Community Manager',
-  description: 'Portafolio profesional v7.5.5. Junior Full Stack Engineer / Developer y Community Manager especializado en Next.js, TypeScript, Supabase, Meta Ads, TikTok Ads. Disponible para contratación inmediata. Ecuador.',
+  description: 'Portafolio profesional v7.6.0. Junior Full Stack Engineer / Developer y Community Manager especializado en Next.js, TypeScript, Supabase, Meta Ads, TikTok Ads. Disponible para contratación inmediata. Ecuador.',
   keywords: ['Daniel Fernando Castillo Mera','Full Stack Developer','Community Manager','Next.js','TypeScript','Supabase','Ecuador','Guayaquil','Dashboard Enterprise','Meta Ads','TikTok Ads','Figma','UI/UX'],
   authors: [{ name: 'Daniel Fernando Castillo Mera', url: BASE_URL }],
   creator: 'Daniel Fernando Castillo Mera',
@@ -72,9 +72,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         {/* Prevenir FOUC de tema */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');var d=document.documentElement;if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){d.classList.add('dark');d.style.colorScheme='dark'}else{d.classList.remove('dark');d.style.colorScheme='light'}}catch(e){}})()` }} />
+
+        {/* Fix 3: Meta tags OG con dimensiones explícitas + tipo para precaché en redes sociales */}
+        <meta property="og:image" content={`${BASE_URL}/og-image.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="Daniel Fernando Castillo Mera — Junior Full Stack Engineer / Developer | Community Manager" />
+        {/* Twitter/X */}
+        <meta name="twitter:image" content={`${BASE_URL}/og-image.png`} />
+        <meta name="twitter:image:width" content="1200" />
+        <meta name="twitter:image:height" content="630" />
+        {/* Precaché: hint para crawlers de redes sociales */}
+        <link rel="preload" as="image" href="/og-image.png" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
         {/* JSON-LD Schema.org */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
@@ -83,7 +98,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           jobTitle: 'Junior Full Stack Engineer / Developer | Community Manager',
           description: 'Estudiante de Ingeniería en Software en la Universidad de Guayaquil. Proyectos reales en producción, disponible para contratación inmediata.',
           url: BASE_URL,
-          image: `${BASE_URL}/profile.png`,
+          image: `${BASE_URL}/og-image.png`,
           email: 'danielfcastillom@gmail.com',
           birthDate: '2005-02-23',
           nationality: { '@type': 'Country', name: 'Ecuador' },
