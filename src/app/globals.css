@@ -163,14 +163,17 @@ body {
   color: var(--color-body);
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  /* Fix 5 v7.6.2: text selection enabled globally — UX/accessibility best practice.
+     Only images and icons are protected (see .protected-image and img rules below).
+     Blocking text selection violates WCAG 1.3.4 and harms UX (copy-paste, screen readers). */
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
-/* Re-enable text selection for readable content */
-p, h1, h2, h3, h4, h5, h6, span, li, td, th, blockquote, pre, code, label {
+/* All readable content — text fully selectable */
+p, h1, h2, h3, h4, h5, h6, span, li, td, th, blockquote, pre, code, label, a, button {
   -webkit-user-select: text;
   -moz-user-select: text;
   user-select: text;

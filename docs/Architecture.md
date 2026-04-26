@@ -1,61 +1,123 @@
-# Arquitectura / Architecture — v7.5.0
+# Arquitectura del Proyecto / Project Architecture
+
+> `danielcastillo-portfolio` v7.6.2
 
 ---
 
 ## Español (México)
 
-### Stack
+### Stack tecnológico
 
 | Capa | Tecnología | Versión |
 |------|-----------|---------|
-| Framework | Next.js | 15.x |
-| UI Library | React | 19.x |
-| Lenguaje | TypeScript | 5.9 |
-| Estilos | Tailwind CSS | 4.x |
-| Deployment | Vercel | — |
+| Framework | Next.js (App Router) | 15.x |
+| Lenguaje | TypeScript | 5.x strict |
+| Estilos | Tailwind CSS | 3.x |
+| Fuentes | DM Sans + JetBrains Mono | Google Fonts |
+| Deploy | Vercel | Edge Network |
+| Linting | ESLint + TypeScript strict | — |
 
-### Sistema de Colores (CSS Custom Properties)
+### Estructura de directorios
 
-```css
-:root {
-  --color-primary-500: #f59e0b;    /* Ámbar — color de marca */
-  --color-text-primary: #000000;   /* Texto — modo claro */
-  --color-body: #000000;           /* Párrafos — modo claro */
-}
-.dark {
-  --color-text-primary: #f5f6f8;   /* Texto — modo oscuro */
-  --color-body: #f5f6f8;           /* Párrafos — modo oscuro */
-}
+```
+danielcastillo-portfolio/
+├── docs/                    # Wiki del proyecto (GFM)
+│   ├── Home.md
+│   ├── Architecture.md
+│   ├── Accessibility.md
+│   ├── Deployment.md
+│   └── I18n.md
+├── public/
+│   ├── certs/               # PDFs de certificados y carta de recomendación
+│   ├── icons/               # Iconos SVG y PNG de tecnologías
+│   ├── favicon-*.png        # Favicons en múltiples resoluciones
+│   ├── favicon.ico
+│   ├── og-image.png         # Social Preview 1200×630 px
+│   ├── profile.png          # Foto de perfil 799×1238 px
+│   └── manifest.json        # PWA manifest
+├── src/
+│   ├── app/
+│   │   ├── globals.css      # Estilos globales y variables CSS
+│   │   ├── layout.tsx       # Root layout con metadata SEO completa
+│   │   ├── page.tsx         # Página principal — composición de secciones
+│   │   └── sitemap.ts       # Sitemap automático
+│   ├── components/
+│   │   ├── accessibility-widget.tsx
+│   │   ├── about-me.tsx
+│   │   ├── achievements.tsx
+│   │   ├── certifications.tsx
+│   │   ├── contact.tsx
+│   │   ├── cookie-consent.tsx
+│   │   ├── experience.tsx
+│   │   ├── footer.tsx
+│   │   ├── hero.tsx
+│   │   ├── icons.tsx
+│   │   ├── language-toggle.tsx
+│   │   ├── navbar.tsx
+│   │   ├── projects.tsx
+│   │   ├── protected-image.tsx
+│   │   ├── scroll-buttons.tsx
+│   │   ├── services.tsx
+│   │   ├── skills.tsx
+│   │   ├── tech-grid.tsx
+│   │   ├── tech-marquee.tsx
+│   │   ├── theme-toggle.tsx
+│   │   └── whatsapp-float.tsx
+│   └── lib/
+│       ├── data.ts           # Single Source of Truth v7.6.2
+│       ├── i18n.ts           # Traducciones ES/EN estáticas
+│       ├── i18n-provider.tsx # Context provider para i18n
+│       ├── theme-provider.tsx
+│       └── use-reveal.ts     # Hook de animación por scroll
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── SECURITY.md
+├── next.config.ts
+├── package.json
+└── tailwind.config.ts
 ```
 
-### Secciones (orden en page.tsx)
-1. Hero — Typewriter + partículas
-2. TechMarquee — Marquee de tecnologías
-3. AboutMe — Bio CV, primera persona, foto 35:45
-4. **Experience** — ★ NUEVO: 3 posiciones laborales
-5. Services — Servicios digitales y técnicos
-6. TechGrid — Grid de tecnologías con logos
-7. Projects — 5 proyectos con visor de estados
-8. Skills — 6 categorías + exploratorio
-9. Certifications — Visor PDF, sin iconos
-10. Contact — 6 canales de contacto
+### Principios de diseño
+
+- **Single Source of Truth:** toda la información del portafolio vive en `src/lib/data.ts`.
+- **SSG + CSR híbrido:** Next.js App Router genera el HTML estático en build y el cliente hidrata las interacciones.
+- **Sin base de datos:** portafolio completamente estático, sin backend propio.
+- **Sin imágenes en Experiencia/Proyectos/Certificaciones:** decisión deliberada de diseño limpio.
+- **Protección de imágenes:** `user-select: none` + `pointer-events: none` solo en `img` y `.protected-image`. El texto es completamente seleccionable (cumplimiento WCAG 1.3.4).
+- **Visor PDF multi-estrategia:** iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen (sin diálogo de confirmación).
+
+### Flujo de datos
+
+```
+data.ts (SSoT)
+    └─→ Componentes React (consumen constantes tipadas)
+         └─→ i18n-provider (useT hook → traducciones ES/EN)
+              └─→ ThemeProvider (clase .dark en <html>)
+```
+
+---
 
 ---
 
 ## English (United States)
 
-### Color System (CSS Custom Properties)
+### Tech Stack
 
-```css
-:root {
-  --color-primary-500: #f59e0b;    /* Amber — brand color */
-  --color-text-primary: #000000;   /* Text — light mode */
-  --color-body: #000000;           /* Paragraphs — light mode */
-}
-.dark {
-  --color-text-primary: #f5f6f8;   /* Text — dark mode */
-  --color-body: #f5f6f8;           /* Paragraphs — dark mode */
-}
-```
+| Layer | Technology | Version |
+|-------|-----------|---------|
+| Framework | Next.js (App Router) | 15.x |
+| Language | TypeScript | 5.x strict |
+| Styles | Tailwind CSS | 3.x |
+| Fonts | DM Sans + JetBrains Mono | Google Fonts |
+| Deploy | Vercel | Edge Network |
+| Linting | ESLint + TypeScript strict | — |
 
-**Daniel Fernando Castillo Mera** · All rights reserved.
+### Design Principles
+
+- **Single Source of Truth:** all portfolio content lives in `src/lib/data.ts`.
+- **SSG + hybrid CSR:** Next.js App Router generates static HTML at build time; client hydrates interactions.
+- **No database:** fully static portfolio, no own backend.
+- **No images in Experience/Projects/Certifications:** deliberate clean design decision.
+- **Image protection:** `user-select: none` + `pointer-events: none` only on `img` and `.protected-image`. Text is fully selectable (WCAG 1.3.4 compliance).
+- **Multi-strategy PDF viewer:** iOS Safari → Google Docs proxy; Android/Desktop → `<object>` same-origin (no confirmation dialog).

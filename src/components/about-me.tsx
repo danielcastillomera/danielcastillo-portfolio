@@ -14,7 +14,7 @@ export default function AboutMe() {
   const stats = [
     { value: '10+', label: t.about.statsModules },
     { value: '5',   label: t.about.statsProjects },
-    { value: 'v7.6.1', label: t.about.statsVersion },
+    { value: 'v7.6.2', label: t.about.statsVersion },
     { value: '6/10', label: t.about.statsSemester },
   ];
 

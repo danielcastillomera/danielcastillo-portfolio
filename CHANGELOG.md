@@ -1,7 +1,25 @@
-# Registro de Cambios / Changelog
+# Registro de Cambios - Español (México) / Changelog - Spanish (Mexico)
 
 > Todos los cambios notables de este proyecto se documentan en este archivo.
 > El formato sigue [Keep a Changelog](https://keepachangelog.com/es/1.0.0/) y el versionado sigue [Semantic Versioning](https://semver.org/lang/es/).
+
+---
+
+## [7.6.2] — 2026-04-26 — Vista previa PDF online, selección de texto habilitada, puntos finales y wiki en docs
+
+### Añadido
+- **Vista previa PDF online** en cada tarjeta de certificación (`InlinePdfPreview`): se muestra debajo de "Estado", centrada, sin botón "Ver documento", tamaño adaptativo con `clamp(280px, 45vw, 420px)`, sin opción de descarga. Estrategia por dispositivo: iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen.
+- **Carpeta `docs/`** con archivos wiki en GitHub Flavored Markdown (GFM): `Home.md`, `Architecture.md`, `Accessibility.md`, `Deployment.md`, `I18n.md`. Cada archivo bilingüe ES/EN.
+
+### Modificado
+- **`globals.css`** — `body` cambia de `user-select: none` a `user-select: text` (fix WCAG 1.3.4 y UX). Solo `img`, `.protected-image` y `.protected-image-wrapper` mantienen protección.
+- **`src/lib/data.ts`** — Puntos finales añadidos a todos los `items` e `itemsEn` de `SERVICE_CATEGORIES` y `ADDITIONAL_SKILLS` que eran frases sin punto.
+- **Scrum Fundamentals Certified (SFC™)** — ubicación corregida a "Estados Unidos (en línea)" / "United States (online)".
+- **`certifications.tsx`** — reescritura completa con `InlinePdfPreview` embebido en la tarjeta; eliminado modal y botón "Ver documento".
+- Versión `7.6.2` en `package.json`, `data.ts`, `about-me.tsx`, `manifest.json`, `layout.tsx`.
+
+### Eliminado
+- `WIKI.md` (raíz) — reemplazado por `docs/Home.md` y estructura completa en `docs`.
 
 ---
 
@@ -62,11 +80,13 @@
 ### Añadido
 - Portafolio web profesional completo con soporte bilingüe ES/EN, temas, WCAG 2.1 AA, Vercel.
 
----
+Daniel Fernando Castillo Mera
 
 ---
 
-# Changelog (English)
+---
+
+# Changelog - English (United States)
 
 > All notable changes to this project are documented in this file.
 > Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and versioning follows [Semantic Versioning](https://semver.org/).
@@ -124,3 +144,5 @@
 
 ### Added
 - Complete professional portfolio with bilingual ES/EN support, light/dark theme, WCAG 2.1 AA, Vercel deployment.
+
+Daniel Fernando Castillo Mera
