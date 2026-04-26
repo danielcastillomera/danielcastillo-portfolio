@@ -6,7 +6,7 @@
 
 | Versión | Soporte de seguridad |
 |---------|----------------------|
-| 7.6.0   | ✅ Activa (versión actual) |
+| 7.6.1   | ✅ Activa (versión actual) |
 | 7.5.x   | ⚠️ Solo correcciones críticas |
 | < 7.5.x | ❌ Sin soporte |
 
@@ -61,7 +61,7 @@ No aplica a:
 
 | Version | Security Support |
 |---------|-----------------|
-| 7.6.0   | ✅ Active (current version) |
+| 7.6.1   | ✅ Active (current version) |
 | 7.5.x   | ⚠️ Critical fixes only |
 | < 7.5.x | ❌ No support |
 

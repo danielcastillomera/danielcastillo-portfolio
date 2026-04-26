@@ -18,7 +18,7 @@ const BASE_URL = 'https://danielcastillo-portfolio.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: 'Daniel Fernando Castillo Mera — Junior Full Stack Engineer / Developer | Community Manager',
-  description: 'Portafolio profesional v7.6.0. Junior Full Stack Engineer / Developer y Community Manager especializado en Next.js, TypeScript, Supabase, Meta Ads, TikTok Ads. Disponible para contratación inmediata. Ecuador.',
+  description: 'Portafolio profesional v7.6.1. Junior Full Stack Engineer / Developer y Community Manager especializado en Next.js, TypeScript, Supabase, Meta Ads, TikTok Ads. Disponible para contratación inmediata. Ecuador.',
   keywords: ['Daniel Fernando Castillo Mera','Full Stack Developer','Community Manager','Next.js','TypeScript','Supabase','Ecuador','Guayaquil','Dashboard Enterprise','Meta Ads','TikTok Ads','Figma','UI/UX'],
   authors: [{ name: 'Daniel Fernando Castillo Mera', url: BASE_URL }],
   creator: 'Daniel Fernando Castillo Mera',
@@ -85,6 +85,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="twitter:image:height" content="630" />
         {/* Precaché: hint para crawlers de redes sociales */}
         <link rel="preload" as="image" href="/og-image.png" />
+        {/* Fix 3: fb:app_id para depuración del Open Graph Debugger de Meta */}
+        <meta property="fb:app_id" content="your_fb_app_id" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

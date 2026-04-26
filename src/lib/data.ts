@@ -1,5 +1,5 @@
 /**
- * Portfolio Data — Single Source of Truth v7.6.0
+ * Portfolio Data — Single Source of Truth v7.6.1
  * Daniel Fernando Castillo Mera
  * Primera persona · achievement-oriented (estándar portafolios 2024-2026)
  */
@@ -185,7 +185,7 @@ export const TECH_GRID_CATEGORIES = [
   { key: 'design', items: [
     { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
     { name: 'Meta Ads', icon: '/icons/meta.svg' },
-    { name: 'TikTok Ads', icon: '/icons/tiktok-ads.svg' },
+    { name: 'TikTok Ads', icon: '/icons/tiktok-ads.png' },
   ]},
 ] as const;
 
@@ -246,7 +246,7 @@ export const PROJECTS: Project[] = [
     githubApiUrl: 'https://raw.githubusercontent.com/danielcastillomera/dashboard-enterprise/main/package.json',
   },
   {
-    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.0',
+    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.1',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Página web portafolio personal y de servicios con i18n ES/EN, WCAG 2.2, PWA, SEO y diseño responsive mobile-first.',
     descriptionEn: 'Personal portfolio and services website with ES/EN i18n, WCAG 2.2, PWA, SEO and responsive mobile-first design.',
@@ -387,6 +387,18 @@ export const CERTIFICATIONS: Certification[] = [
     locationEn: 'Mexico (online)',
     status: 'completed',
     pdfFile: '/certs/biorobotics.pdf',
+  },
+  {
+    id: 'scrum-fundamentals',
+    title: 'Scrum Fundamentals Certified (SFC™)',
+    titleEn: 'Scrum Fundamentals Certified (SFC™)',
+    issuer: 'SCRUMstudy® — Organismo de Acreditación Global para Certificaciones Scrum y Ágiles',
+    issuerEn: 'SCRUMstudy® — Global Accreditation Body for Scrum and Agile Certifications',
+    date: '25-04-2026',
+    duration: 'En curso',
+    location: 'Avondale, Arizona (en línea)',
+    locationEn: 'Avondale, Arizona (online)',
+    status: 'in-progress',
   },
   {
     id: 'carta-recomendacion',

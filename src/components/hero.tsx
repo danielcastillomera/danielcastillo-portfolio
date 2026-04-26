@@ -96,7 +96,7 @@ export default function Hero() {
                 alt={`Foto de perfil de ${PERSONAL.name}`}
                 width={144}
                 height={223}
-                className="h-full w-full object-cover object-top"
+                className="h-full w-full object-cover object-center"
                 priority
               />
             </div>
