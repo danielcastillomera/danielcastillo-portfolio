@@ -1,5 +1,5 @@
 /**
- * Portfolio Data — Single Source of Truth v7.6.2
+ * Portfolio Data — Single Source of Truth v7.6.3
  * Daniel Fernando Castillo Mera
  * Primera persona · achievement-oriented (estándar portafolios 2024-2026)
  */
@@ -246,7 +246,7 @@ export const PROJECTS: Project[] = [
     githubApiUrl: 'https://raw.githubusercontent.com/danielcastillomera/dashboard-enterprise/main/package.json',
   },
   {
-    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.2',
+    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.3',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Página web portafolio personal y de servicios con i18n ES/EN, WCAG 2.2, PWA, SEO y diseño responsive mobile-first',
     descriptionEn: 'Personal portfolio and services website with ES/EN i18n, WCAG 2.2, PWA, SEO and responsive mobile-first design',

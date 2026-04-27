@@ -67,7 +67,7 @@ export const translations = {
       },
     },
     certifications: {
-      sectionLabel: 'Formación continua', title: 'Talleres y Certificados',
+      sectionLabel: 'Formación continua y credibilidad', title: 'Certificados y talleres',
       subtitle: 'Aprendizaje continuo más allá del aula, con certificaciones de organizaciones nacionales e internacionales.',
       status: { active: 'Activo', inProgress: 'En curso', completed: 'Completado' },
       issuer: 'Emisor', date: 'Fecha', duration: 'Duración',
@@ -176,7 +176,7 @@ export const translations = {
       },
     },
     certifications: {
-      sectionLabel: 'Continuous training', title: 'Workshops & Certificates',
+      sectionLabel: 'Continuous training & credibility', title: 'Certificates & Workshops',
       subtitle: 'Continuous learning beyond the classroom, with certifications from national and international organizations.',
       status: { active: 'Active', inProgress: 'In progress', completed: 'Completed' },
       issuer: 'Issuer', date: 'Date', duration: 'Duration',

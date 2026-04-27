@@ -14,7 +14,7 @@ export default function AboutMe() {
   const stats = [
     { value: '10+', label: t.about.statsModules },
     { value: '5',   label: t.about.statsProjects },
-    { value: 'v7.6.2', label: t.about.statsVersion },
+    { value: 'v7.6.3', label: t.about.statsVersion },
     { value: '6/10', label: t.about.statsSemester },
   ];
 
@@ -92,7 +92,7 @@ export default function AboutMe() {
   );
 
   return (
-    <section id="sobre-mi" className="relative py-24 sm:py-32" aria-labelledby="about-heading">
+    <section id="sobre-mi" className="relative py-16 sm:py-24" aria-labelledby="about-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
       <div ref={sectionRef} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 

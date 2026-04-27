@@ -368,8 +368,24 @@ img, svg image {
 [data-high-contrast="true"] a, [data-high-contrast="true"] button { outline: 2px solid currentColor !important; }
 
 .a11y-reduced-motion *, .a11y-reduced-motion *::before, .a11y-reduced-motion *::after {
+  animation: none !important;
   animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+/* Detener marquee y floats cuando se activa reducir animaciones */
+.a11y-reduced-motion .marquee-track {
+  animation: none !important;
+  transform: none !important;
+}
+.a11y-reduced-motion .animate-float,
+.a11y-reduced-motion .animate-ping,
+.a11y-reduced-motion .animate-pulse,
+.a11y-reduced-motion .animate-spin,
+.a11y-reduced-motion .animate-pulse-glow,
+.a11y-reduced-motion .animate-bounce {
+  animation: none !important;
 }
 .a11y-highlight-links a {
   outline: 2px solid #f59e0b !important;

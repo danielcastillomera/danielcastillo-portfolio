@@ -1,14 +1,31 @@
-# Registro de Cambios - Español (México) / Changelog - Spanish (Mexico)
+# Registro de Cambios / Changelog
 
 > Todos los cambios notables de este proyecto se documentan en este archivo.
 > El formato sigue [Keep a Changelog](https://keepachangelog.com/es/1.0.0/) y el versionado sigue [Semantic Versioning](https://semver.org/lang/es/).
 
 ---
 
-## [7.6.2] — 2026-04-26 — Vista previa PDF online, selección de texto habilitada, puntos finales y wiki en docs
+## [7.6.3] — 2026-04-26 — Visor PDF iframe móvil, widget accesibilidad mejorado, banderas en PC, espaciado y carta aparte
 
 ### Añadido
-- **Vista previa PDF online** en cada tarjeta de certificación (`InlinePdfPreview`): se muestra debajo de "Estado", centrada, sin botón "Ver documento", tamaño adaptativo con `clamp(280px, 45vw, 420px)`, sin opción de descarga. Estrategia por dispositivo: iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen.
+- **Sub-sección "Carta de Recomendación"** separada de los certificados, con datos completos (emisor, lugar, fecha) y vista previa PDF.
+
+### Modificado
+- **`certifications.tsx`** — visor PDF cambia de `<object>` a `<iframe>` directo (mejor compatibilidad móvil); iOS Safari sigue usando Google Docs proxy; botón "Abrir" con borde/marco amber; título sección actualizado a "FORMACIÓN CONTINUA Y CREDIBILIDAD / Certificados y talleres".
+- **`accessibility-widget.tsx`** — botón "✕" para cerrar; títulos de opciones en `#F59E0B` negrita; etiquetas Normal/Grande/Extra grande sin negrita; botón "Restaurar" con borde `#F59E0B`; texto WCAG en negrita.
+- **`globals.css`** — `a11y-reduced-motion` usa `animation: none !important` en lugar de solo `duration: 0.01ms`; también detiene `marquee-track`, `animate-ping`, `animate-pulse`, `animate-spin`, `animate-float`, `animate-bounce`.
+- **`language-toggle.tsx`** — bandera del país visible en PC y móvil en el botón principal (no solo en el dropdown).
+- **`achievements.tsx`** — separador cambia de " — " a ": " entre el highlight y el texto.
+- **`i18n.ts`** — sección certificaciones: ES "Formación continua y credibilidad / Certificados y talleres"; EN "Continuous training & credibility / Certificates & Workshops".
+- **Espaciado de secciones** — `py-24 sm:py-32` → `py-16 sm:py-24` en todas las secciones para reducir espacios en blanco excesivos.
+- Versión `7.6.3`.
+
+---
+
+## [7.6.2] — 2026-04-26 — Vista previa PDF inline, selección de texto habilitada, puntos finales y wiki en docs/
+
+### Añadido
+- **Vista previa PDF inline** en cada tarjeta de certificación (`InlinePdfPreview`): se muestra debajo de "Estado", centrada, sin botón "Ver documento", tamaño adaptativo con `clamp(280px, 45vw, 420px)`, sin opción de descarga. Estrategia por dispositivo: iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen.
 - **Carpeta `docs/`** con archivos wiki en GitHub Flavored Markdown (GFM): `Home.md`, `Architecture.md`, `Accessibility.md`, `Deployment.md`, `I18n.md`. Cada archivo bilingüe ES/EN.
 
 ### Modificado
@@ -19,7 +36,7 @@
 - Versión `7.6.2` en `package.json`, `data.ts`, `about-me.tsx`, `manifest.json`, `layout.tsx`.
 
 ### Eliminado
-- `WIKI.md` (raíz) — reemplazado por `docs/Home.md` y estructura completa en `docs`.
+- `WIKI.md` (raíz) — reemplazado por `docs/Home.md` y estructura completa en `docs/`.
 
 ---
 
@@ -80,13 +97,11 @@
 ### Añadido
 - Portafolio web profesional completo con soporte bilingüe ES/EN, temas, WCAG 2.1 AA, Vercel.
 
-Daniel Fernando Castillo Mera
-
 ---
 
 ---
 
-# Changelog - English (United States)
+# Changelog (English)
 
 > All notable changes to this project are documented in this file.
 > Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and versioning follows [Semantic Versioning](https://semver.org/).
@@ -144,5 +159,3 @@ Daniel Fernando Castillo Mera
 
 ### Added
 - Complete professional portfolio with bilingual ES/EN support, light/dark theme, WCAG 2.1 AA, Vercel deployment.
-
-Daniel Fernando Castillo Mera

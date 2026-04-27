@@ -18,7 +18,7 @@ export default function Skills() {
   const catNames = [t.skills.categories.frontend, t.skills.categories.backend, t.skills.categories.database, t.skills.categories.tools, t.skills.categories.marketing, t.skills.categories.uiux];
 
   return (
-    <section id="habilidades" className="relative py-24 sm:py-32 overflow-hidden" aria-labelledby="skills-heading">
+    <section id="habilidades" className="relative py-16 sm:py-24 overflow-hidden" aria-labelledby="skills-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/40 to-transparent" aria-hidden="true" />
       <div ref={sectionRef} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="mb-16">

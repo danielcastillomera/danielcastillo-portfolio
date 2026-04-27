@@ -26,7 +26,7 @@ export default function Projects() {
   const others   = PROJECTS.filter(p => !p.highlight);
 
   return (
-    <section id="proyectos" className="relative py-24 sm:py-32" aria-labelledby="projects-heading">
+    <section id="proyectos" className="relative py-16 sm:py-24" aria-labelledby="projects-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 dark:from-navy-900/30 via-transparent to-gray-50/50 dark:to-navy-900/30" aria-hidden="true" />
       <div ref={sectionRef} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 

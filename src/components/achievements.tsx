@@ -126,7 +126,7 @@ export default function Achievements() {
   const title = locale === 'en' ? 'Achievements & Notable Results' : 'Logros y resultados destacados';
 
   return (
-    <section id="logros" className="relative py-24 sm:py-32" aria-labelledby="achievements-heading">
+    <section id="logros" className="relative py-16 sm:py-24" aria-labelledby="achievements-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
       <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
@@ -157,8 +157,8 @@ export default function Achievements() {
               {/* Text */}
               <p className="text-sm leading-relaxed text-gray-800 dark:text-gray-200">
                 <strong className="font-bold text-accent-600 dark:text-accent-400">{item.highlight}</strong>
-                {' — '}
-                {item.text.replace(item.highlight + ' — ', '').replace(item.highlight, '')}
+                {': '}
+                {item.text.replace(item.highlight + ': ', '').replace(item.highlight + ' — ', '').replace(item.highlight, '')}
               </p>
             </li>
           ))}

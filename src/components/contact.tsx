@@ -16,7 +16,7 @@ export default function Contact() {
     { icon: <EmailIcon className="w-7 h-7" />, url: `mailto:${PERSONAL.email}`, title: t.contact.email, sub: PERSONAL.email, hB: 'hover:border-accent-500/30', hBg: 'hover:bg-amber-50 dark:hover:bg-accent-500/5', iB: 'bg-accent-500/10', iC: 'text-accent-500' },
   ];
   return (
-    <section id="contacto" className="relative py-24 sm:py-32 overflow-hidden" aria-labelledby="contact-heading">
+    <section id="contacto" className="relative py-16 sm:py-24 overflow-hidden" aria-labelledby="contact-heading">
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-500/3 to-transparent" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-accent-500/5 blur-[150px]" />

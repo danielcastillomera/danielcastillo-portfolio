@@ -8,7 +8,7 @@ export default function Services() {
   const t = useT();
   const { locale } = useI18n();
   return (
-    <section id="servicios" className="relative py-24 sm:py-32" aria-labelledby="services-heading">
+    <section id="servicios" className="relative py-16 sm:py-24" aria-labelledby="services-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/60 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
       <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="mb-16">
