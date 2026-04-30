@@ -1,5 +1,5 @@
 /**
- * Portfolio Data — Single Source of Truth v7.6.3
+ * Portfolio Data — Single Source of Truth v7.6.4
  * Daniel Fernando Castillo Mera
  * Primera persona · achievement-oriented (estándar portafolios 2024-2026)
  */
@@ -48,10 +48,30 @@ export interface WorkExperience {
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
+    id: 'cm-warsa',
+    title: 'Community Manager',
+    titleEn: 'Community Manager',
+    company: 'Agro Industrias Warsa C.A.',
+    period: '24-04-2026 — Presente',
+    periodEn: '24-04-2026 — Present',
+    location: 'Guayaquil, Ecuador',
+    type: 'active',
+    tasks: [
+      'Creé y gestioné desde cero el perfil oficial de la empresa en TikTok.',
+      'Grabé, edité y publiqué contenido multimedia (videos, flyers, anuncios) con identidad de marca coherente en la plataforma.',
+      'Planifiqué, ejecuté y supervisé campañas de publicidad pagada activas: TikTok Ads orientadas a captación de clientes potenciales B2B.',
+    ],
+    tasksEn: [
+      'Created and managed from scratch the company\'s official TikTok profile.',
+      'Recorded, edited and published multimedia content (videos, flyers, ads) with consistent brand identity on the platform.',
+      'Planned, executed and supervised active paid advertising campaigns: TikTok Ads targeting B2B potential clients.',
+    ],
+  },
+  {
     id: 'cm-soluciones',
     title: 'Community Manager',
     titleEn: 'Community Manager',
-    company: 'Soluciones Técnicas Industriales D.C',
+    company: 'Soluciones Técnicas Industriales D.C.',
     period: '03-02-2025 — Presente',
     periodEn: '03-02-2025 — Present',
     location: 'Guayaquil, Ecuador',
@@ -246,7 +266,7 @@ export const PROJECTS: Project[] = [
     githubApiUrl: 'https://raw.githubusercontent.com/danielcastillomera/dashboard-enterprise/main/package.json',
   },
   {
-    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.3',
+    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.4',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Página web portafolio personal y de servicios con i18n ES/EN, WCAG 2.2, PWA, SEO y diseño responsive mobile-first',
     descriptionEn: 'Personal portfolio and services website with ES/EN i18n, WCAG 2.2, PWA, SEO and responsive mobile-first design',
@@ -445,20 +465,42 @@ export const EDUCATION = [
 
 /* ═══ EXPLORATORY SKILLS ═══ */
 export const EXPLORATORY_SKILLS = [
-  { name: 'AWS (Cloud Computing)', desc: 'Amazon Web Services, computación en la nube', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
-  { name: 'Docker', desc: 'Empaquetado y containerización de aplicaciones', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
-  { name: 'GitHub Actions', desc: 'CI/CD, automatización de pipelines', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg' },
-  { name: 'Node.js + Express.js', desc: 'Backend runtime y framework server-side', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
-  { name: 'JWT (JSON Web Tokens)', desc: 'Autenticación y transmisión segura entre servicios', icon: null },
-  { name: 'Redis', desc: 'Caché y optimización de rendimiento', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
-  { name: 'Jest / Vitest', desc: 'Pruebas unitarias JavaScript/TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg' },
-  { name: 'Flutter / Dart', desc: 'Interfaces de usuario multiplataforma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
-  { name: 'GraphQL', desc: 'Alternativa moderna a REST para diseño de APIs', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
-  { name: 'Render / Hostinger', desc: 'Plataformas de despliegue en la nube', icon: null },
-  { name: 'Prompt Engineering', desc: 'AI-assisted development, Vibe Coding, GitHub Copilot, Claude Code, Cursor', icon: null },
-  { name: 'WebSockets / Socket.io', desc: 'Comunicación en tiempo real', icon: null },
-  { name: 'Microservicios', desc: 'Arquitectura de microservicios y sistemas distribuidos', icon: null },
-  { name: 'ABAP / SAP · COBOL', desc: 'Lenguajes y plataformas legacy/enterprise', icon: null },
+  // ── Frameworks y lenguajes ──
+  { name: 'Angular', desc: 'Framework frontend TypeScript de Google para aplicaciones web de escala empresarial.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg' },
+  { name: 'Laravel', desc: 'Framework PHP para backend web robusto y elegante, con Eloquent ORM y Blade templating.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
+  { name: 'Spring Boot', desc: 'Framework Java para backend empresarial con inyección de dependencias, REST y seguridad.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
+  { name: 'Bootstrap', desc: 'Framework CSS para diseño responsive rápido y componentes UI predefinidos.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg' },
+  // ── Desarrollo móvil ──
+  { name: 'Android Studio / Kotlin', desc: 'IDE oficial de Google para desarrollo de aplicaciones nativas Android con Kotlin y Jetpack Compose.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg' },
+  { name: 'Swift / Xcode (iOS)', desc: 'Lenguaje y entorno de Apple para desarrollo de aplicaciones nativas iOS y iPadOS.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg' },
+  { name: 'Flutter / Dart', desc: 'SDK de Google para apps multiplataforma (Android, iOS, Web) con un solo codebase.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
+  // ── Cloud y DevOps ──
+  { name: 'Cloud Computing — AWS', desc: 'Amazon Web Services: EC2, S3, Lambda, RDS, IAM. Computación en la nube para arquitecturas escalables.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
+  { name: 'Docker', desc: 'Empaquetado y containerización de aplicaciones para entornos reproducibles.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+  { name: 'GitHub Actions', desc: 'CI/CD, automatización de pipelines de build, test y deploy.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg' },
+  // ── Bases de datos ──
+  { name: 'MongoDB', desc: 'Base de datos NoSQL orientada a documentos JSON, ideal para datos no estructurados.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+  { name: 'Oracle Database XE + SQL Developer', desc: 'Base de datos relacional empresarial Oracle Express Edition con herramienta SQL Developer para modelado y consultas.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
+  { name: 'Redis', desc: 'Caché en memoria y optimización de rendimiento para aplicaciones de alta demanda.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
+  // ── Testing y calidad ──
+  { name: 'TDD — Test Driven Development', desc: 'Metodología de desarrollo guiado por pruebas: Jest/Vitest (frontend), JUnit/Mockito (backend). Red → Green → Refactor.', icon: null },
+  { name: 'Jest / Vitest', desc: 'Pruebas unitarias e integración para proyectos JavaScript/TypeScript.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg' },
+  // ── Producto ──
+  { name: 'Diseño de MVP', desc: 'Creación de un Producto Mínimo Viable (MVP): definición del problema, propuesta de valor, prototipado y validación rápida con usuarios reales.', icon: null },
+  // ── Backend / APIs ──
+  { name: 'Node.js + Express.js', desc: 'Backend runtime y framework server-side para APIs REST de alto rendimiento.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  { name: 'GraphQL', desc: 'Lenguaje de consulta para APIs: alternativa flexible a REST con tipado fuerte.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
+  { name: 'WebSockets / Socket.io', desc: 'Comunicación bidireccional en tiempo real para chats, notificaciones y dashboards live.', icon: null },
+  { name: 'JWT (JSON Web Tokens)', desc: 'Autenticación stateless y transmisión segura de información entre servicios.', icon: null },
+  // ── IA y contenido ──
+  { name: 'Prompt Engineering / AI Dev', desc: 'Desarrollo asistido por IA: GitHub Copilot, Claude Code, Cursor, Vibe Coding.', icon: null },
+  { name: 'ElevenLabs', desc: 'Plataforma de síntesis de voz y clonación de voz con IA para contenido de audio profesional.', icon: null },
+  { name: 'HeyGen', desc: 'Plataforma de generación de videos con avatares de IA para marketing y comunicación.', icon: null },
+  { name: 'CapCut (PC y móvil)', desc: 'Editor de video multiplataforma para contenido en redes sociales con herramientas de IA integradas.', icon: null },
+  // ── Arquitectura ──
+  { name: 'Microservicios', desc: 'Diseño y arquitectura de sistemas distribuidos orientados a microservicios con comunicación REST y eventos.', icon: null },
+  { name: 'Render / Hostinger', desc: 'Plataformas alternativas de despliegue y hosting en la nube.', icon: null },
+  { name: 'ABAP / SAP · COBOL', desc: 'Lenguajes y plataformas legacy/enterprise para sistemas de misión crítica.', icon: null },
 ];
 
 export const ADDITIONAL_SKILLS = {

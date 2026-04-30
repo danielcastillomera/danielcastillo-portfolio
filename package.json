@@ -1,8 +1,8 @@
 {
   "name": "danielcastillo-portfolio",
-  "version": "7.6.3",
+  "version": "7.6.4",
   "private": true,
-  "description": "Portafolio profesional — Daniel Fernando Castillo Mera · Junior Full Stack Engineer / Developer | Community Manager",
+  "description": "Portafolio profesional \u2014 Daniel Fernando Castillo Mera \u00b7 Junior Full Stack Engineer / Developer | Community Manager",
   "author": "Daniel Fernando Castillo Mera <danielfcastillom@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
@@ -21,13 +21,14 @@
     "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-pdf": "^10.4.1",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.3.0"
   }
 }

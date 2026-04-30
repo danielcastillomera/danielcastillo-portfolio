@@ -5,7 +5,30 @@
 
 ---
 
-## [7.6.3] — 2026-04-26 — Visor PDF iframe móvil, widget accesibilidad mejorado, banderas en PC, espaciado y carta aparte
+## v7.6.4 — Visor PDF con API route interna, TS build fixes, nuevo trabajo, logros, skills y taglines
+
+### Añadido
+- **API route interna `/api/pdf?file=`** (`src/app/api/pdf/route.ts`) — sirve PDFs desde el mismo origen con headers `Content-Disposition: inline` y whitelist de archivos permitidos. Elimina definitivamente el error "Contenido bloqueado" en móvil y desktop. No requiere Google Docs proxy ni configuración CSP especial.
+- **Nuevo trabajo: Community Manager — Agro Industrias Warsa C.A.** (24-04-2026 — Presente) en `data.ts`: creación del perfil TikTok, contenido multimedia y campañas TikTok Ads B2B.
+- **Nuevo logro**: "Construí la presencia en TikTok de Agro Industrias Warsa C.A." en `achievements.tsx` (ES y EN).
+- **Skills exploratorias nuevas**: Angular, Laravel, Spring Boot, Bootstrap, Android Studio/Kotlin, Swift/Xcode (iOS), MongoDB, Oracle Database XE + SQL Developer, TDD, diseño de MVP, ElevenLabs, HeyGen, CapCut (PC y móvil). `EXPLORATORY_SKILLS` expandido con descripciones técnicas completas.
+- **Taglines del hero actualizados**: nuevas frases sobre Clean Code, Agile/Scrum/Git, modos aleatorio, frases "enganchadoras" para clientes.
+
+### Modificado
+- **`certifications.tsx`** — usa `InlinePdfPreview` con `<iframe src="/api/pdf?file=...">` (mismo origen). Funciona en Android Chrome, iOS Safari, desktop — sin diálogos de confirmación, sin CSP bloqueado.
+- **`data.ts`** — typo corregido: `Soluciones Técnicas Industriales D.C` → `Soluciones Técnicas Industriales D.C.`; PDFs de certificados reemplazados por versiones definitivas.
+- Versión `7.6.4` en todos los archivos.
+- **TypeScript fix 1** — `translations` en `i18n.ts` tipado como `Record<Locale, any>` para eliminar error `"Property 'en' does not exist on type..."`.
+- **TypeScript fix 2** — `t.about.items.map((item: string) =>` — parámetro tipado explícitamente para eliminar `"Parameter 'item' implicitly has an 'any' type"`.
+- **`package.json`** — eliminada dependencia `react-pdf` (no utilizada); añadidos `eslint` + `eslint-config-next` para build limpio.
+- **SKILL_CATEGORIES actualizado** — skills nuevas: Facturación electrónica SRI (XML v2.1.0), LaTeX/Overleaf, Prompt Engineering/AI Dev, CapCut, Clean Code/SOLID/DRY/KISS.
+
+### Eliminado
+- PDFs anteriores reemplazados por versiones definitivas sin cambio de nombre de archivo.
+
+---
+
+## v7.6.3 — Visor PDF iframe móvil, widget accesibilidad mejorado, banderas en PC, espaciado y carta aparte
 
 ### Añadido
 - **Sub-sección "Carta de Recomendación"** separada de los certificados, con datos completos (emisor, lugar, fecha) y vista previa PDF.
@@ -22,7 +45,7 @@
 
 ---
 
-## [7.6.2] — 2026-04-26 — Vista previa PDF inline, selección de texto habilitada, puntos finales y wiki en docs/
+## v7.6.2 — Vista previa PDF inline, selección de texto habilitada, puntos finales y wiki en docs/
 
 ### Añadido
 - **Vista previa PDF inline** en cada tarjeta de certificación (`InlinePdfPreview`): se muestra debajo de "Estado", centrada, sin botón "Ver documento", tamaño adaptativo con `clamp(280px, 45vw, 420px)`, sin opción de descarga. Estrategia por dispositivo: iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen.
@@ -78,7 +101,7 @@
 
 ---
 
-## [7.5.5] — 2026-04-23 — Visor PDF, OG image, favicons, logros y limpieza de assets
+## v7.5.5 — Visor PDF, OG image, favicons, logros y limpieza de assets
 
 ### Añadido
 - Sección "Logros y resultados destacados" (9 logros, bilingüe).
@@ -92,7 +115,7 @@
 
 ---
 
-## [7.5.0] — 2026-03-15 — Portafolio bilingüe completo con temas, accesibilidad y despliegue en Vercel
+## v7.5.0 — Portafolio bilingüe completo con temas, accesibilidad y despliegue en Vercel
 
 ### Añadido
 - Portafolio web profesional completo con soporte bilingüe ES/EN, temas, WCAG 2.1 AA, Vercel.
@@ -108,7 +131,7 @@
 
 ---
 
-## [7.6.1] — 2026-04-25 — Android PDF viewer, photo centering, fb:app_id, Scrum SFC and updated assets
+## v7.6.1 — Android PDF viewer, photo centering, fb:app_id, Scrum SFC and updated assets
 
 ### Added
 - **Scrum Fundamentals Certified (SFC™)** — SCRUMstudy®, Avondale Arizona (online), 25-04-2026, status: in progress.
@@ -128,7 +151,7 @@
 
 ---
 
-## [7.6.0] — 2026-04-25 — SVG icons, adaptive scroll indicator, PDF viewer, UI/UX fixes
+## v7.6.0 — SVG icons, adaptive scroll indicator, PDF viewer, UI/UX fixes
 
 ### Added
 - OG meta tags with explicit dimensions and social media pre-cache.
@@ -143,7 +166,7 @@
 
 ---
 
-## [7.5.5] — 2026-04-23 — PDF viewer, OG image, favicons, achievements and asset cleanup
+## v7.5.5 — PDF viewer, OG image, favicons, achievements and asset cleanup
 
 ### Added
 - "Achievements & Notable Results" section (9 items, bilingual).
@@ -155,7 +178,7 @@
 
 ---
 
-## [7.5.0] — 2026-03-15 — Complete bilingual portfolio with themes, accessibility and Vercel deployment
+## v7.5.0 — Complete bilingual portfolio with themes, accessibility and Vercel deployment
 
 ### Added
 - Complete professional portfolio with bilingual ES/EN support, light/dark theme, WCAG 2.1 AA, Vercel deployment.

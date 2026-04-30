@@ -1,7 +1,7 @@
-# Daniel Castillo Portfolio — Wiki v7.6.3
+# Daniel Castillo Portfolio — Wiki v7.6.4
 
 > Documentación técnica oficial del proyecto `danielcastillo-portfolio`.
-> Versión actual: **7.6.3** · Última actualización: 2026-04-26
+> Versión actual: **7.6.4** · Última actualización: 2026-04-26
 
 ---
 
@@ -27,14 +27,14 @@ Esta wiki contiene la documentación técnica completa del portafolio web profes
 
 - **URL de producción:** https://danielcastillo-portfolio.vercel.app/
 - **Repositorio:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Versión actual:** 7.6.3
+- **Versión actual:** 7.6.4
 - **Licencia:** MIT
 
 ### Historial de versiones rápido
 
 | Versión | Fecha | Resumen |
 |---------|-------|---------|
-| 7.6.3 | 2026-04-26 | Vista previa PDF inline, selección de texto, puntos finales, docs/ wiki |
+| 7.6.4 | 2026-04-26 | Vista previa PDF inline, selección de texto, puntos finales, docs/ wiki |
 | 7.6.1 | 2026-04-25 | Android PDF viewer, foto centrada, fb:app_id, Scrum SFC |
 | 7.6.0 | 2026-04-25 | SVG icons, scroll adaptativo, UI/UX fixes |
 | 7.5.5 | 2026-04-23 | Visor PDF, OG image, favicons, logros |
@@ -66,14 +66,14 @@ This wiki contains the complete technical documentation for **Daniel Fernando Ca
 
 - **Production URL:** https://danielcastillo-portfolio.vercel.app/
 - **Repository:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Current version:** 7.6.3
+- **Current version:** 7.6.4
 - **License:** MIT
 
 ### Quick Version History
 
 | Version | Date | Summary |
 |---------|------|---------|
-| 7.6.3 | 2026-04-26 | Inline PDF preview, text selection, trailing periods, docs/ wiki |
+| 7.6.4 | 2026-04-26 | Inline PDF preview, text selection, trailing periods, docs/ wiki |
 | 7.6.1 | 2026-04-25 | Android PDF viewer, photo centering, fb:app_id, Scrum SFC |
 | 7.6.0 | 2026-04-25 | SVG icons, adaptive scroll, UI/UX fixes |
 | 7.5.5 | 2026-04-23 | PDF viewer, OG image, favicons, achievements |

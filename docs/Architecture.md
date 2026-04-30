@@ -1,6 +1,6 @@
 # Arquitectura del Proyecto / Project Architecture
 
-> `danielcastillo-portfolio` v7.6.3
+> `danielcastillo-portfolio` v7.6.4
 
 ---
 
@@ -11,11 +11,12 @@
 | Capa | Tecnología | Versión |
 |------|-----------|---------|
 | Framework | Next.js (App Router) | 15.x |
-| Lenguaje | TypeScript | 5.x strict |
-| Estilos | Tailwind CSS | 3.x |
+| Lenguaje | TypeScript | 5.9.x strict |
+| Estilos | Tailwind CSS | 4.x + PostCSS |
+| Íconos | Lucide React | 0.574.x |
 | Fuentes | DM Sans + JetBrains Mono | Google Fonts |
 | Deploy | Vercel | Edge Network |
-| Linting | ESLint + TypeScript strict | — |
+| Linting | ESLint + eslint-config-next | 9.x / 15.x |
 
 ### Estructura de directorios
 
@@ -64,7 +65,7 @@ danielcastillo-portfolio/
 │   │   ├── theme-toggle.tsx
 │   │   └── whatsapp-float.tsx
 │   └── lib/
-│       ├── data.ts           # Single Source of Truth v7.6.3
+│       ├── data.ts           # Single Source of Truth v7.6.4
 │       ├── i18n.ts           # Traducciones ES/EN estáticas
 │       ├── i18n-provider.tsx # Context provider para i18n
 │       ├── theme-provider.tsx

@@ -14,7 +14,7 @@ export default function AboutMe() {
   const stats = [
     { value: '10+', label: t.about.statsModules },
     { value: '5',   label: t.about.statsProjects },
-    { value: 'v7.6.3', label: t.about.statsVersion },
+    { value: 'v7.6.4', label: t.about.statsVersion },
     { value: '6/10', label: t.about.statsSemester },
   ];
 
@@ -171,7 +171,7 @@ export default function AboutMe() {
             <div className="glass rounded-xl p-5">
               <h3 className="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400 mb-3">{t.about.capabilities}</h3>
               <div className="space-y-2">
-                {t.about.items.map((item) => (
+                {t.about.items.map((item: string) => (
                   <div key={item} className="flex items-start gap-2.5 text-sm text-gray-900 dark:text-gray-100">
                     <svg className="w-4 h-4 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />

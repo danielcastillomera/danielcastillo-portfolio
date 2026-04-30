@@ -53,6 +53,12 @@ const ACHIEVEMENTS_ES = [
     text: 'Desarrollé Invoice Manager System, aplicación web para gestión profesional de facturas con stack moderno (Next.js, TypeScript, Supabase) — actualmente en desarrollo activo.',
   },
   {
+    id: 'tiktok-warsa',
+    icon: '📱',
+    highlight: 'Presencia en TikTok de Agro Industrias Warsa C.A.',
+    text: 'Construí la presencia en la red social TikTok de Agro Industrias Warsa C.A., incluyendo la gestión de contenido y campañas de publicidad pagada activas en TikTok.',
+  },
+  {
     id: 'mvc',
     icon: '🎓',
     highlight: 'PROYECTO-UNIFICADO-AVANCE en C# con patrón MVC',
@@ -108,6 +114,12 @@ const ACHIEVEMENTS_EN = [
     icon: '💼',
     highlight: 'Invoice Manager System',
     text: 'I developed Invoice Manager System, a web application for professional invoice management with a modern stack (Next.js, TypeScript, Supabase) — currently in active development.',
+  },
+  {
+    id: 'tiktok-warsa',
+    icon: '📱',
+    highlight: 'TikTok presence for Agro Industrias Warsa C.A.',
+    text: 'I built the TikTok social media presence for Agro Industrias Warsa C.A., including content management and active paid advertising campaigns on TikTok.',
   },
   {
     id: 'mvc',

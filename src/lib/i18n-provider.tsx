@@ -27,7 +27,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => { if (mounted) document.documentElement.lang = locale === 'en' ? 'en' : 'es'; }, [locale, mounted]);
 
-  const t = translations[locale] as T;
+  const t = (translations as unknown as Record<Locale, T>)[locale];
 
   return (
     <I18nContext.Provider value={{ locale, t, setLocale, toggleLocale }}>
