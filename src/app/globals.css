@@ -432,3 +432,15 @@ img, svg image {
 .section-title {
   color: #F59E0B !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   v7.6.6 — scrollbar-hide: oculta scrollbar manteniendo scroll
+   Usado en sección Exploratorio móvil (chips horizontales).
+   ═══════════════════════════════════════════════════════════════ */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE / Edge legacy */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome / Safari / Opera / Android */
+}

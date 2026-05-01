@@ -51,18 +51,75 @@ export default function Skills() {
             </div>
           ))}
         </div>
-        {/* Exploratory */}
-        <div className="mt-10 glass rounded-xl p-6">
-          <h3 className="text-sm font-bold text-accent-500 uppercase tracking-wider mb-5">📚 {t.skills.exploratory}</h3>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {/* ── En Aprendizaje / Exploratorio ── */}
+        <div className="mt-10 glass rounded-xl p-5 sm:p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-base" aria-hidden="true">📚</span>
+            <h3 className="text-sm font-bold text-accent-500 uppercase tracking-wider">
+              {t.skills.exploratory}
+            </h3>
+            <span className="ml-auto text-[10px] text-gray-400 dark:text-gray-500 font-medium tabular-nums">
+              {EXPLORATORY_SKILLS.length} tecnologías
+            </span>
+          </div>
+
+          {/* Móvil: scroll horizontal (chips compactos) */}
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:hidden scrollbar-hide snap-x snap-mandatory">
             {EXPLORATORY_SKILLS.map(item => (
-              <div key={item.name} className="flex items-start gap-2.5 rounded-lg border border-gray-100 dark:border-navy-700/50 bg-gray-50/60 dark:bg-navy-900/40 px-3 py-2.5">
+              <div
+                key={item.name}
+                className="flex items-center gap-1.5 shrink-0 snap-start rounded-full border border-gray-200 dark:border-navy-700 bg-gray-50 dark:bg-navy-900/60 px-3 py-1.5 touch-manipulation"
+              >
+                {item.icon ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.icon}
+                    alt=""
+                    width={14}
+                    height={14}
+                    draggable={false}
+                    className="w-3.5 h-3.5 object-contain pointer-events-none select-none shrink-0"
+                    loading="lazy"
+                    aria-hidden="true"
+                    onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                  />
+                ) : (
+                  <svg className="w-3 h-3 text-accent-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                  </svg>
+                )}
+                <span className="text-[11px] font-semibold text-gray-800 dark:text-gray-200 whitespace-nowrap leading-none">
+                  {item.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tablet / Desktop: grid de tarjetas con descripción */}
+          <div className="hidden sm:grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {EXPLORATORY_SKILLS.map(item => (
+              <div
+                key={item.name}
+                className="flex items-start gap-2.5 rounded-lg border border-gray-100 dark:border-navy-700/50 bg-gray-50/60 dark:bg-navy-900/40 px-3 py-2.5"
+              >
                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent-500/10">
                   {item.icon ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={item.icon} alt="" width={18} height={18} draggable={false} className="w-4 h-4 object-contain pointer-events-none select-none" loading="lazy" aria-hidden="true" onError={e => { (e.currentTarget as HTMLImageElement).style.display='none'; }} />
+                    <img
+                      src={item.icon}
+                      alt=""
+                      width={18}
+                      height={18}
+                      draggable={false}
+                      className="w-4 h-4 object-contain pointer-events-none select-none"
+                      loading="lazy"
+                      aria-hidden="true"
+                      onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                    />
                   ) : (
-                    <svg className="w-3.5 h-3.5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                    <svg className="w-3.5 h-3.5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
                   )}
                 </div>
                 <div className="min-w-0">

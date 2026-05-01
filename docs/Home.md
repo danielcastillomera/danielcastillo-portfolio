@@ -1,7 +1,7 @@
-# Daniel Castillo Portfolio — Wiki v7.6.5
+# Daniel Castillo Portfolio — Wiki v7.6.6
 
 > Documentación técnica oficial del proyecto `danielcastillo-portfolio`.
-> Versión actual: **7.6.5** · Última actualización: 2026-04-30
+> Versión actual: **7.6.6** · Última actualización: 2026-04-30
 
 ---
 
@@ -27,14 +27,15 @@ Esta wiki contiene la documentación técnica completa del portafolio web profes
 
 - **URL de producción:** https://danielcastillo-portfolio.vercel.app/
 - **Repositorio:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Versión actual:** 7.6.5
+- **Versión actual:** 7.6.6
 - **Licencia:** Propiedad intelectual de Daniel Fernando Castillo Mera
 
 ### Historial de versiones rápido
 
 | Versión | Resumen |
 |---------|---------|
-| 7.6.5 | Fix español completo en i18n, PDF móvil iOS definitivo, badges unificados, versiones tech-grid |
+| 7.6.6 | Fix PDF canvas Android/iOS definitivo, chips Exploratorio móvil, CSP actualizado |
+| 7.6.5 | Español completo en i18n, iOS PDF fix, badges unificados, versiones tech-grid |
 | 7.6.4 | API route PDF interna, TS fixes, nuevo trabajo, skills exploratorias |
 | 7.6.3 | Visor PDF iframe móvil, widget accesibilidad, banderas en PC |
 | 7.6.2 | Vista previa PDF inline, selección de texto, puntos finales, docs/ wiki |
@@ -67,14 +68,15 @@ This wiki contains the complete technical documentation for **Daniel Fernando Ca
 
 - **Production URL:** https://danielcastillo-portfolio.vercel.app/
 - **Repository:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Current version:** 7.6.5
+- **Current version:** 7.6.6
 - **License:** Intellectual property of Daniel Fernando Castillo Mera
 
 ### Quick Version History
 
 | Version | Summary |
 |---------|---------|
-| 7.6.5 | Full Spanish i18n fix, definitive iOS PDF mobile fix, unified badges, tech-grid versions |
+| 7.6.6 | Definitive PDF canvas Android/iOS fix, Exploratory mobile chips, CSP updated |
+| 7.6.5 | Full Spanish i18n fix, iOS PDF fix, unified badges, tech-grid versions |
 | 7.6.4 | Internal PDF API route, TS fixes, new job, exploratory skills |
 | 7.6.3 | iframe PDF mobile viewer, accessibility widget, flags on desktop |
 | 7.6.2 | Inline PDF preview, text selection, trailing periods, docs/ wiki |

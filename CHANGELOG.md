@@ -5,7 +5,28 @@
 
 ---
 
-## v7.6.5 - Corrección de textos en español, fix PDF móvil definitivo, badges "En desarrollo" unificados, versiones en tech-grid, docs wiki actualizados
+## v7.6.6 - Fix definitivo PDF canvas Android/iOS, Exploratorio móvil chips horizontal, CSP actualizado
+
+### Añadido
+
+- **`PdfCanvasViewer`** (`certifications.tsx`): renderizador PDF basado en **PDF.js v3.11.174** sobre `<canvas>`. Elimina por completo el uso de `<iframe>` y `<embed>`. Carga PDF.js dinámicamente desde CDN (unpkg) sin romper SSR. Fetch del PDF desde la API route interna `/api/pdf`. Renderiza la página 1 con DPR correcto (máx. 2x). Usa `IntersectionObserver` para renderizar solo cuando el componente es visible (performance). Muestra spinner con texto "Cargando PDF…" y estado de error con botón "Abrir ↗" como fallback. Compatible 100%: Android Chrome/Firefox/Samsung Internet, iOS Safari 16+, Desktop.
+- **`scrollbar-hide`** (`globals.css`): clase utilitaria para ocultar la scrollbar manteniendo el scroll funcional (Chrome/Safari/Firefox/Edge).
+
+### Modificado
+
+- **`skills.tsx`** — Sección "En Aprendizaje / Exploratorio" rediseñada para móvil: en pantallas `< sm` muestra chips compactos con scroll horizontal tipo carrusel (`overflow-x-auto`, `snap-x`) sin texto descriptivo para no ocupar demasiado espacio. En `sm+` (tablet/desktop) mantiene el grid de tarjetas con nombre + descripción. Contador de tecnologías visible.
+- **`next.config.ts`** — CSP actualizado: `script-src` incluye `https://cdnjs.cloudflare.com https://unpkg.com` para PDF.js CDN. `object-src 'none'` y `frame-src 'none'` — ya no se usan iframes/embeds para PDFs.
+- **`certifications.tsx`** — `InlinePdfPreview` reemplazado por `PdfCanvasViewer`. Eliminada detección iOS (ya no necesaria, canvas funciona en todos los dispositivos).
+
+### Corregido
+
+- **Android Chrome**: PDF ya no muestra "Este contenido está bloqueado" — el canvas renderiza directamente sin depender de X-Frame-Options.
+- **iOS Safari**: PDF renderizado en canvas — sin necesidad de mensaje informativo.
+- **Sección Exploratorio en móvil**: ya no se ve como una lista interminable — chips compactos con scroll horizontal.
+
+---
+
+## v7.6.5 - Corrección de textos en español, fix PDF móvil iOS, badges "En desarrollo" unificados, versiones en tech-grid
 
 ### Añadido
 
