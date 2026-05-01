@@ -5,6 +5,27 @@
 
 ---
 
+## v7.6.7 - Vista previa PDF estática pre-renderizada (sin loading, funciona en todos los dispositivos)
+
+### Añadido
+
+- **`/public/certs-preview/`** — Imágenes PNG de la página 1 de cada PDF, generadas en build-time con Ghostscript r150 dpi + ImageMagick (redimensionadas a 900px, calidad 85, strip metadatos). Archivos: `cs50x.png`, `uees-talks.png`, `taller-pc.png`, `biorobotics.png`, `carta-recomendacion.png`.
+- **`PdfStaticPreview`** (`certifications.tsx`) — Nuevo componente de vista previa basado en `next/image` con las imágenes estáticas. Cero dependencias en runtime: sin PDF.js, sin fetch, sin iframe, sin canvas. Next.js sirve las imágenes en WebP/AVIF según el dispositivo con lazy loading nativo. El click/tap abre el PDF completo vía `/api/pdf`.
+
+### Modificado
+
+- **`certifications.tsx`** — `PdfCanvasViewer` (PDF.js canvas) reemplazado por `PdfStaticPreview` (next/image estático). Eliminadas todas las dependencias de PDF.js, `useCallback`, `useRef` de canvas. Componente resultante es puro, sin estado de carga, sin efectos de red en runtime.
+- **`package.json`** — Versión `7.6.7`.
+
+### Corregido
+
+- **Android Chrome**: spinner infinito resuelto — ya no hay carga de PDF.js CDN ni fetch en runtime.
+- **PC/Desktop**: vista previa que dejó de funcionar en v7.6.6 resuelta — imagen estática se muestra inmediatamente.
+- **iOS Safari**: funciona igual que desktop — next/image con `loading="lazy"` nativo.
+- **Todos los dispositivos**: vista previa visible instantáneamente sin ningún estado de carga.
+
+---
+
 ## v7.6.6 - Fix definitivo PDF canvas Android/iOS, Exploratorio móvil chips horizontal, CSP actualizado
 
 ### Añadido
