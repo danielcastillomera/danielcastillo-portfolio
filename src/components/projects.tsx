@@ -136,9 +136,17 @@ export default function Projects() {
                     {project.type === 'grupal' ? t.projects.group : t.projects.individual}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-full border border-accent-500/20 bg-accent-500/5 px-2 py-0.5 text-xs font-medium text-accent-600 dark:text-accent-400 whitespace-nowrap">
-                      {locale === 'en' ? project.statusEn : project.status}
-                    </span>
+                    {(locale === 'en' ? project.statusEn : project.status) === (locale === 'en' ? 'In development' : 'En desarrollo') ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-500/30 bg-accent-500/10 px-2.5 py-1 text-xs font-semibold text-accent-600 dark:text-accent-400 whitespace-nowrap">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-500 animate-pulse" aria-hidden="true" />
+                        {locale === 'en' ? project.statusEn : project.status}
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
+                        {locale === 'en' ? project.statusEn : project.status}
+                      </span>
+                    )}
                     <span className="rounded bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-xs font-mono text-gray-600 dark:text-gray-300 whitespace-nowrap">
                       {versions[project.id] || project.version}
                     </span>

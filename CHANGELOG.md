@@ -5,6 +5,25 @@
 
 ---
 
+## v7.6.5 - Corrección de textos en español, fix PDF móvil definitivo, badges "En desarrollo" unificados, versiones en tech-grid, docs wiki actualizados
+
+### Añadido
+
+- **Detección iOS en `InlinePdfPreview`**: cuando el dispositivo es iOS Safari (iPhone, iPad, iPod), se muestra un panel informativo con botón "Abrir ↗" prominente en lugar del `<iframe>` (que iOS no soporta para PDFs inline). Solución definitiva al problema de visualización de PDFs en móvil iOS.
+- **Versiones en Tech Grid**: agregadas versiones faltantes en la sección "Conjunto de tecnologías" (Supabase v2, PostgreSQL v16, SQL Server v2022, Git v2.49).
+
+### Modificado
+
+- **`i18n.ts`** — Sección `es` completamente traducida al español: taglines del hero, `sectionLabel`, `title`, `subtitle`, `ctaServices`, `scroll`, `irAlFinal`, `irAlInicio`, `capabilities`, `items`, etiquetas de secciones (About, Experience, Services, Projects, Skills, Certifications, Contact, Cookies, Footer, TechGrid, A11y, Misc). Eliminados textos en inglés que aparecían en modo español.
+- **`projects.tsx`** — Badge de estado unificado: todos los proyectos "En desarrollo" usan el mismo diseño naranja animado (borde, fondo y punto `animate-pulse`) igual que el proyecto destacado. Proyectos con estado "Terminado"/"Completed" usan badge verde consistente.
+- **`data.ts`** — Estado `'Completado'` renombrado a `'Terminado'` (ES) manteniendo `'Completed'` en EN. Versión del portafolio actualizada a `v7.6.5` en el proyecto `portfolio-web`.
+- **`about-me.tsx`** — Versión del stat actualizada a `v7.6.5`.
+- **`layout.tsx`** — Descripción SEO actualizada a `v7.6.5`.
+- **`package.json`** — Versión `7.6.5`.
+- **`docs/`** — Todos los archivos wiki actualizados a v7.6.5: `Home.md`, `Architecture.md`, `Accessibility.md`, `Deployment.md`, `I18n.md`.
+
+---
+
 ## v7.6.4 — Visor PDF con API route interna, TS build fixes, nuevo trabajo, logros, skills y taglines
 
 ### Añadido

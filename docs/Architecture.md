@@ -1,6 +1,6 @@
 # Arquitectura del Proyecto / Project Architecture
 
-> `danielcastillo-portfolio` v7.6.4
+> `danielcastillo-portfolio` v7.6.5
 
 ---
 
@@ -65,7 +65,7 @@ danielcastillo-portfolio/
 │   │   ├── theme-toggle.tsx
 │   │   └── whatsapp-float.tsx
 │   └── lib/
-│       ├── data.ts           # Single Source of Truth v7.6.4
+│       ├── data.ts           # Single Source of Truth v7.6.5
 │       ├── i18n.ts           # Traducciones ES/EN estáticas
 │       ├── i18n-provider.tsx # Context provider para i18n
 │       ├── theme-provider.tsx

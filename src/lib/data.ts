@@ -1,5 +1,5 @@
 /**
- * Portfolio Data — Single Source of Truth v7.6.4
+ * Portfolio Data — Single Source of Truth v7.6.5
  * Daniel Fernando Castillo Mera
  * Primera persona · achievement-oriented (estándar portafolios 2024-2026)
  */
@@ -190,13 +190,13 @@ export const TECH_GRID_CATEGORIES = [
     { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
   ]},
   { key: 'database', items: [
-    { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
-    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
-    { name: 'SQL Server', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg' },
+    { name: 'Supabase', version: '2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
+    { name: 'PostgreSQL', version: '16', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+    { name: 'SQL Server', version: '2022', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg' },
     { name: 'Oracle SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
   ]},
   { key: 'tools', items: [
-    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+    { name: 'Git', version: '2.49', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
     { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
     { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
     { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg' },
@@ -219,7 +219,7 @@ export const TECH_MARQUEE = [
 /* ═══ PROJECTS ═══ */
 export interface Project {
   id: string; title: string; version: string;
-  status: 'En desarrollo' | 'Completado' | 'MVP';
+  status: 'En desarrollo' | 'Terminado' | 'MVP';
   statusEn: 'In development' | 'Completed' | 'MVP';
   description: string; descriptionEn: string;
   longDescription: string; longDescriptionEn: string;
@@ -266,7 +266,7 @@ export const PROJECTS: Project[] = [
     githubApiUrl: 'https://raw.githubusercontent.com/danielcastillomera/dashboard-enterprise/main/package.json',
   },
   {
-    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.4',
+    id: 'portfolio-web', title: 'Portafolio Web Personal', version: 'v7.6.5',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Página web portafolio personal y de servicios con i18n ES/EN, WCAG 2.2, PWA, SEO y diseño responsive mobile-first',
     descriptionEn: 'Personal portfolio and services website with ES/EN i18n, WCAG 2.2, PWA, SEO and responsive mobile-first design',
@@ -281,7 +281,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'cne-redesign', title: 'Rediseño CNE — Figma', version: 'v1.0',
-    status: 'Completado', statusEn: 'Completed',
+    status: 'Terminado', statusEn: 'Completed',
     description: 'Análisis heurístico (Nielsen) y rediseño completo del sitio web del CNE en Figma con Material Design. Trabajo colaborativo',
     descriptionEn: 'Heuristic analysis (Nielsen) and full CNE website redesign in Figma with Material Design. Collaborative work',
     longDescription: 'Rediseño completo de la página de inicio y dos flujos verticales internos del CNE aplicando evaluación heurística de Nielsen, principios de Material Design y psicología visual. Trabajo colaborativo universitario',

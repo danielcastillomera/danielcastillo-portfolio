@@ -6,32 +6,44 @@ import { useReveal } from '@/lib/use-reveal';
 import { useT, useI18n } from '@/lib/i18n-provider';
 
 /**
- * InlinePdfPreview v7.6.4
+ * InlinePdfPreview v7.6.5
  *
  * Usa la API route interna /api/pdf?file=<nombre> para servir el PDF
  * con headers correctos desde el mismo origen del sitio.
- * Esto elimina TODOS los problemas de CSP, iframe bloqueado y diálogos
- * de confirmación en Android y iOS. El PDF se muestra directamente en
- * un <iframe> apuntando a nuestro propio endpoint.
  *
- * Dispositivos:
+ * Estrategia definitiva por dispositivo:
  * - Desktop Chrome/Edge/Firefox → iframe nativo, renderizado inmediato.
- * - Android Chrome/Firefox → iframe mismo origen, sin diálogo.
- * - iOS Safari → iframe mismo origen (browser descarga y previsualiza).
+ * - Android Chrome/Firefox → iframe mismo origen, sin diálogo de confirmación.
+ * - iOS Safari → No soporta iframe PDF inline; muestra botón prominente
+ *   para abrir en nueva pestaña (comportamiento nativo correcto en iOS).
  */
 function InlinePdfPreview({ file, title }: { file: string; title: string }) {
   const [isMounted, setIsMounted] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
-  useEffect(() => { setIsMounted(true); }, []);
+  useEffect(() => {
+    setIsMounted(true);
+    // Detectar iOS: iPhone, iPad, iPod o Mac con pantalla táctil (iPad OS)
+    const ua = navigator.userAgent;
+    const ios = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    setIsIOS(ios);
+  }, []);
 
-  // Extraer solo el nombre del archivo (sin la ruta /certs/)
   const filename = file.split('/').pop() ?? '';
-  // Usar nuestra API route interna — mismo origen, headers correctos
-  const apiUrl  = `/api/pdf?file=${encodeURIComponent(filename)}`;
+  const apiUrl   = `/api/pdf?file=${encodeURIComponent(filename)}`;
+
+  if (!isMounted) {
+    return (
+      <div className="mt-4 w-full flex items-center justify-center" style={{ minHeight: '80px' }}>
+        <div className="w-6 h-6 rounded-full border-2 border-accent-500/30 border-t-accent-500 animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="mt-4 w-full flex flex-col gap-2">
-      {/* Botón Abrir con borde/marco */}
+      {/* Botón Abrir — siempre visible, especialmente crítico en iOS */}
       <div className="flex justify-end">
         <a
           href={apiUrl}
@@ -44,12 +56,27 @@ function InlinePdfPreview({ file, title }: { file: string; title: string }) {
         </a>
       </div>
 
-      {/* Vista previa iframe — mismo origen, sin CSP issues */}
-      <div
-        className="w-full rounded-lg overflow-hidden border border-gray-200 dark:border-navy-700 bg-gray-50 dark:bg-navy-800"
-        style={{ height: 'clamp(260px, 48vw, 440px)' }}
-      >
-        {isMounted ? (
+      {isIOS ? (
+        /* iOS Safari: iframe PDF no es soportado — mostrar mensaje descriptivo */
+        <div
+          className="w-full rounded-lg border border-gray-200 dark:border-navy-700 bg-gray-50 dark:bg-navy-800 flex flex-col items-center justify-center gap-3 p-6"
+          style={{ minHeight: '160px' }}
+          role="region"
+          aria-label={`Vista previa de ${title}`}
+        >
+          <svg className="w-10 h-10 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <p className="text-xs text-center text-gray-600 dark:text-gray-400 max-w-xs leading-relaxed">
+            Toca <strong className="text-accent-500">Abrir ↗</strong> para ver el documento PDF en tu navegador.
+          </p>
+        </div>
+      ) : (
+        /* Android / Desktop: iframe mismo origen — renderizado directo */
+        <div
+          className="w-full rounded-lg overflow-hidden border border-gray-200 dark:border-navy-700 bg-gray-50 dark:bg-navy-800"
+          style={{ height: 'clamp(260px, 48vw, 440px)' }}
+        >
           <iframe
             src={apiUrl}
             title={title}
@@ -57,12 +84,8 @@ function InlinePdfPreview({ file, title }: { file: string; title: string }) {
             className="w-full h-full border-0"
             style={{ display: 'block' }}
           />
-        ) : (
-          <div className="flex items-center justify-center h-full">
-            <div className="w-6 h-6 rounded-full border-2 border-accent-500/30 border-t-accent-500 animate-spin" />
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
