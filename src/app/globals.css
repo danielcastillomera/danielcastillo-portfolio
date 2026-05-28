@@ -444,3 +444,40 @@ img, svg image {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;             /* Chrome / Safari / Opera / Android */
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   v7.6.8 — Hipervínculos globales
+   Los <a> que son hipervínculos de texto (no botones, no nav,
+   no tarjetas completas) usan #1F79C8. Al hover: color + subrayado
+   #C7511F. Los <a> con clases de botón o card mantienen su estilo.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Hipervínculos de texto genéricos */
+.prose a,
+.text-link,
+main a:not([class]),
+article a:not([class]) {
+  color: #1F79C8;
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.prose a:hover,
+.text-link:hover,
+main a:not([class]):hover,
+article a:not([class]):hover {
+  color: #C7511F;
+  text-decoration: underline;
+  text-decoration-color: #C7511F;
+}
+
+/* Hipervínculos que NO deben cambiar de color pero sí subrayan en hover */
+a[data-link-subtle] {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+a[data-link-subtle]:hover {
+  color: #C7511F;
+  text-decoration: underline;
+  text-decoration-color: #C7511F;
+}

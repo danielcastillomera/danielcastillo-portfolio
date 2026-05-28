@@ -1,5 +1,5 @@
 /**
- * i18n — Sistema de Internacionalización v7.6.7
+ * i18n — Sistema de Internacionalización v7.6.8
  * Soporta: Español (es) | English (en)
  * Redacción en primera persona — estándar portafolios 2024-2026
  */
@@ -40,10 +40,11 @@ export const translations = {
       items: [
         'Sistemas empresariales multi-tenant (Dashboard Enterprise v3.4.0)',
         'Facturación electrónica SRI Ecuador (XML v2.1.0)',
-        'REST APIs con validación robusta (Zod, Prisma, RLS)',
+        'Full-stack con Angular 18+ + NestJS 10 + MongoDB Atlas + Docker',
+        'REST APIs con validación robusta (Zod, class-validator, Prisma, RLS)',
+        'JWT, interceptores, pipes y directivas reutilizables',
         'Interfaces responsivas y accesibles (WCAG 2.2)',
         'Community Manager: Meta Ads, TikTok Ads, Instagram Ads',
-        'Diseño UI/UX: Figma, Heurísticas de Nielsen, Material Design',
         'Clean Code, SOLID, DRY, KISS, Agile/Scrum',
         'Inglés B1 — Escrito, escucha y hablado',
       ],
@@ -95,7 +96,7 @@ export const translations = {
       save: 'Guardar preferencias',
     },
     footer: {
-      role: 'Junior Full Stack Engineer / Developer · Community Manager',
+      role: 'Junior Full Stack Software Engineer | Community Manager | Next.js · Node.js · TypeScript · Angular · NestJS · Supabase · PostgreSQL · MongoDB · Docker',
       rights: 'Todos los derechos reservados.',
       license: 'Queda estrictamente prohibida la clonación, copia o distribución de este proyecto sin permiso previo y por escrito del propietario.',
       years: '2024–',
@@ -151,10 +152,11 @@ export const translations = {
       items: [
         'Multi-tenant enterprise systems (Dashboard Enterprise v3.4.0)',
         'SRI Ecuador electronic invoicing (XML v2.1.0)',
-        'REST APIs with robust validation (Zod, Prisma, RLS)',
+        'Full-stack with Angular 18+ + NestJS 10 + MongoDB Atlas + Docker',
+        'REST APIs with robust validation (Zod, class-validator, Prisma, RLS)',
+        'JWT authentication, interceptors, custom pipes & directives',
         'Responsive & accessible interfaces (WCAG 2.2)',
         'Community Manager: Meta Ads, TikTok Ads, Instagram Ads',
-        'UI/UX Design: Figma, Nielsen Heuristics, Material Design',
         'Clean Code, SOLID, DRY, KISS, Agile/Scrum',
         'English B1 — Written, listening and spoken',
       ],
@@ -206,7 +208,7 @@ export const translations = {
       save: 'Save preferences',
     },
     footer: {
-      role: 'Junior Full Stack Engineer / Developer · Community Manager',
+      role: 'Junior Full Stack Software Engineer | Community Manager | Next.js · Node.js · TypeScript · Angular · NestJS · Supabase · PostgreSQL · MongoDB · Docker',
       rights: 'All rights reserved.',
       license: 'Cloning, copying or distributing this project without prior written permission from the owner is strictly prohibited.',
       years: '2024–',

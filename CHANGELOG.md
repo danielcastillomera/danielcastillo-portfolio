@@ -5,6 +5,25 @@
 
 ---
 
+## v7.6.8 - Nombre H1, language toggle SVG flags, Exploratorio móvil fix, título profesional completo, traducciones EN, POSTS-COMMENTS-MANAGER, Angular/NestJS/MongoDB en skills
+
+### Añadido
+
+- **Hero**: nombre completo "Daniel Fernando Castillo Mera" en una sola línea encima del badge de disponibilidad. Color blanco en modo oscuro, negro en modo claro.
+- **`language-toggle.tsx`**: panel hover rediseñado con "Español EC" primero, label "Cambiar idioma", opciones ES/EN, y enlace "Cambiar país/región". Modal de selección de país/región con 10 países (bandera + nombre + idioma), dropdown interactivo, botones Cancelar/Aplicar.
+- **Hipervínculos globales** (`globals.css`): hipervínculos de texto color `#1F79C8`; hover: color `#C7511F` + subrayado. Variante `data-link-subtle` para links que mantienen color base pero cambian a `#C7511F` en hover.
+- **Proyecto `posts-comments-manager`**: Angular 18+, NestJS 10, MongoDB Atlas, Docker Compose. Prueba de laboratorio 4 días — Albatros Honduras. 18-05-2026 al 21-05-2026. v1.0.6.
+- **`EXPLORATORY_SKILLS`**: campos `nameEn` y `descEn` en todos los items (28 tecnologías).
+
+### Modificado
+
+- **`data.ts`** `PERSONAL.role` y `PERSONAL.roleShort`: actualizados a `Junior Full Stack Software Engineer | Community Manager | Next.js · TypeScript · Supabase · PostgreSQL · Tailwind CSS`.
+- **`i18n.ts`** `footer.role` ES + EN: actualizados al nuevo título.
+- **`skills.tsx`** sección Exploratorio: grid unificado idéntico en móvil y desktop (eliminado scroll horizontal de chips). Animaciones de entrada escalonadas, hover 3D lift + glow radial + `line-clamp-2` en descripción. Usa `nameEn`/`descEn` según locale.
+- **`data.ts`** experiencias Soprisa: fechas corregidas a `03-04-2023 — 29-09-2023`.
+
+---
+
 ## v7.6.7 - Vista previa PDF estática pre-renderizada (sin loading, funciona en todos los dispositivos)
 
 ### Añadido
