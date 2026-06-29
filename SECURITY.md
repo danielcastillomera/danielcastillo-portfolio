@@ -6,7 +6,7 @@
 
 | Versión | Soporte de seguridad |
 |---------|----------------------|
-| 7.6.8   | ✅ Activa (versión actual) |
+| 7.6.9   | ✅ Activa (versión actual) |
 | 7.5.x   | ⚠️ Solo correcciones críticas |
 | < 7.5.x | ❌ Sin soporte |
 
@@ -45,7 +45,7 @@ Si descubres una vulnerabilidad de seguridad en este proyecto, **no la reportes 
 
 ### Alcance
 
-Esta política aplica únicamente al código fuente del repositorio `danielcastillomera/danielcastillo-portfolio` y a la instancia de producción en `https://danielcastillo-portfolio.vercel.app/`.
+Esta política aplica únicamente al código fuente del repositorio `danielcastillomera/danielcastillo-portfolio` y a la instancia de producción en `https://danielcastillo-portfolio.vercel.app`.
 
 No aplica a:
 - Infraestructura de Vercel (reportar directamente a Vercel)
@@ -61,7 +61,7 @@ No aplica a:
 
 | Version | Security Support |
 |---------|-----------------|
-| 7.6.8   | ✅ Active (current version) |
+| 7.6.9   | ✅ Active (current version) |
 | 7.5.x   | ⚠️ Critical fixes only |
 | < 7.5.x | ❌ No support |
 
@@ -100,7 +100,7 @@ If you discover a security vulnerability in this project, **do not report it as 
 
 ### Scope
 
-This policy applies only to the source code of the `danielcastillomera/danielcastillo-portfolio` repository and the production instance at `https://danielcastillo-portfolio.vercel.app/`.
+This policy applies only to the source code of the `danielcastillomera/danielcastillo-portfolio` repository and the production instance at `https://danielcastillo-portfolio.vercel.app`.
 
 Does not apply to:
 - Vercel infrastructure (report directly to Vercel)

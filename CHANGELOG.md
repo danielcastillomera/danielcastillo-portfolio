@@ -5,6 +5,28 @@
 
 ---
 
+## v7.6.9 - Fix definitivo de contenido invisible en móvil (root cause), banderas correctas en selector de idioma
+
+### Corregido — Causa raíz del bug recurrente de visibilidad en móvil
+
+- **`use-reveal.ts`** — Identificada y corregida la causa raíz del bug reportado en versiones anteriores: secciones completas (especialmente "Formación continua y credibilidad / Certificados y talleres" y "Carta de Recomendación") permanecían en `opacity: 0` de forma PERMANENTE en ciertos dispositivos móviles. Causas combinadas: `rootMargin` negativo (`-60px` inferior) que reducía la zona de disparo del `IntersectionObserver`, `threshold` alto (0.15) difícil de alcanzar en secciones altas o al final del documento, viewport dinámico de Safari/Chrome móvil (la barra de direcciones cambia la altura real disponible), y layout shifts por carga progresiva de imágenes.
+- **Red de seguridad por temporizador**: se añadió un `setTimeout` de 600 ms que garantiza la visibilidad de TODO el contenido sin importar el comportamiento del `IntersectionObserver`, el dispositivo o el navegador. El observer se mantiene únicamente como mejora visual progresiva (reveal-on-scroll); la visibilidad del contenido ya NUNCA depende exclusivamente de él. Patrón estándar de "progressive enhancement con fallback garantizado".
+- **`rootMargin`/`threshold` por defecto ajustados**: de `0.15` / `-60px` a `0.05` / `+120px` — zona de disparo más generosa y permisiva en todos los dispositivos.
+- Resultado: eliminado el "scroll infinito" (cuadros vacíos) y la desaparición permanente de secciones en móvil, sin excepción de tamaño de dispositivo.
+
+### Corregido — Banderas del selector de idioma
+
+- **`language-toggle.tsx`** — Corregidas las 10 banderas SVG:
+  - **Ecuador y Colombia**: proporción de franjas corregida de 1:1:1 a 2:1:1 (amarillo doble altura, correcto según la bandera real).
+  - **Argentina**: de placeholder genérico a bicolor celeste/blanco real con Sol de Mayo simplificado.
+  - **Perú**: de placeholder genérico a tribanda vertical rojo-blanco-rojo real.
+  - **Chile**: de placeholder genérico a blanco/rojo con cantón azul y estrella real.
+  - **España**: de placeholder genérico a tribanda horizontal rojo-amarillo-rojo (proporción 1:2:1) real.
+  - **Reino Unido**: de placeholder genérico a Union Jack simplificado pero geométricamente correcto (diagonales + cruz de San Jorge).
+  - **Canadá**: de placeholder genérico a tribanda vertical roja-blanca-roja con hoja de arce estilizada.
+
+---
+
 ## v7.6.8 - Nombre H1, language toggle SVG flags, Exploratorio móvil fix, título profesional completo, traducciones EN, POSTS-COMMENTS-MANAGER, Angular/NestJS/MongoDB en skills
 
 ### Añadido

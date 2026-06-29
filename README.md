@@ -1,10 +1,10 @@
 <div align="center">
 
-# Daniel Fernando Castillo Mera — Portafolio Web v7.6.8
+# Daniel Fernando Castillo Mera — Portafolio Web v7.6.9
 
-**Junior Full Stack Engineer / Developer | Community Manager**
+**Junior Full Stack Software Engineer / Developer | Community Manager**
 
-[![Version](https://img.shields.io/badge/version-7.6.8-F59E0B?style=for-the-badge)](https://github.com/danielcastillomera/danielcastillo-portfolio/releases)
+[![Version](https://img.shields.io/badge/version-7.6.9-F59E0B?style=for-the-badge)](https://github.com/danielcastillomera/danielcastillo-portfolio/releases)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
@@ -138,7 +138,7 @@ danielcastillo-portfolio/
 
 ### Licencia
 
-MIT — Copyright (c) 2024-2026 Daniel Fernando Castillo Mera. Ver [LICENSE](LICENSE).
+MIT — Copyright (c) 2023-2026 Daniel Fernando Castillo Mera. Ver [LICENSE](LICENSE).
 
 ---
 
@@ -174,4 +174,4 @@ npm run build
 
 ### License
 
-MIT — Copyright (c) 2024-2026 Daniel Fernando Castillo Mera. See [LICENSE](LICENSE).
+MIT — Copyright (c) 2023-2026 Daniel Fernando Castillo Mera. See [LICENSE](LICENSE).

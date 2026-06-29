@@ -1,7 +1,7 @@
-# Daniel Castillo Portfolio — Wiki v7.6.8
+# Daniel Castillo Portfolio — Wiki v7.6.9
 
 > Documentación técnica oficial del proyecto `danielcastillo-portfolio`.
-> Versión actual: **7.6.8** · Última actualización: 2026-04-30
+> Versión actual: **7.6.9** · Última actualización: 2026-04-30
 
 ---
 
@@ -25,15 +25,16 @@ Esta wiki contiene la documentación técnica completa del portafolio web profes
 
 **danielcastillo-portfolio** es un portafolio web profesional de una sola página (SPA) construido con Next.js 15 (App Router), TypeScript 5.9 y Tailwind CSS 4. Su objetivo es presentar la trayectoria profesional, proyectos, habilidades y certificaciones de Daniel Fernando Castillo Mera de forma accesible, atractiva y funcional en cualquier dispositivo.
 
-- **URL de producción:** https://danielcastillo-portfolio.vercel.app/
+- **URL de producción:** https://danielcastillo-portfolio.vercel.app
 - **Repositorio:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Versión actual:** 7.6.8
+- **Versión actual:** 7.6.9
 - **Licencia:** Propiedad intelectual de Daniel Fernando Castillo Mera
 
 ### Historial de versiones rápido
 
 | Versión | Resumen |
 |---------|---------|
+| 7.6.9 | Fix definitivo contenido invisible móvil (root cause), banderas correctas selector idioma |
 | 7.6.8 | Nombre H1, SVG flags, Exploratorio móvil fix, Angular/NestJS/MongoDB en skills, título completo |
 | 7.6.7 | Vista previa PDF estática pre-renderizada, sin loading, todos los dispositivos |
 | 7.6.6 | Fix PDF canvas Android/iOS, chips Exploratorio móvil, CSP actualizado |
@@ -68,17 +69,18 @@ This wiki contains the complete technical documentation for **Daniel Fernando Ca
 
 **danielcastillo-portfolio** is a professional single-page portfolio (SPA) built with Next.js 15 (App Router), TypeScript 5.9 and Tailwind CSS 4. Its goal is to present Daniel Fernando Castillo Mera's professional background, projects, skills and certifications in an accessible, attractive and functional way on any device.
 
-- **Production URL:** https://danielcastillo-portfolio.vercel.app/
+- **Production URL:** https://danielcastillo-portfolio.vercel.app
 - **Repository:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Current version:** 7.6.8
+- **Current version:** 7.6.9
 - **License:** Intellectual property of Daniel Fernando Castillo Mera
 
 ### Quick Version History
 
 | Version | Summary |
 |---------|---------|
-| 7.6.8 | Nombre en hero, language toggle mejorado, traducciones EN, nuevo proyecto, Exploratorio unificado |
-| 7.6.7 | Vista previa PDF estática pre-renderizada, sin loading, todos los dispositivos |
+| 7.6.9 | Definitive fix for invisible content on mobile (root cause), correct language-switcher flags |
+| 7.6.8 | H1 name, SVG flags, Exploratory mobile fix, Angular/NestJS/MongoDB in skills, full title |
+| 7.6.7 | Static pre-rendered PDF preview, zero loading, all devices |
 | 7.6.6 | PDF canvas Android/iOS fix, Exploratory mobile chips, CSP updated |
 | 7.6.5 | Full Spanish i18n fix, iOS PDF fix, unified badges, tech-grid versions |
 | 7.6.4 | Internal PDF API route, TS fixes, new job, exploratory skills |

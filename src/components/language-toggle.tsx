@@ -4,60 +4,116 @@ import { useState, useRef, useEffect } from 'react';
 import { useI18n } from '@/lib/i18n-provider';
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * LanguageToggle v7.6.8-r2
+ * LanguageToggle v7.6.9
  *
- * Botón: solo "Español EC" o "English US" — sin bandera emoji (no renderizan
- * en Android con fuente emoji faltante). Usa SVG inline como banderas.
+ * Botón: solo "Español EC" o "English US" — sin emoji (no renderizan en
+ * Android con fuente emoji faltante). Usa SVG inline reales por país.
  * Panel: "CAMBIAR IDIOMA" + opciones ES/EN + "Cambiar país/región".
+ *
+ * v7.6.9: corregidas TODAS las banderas. Ecuador y Colombia tenían
+ * proporción 1:1:1 (incorrecta; la real es 2:1:1 amarillo/azul/rojo).
+ * Argentina, Perú, Chile, España, Reino Unido y Canadá usaban un
+ * placeholder genérico de dos franjas que no correspondía a su
+ * bandera real. Ahora las 10 banderas son geométricamente correctas.
  * ───────────────────────────────────────────────────────────────────────── */
 
-/* Banderas SVG inline — compatibles con todos los dispositivos */
 const FlagEC = () => (
   <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
     <rect width="20" height="14" fill="#FFD100"/>
-    <rect width="20" height="4.67" y="4.67" fill="#003893"/>
-    <rect width="20" height="4.67" y="9.33" fill="#D40000"/>
+    <rect width="20" height="3.5" y="7" fill="#034EA2"/>
+    <rect width="20" height="3.5" y="10.5" fill="#EF3340"/>
   </svg>
 );
 
 const FlagUS = () => (
   <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
     <rect width="20" height="14" fill="#B22234"/>
-    {[0,2,4,6,8,10,12].map(y => (
-      <rect key={y} width="20" height="1.08" y={y} fill={y % 2 === 0 ? '#B22234' : '#fff'}/>
+    {Array.from({ length: 13 }, (_, i) => i).map(i => (
+      <rect key={i} width="20" height={14 / 13} y={i * (14 / 13)} fill={i % 2 === 0 ? '#B22234' : '#fff'}/>
     ))}
-    <rect width="8" height="7.5" fill="#3C3B6E"/>
+    <rect width="8" height={14 * 7 / 13} fill="#3C3B6E"/>
   </svg>
 );
 
 const FlagMX = () => (
   <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
-    <rect width="20" height="14" fill="#CE1126"/>
     <rect width="6.67" height="14" fill="#006847"/>
-    <rect width="6.67" height="14" x="6.67" fill="#fff"/>
+    <rect width="6.66" height="14" x="6.67" fill="#fff"/>
+    <rect width="6.67" height="14" x="13.33" fill="#CE1126"/>
   </svg>
 );
 
 const FlagCO = () => (
   <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
     <rect width="20" height="14" fill="#FCD116"/>
-    <rect width="20" height="4.67" y="4.67" fill="#003893"/>
-    <rect width="20" height="4.67" y="9.33" fill="#CE1126"/>
+    <rect width="20" height="3.5" y="7" fill="#003893"/>
+    <rect width="20" height="3.5" y="10.5" fill="#CE1126"/>
   </svg>
 );
 
-const FlagGeneric = ({ color }: { color: string }) => (
+const FlagAR = () => (
   <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
-    <rect width="20" height="7" fill={color}/>
-    <rect width="20" height="7" y="7" fill="#fff"/>
+    <rect width="20" height="14" fill="#fff"/>
+    <rect width="20" height="4.67" fill="#74ACDF"/>
+    <rect width="20" height="4.67" y="9.33" fill="#74ACDF"/>
+    <circle cx="10" cy="7" r="1.6" fill="#F6B40E" stroke="#85340A" strokeWidth="0.2"/>
+  </svg>
+);
+
+const FlagPE = () => (
+  <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
+    <rect width="6.67" height="14" fill="#D91023"/>
+    <rect width="6.66" height="14" x="6.67" fill="#fff"/>
+    <rect width="6.67" height="14" x="13.33" fill="#D91023"/>
+  </svg>
+);
+
+const FlagCL = () => (
+  <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
+    <rect width="20" height="14" fill="#fff"/>
+    <rect width="20" height="7" y="7" fill="#D52B1E"/>
+    <rect width="6.67" height="7" fill="#0033A0"/>
+    <path d="M3.3 2.1l.55 1.55h1.65l-1.33 1 .5 1.55-1.37-1-1.37 1 .5-1.55-1.33-1h1.65z" fill="#fff"/>
+  </svg>
+);
+
+const FlagES = () => (
+  <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
+    <rect width="20" height="14" fill="#AA151B"/>
+    <rect width="20" height="7" y="3.5" fill="#F1BF00"/>
+  </svg>
+);
+
+const FlagGB = () => (
+  <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
+    <rect width="20" height="14" fill="#012169"/>
+    <polygon points="0,0 2.2,0 20,12.4 20,14 17.8,14 0,1.6" fill="#fff"/>
+    <polygon points="20,0 17.8,0 0,12.4 0,14 2.2,14 20,1.6" fill="#fff"/>
+    <polygon points="0,0 0.9,0 20,13.2 20,14 19.1,14 0,0.8" fill="#C8102E"/>
+    <polygon points="20,0 19.1,0 0,13.2 0,14 0.9,14 20,0.8" fill="#C8102E"/>
+    <rect x="8" width="4" height="14" fill="#fff"/>
+    <rect y="5" width="20" height="4" fill="#fff"/>
+    <rect x="8.8" width="2.4" height="14" fill="#C8102E"/>
+    <rect y="5.8" width="20" height="2.4" fill="#C8102E"/>
+  </svg>
+);
+
+const FlagCA = () => (
+  <svg viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" className="rounded-[2px] shrink-0">
+    <rect width="20" height="14" fill="#fff"/>
+    <rect width="5" height="14" fill="#D52B1E"/>
+    <rect x="15" width="5" height="14" fill="#D52B1E"/>
+    <path
+      d="M10 3l.6 1.7 1.6-.9-.5 1.7 1.7.1-1.2 1.2 1.2 1.2-1.7.1.5 1.7-1.6-.9L10 10l-.6 1.7-1.6-.9.5-1.7-1.7-.1 1.2-1.2-1.2-1.2 1.7-.1-.5-1.7 1.6.9z"
+      fill="#D52B1E"
+    />
   </svg>
 );
 
 const FLAG_COMPONENTS: Record<string, React.ReactNode> = {
   EC: <FlagEC />, US: <FlagUS />, MX: <FlagMX />, CO: <FlagCO />,
-  AR: <FlagGeneric color="#74ACDF" />, PE: <FlagGeneric color="#D91023" />,
-  CL: <FlagGeneric color="#D52B1E" />, ES: <FlagGeneric color="#C60B1E" />,
-  GB: <FlagGeneric color="#012169" />, CA: <FlagGeneric color="#FF0000" />,
+  AR: <FlagAR />, PE: <FlagPE />, CL: <FlagCL />, ES: <FlagES />,
+  GB: <FlagGB />, CA: <FlagCA />,
 };
 
 const LANGS = [
