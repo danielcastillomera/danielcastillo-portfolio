@@ -1,6 +1,6 @@
 # Despliegue / Deployment
 
-> `danielcastillo-portfolio` v7.6.9
+> `danielcastillo-portfolio` v8.0.0
 
 ---
 

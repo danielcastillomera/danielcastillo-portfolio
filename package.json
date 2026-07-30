@@ -1,8 +1,8 @@
 {
   "name": "danielcastillo-portfolio",
-  "version": "7.6.9",
+  "version": "8.0.0",
   "private": true,
-  "description": "Portafolio profesional \u2014 Daniel Fernando Castillo Mera \u00b7 Junior Full Stack Software Engineer / Developer | Community Manager",
+  "description": "Portafolio profesional — Daniel Fernando Castillo Mera · Full Stack Software Engineer | .NET, TypeScript, Angular | UI/UX Design",
   "author": "Daniel Fernando Castillo Mera <danielfcastillom@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.0",
     "autoprefixer": "^10.4.24",
+    "framer-motion": "^12.43.0",
     "lucide-react": "^0.574.0",
     "next": "^15.3.0",
     "postcss": "^8.5.6",

@@ -5,6 +5,27 @@
 
 ---
 
+## v8.0.0 - Animaciones Framer Motion, WhatsApp siempre visible, solo 4 proyectos, nuevo perfil profesional, logro STI, LinkedIn actualizado
+
+### Añadido
+
+- **Framer Motion v12** (MIT License): animaciones de entrada suaves con `motion.div` en Hero (nombre H1, badge), Projects (cards con `whileHover: { y: -4 }`), y About. Todas las animaciones respetan `prefers-reduced-motion`.
+- **Iconos inline en botones de proyectos**: GitHub, Figma y Documento — Icon+Texto en todos los botones para mejor UX.
+- **Logro cuantificado en STI**: "Automatizó el flujo de respuestas y atención al cliente mediante Meta Business Suite, incrementando en un 20% la efectividad en la contratación de servicios."
+
+### Modificado
+
+- **`whatsapp-float.tsx`**: botón WhatsApp siempre visible en todos los dispositivos (eliminada condición de scroll).
+- **`contact.tsx`**: eliminado botón "Escríbeme por WhatsApp" debajo de las cuadrículas.
+- **`PROJECTS`**: reducido a exactamente 4 proyectos: Dashboard Enterprise, POSTS-COMMENTS-MANAGER, Portafolio Personal Profesional, Análisis Heurístico CNE. Eliminados: Invoice Manager, Proyecto POE.
+- **`PERSONAL.role`**: `'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development'`.
+- **`PERSONAL.linkedin`**: actualizado a `https://www.linkedin.com/in/daniel-fernando-castillo-mera`.
+- **`about-me.tsx`**: nuevo texto "Acerca de mí" con perfil 7mo semestre, enfoque .NET/C#/TypeScript/Angular, UI/UX e IA. Stats: `7/10` semestre, `v8.0.0`, `4` proyectos.
+- **`i18n.ts`** `footer.role` ES+EN: `'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development'`.
+- **`package.json`**: versión `8.0.0`.
+
+---
+
 ## v7.6.9 - Fix definitivo de contenido invisible en móvil (root cause), banderas correctas en selector de idioma
 
 ### Corregido — Causa raíz del bug recurrente de visibilidad en móvil

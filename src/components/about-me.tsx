@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { PERSONAL, EDUCATION, ADDITIONAL_SKILLS } from '@/lib/data';
 import { useReveal } from '@/lib/use-reveal';
 import { LinkedInIcon, InstagramIcon, FacebookIcon, GitHubIcon, WhatsAppIcon } from './icons';
@@ -13,9 +14,9 @@ export default function AboutMe() {
 
   const stats = [
     { value: '10+', label: t.about.statsModules },
-    { value: '5',   label: t.about.statsProjects },
-    { value: 'v7.6.9', label: t.about.statsVersion },
-    { value: '6/10', label: t.about.statsSemester },
+    { value: '4',   label: t.about.statsProjects },
+    { value: 'v8.0.0', label: t.about.statsVersion },
+    { value: '7/10', label: t.about.statsSemester },
   ];
 
   const socialLinks = [
@@ -28,26 +29,37 @@ export default function AboutMe() {
 
   const edu = EDUCATION[1]; // Universidad de Guayaquil
 
-  /* Bio párrafo 1 */
+  /* Bio — nuevo texto v8.0.0 */
   const bioES = (
     <>
-      Soy <strong className="font-bold text-accent-600 dark:text-accent-400">Junior Full Stack Engineer/Developer</strong> con{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">proyectos reales en producción</strong>, experiencia laboral activa en{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">marketing digital, ventas y atención al cliente</strong> y{' '}
-      disponibilidad inmediata para contratación. Curso{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Ingeniería en Software</strong> en la{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Universidad de Guayaquil</strong> (sexto semestre), combinando{' '}
-      formación académica sólida con desarrollo profesional continuo, autodirigido y orientado a resultados.
+      Soy un <strong className="font-bold text-accent-600 dark:text-accent-400">Ingeniero de Software en formación</strong>{' '}
+      (cursando <strong className="font-bold text-accent-600 dark:text-accent-400">7mo semestre</strong>) apasionado por construir{' '}
+      productos digitales que combinan <strong className="font-bold text-accent-600 dark:text-accent-400">arquitecturas robustas</strong>{' '}
+      con <strong className="font-bold text-accent-600 dark:text-accent-400">experiencias de usuario excepcionales</strong>.{' '}
+      Como <strong className="font-bold text-accent-600 dark:text-accent-400">Full Stack Developer</strong>, mi enfoque técnico se centra en el{' '}
+      ecosistema Enterprise (<strong className="font-bold text-accent-600 dark:text-accent-400">.NET, C#, SQL</strong>) y herramientas modernas{' '}
+      (<strong className="font-bold text-accent-600 dark:text-accent-400">TypeScript, Angular, NestJS</strong>).{' '}
+      Me diferencio por integrar activamente herramientas de{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Inteligencia Artificial</strong>{' '}
+      en mi flujo de desarrollo para maximizar la calidad del código y aplicar sólidos principios de{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">UI/UX</strong>{' '}
+      en cada interfaz que construyo.
     </>
   );
   const bioEN = (
     <>
-      I&apos;m a <strong className="font-bold text-accent-600 dark:text-accent-400">Junior Full Stack Engineer/Developer</strong> with{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">real production projects</strong>, active work experience in{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">digital marketing, sales and customer service</strong>, and{' '}
-      immediate availability for hiring. I study{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Software Engineering</strong> at the{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">University of Guayaquil</strong> (sixth semester), combining solid academic training with continuous, self-directed and results-oriented professional development.
+      I am a <strong className="font-bold text-accent-600 dark:text-accent-400">Software Engineering student</strong>{' '}
+      (currently in my <strong className="font-bold text-accent-600 dark:text-accent-400">7th semester</strong>) passionate about building{' '}
+      digital products that combine <strong className="font-bold text-accent-600 dark:text-accent-400">robust architectures</strong>{' '}
+      with <strong className="font-bold text-accent-600 dark:text-accent-400">exceptional user experiences</strong>.{' '}
+      As a <strong className="font-bold text-accent-600 dark:text-accent-400">Full Stack Developer</strong>, my technical focus is centered on the{' '}
+      Enterprise ecosystem (<strong className="font-bold text-accent-600 dark:text-accent-400">.NET, C#, SQL</strong>) and modern tools{' '}
+      (<strong className="font-bold text-accent-600 dark:text-accent-400">TypeScript, Angular, NestJS</strong>).{' '}
+      I stand out by actively integrating{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Artificial Intelligence</strong>{' '}
+      tools into my development workflow to maximize code quality and apply solid{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">UI/UX</strong>{' '}
+      principles in every interface I build.
     </>
   );
 
@@ -57,23 +69,22 @@ export default function AboutMe() {
       Diseñé, construí y desplegué en producción{' '}
       <strong className="font-bold text-accent-600 dark:text-accent-400">Dashboard Enterprise</strong>, sistema de gestión empresarial{' '}
       multi-módulo orientado al comercio y retail ecuatoriano, con{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">motor de facturación electrónica certificado bajo normativa SRI Ecuador</strong>.{' '}
-      Aplico principios de{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Clean Code, SOLID, DRY y KISS</strong>; trabajo con metodologías{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Agile y Scrum</strong>, control de versiones con{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Git</strong> y flujos de desarrollo asistido por IA{' '}
-      (GitHub Copilot, Claude Code, Cursor).
+      <strong className="font-bold text-accent-600 dark:text-accent-400">motor de facturación electrónica SRI Ecuador</strong>.{' '}
+      Aplico principios de <strong className="font-bold text-accent-600 dark:text-accent-400">Clean Code, SOLID, DRY y KISS</strong>;{' '}
+      trabajo con <strong className="font-bold text-accent-600 dark:text-accent-400">Agile y Scrum</strong>,{' '}
+      control de versiones con <strong className="font-bold text-accent-600 dark:text-accent-400">Git</strong>{' '}
+      y flujos de desarrollo asistido por IA (GitHub Copilot, Claude Code, Cursor).
     </>
   );
   const paraEN = (
     <>
       I designed, built and deployed to production{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Dashboard Enterprise</strong>, a multi-module enterprise management system oriented to Ecuadorian commerce and retail, with an{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">electronic invoicing engine certified under SRI Ecuador regulations</strong>.{' '}
-      I apply{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Clean Code, SOLID, DRY and KISS</strong> principles; I work with{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Agile and Scrum</strong> methodologies, version control with{' '}
-      <strong className="font-bold text-accent-600 dark:text-accent-400">Git</strong> and AI-assisted development flows (GitHub Copilot, Claude Code, Cursor).
+      <strong className="font-bold text-accent-600 dark:text-accent-400">Dashboard Enterprise</strong>, a multi-module enterprise management system for Ecuadorian commerce and retail, with an{' '}
+      <strong className="font-bold text-accent-600 dark:text-accent-400">SRI Ecuador electronic invoicing engine</strong>.{' '}
+      I apply <strong className="font-bold text-accent-600 dark:text-accent-400">Clean Code, SOLID, DRY and KISS</strong> principles;{' '}
+      I work with <strong className="font-bold text-accent-600 dark:text-accent-400">Agile and Scrum</strong>,{' '}
+      version control with <strong className="font-bold text-accent-600 dark:text-accent-400">Git</strong>{' '}
+      and AI-assisted development flows (GitHub Copilot, Claude Code, Cursor).
     </>
   );
 

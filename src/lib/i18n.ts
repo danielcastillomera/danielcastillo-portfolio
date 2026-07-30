@@ -1,5 +1,5 @@
 /**
- * i18n — Sistema de Internacionalización v7.6.9
+ * i18n — Sistema de Internacionalización v8.0.0
  * Soporta: Español (es) | English (en)
  * Redacción en primera persona — estándar portafolios 2024-2026
  */
@@ -96,7 +96,7 @@ export const translations = {
       save: 'Guardar preferencias',
     },
     footer: {
-      role: 'Junior Full Stack Software Engineer | Community Manager | Next.js · Node.js · TypeScript · Angular · NestJS · Supabase · PostgreSQL · MongoDB · Docker',
+      role: 'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development',
       rights: 'Todos los derechos reservados.',
       license: 'Queda estrictamente prohibida la clonación, copia o distribución de este proyecto sin permiso previo y por escrito del propietario.',
       years: '2024–',
@@ -208,7 +208,7 @@ export const translations = {
       save: 'Save preferences',
     },
     footer: {
-      role: 'Junior Full Stack Software Engineer | Community Manager | Next.js · Node.js · TypeScript · Angular · NestJS · Supabase · PostgreSQL · MongoDB · Docker',
+      role: 'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development',
       rights: 'All rights reserved.',
       license: 'Cloning, copying or distributing this project without prior written permission from the owner is strictly prohibited.',
       years: '2024–',

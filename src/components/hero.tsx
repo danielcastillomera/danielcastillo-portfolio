@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { PERSONAL } from '@/lib/data';
 import { useTheme } from '@/lib/theme-provider';
 import { useT } from '@/lib/i18n-provider';
@@ -103,21 +104,31 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Nombre completo — H1 grande, blanco en dark / negro en light */}
-        <div className="mb-3 animate-fade-in">
+        {/* Nombre completo — H1 grande, animado con Framer Motion */}
+        <motion.div
+          className="mb-3"
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <h1
             className="text-3xl font-extrabold tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl leading-tight"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Daniel Fernando Castillo Mera
           </h1>
-        </div>
+        </motion.div>
 
         {/* Badge disponibilidad */}
-        <div className="inline-flex items-center gap-2.5 rounded-full border border-green-500/25 bg-green-500/[0.06] px-5 py-2 text-xs font-semibold text-green-700 dark:text-green-400 mb-8 animate-fade-in">
+        <motion.div
+          className="inline-flex items-center gap-2.5 rounded-full border border-green-500/25 bg-green-500/[0.06] px-5 py-2 text-xs font-semibold text-green-700 dark:text-green-400 mb-8"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+        >
           <svg className="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
           {t.hero.badge}
-        </div>
+        </motion.div>
 
         <h1 className="min-h-[4.5rem] sm:min-h-[5rem] md:min-h-[7rem] text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-5xl lg:text-6xl animate-slide-up" style={{ fontFamily: 'var(--font-display)' }} aria-live="polite" aria-atomic="true">
           <span className="text-gradient">{displayText}</span>
