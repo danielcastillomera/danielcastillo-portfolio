@@ -3,12 +3,12 @@ import { PERSONAL } from '@/lib/data';
 import { WhatsAppIcon, GitHubIcon, LinkedInIcon, InstagramIcon, FacebookIcon, EmailIcon } from './icons';
 import ProtectedImage from './protected-image';
 import { useT } from '@/lib/i18n-provider';
+import { handleSecureRedirect } from '@/lib/security';
 
 export default function Footer() {
   const year = new Date().getFullYear();
   const t = useT();
   const socials = [
-    { icon: <WhatsAppIcon className="w-4 h-4" />, url: PERSONAL.whatsapp, label: 'WhatsApp', color: 'hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10' },
     { icon: <GitHubIcon className="w-4 h-4" />, url: PERSONAL.github, label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5' },
     { icon: <LinkedInIcon className="w-4 h-4" />, url: PERSONAL.linkedin, label: 'LinkedIn', color: 'hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10' },
     { icon: <InstagramIcon className="w-4 h-4" />, url: PERSONAL.instagram, label: 'Instagram', color: 'hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-500/10' },
@@ -29,6 +29,14 @@ export default function Footer() {
             <p className="text-xs text-gray-700 dark:text-gray-300 text-center sm:text-left">{t.footer.role}</p>
           </div>
           <div className="flex items-center gap-2 flex-wrap justify-center">
+            <button
+              type="button"
+              onClick={() => handleSecureRedirect(PERSONAL.whatsappB64, 'blank')}
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 dark:text-navy-400 transition-all hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppIcon className="w-4 h-4" />
+            </button>
             {socials.map(s => (
               <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className={`flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 dark:text-navy-400 transition-all ${s.color}`} aria-label={s.label}>{s.icon}</a>
             ))}
@@ -36,9 +44,10 @@ export default function Footer() {
         </div>
         <div className="my-8 h-px bg-gray-200 dark:bg-navy-800/50" aria-hidden="true" />
         <div className="flex flex-wrap gap-2 justify-center mb-6">
-          {[{label:'WCAG 2.2',icon:'♿'},{label:'PWA Ready',icon:'📱'},{label:'SEO ✓',icon:'🔍'},{label:'GDPR',icon:'🔒'},{label:'CSP/HSTS',icon:'🛡️'},{label:'i18n ES/EN',icon:'🌐'}].map(b => (
+          {[{label:'WCAG 2.2',icon:'/icons/accessibility.svg'},{label:'PWA Ready',icon:'📱'},{label:'SEO ✓',icon:'🔍'},{label:'GDPR',icon:'🔒'},{label:'CSP/HSTS',icon:'🛡️'},{label:'i18n ES/EN',icon:'🌐'}].map(b => (
             <span key={b.label} className="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-navy-800 border border-gray-200 dark:border-navy-700 px-2.5 py-0.5 text-[10px] font-medium text-gray-700 dark:text-gray-400">
-              <span aria-hidden="true">{b.icon}</span>{b.label}
+              <ProtectedImage src={b.icon} alt={b.label} width={12} height={12} />
+              {b.label}
             </span>
           ))}
         </div>
@@ -50,3 +59,4 @@ export default function Footer() {
     </footer>
   );
 }
+

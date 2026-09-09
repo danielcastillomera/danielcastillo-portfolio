@@ -8,18 +8,18 @@ export default function Services() {
   const t = useT();
   const { locale } = useI18n();
   return (
-    <section id="servicios" className="relative py-16 sm:py-24" aria-labelledby="services-heading">
+    <section id="servicios" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="services-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/60 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
-      <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="mb-16">
+      <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="mb-16 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.services.sectionLabel}</span>
           <h2 id="services-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>{t.services.title}</h2>
-          <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-orange-500" aria-hidden="true" />
-          <p className="mt-4 text-base text-gray-900 dark:text-gray-100 max-w-2xl">{t.services.subtitle}</p>
+          <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-orange-500" aria-hidden="true" />
+          <p className="mt-4 text-base text-gray-900 dark:text-gray-100 max-w-2xl mx-auto">{t.services.subtitle}</p>
         </div>
         {SERVICE_CATEGORIES.map((cat, catIdx) => (
-          <div key={cat.title} className="mb-12 last:mb-0">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <div key={cat.title} id={catIdx === 0 ? 'soluciones-digitales' : 'soluciones-tecnicas'} className="mb-12 last:mb-0 w-full scroll-mt-24">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-500/10 text-accent-500 text-sm" aria-hidden="true">{catIdx === 0 ? '💻' : '🔧'}</span>
               {locale === 'en' ? cat.titleEn : cat.title}
             </h3>

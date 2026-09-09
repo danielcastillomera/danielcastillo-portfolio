@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { ThemeProvider } from '@/lib/theme-provider';
 import { I18nProvider } from '@/lib/i18n-provider';
+import { PreloadProvider } from '@/lib/preload-context';
+import { SmoothScrollProvider } from '@/lib/smooth-scroll';
+import Preloader from '@/components/preloader';
 import './globals.css';
 
 export const viewport: Viewport = {
@@ -14,12 +17,14 @@ export const viewport: Viewport = {
 };
 
 const BASE_URL = 'https://danielcastillo-portfolio.vercel.app';
+const TITLE = 'Daniel Fernando Castillo Mera | Full Stack Software Engineer | AI-Assisted Developer';
+const DESCRIPTION = 'Full Stack Software Engineer | AI-Assisted Developer. Portafolio profesional de Daniel Fernando Castillo Mera — .NET, TypeScript, Angular, Node.js, UI/UX Design. Guayaquil, Ecuador. Disponible para contratación inmediata.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: 'Daniel Fernando Castillo Mera - Junior Full Stack Software Engineer | Community Manager',
-  description: 'Portafolio profesional v8.0.0. Junior Full Stack Engineer / Developer y Community Manager especializado en Next.js, TypeScript, Supabase, Meta Ads, TikTok Ads. Disponible para contratación inmediata. Ecuador.',
-  keywords: ['Daniel Fernando Castillo Mera','Full Stack Engineer','Community Manager', 'Developer','Desarrollador', 'Next.js','TypeScript','Supabase','Ecuador','Guayaquil','Dashboard Enterprise','Meta Ads','TikTok Ads','Figma','UI/UX'],
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: ['Daniel Fernando Castillo Mera', 'Full Stack Software Engineer', 'AI-Assisted Developer', '.NET', 'C#', 'TypeScript', 'Angular', 'NestJS', 'Next.js', 'UI/UX Design', 'Ecuador', 'Guayaquil', 'Dashboard Enterprise'],
   authors: [{ name: 'Daniel Fernando Castillo Mera', url: BASE_URL }],
   creator: 'Daniel Fernando Castillo Mera',
   publisher: 'Daniel Fernando Castillo Mera',
@@ -42,22 +47,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_EC',
     alternateLocale: 'en_US',
-    title: 'Daniel Fernando Castillo Mera - Junior Full Stack Software Engineer | Community Manager',
-    description: 'Junior Full Stack Software Engineer / Developer y Community Manager desde Guayaquil, Ecuador. Next.js, TypeScript, Supabase, Meta Ads, TikTok Ads. Disponible para contratación inmediata.',
-    siteName: 'Daniel Castillo - Portfolio',
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: 'Daniel Castillo — Portfolio',
     url: BASE_URL,
     images: [{
       url: '/og-image.png',
       width: 1200,
       height: 630,
-      alt: 'Daniel Fernando Castillo Mera - Junior Full Stack Software Engineer | Community Manager',
+      alt: TITLE,
       type: 'image/png',
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daniel Fernando Castillo Mera - Junior Full Stack Software Engineer | Community Manager',
-    description: 'Junior Full Stack Software Engineer / Developer y Community Manager. Next.js, TypeScript, Supabase. Disponible para contratación inmediata.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: ['/og-image.png'],
   },
   other: {
@@ -70,35 +75,29 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es" dir="ltr" suppressHydrationWarning>
       <head>
-        {/* Prevenir FOUC de tema */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');var d=document.documentElement;if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){d.classList.add('dark');d.style.colorScheme='dark'}else{d.classList.remove('dark');d.style.colorScheme='light'}}catch(e){}})()` }} />
 
-        {/* Fix 3: Meta tags OG con dimensiones explícitas + tipo para precaché en redes sociales */}
         <meta property="og:image" content={`${BASE_URL}/og-image.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="Daniel Fernando Castillo Mera — Junior Full Stack Engineer / Developer | Community Manager" />
-        {/* Twitter/X */}
+        <meta property="og:image:alt" content={TITLE} />
         <meta name="twitter:image" content={`${BASE_URL}/og-image.png`} />
         <meta name="twitter:image:width" content="1200" />
         <meta name="twitter:image:height" content="630" />
-        {/* Precaché: hint para crawlers de redes sociales */}
         <link rel="preload" as="image" href="/og-image.png" />
-        {/* Fix 3: fb:app_id para depuración del Open Graph Debugger de Meta */}
         <meta property="fb:app_id" content="your_fb_app_id" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-        {/* JSON-LD Schema.org */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Daniel Fernando Castillo Mera',
-          jobTitle: 'Junior Full Stack Software Engineer | Community Manager',
-          description: 'Estudiante de Ingeniería en Software en la Universidad de Guayaquil. Proyectos reales en producción, disponible para contratación inmediata.',
+          jobTitle: 'Full Stack Software Engineer | AI-Assisted Developer',
+          description: 'Estudiante de Ingeniería en Software (7mo semestre) en la Universidad de Guayaquil. Full Stack Software Engineer especializado en .NET, TypeScript, Angular y desarrollo asistido por IA.',
           url: BASE_URL,
           image: `${BASE_URL}/og-image.png`,
           email: 'danielfcastillom@gmail.com',
@@ -107,19 +106,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           address: { '@type': 'PostalAddress', addressLocality: 'Guayaquil', addressCountry: 'EC' },
           sameAs: [
             'https://github.com/danielcastillomera',
-            'https://www.linkedin.com/in/daniel-fernando-castillo-mera-461b8420a',
+            'https://www.linkedin.com/in/daniel-fernando-castillo-mera',
             'https://www.instagram.com/danielcastillomera',
             'https://www.facebook.com/Daniel288215',
           ],
           alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidad de Guayaquil', sameAs: 'https://www.ug.edu.ec' },
-          knowsAbout: ['Next.js','TypeScript','React','Supabase','Tailwind CSS','Prisma ORM','Node.js','PostgreSQL','Community Management','Meta Ads','TikTok Ads','UI/UX Design','Figma','Facturación electrónica SRI Ecuador'],
+          knowsAbout: ['.NET', 'C#', 'TypeScript', 'Angular', 'NestJS', 'Next.js', 'React', 'Node.js', 'SQL Server', 'PostgreSQL', 'MongoDB', 'UI/UX Design', 'Figma', 'AI-Assisted Development'],
         }) }} />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-screen antialiased">
         <a href="#main-content" className="skip-link">Saltar al contenido principal</a>
         <I18nProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <PreloadProvider>
+              <Preloader />
+              <SmoothScrollProvider>{children}</SmoothScrollProvider>
+            </PreloadProvider>
+          </ThemeProvider>
         </I18nProvider>
         <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('contextmenu',function(e){if(e.target.closest('.protected-image-wrapper')||e.target.tagName==='IMG'){e.preventDefault()}});document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'||e.target.closest('.protected-image-wrapper')){e.preventDefault()}});window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();return false});window.addEventListener('appinstalled',function(e){e.preventDefault()});` }} />
       </body>

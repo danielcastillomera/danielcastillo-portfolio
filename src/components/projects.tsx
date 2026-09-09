@@ -66,6 +66,13 @@ function LinkButton({ link, locale }: { link: { label: string; labelEn: string; 
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
 
+const PROJECT_ANCHOR: Record<string, string> = {
+  'dashboard-enterprise': 'proyecto-dashboard-enterprise',
+  'posts-comments-manager': 'proyecto-posts-comments-manager',
+  'portfolio-web': 'proyecto-portfolio-personal',
+  'cne-redesign': 'proyecto-cne',
+};
+
 export default function Projects() {
   const { ref: sectionRef, isVisible } = useReveal();
   const [versions, setVersions] = useState<Record<string, string>>({});
@@ -103,13 +110,13 @@ export default function Projects() {
   };
 
   return (
-    <section id="proyectos" className="relative py-16 sm:py-24" aria-labelledby="projects-heading">
+    <section id="proyectos" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="projects-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 dark:from-navy-900/30 via-transparent to-gray-50/50 dark:to-navy-900/30" aria-hidden="true" />
-      <div ref={sectionRef} className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div ref={sectionRef} className="relative mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center">
 
         {/* Encabezado */}
         <motion.div
-          className="mb-16"
+          className="mb-16 text-center"
           initial="hidden" animate={isVisible ? 'show' : 'hidden'}
           variants={fadeUp} transition={{ duration: 0.5 }}
         >
@@ -117,13 +124,14 @@ export default function Projects() {
           <h2 id="projects-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
             {t.projects.title}
           </h2>
-          <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
+          <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
         </motion.div>
 
         {/* Proyecto destacado */}
         {featured && (
           <motion.article
-            className="glass rounded-2xl overflow-hidden card-glow mb-12"
+            id={PROJECT_ANCHOR[featured.id]}
+            className="glass rounded-2xl overflow-hidden card-glow mb-12 scroll-mt-24 w-full"
             aria-label={featured.title}
             initial="hidden" animate={isVisible ? 'show' : 'hidden'}
             variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }}
@@ -189,11 +197,12 @@ export default function Projects() {
         )}
 
         {/* Otros proyectos */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
           {others.map((project, i) => (
             <motion.article
               key={project.id}
-              className="glass rounded-xl p-5 card-glow flex flex-col"
+              id={PROJECT_ANCHOR[project.id]}
+              className="glass rounded-xl p-5 card-glow flex flex-col scroll-mt-24"
               aria-label={project.title}
               initial="hidden" animate={isVisible ? 'show' : 'hidden'}
               variants={fadeUp} transition={{ duration: 0.45, delay: 0.15 + i * 0.1 }}

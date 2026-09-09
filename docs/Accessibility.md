@@ -1,6 +1,6 @@
 # Accesibilidad / Accessibility
 
-> `danielcastillo-portfolio` v8.0.0 · WCAG 2.1 Level AA
+> `danielcastillo-portfolio` v9.0.0 · WCAG 2.1 Level AA
 
 ---
 
@@ -24,9 +24,9 @@ Ubicado en la esquina inferior izquierda de la pantalla. Persiste configuración
 
 **Icono:** SVG adjunto por el autor, renderizado via `<Image>` de Next.js sin deformación.
 
-### Selección de texto (v8.0.0)
+### Selección de texto
 
-Desde v8.0.0, **todo el texto es completamente seleccionable** en PC y móvil.
+**Todo el texto es completamente seleccionable** en PC y móvil.
 Solo las imágenes (`img`, `.protected-image`) y los iconos tienen `user-select: none` y `pointer-events: none`.
 
 **Justificación técnica:**
@@ -68,9 +68,9 @@ Located in the bottom-left corner. Settings persisted in `localStorage('a11y-set
 | Link highlighting | `a11y-highlight-links` class on `<html>` |
 | Large cursor | `a11y-large-cursor` class on `<html>` |
 
-### Text Selection (v8.0.0)
+### Text Selection
 
-From v8.0.0, **all text is fully selectable** on PC and mobile.
+**All text is fully selectable** on PC and mobile.
 Only images (`img`, `.protected-image`) and icons have `user-select: none` and `pointer-events: none`.
 
 **Technical justification:**

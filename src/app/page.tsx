@@ -2,12 +2,12 @@ import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
 import TechMarquee from '@/components/tech-marquee';
 import AboutMe from '@/components/about-me';
-import Experience from '@/components/experience';
 import Achievements from '@/components/achievements';
-import Services from '@/components/services';
 import TechGrid from '@/components/tech-grid';
-import Projects from '@/components/projects';
 import Skills from '@/components/skills';
+import Services from '@/components/services';
+import Projects from '@/components/projects';
+import Experience from '@/components/experience';
 import Certifications from '@/components/certifications';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
@@ -24,12 +24,12 @@ export default function HomePage() {
         <Hero />
         <TechMarquee />
         <AboutMe />
-        <Experience />
         <Achievements />
-        <Services />
         <TechGrid />
-        <Projects />
         <Skills />
+        <Services />
+        <Projects />
+        <Experience />
         <Certifications />
         <Contact />
       </main>

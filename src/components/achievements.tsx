@@ -1,7 +1,13 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useReveal } from '@/lib/use-reveal';
 import { useI18n } from '@/lib/i18n-provider';
+import { ACHIEVEMENT_STATS } from '@/lib/data';
+
+if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
 const ACHIEVEMENTS_ES = [
   {
@@ -47,10 +53,10 @@ const ACHIEVEMENTS_ES = [
     text: 'Realicé pasantías simultáneas en dos áreas de Soprisa S.A. (Tesorería y Sistemas), demostrando capacidad de gestión multitarea en entorno corporativo real.',
   },
   {
-    id: 'invoice',
+    id: 'posts-comments',
     icon: '💼',
-    highlight: 'Invoice Manager System',
-    text: 'Desarrollé Invoice Manager System, aplicación web para gestión profesional de facturas con stack moderno (Next.js, TypeScript, Supabase) — actualmente en desarrollo activo.',
+    highlight: 'POSTS-COMMENTS-MANAGER — prueba técnica superada',
+    text: 'Superé una prueba técnica de laboratorio de 4 días para Consultor Fullstack en Albatros (Honduras), entregando una aplicación Angular 18+ / NestJS 10 con autenticación JWT, paginación real y tests unitarios.',
   },
   {
     id: 'tiktok-warsa',
@@ -110,10 +116,10 @@ const ACHIEVEMENTS_EN = [
     text: 'I completed simultaneous internships in two Soprisa S.A. areas (Treasury and Systems), demonstrating multitasking management in a real corporate environment.',
   },
   {
-    id: 'invoice',
+    id: 'posts-comments',
     icon: '💼',
-    highlight: 'Invoice Manager System',
-    text: 'I developed Invoice Manager System, a web application for professional invoice management with a modern stack (Next.js, TypeScript, Supabase) — currently in active development.',
+    highlight: 'POSTS-COMMENTS-MANAGER — technical test passed',
+    text: 'I passed a 4-day technical lab test for a Fullstack Consultant role at Albatros (Honduras), delivering an Angular 18+ / NestJS 10 application with JWT authentication, real pagination and unit tests.',
   },
   {
     id: 'tiktok-warsa',
@@ -129,6 +135,37 @@ const ACHIEVEMENTS_EN = [
   },
 ];
 
+function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = `${value}${suffix}`;
+      return;
+    }
+    const counter = { n: 0 };
+    const tween = gsap.to(counter, {
+      n: value,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+      onUpdate: () => { el.textContent = `${Math.round(counter.n)}${suffix}`; },
+    });
+    return () => { tween.scrollTrigger?.kill(); tween.kill(); };
+  }, [value, suffix]);
+
+  return (
+    <div className="flex flex-col items-center text-center">
+      <span ref={ref} className="text-3xl sm:text-4xl font-extrabold text-accent-500 tabular-nums" style={{ fontFamily: 'var(--font-display)' }}>
+        0{suffix}
+      </span>
+      <span className="mt-1 text-xs font-medium text-gray-600 dark:text-gray-400 max-w-[9rem]">{label}</span>
+    </div>
+  );
+}
+
 export default function Achievements() {
   const { ref, isVisible } = useReveal();
   const { locale } = useI18n();
@@ -138,7 +175,7 @@ export default function Achievements() {
   const title = locale === 'en' ? 'Achievements & Notable Results' : 'Logros y resultados destacados';
 
   return (
-    <section id="logros" className="relative py-16 sm:py-24" aria-labelledby="achievements-heading">
+    <section id="logros" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="achievements-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
       <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
@@ -148,6 +185,17 @@ export default function Achievements() {
             {title}
           </h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
+        </div>
+
+        <div className="mb-14 flex flex-wrap items-start justify-center gap-8 sm:gap-14">
+          {ACHIEVEMENT_STATS.map(stat => (
+            <StatCounter
+              key={stat.label}
+              value={stat.value}
+              suffix={stat.suffix}
+              label={locale === 'en' ? stat.labelEn : stat.label}
+            />
+          ))}
         </div>
 
         <ul className="space-y-4" role="list">

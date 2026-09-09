@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { PERSONAL, EDUCATION, ADDITIONAL_SKILLS } from '@/lib/data';
+import Image from 'next/image';
+import { PERSONAL, EDUCATION } from '@/lib/data';
 import { useReveal } from '@/lib/use-reveal';
 import { LinkedInIcon, InstagramIcon, FacebookIcon, GitHubIcon, WhatsAppIcon } from './icons';
 import ProtectedImage from './protected-image';
@@ -11,13 +11,6 @@ export default function AboutMe() {
   const { ref: sectionRef, isVisible } = useReveal();
   const t = useT();
   const { locale } = useI18n();
-
-  const stats = [
-    { value: '10+', label: t.about.statsModules },
-    { value: '4',   label: t.about.statsProjects },
-    { value: 'v8.0.0', label: t.about.statsVersion },
-    { value: '7/10', label: t.about.statsSemester },
-  ];
 
   const socialLinks = [
     { icon: <LinkedInIcon className="w-4 h-4" />, url: PERSONAL.linkedin, label: 'LinkedIn', color: 'hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10' },
@@ -29,7 +22,6 @@ export default function AboutMe() {
 
   const edu = EDUCATION[1]; // Universidad de Guayaquil
 
-  /* Bio — nuevo texto v8.0.0 */
   const bioES = (
     <>
       Soy un <strong className="font-bold text-accent-600 dark:text-accent-400">Ingeniero de Software en formación</strong>{' '}
@@ -63,7 +55,6 @@ export default function AboutMe() {
     </>
   );
 
-  /* Bio párrafo 2 */
   const paraES = (
     <>
       Diseñé, construí y desplegué en producción{' '}
@@ -88,7 +79,6 @@ export default function AboutMe() {
     </>
   );
 
-  /* Frase final */
   const finalSentenceES = (
     <>
       Para mí, el código no es solo una carrera:{' '}
@@ -103,161 +93,118 @@ export default function AboutMe() {
   );
 
   return (
-    <section id="sobre-mi" className="relative py-16 sm:py-24" aria-labelledby="about-heading">
+    <section id="sobre-mi" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="about-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
-      <div ref={sectionRef} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div ref={sectionRef} className={`relative mx-auto max-w-5xl px-6 lg:px-8 flex flex-col items-center text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
         <div className="mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.about.sectionLabel}</span>
           <h2 id="about-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
             {t.about.title}
           </h2>
-          <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
+          <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Left — 3 cols */}
-          <div className="lg:col-span-3 space-y-6">
-            {/* Profile card */}
-            <div className="glass rounded-xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5">
-              <div className="shrink-0">
-                {/* Foto perfil: ratio 799x1238, se muestra como tarjeta proporcional */}
-                <div className="relative overflow-hidden ring-2 ring-accent-500/20 shadow-lg rounded-lg" style={{ width: '80px', height: '124px' }}>
-                  <ProtectedImage
-                    src={PERSONAL.profileImage}
-                    alt={`Foto de perfil de ${PERSONAL.name}`}
-                    width={80}
-                    height={124}
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-              </div>
-              <div className="text-center sm:text-left min-w-0">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{PERSONAL.name}</h3>
-                <p className="text-sm text-accent-600 dark:text-accent-400 font-medium leading-snug">{PERSONAL.role}</p>
-                <div className="mt-2 flex flex-wrap gap-2 justify-center sm:justify-start text-xs text-gray-700 dark:text-gray-300">
-                  <span className="inline-flex items-center gap-1">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
-                    {PERSONAL.location}
-                  </span>
-                  <span aria-hidden="true">&bull;</span>
-                  <span>{PERSONAL.age} {locale === 'en' ? 'years old' : 'años'}</span>
-                  <span aria-hidden="true">&bull;</span>
-                  <span>{locale === 'en' ? 'Ecuadorian nationality' : 'Nacionalidad Ecuatoriana'}</span>
-                </div>
-                <div className="mt-3 flex gap-1.5 justify-center sm:justify-start">
-                  {socialLinks.map((s) => (
-                    <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer"
-                      className={`flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 dark:text-navy-400 transition-all ${s.color}`}
-                      aria-label={s.label}>
-                      {s.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
+        {/* Profile card */}
+        <div className="glass rounded-xl p-6 flex flex-col items-center gap-5 w-full max-w-xl">
+          <div className="shrink-0">
+            <div className="relative overflow-hidden ring-2 ring-accent-500/20 shadow-lg rounded-lg" style={{ width: '84px', height: '130px' }}>
+              <ProtectedImage
+                src={PERSONAL.profileImage}
+                alt={`Foto de perfil de ${PERSONAL.name}`}
+                width={84}
+                height={130}
+                className="h-full w-full object-cover object-top"
+              />
             </div>
-
-            {/* Bio */}
-            <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100">{locale === 'en' ? bioEN : bioES}</p>
-            <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100">{locale === 'en' ? paraEN : paraES}</p>
-            <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100 italic">{locale === 'en' ? finalSentenceEN : finalSentenceES}</p>
-
-            {/* Role tags */}
-            <div className="flex flex-wrap gap-2">
-              {[
-                { icon: '💻', label: 'Full Stack Developer' },
-                { icon: '📱', label: 'Community Manager' },
-                { icon: '🎨', label: 'UI/UX Designer' },
-                { icon: '📊', label: 'Meta Business Suite' },
-                { icon: '📐', label: 'Figma / Prototyping' },
-              ].map((tag) => (
-                <span key={tag.label} className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 dark:bg-navy-800 border border-gray-200 dark:border-navy-700 px-3 py-1 text-xs font-medium text-gray-800 dark:text-gray-200">
-                  <span aria-hidden="true">{tag.icon}</span>
-                  {tag.label}
-                </span>
+          </div>
+          <div className="text-center min-w-0">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{PERSONAL.name}</h3>
+            <p className="text-sm text-accent-600 dark:text-accent-400 font-medium leading-snug">{PERSONAL.role}</p>
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-700 dark:text-gray-300">
+              <span className="inline-flex items-center gap-1">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                {PERSONAL.location}
+              </span>
+              <span aria-hidden="true">&bull;</span>
+              <span>{PERSONAL.age} {locale === 'en' ? 'years old' : 'años'}</span>
+              <span aria-hidden="true">&bull;</span>
+              <span>{locale === 'en' ? 'Ecuadorian nationality' : 'Nacionalidad Ecuatoriana'}</span>
+            </div>
+            <div className="mt-3 flex gap-1.5 justify-center">
+              {socialLinks.map((s) => (
+                <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer"
+                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 dark:text-navy-400 transition-all ${s.color}`}
+                  aria-label={s.label}>
+                  {s.icon}
+                </a>
               ))}
             </div>
+          </div>
+        </div>
 
-            {/* Capabilities */}
-            <div className="glass rounded-xl p-5">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400 mb-3">{t.about.capabilities}</h3>
-              <div className="space-y-2">
-                {t.about.items.map((item: string) => (
-                  <div key={item} className="flex items-start gap-2.5 text-sm text-gray-900 dark:text-gray-100">
-                    <svg className="w-4 h-4 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
+        {/* Bio */}
+        <div className="mt-8 max-w-2xl space-y-5 text-left sm:text-center">
+          <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100">{locale === 'en' ? bioEN : bioES}</p>
+          <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100">{locale === 'en' ? paraEN : paraES}</p>
+          <p className="text-base leading-relaxed text-gray-900 dark:text-gray-100 italic">{locale === 'en' ? finalSentenceEN : finalSentenceES}</p>
+        </div>
 
-            {/* Sales */}
-            <div className="glass rounded-xl p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <svg className="w-4 h-4 text-accent-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400">{locale === 'en' ? ADDITIONAL_SKILLS.ventas.titleEn : ADDITIONAL_SKILLS.ventas.title}</h4>
+        {/* Capabilities */}
+        <div id="about-capacidades" className="glass rounded-xl p-5 mt-10 w-full max-w-2xl scroll-mt-24">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400 mb-3">{t.about.capabilities}</h3>
+          <div className="space-y-2 text-left">
+            {t.about.items.map((item: string) => (
+              <div key={item} className="flex items-start gap-2.5 text-sm text-gray-900 dark:text-gray-100">
+                <svg className="w-4 h-4 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                {item}
               </div>
-              {(locale === 'en' ? ADDITIONAL_SKILLS.ventas.itemsEn : ADDITIONAL_SKILLS.ventas.items).map(item => (
-                <div key={item} className="flex items-start gap-2 text-xs text-gray-800 dark:text-gray-200 mt-1">
-                  <svg className="w-3 h-3 mt-0.5 shrink-0 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
-                  {item}
-                </div>
-              ))}
-            </div>
+            ))}
+          </div>
+        </div>
 
-            {/* Education */}
-            <div className="glass rounded-xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent-500/10" aria-hidden="true">
-                  <svg className="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-gray-900 dark:text-white">{locale === 'en' ? edu.institutionEn : edu.institution}</h3>
-                  <p className="text-sm text-gray-800 dark:text-gray-200">{locale === 'en' ? edu.degreeEn : edu.degree}</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{locale === 'en' ? edu.facultyEn : edu.faculty}</p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{locale === 'en' ? edu.periodEn : edu.period} · {locale === 'en' ? edu.progressEn : edu.progress}</p>
-                </div>
+        {/* Educación + Idiomas */}
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 w-full max-w-2xl">
+          <div id="about-educacion" className="glass rounded-xl p-6 flex items-start gap-4 text-left scroll-mt-24">
+            {edu.logo ? (
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white p-1.5 ring-1 ring-gray-200 shadow-sm select-none"
+                onContextMenu={e => e.preventDefault()}
+              >
+                <Image
+                  src={edu.logo}
+                  alt={locale === 'en' ? edu.institutionEn : edu.institution}
+                  width={40}
+                  height={31}
+                  draggable={false}
+                  className="h-auto w-full object-contain pointer-events-none"
+                  onContextMenu={e => e.preventDefault()}
+                />
               </div>
+            ) : (
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent-500/10" aria-hidden="true">
+                <svg className="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
+              </div>
+            )}
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white leading-snug">{locale === 'en' ? edu.institutionEn : edu.institution}</h3>
+              <p className="text-xs text-gray-800 dark:text-gray-200 mt-0.5">{locale === 'en' ? edu.degreeEn : edu.degree}</p>
+              <p className="text-[11px] text-gray-600 dark:text-gray-400 mt-0.5">{locale === 'en' ? edu.facultyEn : edu.faculty}</p>
+              <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400">{locale === 'en' ? edu.periodEn : edu.period} · {locale === 'en' ? edu.progressEn : edu.progress}</p>
             </div>
           </div>
 
-          {/* Right — stats + idioma */}
-          <div className="lg:col-span-2">
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, i) => (
-                <div key={stat.label} className="glass rounded-xl p-5 text-center card-glow"
-                  style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: `opacity 0.6s ease ${i * 100}ms, transform 0.6s ease ${i * 100}ms` }}>
-                  <div className="text-2xl font-bold text-gradient sm:text-3xl" style={{ fontFamily: 'var(--font-display)' }}>{stat.value}</div>
-                  <div className="mt-1 text-xs font-medium text-gray-700 dark:text-gray-300 leading-tight">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Inglés B1 — bandera siempre visible (desktop y móvil) */}
-            <div className="mt-4 glass rounded-xl p-4 flex items-center gap-3">
-              {/* Bandera USA SVG inline — siempre visible en cualquier dispositivo */}
-              <svg className="w-8 h-6 shrink-0 rounded-sm overflow-hidden shadow-sm" viewBox="0 0 60 40" fill="none" aria-hidden="true">
-                <rect width="60" height="40" fill="#B22234"/>
-                <rect y="3.08" width="60" height="3.08" fill="#fff"/>
-                <rect y="9.23" width="60" height="3.08" fill="#fff"/>
-                <rect y="15.38" width="60" height="3.08" fill="#fff"/>
-                <rect y="21.54" width="60" height="3.08" fill="#fff"/>
-                <rect y="27.69" width="60" height="3.08" fill="#fff"/>
-                <rect y="33.85" width="60" height="3.08" fill="#fff"/>
-                <rect width="24" height="21.54" fill="#3C3B6E"/>
-                {/* Stars simplified */}
-                {[...Array(6)].map((_, row) =>
-                  [...Array(row % 2 === 0 ? 6 : 5)].map((_, col) => (
-                    <circle key={`${row}-${col}`} cx={2 + col * 4 + (row % 2 === 0 ? 0 : 2)} cy={2 + row * 3.5} r="0.9" fill="#fff" />
-                  ))
-                )}
+          <div id="about-idiomas" className="glass rounded-xl p-6 flex items-center gap-4 text-left scroll-mt-24">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent-500/10" aria-hidden="true">
+              <svg className="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m6.334-12.138a48.19 48.19 0 016.333 0M9 5.25a48.19 48.19 0 016.333 0m0 0c1.11.055 2.219.13 3.323.226" />
               </svg>
-              <div>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">{locale === 'en' ? 'English B1' : 'Inglés B1'}</p>
-                <p className="text-xs text-gray-700 dark:text-gray-300">{locale === 'en' ? 'Written, listening and spoken' : 'Escrito, escucha y hablado'}</p>
-              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white">{locale === 'en' ? 'English B1' : 'Inglés B1'}</h3>
+              <p className="text-xs text-gray-700 dark:text-gray-300 mt-0.5">{locale === 'en' ? 'Written, listening and spoken' : 'Escrito, escucha y hablado'}</p>
             </div>
           </div>
         </div>

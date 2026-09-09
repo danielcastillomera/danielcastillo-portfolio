@@ -1,128 +1,218 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { NAV_LINKS, PERSONAL } from '@/lib/data';
+import { useEffect, useState, useRef } from 'react';
+import { PERSONAL, NAV_LINKS } from '@/lib/data';
+import { useT } from '@/lib/i18n-provider';
 import ThemeToggle from './theme-toggle';
 import LanguageToggle from './language-toggle';
-import { useT } from '@/lib/i18n-provider';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDesktop, setOpenDesktop] = useState<string | null>(null);
+  const [openMobile, setOpenMobile] = useState<string | null>(null);
+  const closeTimer = useRef<number | null>(null);
   const t = useT();
 
-  const navLabels: Record<string, string> = {
-    inicio: t.nav.inicio, sobreMi: t.nav.sobreMi, experiencia: t.nav.experiencia,
-    servicios: t.nav.servicios, proyectos: t.nav.proyectos, habilidades: t.nav.habilidades,
-    certificaciones: t.nav.certificaciones, contacto: t.nav.contacto,
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-      const sections = NAV_LINKS.map(l => l.href.replace('#', ''));
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top <= 120) { setActiveSection(sections[i]); break; }
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    const h = (e: KeyboardEvent) => { if (e.key === 'Escape' && isOpen) setIsOpen(false); };
-    document.addEventListener('keydown', h);
-    return () => document.removeEventListener('keydown', h);
-  }, [isOpen]);
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
+  }, [mobileOpen]);
+
+  const label = (key: string): string => (t.nav as unknown as Record<string, string>)[key] ?? key;
+
+  const openDesktopMenu = (href: string) => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setOpenDesktop(href);
+  };
+  const scheduleClose = () => {
+    closeTimer.current = window.setTimeout(() => setOpenDesktop(null), 150);
+  };
 
   return (
-    <header role="banner" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass shadow-lg shadow-black/5 dark:shadow-navy-950/50' : 'bg-transparent'}`}>
-      <nav role="navigation" aria-label="Navegación principal" className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-
-        {/* Logo — solo nombre, sin foto de perfil */}
-        <a href="#inicio" className="group flex items-center gap-2 transition-opacity hover:opacity-80 shrink-0 min-w-0" aria-label="Ir al inicio">
-          <span className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight whitespace-nowrap">
-            Daniel Fernando<br />Castillo Mera
-          </span>
-        </a>
-
-        {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-0.5" role="list">
-          {NAV_LINKS.map(link => {
-            const sectionId = link.href.replace('#', '');
-            const isActive = activeSection === sectionId;
-            const label = navLabels[link.labelKey] ?? link.labelKey;
-            return (
-              <li key={link.href}>
-                <a href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 whitespace-nowrap ${
-                    isActive
-                      ? 'text-accent-500'
-                      : 'text-gray-900 dark:text-white hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
-                  }`}
-                  aria-current={isActive ? 'true' : undefined}>
-                  {label}
-                  {isActive && <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-4 bg-accent-500 rounded-full" aria-hidden="true" />}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Right controls */}
-        <div className="flex items-center gap-1.5">
-          <LanguageToggle />
-          <ThemeToggle />
-          <a href="#contacto" className="hidden md:inline-flex items-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-accent-400 active:scale-95">
-            {t.nav.contactame}
+    <>
+      <header
+        className={`fixed top-0 inset-x-0 z-[100] transition-all duration-300 ${
+          scrolled ? 'bg-white/90 dark:bg-navy-950/90 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+        }`}
+      >
+        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
+          <a
+            href="#inicio"
+            className="shrink-0 text-sm font-extrabold tracking-tight text-gray-900 dark:text-white"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            {PERSONAL.name.split(' ').slice(0, 2).join(' ')}
           </a>
-          <button type="button"
-            className="relative z-50 flex lg:hidden h-10 w-10 items-center justify-center rounded-lg text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-            aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}>
-            <div className="flex flex-col items-center justify-center gap-[6px] w-5">
-              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`} />
-              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 scale-0' : ''}`} />
-              <span className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`} />
-            </div>
-          </button>
-        </div>
-      </nav>
 
-      {/* Mobile menu */}
-      <div id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${isOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}
-        aria-hidden={!isOpen}>
-        <div className="absolute inset-0 bg-white/95 dark:bg-navy-950/95 backdrop-blur-xl" onClick={() => setIsOpen(false)} aria-hidden="true" />
-        <nav className="relative flex h-full flex-col items-center justify-center gap-3" aria-label="Menú móvil">
-          {NAV_LINKS.map((link, i) => {
-            const label = navLabels[link.labelKey] ?? link.labelKey;
-            return (
-              <a key={link.href} href={link.href}
-                className={`text-2xl font-medium text-gray-900 dark:text-white transition-all duration-500 hover:text-accent-500 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
-                style={{ transitionDelay: isOpen ? `${i * 60}ms` : '0ms' }}
-                onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1}>
-                {label}
-              </a>
-            );
-          })}
-          <a href="#contacto"
-            className={`mt-4 inline-flex items-center gap-2 rounded-xl bg-accent-500 px-8 py-3 text-base font-bold text-black transition-all duration-500 hover:bg-accent-400 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
-            style={{ transitionDelay: isOpen ? `${NAV_LINKS.length * 60}ms` : '0ms' }}
-            onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1}>
-            {t.nav.contactame}
-          </a>
+          {/* Desktop nav */}
+          <ul className="hidden lg:flex items-center gap-1" role="menubar">
+            {NAV_LINKS.map(link => {
+              const isCta = link.labelKey === 'contactame';
+              return (
+                <li
+                  key={link.href}
+                  className="relative"
+                  role="none"
+                  onMouseEnter={() => link.subs && openDesktopMenu(link.href)}
+                  onMouseLeave={scheduleClose}
+                >
+                  <a
+                    href={link.href}
+                    role="menuitem"
+                    aria-haspopup={link.subs ? 'true' : undefined}
+                    aria-expanded={link.subs ? openDesktop === link.href : undefined}
+                    className={
+                      isCta
+                        ? 'inline-flex items-center gap-1 rounded-full bg-accent-500 px-4 py-2 text-xs font-bold text-black transition-colors hover:bg-accent-400'
+                        : 'inline-flex items-center gap-1 rounded-lg px-3 py-2 text-xs font-semibold text-gray-700 dark:text-navy-200 transition-colors hover:text-amber-500 dark:hover:text-amber-400'
+                    }
+                  >
+                    {label(link.labelKey)}
+                    {link.subs && (
+                      <svg className={`w-3 h-3 transition-transform duration-200 ${openDesktop === link.href ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    )}
+                  </a>
+
+                  {link.subs && (
+                    <div
+                      className={`absolute left-1/2 top-full -translate-x-1/2 mt-1 w-64 rounded-xl bg-white dark:bg-navy-900 shadow-xl ring-1 ring-gray-200 dark:ring-navy-700 overflow-hidden transition-all duration-200 origin-top ${
+                        openDesktop === link.href ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
+                      }`}
+                      role="menu"
+                    >
+                      <div className="py-1.5">
+                        {link.subs.map(sub => (
+                          <a
+                            key={sub.href}
+                            href={sub.href}
+                            role="menuitem"
+                            className="block px-4 py-2 text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-accent-500/10 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                            onClick={() => setOpenDesktop(null)}
+                          >
+                            {label(sub.labelKey)}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="flex items-center gap-1.5">
+            <LanguageToggle />
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-700 dark:text-navy-200 hover:bg-gray-100 dark:hover:bg-white/5 lg:hidden"
+              aria-label="Abrir menú"
+              aria-expanded={mobileOpen}
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
         </nav>
+      </header>
+
+      {/* Mobile accordion menu */}
+      <div
+        className={`fixed inset-0 z-[110] lg:hidden transition-opacity duration-300 ${
+          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú de navegación"
+      >
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setMobileOpen(false)} aria-hidden="true" />
+        <div
+          className={`absolute right-0 top-0 h-full w-full max-w-sm bg-white dark:bg-navy-950 shadow-2xl transition-transform duration-300 overflow-y-auto ${
+            mobileOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-navy-800">
+            <span className="text-sm font-bold text-gray-900 dark:text-white">Menú</span>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5"
+              aria-label="Cerrar menú"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <nav className="px-3 py-3" aria-label="Menú móvil">
+            {NAV_LINKS.map(link => {
+              const isCta = link.labelKey === 'contactame';
+              const isOpen = openMobile === link.href;
+              return (
+                <div key={link.href} className="border-b border-gray-100 dark:border-navy-800 last:border-0">
+                  <div className="flex items-center">
+                    <a
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={
+                        isCta
+                          ? 'flex-1 my-2 rounded-full bg-accent-500 px-4 py-2.5 text-center text-sm font-bold text-black'
+                          : 'flex-1 py-3.5 text-sm font-semibold text-gray-800 dark:text-gray-100'
+                      }
+                    >
+                      {label(link.labelKey)}
+                    </a>
+                    {link.subs && !isCta && (
+                      <button
+                        type="button"
+                        onClick={() => setOpenMobile(isOpen ? null : link.href)}
+                        className="flex h-11 w-11 items-center justify-center text-gray-400"
+                        aria-label={isOpen ? 'Contraer' : 'Expandir'}
+                        aria-expanded={isOpen}
+                      >
+                        <svg className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+                  {link.subs && (
+                    <div className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                      <div className="overflow-hidden">
+                        <div className="flex flex-col gap-0.5 pb-3 pl-4">
+                          {link.subs.map(sub => (
+                            <a
+                              key={sub.href}
+                              href={sub.href}
+                              onClick={() => setMobileOpen(false)}
+                              className="rounded-lg px-3 py-2 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-amber-50 dark:hover:bg-accent-500/10 hover:text-amber-600 dark:hover:text-amber-400"
+                            >
+                              {label(sub.labelKey)}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+        </div>
       </div>
-    </header>
+    </>
   );
 }

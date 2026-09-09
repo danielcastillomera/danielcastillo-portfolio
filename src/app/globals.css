@@ -304,7 +304,7 @@ body p, body li, body span:not(.sr-only), body td, body th {
 /* ═══════════════════════════════════════════════════════════════
    GLOBAL IMAGE PROTECTION
    ═══════════════════════════════════════════════════════════════ */
-img, svg image {
+img, svg, svg image {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;

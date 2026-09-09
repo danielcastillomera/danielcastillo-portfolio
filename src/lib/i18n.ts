@@ -1,5 +1,5 @@
 /**
- * i18n — Sistema de Internacionalización v8.0.0
+ * i18n — Sistema de Internacionalización v9.0.0
  * Soporta: Español (es) | English (en)
  * Redacción en primera persona — estándar portafolios 2024-2026
  */
@@ -9,16 +9,24 @@ export type Locale = 'es' | 'en';
 export const translations = {
   es: {
     nav: {
-      inicio: 'Inicio', sobreMi: 'Sobre mí', experiencia: 'Experiencia',
-      servicios: 'Servicios', proyectos: 'Proyectos', habilidades: 'Habilidades',
-      certificaciones: 'Certificaciones', contacto: 'Contacto', contactame: 'Contáctame',
+      inicio: 'Inicio', sobreMi: 'Sobre mí', experiencia: 'Experiencia laboral',
+      servicios: 'Servicios profesionales', proyectos: 'Proyectos destacados', stack: 'Stack tecnológico',
+      certificaciones: 'Certificaciones', contactame: 'Contáctame',
       language: 'EN', languageLabel: 'Switch to English',
+      subLoQueHago: 'Lo que hago', subEducacion: 'Educación', subIdiomas: 'Idiomas', subLogros: 'Logros y resultados destacados',
+      subLenguajes: 'Lenguajes', subFrontend: 'Frontend', subBackend: 'Backend', subDatabase: 'Base de Datos & Cloud',
+      subTools: 'Herramientas & Metodologías', subMarketing: 'Community Manager & Marketing Digital',
+      subUiux: 'Diseño UI/UX', subExploratorio: 'En Aprendizaje / Exploratorio',
+      subSolucionesDigitales: 'Soluciones Digitales', subSolucionesTecnicas: 'Soluciones Técnicas',
+      subProyDashboard: 'Dashboard Enterprise', subProyPosts: 'POSTS-COMMENTS-MANAGER',
+      subProyPortfolio: 'Portafolio Personal Profesional', subProyCne: 'Análisis Heurístico y Rediseño UI/UX — CNE',
+      subCarta: 'Carta de Recomendación',
     },
     hero: {
       badge: 'Disponible para contratación inmediata y para realizar proyectos',
       taglines: [
         'Diseño y construyo soluciones digitales que impulsan tu negocio.',
-        'Junior Full Stack Engineer disponible para contratación inmediata.',
+        'Full Stack Software Engineer disponible para contratación inmediata.',
         'Construyo sistemas empresariales robustos y escalables desde Ecuador.',
         'Community Manager especializado en Meta Ads, TikTok e Instagram Ads.',
         'Facturación electrónica SRI, dashboards y software a la medida.',
@@ -29,6 +37,7 @@ export const translations = {
         'Soluciones digitales reales — documentadas, seguras y desplegadas.',
       ],
       subtitle: 'Desde dashboards multi-tenant hasta facturación electrónica SRI — desarrollo software con estándares de la industria, disponible para contratación inmediata.',
+      subtitleLine: 'Full Stack Software Engineer | AI-Assisted Developer, Universidad de Guayaquil, 7mo de 10 semestres, 21 años · Guayaquil, Ecuador',
       ctaServices: 'Ver mis servicios', ctaGitHub: 'GitHub',
       scroll: 'Desplazar', irAlFinal: 'Ir al final', irAlInicio: 'Ir al inicio',
     },
@@ -71,11 +80,13 @@ export const translations = {
       },
     },
     certifications: {
-      sectionLabel: 'Formación continua y credibilidad', title: 'Certificados y talleres',
-      subtitle: 'Aprendizaje continuo más allá del aula, con certificaciones de organizaciones nacionales e internacionales.',
+      sectionLabel: 'Formación continua y credibilidad', title: 'Certificaciones',
+      subtitle: 'Certificaciones y cursos en curso de organizaciones nacionales e internacionales.',
       status: { active: 'Activo', inProgress: 'En curso', completed: 'Completado' },
-      issuer: 'Emisor', date: 'Fecha', duration: 'Duración',
-      location: 'Lugar', statusLabel: 'Estado', viewPdf: 'Ver documento',
+      issuer: 'Empresa emisora', issued: 'Expedición', expires: 'Caducidad',
+      credentialId: 'ID de la credencial', viewCredential: 'Ver credencial',
+      inProgressBadge: 'En curso', recommendationTitle: 'Carta de Recomendación',
+      viewDocument: 'Ver documento',
     },
     contact: {
       sectionLabel: 'Hablemos', title: '¿Tienes un proyecto en mente?',
@@ -99,7 +110,7 @@ export const translations = {
       role: 'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development',
       rights: 'Todos los derechos reservados.',
       license: 'Queda estrictamente prohibida la clonación, copia o distribución de este proyecto sin permiso previo y por escrito del propietario.',
-      years: '2024–',
+      years: '2023–',
     },
     techGrid: {
       sectionLabel: 'Conjunto de tecnologías', title: 'Tecnologías y herramientas',
@@ -121,16 +132,24 @@ export const translations = {
   },
   en: {
     nav: {
-      inicio: 'Home', sobreMi: 'About me', experiencia: 'Experience',
-      servicios: 'Services', proyectos: 'Projects', habilidades: 'Skills',
-      certificaciones: 'Certifications', contacto: 'Contact', contactame: 'Contact me',
+      inicio: 'Home', sobreMi: 'About me', experiencia: 'Work experience',
+      servicios: 'Professional services', proyectos: 'Featured projects', stack: 'Tech stack',
+      certificaciones: 'Certifications', contactame: 'Contact me',
       language: 'ES', languageLabel: 'Cambiar a Español',
+      subLoQueHago: 'What I do', subEducacion: 'Education', subIdiomas: 'Languages', subLogros: 'Achievements & key results',
+      subLenguajes: 'Languages', subFrontend: 'Frontend', subBackend: 'Backend', subDatabase: 'Database & Cloud',
+      subTools: 'Tools & Methodologies', subMarketing: 'Community Manager & Digital Marketing',
+      subUiux: 'UI/UX Design', subExploratorio: 'Learning / Exploratory',
+      subSolucionesDigitales: 'Digital Solutions', subSolucionesTecnicas: 'Technical Solutions',
+      subProyDashboard: 'Dashboard Enterprise', subProyPosts: 'POSTS-COMMENTS-MANAGER',
+      subProyPortfolio: 'Personal Professional Portfolio', subProyCne: 'Heuristic Analysis & UI/UX Redesign — CNE',
+      subCarta: 'Letter of Recommendation',
     },
     hero: {
       badge: 'Available for immediate hire and projects',
       taglines: [
         'I design and build digital solutions that power your business.',
-        'Junior Full Stack Engineer available for immediate hire.',
+        'Full Stack Software Engineer available for immediate hire.',
         'I build robust, scalable enterprise systems from Ecuador.',
         'Community Manager specialized in Meta Ads, TikTok & Instagram Ads.',
         'SRI electronic invoicing, dashboards and custom software.',
@@ -141,6 +160,7 @@ export const translations = {
         'Real digital solutions — documented, secure and deployed.',
       ],
       subtitle: 'From multi-tenant dashboards to SRI electronic invoicing — I develop software with industry standards, ready for immediate hire.',
+      subtitleLine: 'Full Stack Software Engineer | AI-Assisted Developer, University of Guayaquil, 7th of 10 semesters, 21 years old · Guayaquil, Ecuador',
       ctaServices: 'View my services', ctaGitHub: 'GitHub',
       scroll: 'Scroll', irAlFinal: 'Go to bottom', irAlInicio: 'Go to top',
     },
@@ -183,11 +203,13 @@ export const translations = {
       },
     },
     certifications: {
-      sectionLabel: 'Continuous training & credibility', title: 'Certificates & Workshops',
-      subtitle: 'Continuous learning beyond the classroom, with certifications from national and international organizations.',
+      sectionLabel: 'Continuous training & credibility', title: 'Certifications',
+      subtitle: 'Certifications and ongoing courses from national and international organizations.',
       status: { active: 'Active', inProgress: 'In progress', completed: 'Completed' },
-      issuer: 'Issuer', date: 'Date', duration: 'Duration',
-      location: 'Location', statusLabel: 'Status', viewPdf: 'View document',
+      issuer: 'Issuing organization', issued: 'Issued', expires: 'Expires',
+      credentialId: 'Credential ID', viewCredential: 'View credential',
+      inProgressBadge: 'In progress', recommendationTitle: 'Letter of Recommendation',
+      viewDocument: 'View document',
     },
     contact: {
       sectionLabel: "Let's talk", title: 'Do you have a project in mind?',
@@ -211,7 +233,7 @@ export const translations = {
       role: 'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development',
       rights: 'All rights reserved.',
       license: 'Cloning, copying or distributing this project without prior written permission from the owner is strictly prohibited.',
-      years: '2024–',
+      years: '2023–',
     },
     techGrid: {
       sectionLabel: 'Tech stack', title: 'Technologies & tools',

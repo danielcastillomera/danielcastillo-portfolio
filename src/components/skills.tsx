@@ -24,6 +24,8 @@ const ICONS = [
   <svg key="5" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" /></svg>,
 ];
 
+const STACK_ANCHORS = ['stack-frontend', 'stack-backend', 'stack-database', 'stack-tools', 'stack-marketing', 'stack-uiux'];
+
 const INITIAL_VISIBLE = 12;
 
 export default function Skills() {
@@ -50,11 +52,11 @@ export default function Skills() {
       {/* ── Bloque principal de categorías ── */}
       <div
         ref={sectionRef}
-        className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${
+        className={`relative mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">
             {t.skills.sectionLabel}
           </span>
@@ -65,14 +67,15 @@ export default function Skills() {
           >
             {t.skills.title}
           </h2>
-          <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
+          <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-accent-500 to-accent-600" aria-hidden="true" />
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 w-full">
           {SKILL_CATEGORIES.map((cat, catIdx) => (
             <article
               key={cat.name}
-              className="glass rounded-xl p-5 card-glow"
+              id={STACK_ANCHORS[catIdx]}
+              className="glass rounded-xl p-5 card-glow scroll-mt-24"
               style={{
                 opacity:    isVisible ? 1 : 0,
                 transform:  isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -118,11 +121,12 @@ export default function Skills() {
       {/* ── En Aprendizaje / Exploratorio — bloque separado con su propio ref ── */}
       <div
         ref={exploRef}
-        className="relative mx-auto max-w-7xl px-6 lg:px-8 mt-12"
+        id="stack-exploratorio"
+        className="relative mx-auto max-w-7xl px-6 lg:px-8 mt-12 scroll-mt-24"
       >
         <div className="glass rounded-xl p-5 sm:p-6">
           {/* Encabezado */}
-          <div className="flex items-center gap-2 mb-5">
+          <div className="flex items-center gap-2 mb-5 justify-center sm:justify-start">
             <span className="text-base" aria-hidden="true">📚</span>
             <h3 className="text-sm font-bold text-accent-500 uppercase tracking-wider">
               {t.skills.exploratory}

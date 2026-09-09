@@ -1,7 +1,7 @@
 /**
- * Portfolio Data — Single Source of Truth v8.0.0
+ * Portfolio Data — Single Source of Truth v9.0.0
  * Daniel Fernando Castillo Mera
- * Primera persona · achievement-oriented (estándar portafolios 2024-2026)
+ * Primera persona · achievement-oriented (estándar portafolios 2023-2026)
  */
 
 export const PERSONAL = {
@@ -10,12 +10,13 @@ export const PERSONAL = {
   roleShort: 'Full Stack Software Engineer | UI/UX & AI',
   university: 'Universidad de Guayaquil',
   career: 'Ingeniería en Software',
-  semester: '6to de 10 semestres',
+  semester: '7mo de 10 semestres',
   location: 'Guayaquil, Ecuador',
   nationality: 'Ecuatoriana',
   age: 21,
   birthDate: '23 de febrero de 2005',
   whatsapp: 'https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B',
+  whatsappB64: 'aHR0cHM6Ly9hcGkud2hhdHNhcHAuY29tL3NlbmQ/cGhvbmU9NTkzOTgxMDc2MTg1JnRleHQ9SG9sYSUyMERhbmllbCUyMCVGMCU5RiU5MSU4Qg==',
   github: 'https://github.com/danielcastillomera',
   linkedin: 'https://www.linkedin.com/in/daniel-fernando-castillo-mera',
   instagram: 'https://www.instagram.com/danielcastillomera',
@@ -24,16 +25,58 @@ export const PERSONAL = {
   profileImage: '/profile.png',
 } as const;
 
-export const NAV_LINKS = [
-  { href: '#inicio',         labelKey: 'inicio' },
-  { href: '#sobre-mi',       labelKey: 'sobreMi' },
-  { href: '#experiencia',    labelKey: 'experiencia' },
-  { href: '#servicios',      labelKey: 'servicios' },
-  { href: '#proyectos',      labelKey: 'proyectos' },
-  { href: '#habilidades',    labelKey: 'habilidades' },
-  { href: '#certificaciones',labelKey: 'certificaciones' },
-  { href: '#contacto',       labelKey: 'contacto' },
-] as const;
+export interface NavSubLink { href: string; labelKey: string; }
+export interface NavLink { href: string; labelKey: string; subs?: NavSubLink[]; }
+
+export const NAV_LINKS: NavLink[] = [
+  { href: '#inicio', labelKey: 'inicio' },
+  {
+    href: '#sobre-mi', labelKey: 'sobreMi',
+    subs: [
+      { href: '#about-capacidades', labelKey: 'subLoQueHago' },
+      { href: '#about-educacion',   labelKey: 'subEducacion' },
+      { href: '#about-idiomas',     labelKey: 'subIdiomas' },
+      { href: '#logros',            labelKey: 'subLogros' },
+    ],
+  },
+  {
+    href: '#stack-tecnologico', labelKey: 'stack',
+    subs: [
+      { href: '#lenguajes',           labelKey: 'subLenguajes' },
+      { href: '#stack-frontend',      labelKey: 'subFrontend' },
+      { href: '#stack-backend',       labelKey: 'subBackend' },
+      { href: '#stack-database',      labelKey: 'subDatabase' },
+      { href: '#stack-tools',         labelKey: 'subTools' },
+      { href: '#stack-marketing',     labelKey: 'subMarketing' },
+      { href: '#stack-uiux',          labelKey: 'subUiux' },
+      { href: '#stack-exploratorio',  labelKey: 'subExploratorio' },
+    ],
+  },
+  {
+    href: '#servicios', labelKey: 'servicios',
+    subs: [
+      { href: '#soluciones-digitales', labelKey: 'subSolucionesDigitales' },
+      { href: '#soluciones-tecnicas',  labelKey: 'subSolucionesTecnicas' },
+    ],
+  },
+  {
+    href: '#proyectos', labelKey: 'proyectos',
+    subs: [
+      { href: '#proyecto-dashboard-enterprise',      labelKey: 'subProyDashboard' },
+      { href: '#proyecto-posts-comments-manager',    labelKey: 'subProyPosts' },
+      { href: '#proyecto-portfolio-personal',        labelKey: 'subProyPortfolio' },
+      { href: '#proyecto-cne',                       labelKey: 'subProyCne' },
+    ],
+  },
+  { href: '#experiencia', labelKey: 'experiencia' },
+  {
+    href: '#certificaciones', labelKey: 'certificaciones',
+    subs: [
+      { href: '#carta-recomendacion', labelKey: 'subCarta' },
+    ],
+  },
+  { href: '#contacto', labelKey: 'contactame' },
+];
 
 /* ═══ EXPERIENCE ═══ */
 export interface WorkExperience {
@@ -301,15 +344,15 @@ export const PROJECTS: Project[] = [
   },
   /* ── 3. Portafolio Personal Profesional ── */
   {
-    id: 'portfolio-web', title: 'Portafolio Personal Profesional', version: 'v8.0.0',
+    id: 'portfolio-web', title: 'Portafolio Personal Profesional', version: 'v9.0.0',
     status: 'En desarrollo', statusEn: 'In development',
-    description: 'Portafolio profesional con animaciones Framer Motion, i18n ES/EN completo, WCAG 2.2, visor PDF, Next.js 15 y diseño responsive mobile-first.',
-    descriptionEn: 'Professional portfolio with Framer Motion animations, full ES/EN i18n, WCAG 2.2, PDF viewer, Next.js 15 and responsive mobile-first design.',
-    longDescription: 'Portafolio profesional v8.0.0 construido con Next.js 15, React 19, TypeScript 5.9, Tailwind CSS 4 y Framer Motion. Incluye i18n ES/EN, accesibilidad WCAG 2.2, SEO, Open Graph, visor PDF y animaciones de scroll avanzadas.',
-    longDescriptionEn: 'Professional portfolio v8.0.0 built with Next.js 15, React 19, TypeScript 5.9, Tailwind CSS 4 and Framer Motion. Includes ES/EN i18n, WCAG 2.2 accessibility, SEO, Open Graph, PDF viewer and advanced scroll animations.',
-    techStack: ['Next.js 15', 'TypeScript 5.9', 'React 19', 'Tailwind CSS 4', 'Framer Motion', 'Vercel'],
-    features: ['Animaciones Framer Motion (scroll + cursor)', 'i18n ES/EN con Context provider', 'WCAG 2.2 Nivel A–AAA', 'Visor PDF de certificados', 'Responsive mobile-first'],
-    featuresEn: ['Framer Motion animations (scroll + cursor)', 'ES/EN i18n with Context provider', 'WCAG 2.2 Level A–AAA', 'PDF certificate viewer', 'Responsive mobile-first'],
+    description: 'Portafolio profesional con animaciones GSAP + Lenis, i18n ES/EN completo, WCAG 2.2, navegación por acordeón y diseño responsive mobile-first.',
+    descriptionEn: 'Professional portfolio with GSAP + Lenis animations, full ES/EN i18n, WCAG 2.2, accordion navigation and responsive mobile-first design.',
+    longDescription: 'Portafolio profesional v9.0.0 construido con Next.js 15, React 19, TypeScript 5.9 y Tailwind CSS 4. Incluye smooth scroll con Lenis, animaciones GSAP + ScrollTrigger, i18n ES/EN, accesibilidad WCAG 2.2, SEO, Open Graph y navegación jerárquica por acordeón.',
+    longDescriptionEn: 'Professional portfolio v9.0.0 built with Next.js 15, React 19, TypeScript 5.9 and Tailwind CSS 4. Includes Lenis smooth scroll, GSAP + ScrollTrigger animations, ES/EN i18n, WCAG 2.2 accessibility, SEO, Open Graph and hierarchical accordion navigation.',
+    techStack: ['Next.js 15', 'TypeScript 5.9', 'React 19', 'Tailwind CSS 4', 'GSAP', 'Lenis', 'Vercel'],
+    features: ['Smooth scroll con Lenis + GSAP ScrollTrigger', 'i18n ES/EN con Context provider', 'WCAG 2.2 Nivel A–AAA', 'Navegación por acordeón jerárquico', 'Responsive mobile-first'],
+    featuresEn: ['Lenis smooth scroll + GSAP ScrollTrigger', 'ES/EN i18n with Context provider', 'WCAG 2.2 Level A–AAA', 'Hierarchical accordion navigation', 'Responsive mobile-first'],
     links: [{ label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/danielcastillo-portfolio', icon: 'github' }],
     highlight: false, type: 'individual',
   },
@@ -405,99 +448,116 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
 ];
 
-/* ═══ CERTIFICATIONS ═══ */
+/* ═══ CERTIFICATIONS — diseño estilo LinkedIn ═══ */
 export interface Certification {
-  id: string; title: string; titleEn: string;
+  id: string;
+  title: string; titleEn: string;
   issuer: string; issuerEn: string;
-  date: string;
-  duration: string;
-  location: string; locationEn: string;
-  status: 'completed' | 'in-progress' | 'active';
+  issueDate: string; issueDateEn: string;
+  expirationDate?: string; expirationDateEn?: string;
+  credentialId?: string;
+  credentialUrlB64?: string;
+  inProgress: boolean;
   pdfFile?: string;
 }
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    id: 'cs50x',
-    title: "CS50x: CS50's Introduction to Computer Science",
-    titleEn: "CS50x: CS50's Introduction to Computer Science",
-    issuer: 'HarvardX — Harvard University',
-    issuerEn: 'HarvardX — Harvard University',
-    date: '18-01-2026 — Actualidad',
-    duration: '5+ horas (en curso)',
-    location: 'Estados Unidos (en línea)',
-    locationEn: 'United States (online)',
-    status: 'in-progress',
-    pdfFile: '/certs/cs50x.pdf',
-  },
-  {
-    id: 'uees-ia',
-    title: 'UEES Talks: "Estrategias y mejores prácticas con IA: Descubre la magia de un buen prompt"',
-    titleEn: 'UEES Talks: "AI Strategies & Best Practices: Discover the magic of a good prompt"',
-    issuer: 'Universidad Espíritu Santo (UEES Online)',
-    issuerEn: 'Universidad Espíritu Santo (UEES Online)',
-    date: '11-12-2025',
-    duration: '1 hora',
-    location: 'Samborondón, Ecuador',
-    locationEn: 'Samborondón, Ecuador',
-    status: 'completed',
-    pdfFile: '/certs/uees-talks.pdf',
-  },
-  {
-    id: 'epico-pc',
-    title: 'Taller "Salvando la vida de mi PC"',
-    titleEn: 'Workshop: "Saving my PC\'s Life"',
-    issuer: 'Épico EP — Empresa Pública Municipal para la Gestión y Competitividad',
-    issuerEn: 'Épico EP — Municipal Public Company for Management and Competitiveness',
-    date: '24-02-2025 — 13-03-2025',
-    duration: '15 horas',
-    location: 'Guayaquil, Ecuador',
-    locationEn: 'Guayaquil, Ecuador',
-    status: 'completed',
-    pdfFile: '/certs/taller-pc.pdf',
-  },
-  {
-    id: 'biorobotics',
-    title: 'Webinar: Fundamentals of Biorobotics',
-    titleEn: 'Webinar: Fundamentals of Biorobotics',
-    issuer: 'P4H Bionic Online Academy',
-    issuerEn: 'P4H Bionic Online Academy',
-    date: '02-03-2024',
-    duration: '120 minutos (2 horas)',
-    location: 'México (en línea)',
-    locationEn: 'Mexico (online)',
-    status: 'completed',
-    pdfFile: '/certs/biorobotics.pdf',
+    id: 'claude-api',
+    title: 'Building with the Claude API',
+    titleEn: 'Building with the Claude API',
+    issuer: 'Anthropic',
+    issuerEn: 'Anthropic',
+    issueDate: 'Agosto 2026',
+    issueDateEn: 'August 2026',
+    credentialId: 'irkq6k39bkwt',
+    credentialUrlB64: 'aHR0cHM6Ly92ZXJpZnkuc2tpbGxqYXIuY29tL2MvaXJrcTZrMzlia3d0',
+    inProgress: false,
   },
   {
     id: 'scrum-fundamentals',
-    title: 'Scrum Fundamentals Certified (SFC™)',
-    titleEn: 'Scrum Fundamentals Certified (SFC™)',
-    issuer: 'SCRUMstudy® — Organismo de Acreditación Global para Certificaciones Scrum y Ágiles',
-    issuerEn: 'SCRUMstudy® — Global Accreditation Body for Scrum and Agile Certifications',
-    date: '25-04-2026',
-    duration: 'En curso',
-    location: 'Estados Unidos (en línea)',
-    locationEn: 'United States (online)',
-    status: 'in-progress',
+    title: 'Scrum Fundamentals Certified (SFC)',
+    titleEn: 'Scrum Fundamentals Certified (SFC)',
+    issuer: 'SCRUMstudy',
+    issuerEn: 'SCRUMstudy',
+    issueDate: 'Agosto 2026',
+    issueDateEn: 'August 2026',
+    credentialId: '1181435',
+    credentialUrlB64: 'aHR0cHM6Ly93d3cuc2NydW1zdHVkeS5jb20vY2VydGlmaWNhdGlvbi92ZXJpZnk/dHlwZT1TRkMmbnVtYmVyPTExODE0MzU=',
+    inProgress: false,
   },
   {
-    id: 'carta-recomendacion',
-    title: 'Carta de Recomendación - Agro Industrias Warsa C.A.',
-    titleEn: 'Letter of Recommendation - Agro Industrias Warsa C.A.',
-    issuer: 'Agro Industrias Warsa C.A. (Ing. Elías Ward Adum, Gerente General)',
-    issuerEn: 'Agro Industrias Warsa C.A. (Eng. Elías Ward Adum, General Manager)',
-    date: '2025',
-    duration: 'Documento oficial',
-    location: 'Guayaquil, Ecuador',
-    locationEn: 'Guayaquil, Ecuador',
-    status: 'completed',
-    pdfFile: '/certs/carta-recomendacion.pdf',
+    id: 'cloud-azure-vmware',
+    title: 'Cloud Computing & Azure VMware Solution',
+    titleEn: 'Cloud Computing & Azure VMware Solution',
+    issuer: 'Microsoft Learn',
+    issuerEn: 'Microsoft Learn',
+    issueDate: 'Agosto 2026',
+    issueDateEn: 'August 2026',
+    credentialId: 'B9E430E7B75342CF',
+    credentialUrlB64: 'aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL2FwaS9hY2hpZXZlbWVudHMvc2hhcmUvZW4tdXMvRGFuaWVsRmVybmFuZG9DYXN0aWxsb01lcmEtNTgyNi9ZNDVXSkM3Uj9zaGFyaW5nSWQ9QjlFNDMwRTdCNzUzNDJDRg==',
+    inProgress: false,
+  },
+  {
+    id: 'aws-cloud-practitioner',
+    title: 'AWS Certified Cloud Practitioner',
+    titleEn: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    issuerEn: 'Amazon Web Services',
+    issueDate: 'Agosto 2026',
+    issueDateEn: 'August 2026',
+    inProgress: true,
+  },
+  {
+    id: 'azure-fundamentals',
+    title: 'Microsoft Certified: Azure Fundamentals',
+    titleEn: 'Microsoft Certified: Azure Fundamentals',
+    issuer: 'Microsoft',
+    issuerEn: 'Microsoft',
+    issueDate: 'Agosto 2026',
+    issueDateEn: 'August 2026',
+    inProgress: true,
+  },
+  {
+    id: 'cs50x',
+    title: "CS50's Introduction to Computer Science",
+    titleEn: "CS50's Introduction to Computer Science",
+    issuer: 'HarvardX',
+    issuerEn: 'HarvardX',
+    issueDate: 'Enero 2026',
+    issueDateEn: 'January 2026',
+    inProgress: true,
   },
 ];
 
+/** Carta de recomendación — mismo diseño tipo LinkedIn, tratada aparte */
+export const RECOMMENDATION_LETTER: Certification = {
+  id: 'carta-recomendacion',
+  title: 'Carta de Recomendación',
+  titleEn: 'Letter of Recommendation',
+  issuer: 'Agro Industrias Warsa C.A. — Ing. Elías Ward Adum, Gerente General',
+  issuerEn: 'Agro Industrias Warsa C.A. — Eng. Elías Ward Adum, General Manager',
+  issueDate: '20 abril 2026',
+  issueDateEn: 'April 20, 2026',
+  credentialUrlB64: 'L2FwaS9wZGY/ZmlsZT1jYXJ0YS1yZWNvbWVuZGFjaW9uLnBkZg==',
+  inProgress: false,
+  pdfFile: '/certs/carta-recomendacion.pdf',
+};
+
 /* ═══ EDUCATION ═══ */
-export const EDUCATION = [
+export interface EducationEntry {
+  id: string;
+  institution: string; institutionEn: string;
+  degree?: string; degreeEn?: string;
+  faculty?: string; facultyEn?: string;
+  progress?: string; progressEn?: string;
+  location: string;
+  period: string; periodEn: string;
+  status: 'completed' | 'active';
+  logo?: string;
+}
+
+export const EDUCATION: EducationEntry[] = [
   {
     id: 'bachiller',
     institution: 'Bachiller Técnico — Área TICS, Especialidad Informática',
@@ -515,13 +575,22 @@ export const EDUCATION = [
     degreeEn: 'Software Engineering',
     faculty: 'Facultad de Ciencias Matemáticas y Físicas',
     facultyEn: 'Faculty of Mathematical and Physical Sciences',
-    progress: 'Sexto semestre (en curso)',
-    progressEn: 'Sixth semester (in progress)',
+    progress: 'Séptimo semestre (en curso)',
+    progressEn: 'Seventh semester (in progress)',
     location: 'Guayaquil, Ecuador',
     period: '02-10-2023 — Actualidad',
     periodEn: '02-10-2023 — Present',
     status: 'active' as const,
+    logo: '/logo-ug.svg',
   },
+];
+
+/* ═══ ACHIEVEMENT STATS (contadores numéricos) ═══ */
+export const ACHIEVEMENT_STATS = [
+  { value: 10, suffix: '+', label: 'Módulos desarrollados', labelEn: 'Modules developed' },
+  { value: 4,  suffix: '',  label: 'Proyectos destacados',  labelEn: 'Featured projects' },
+  { value: 6,  suffix: '',  label: 'Certificaciones y cursos', labelEn: 'Certifications & courses' },
+  { value: 4,  suffix: '',  label: 'Experiencias laborales', labelEn: 'Work experiences' },
 ];
 
 /* ═══ EXPLORATORY SKILLS ═══ */

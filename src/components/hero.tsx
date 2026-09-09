@@ -7,6 +7,7 @@ import { useTheme } from '@/lib/theme-provider';
 import { useT } from '@/lib/i18n-provider';
 import { GitHubIcon } from './icons';
 import ProtectedImage from './protected-image';
+import CertificationBadges from './certification-badges';
 
 function useTypewriter(phrases: string[], typingSpeed = 55, deletingSpeed = 28, pauseDuration = 2400) {
   const [displayText, setDisplayText] = useState('');
@@ -139,15 +140,9 @@ export default function Hero() {
           {t.hero.subtitle}
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-700 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.25s' }}>
-          <span className="flex items-center gap-1.5"><svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>{PERSONAL.roleShort}</span>
-          <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
-          <span className="flex items-center gap-1.5"><svg className="w-4 h-4 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>{PERSONAL.university}</span>
-          <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
-          <span>{PERSONAL.semester}</span>
-          <span className="text-gray-300 dark:text-navy-600" aria-hidden="true">&bull;</span>
-          <span>{PERSONAL.age} años · {PERSONAL.location}</span>
-        </div>
+        <p className="mt-5 max-w-2xl text-sm font-medium text-gray-700 dark:text-gray-300 sm:text-base animate-slide-up" style={{ animationDelay: '0.25s' }}>
+          {t.hero.subtitleLine}
+        </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
           <a href="#servicios" className="group inline-flex items-center gap-2 rounded-xl bg-accent-500 px-7 py-3.5 text-base font-bold text-black shadow-lg shadow-accent-500/20 transition-all hover:bg-accent-400 hover:-translate-y-0.5 active:scale-95">
@@ -158,6 +153,8 @@ export default function Hero() {
             <GitHubIcon className="w-5 h-5" />{t.hero.ctaGitHub}
           </a>
         </div>
+
+        <CertificationBadges />
 
         {/* Scroll indicator — adaptativo por dispositivo (fix 4) */}
         <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in text-gray-600 dark:text-gray-400" style={{ animationDelay: '1s' }} aria-hidden="true">

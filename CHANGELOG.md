@@ -5,6 +5,37 @@
 
 ---
 
+## v9.0.0 - Refactor mayor: GSAP + Lenis, navegación por acordeón, certificaciones estilo LinkedIn, enlaces ofuscados en Base64, nueva identidad profesional
+
+### Añadido
+
+- **Lenis**: smooth scroll global (PC y móvil) sincronizado con el ticker de GSAP.
+- **GSAP + ScrollTrigger**: motor de animación de entrada ("fade-in-up") integrado en el hook `useReveal`, con red de seguridad por temporizador heredada de versiones anteriores — ninguna sección puede quedar invisible de forma permanente.
+- **`PreloadProvider`**: contexto de precarga que espera fuentes web e imágenes críticas antes de revelar el contenido, evitando parpadeos y saltos de layout.
+- **Navegación por acordeón/dropdown**: jerarquía completa de 8 categorías principales con subcategorías (Sobre mí, Stack tecnológico, Servicios, Proyectos, Certificaciones), con anclas de scroll dedicadas en cada sección.
+- **Insignias de certificaciones en el Hero**: vista previa de las 3 certificaciones principales (Building with the Claude API, Scrum Fundamentals Certified, Cloud Computing & Azure VMware Solution).
+- **Contadores numéricos animados**: en "Logros y resultados destacados", impulsados por GSAP (módulos, proyectos, certificaciones, experiencias laborales).
+- **Certificaciones estilo LinkedIn**: tarjetas con empresa emisora, fecha de expedición, ID de credencial y botón de verificación — con datos reales y códigos de credencial verificables.
+- **`handleSecureRedirect`**: utilidad de navegación segura que decodifica URLs en Base64 en el momento del clic, aplicada a WhatsApp, credenciales de certificación y la Carta de Recomendación.
+- **Reglas anti-scraping**: `user-select: none` y `user-drag: none` extendidas a todos los elementos `img` y `svg` del sitio.
+- **Logo institucional**: Universidad de Guayaquil optimizado e integrado en la tarjeta de Educación.
+
+### Modificado
+
+- **Identidad profesional**: título actualizado a "Full Stack Software Engineer | AI-Assisted Developer" en metadatos, Schema.org y todo el contenido relacionado.
+- **Selector de idioma**: simplificado a un interruptor ES/EN sin banderas ni imágenes de países.
+- **Sección "Sobre mí"**: biografía ampliada, tarjetas de capacidades/educación/idiomas con anclas de navegación independientes.
+- **Certificaciones**: eliminado el visor de PDF embebido en favor del formato de credencial profesional; la Carta de Recomendación mantiene su propio enlace seguro.
+- **`page.tsx`**: orden de secciones alineado 1:1 con la jerarquía del menú de navegación.
+- **Diseño global**: centrado consistente (`flex flex-col items-center`, `text-center`) en todas las secciones principales.
+
+### Corregido
+
+- **Enlace de LinkedIn**: URL obsoleta corregida en el Schema.org JSON-LD (quedaba desactualizada desde una versión anterior).
+- **Coherencia de contenido**: eliminada referencia a un proyecto que ya no forma parte del portafolio.
+
+---
+
 ## v8.0.0 - Animaciones Framer Motion, WhatsApp siempre visible, solo 4 proyectos, nuevo perfil profesional, logro STI, LinkedIn actualizado
 
 ### Añadido

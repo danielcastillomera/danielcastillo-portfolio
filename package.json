@@ -1,6 +1,6 @@
 {
   "name": "danielcastillo-portfolio",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "private": true,
   "description": "Portafolio profesional — Daniel Fernando Castillo Mera · Full Stack Software Engineer | .NET, TypeScript, Angular | UI/UX Design",
   "author": "Daniel Fernando Castillo Mera <danielfcastillom@gmail.com>",
@@ -17,6 +17,8 @@
     "@tailwindcss/postcss": "^4.2.0",
     "autoprefixer": "^10.4.24",
     "framer-motion": "^12.43.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
     "lucide-react": "^0.574.0",
     "next": "^15.3.0",
     "postcss": "^8.5.6",
