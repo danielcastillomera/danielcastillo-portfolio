@@ -6,7 +6,7 @@
 
 export const PERSONAL = {
   name: 'Daniel Fernando Castillo Mera',
-  role: 'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development',
+  role: 'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Developer',
   roleShort: 'Full Stack Software Engineer | UI/UX & AI',
   university: 'Universidad de Guayaquil',
   career: 'Ingeniería en Software',
