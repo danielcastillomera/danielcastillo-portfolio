@@ -1,5 +1,5 @@
 /**
- * Portfolio Data — Single Source of Truth v9.1.0
+ * Portfolio Data — Single Source of Truth v9.1.1
  * Daniel Fernando Castillo Mera
  * Primera persona · achievement-oriented (estándar portafolios 2023-2026)
  */
@@ -347,12 +347,12 @@ export const PROJECTS: Project[] = [
   },
   /* ── 3. Portafolio Personal Profesional ── */
   {
-    id: 'portfolio-web', title: 'Portafolio Personal Profesional', version: 'v9.1.0',
+    id: 'portfolio-web', title: 'Portafolio Personal Profesional', version: 'v9.1.1',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Portafolio profesional con animaciones GSAP + Lenis, i18n ES/EN completo, WCAG 2.2, navegación por acordeón y diseño responsive mobile-first.',
     descriptionEn: 'Professional portfolio with GSAP + Lenis animations, full ES/EN i18n, WCAG 2.2, accordion navigation and responsive mobile-first design.',
-    longDescription: 'Portafolio profesional v9.1.0 construido con Next.js 15, React 19, TypeScript 5.9 y Tailwind CSS 4. Incluye smooth scroll con Lenis, animaciones GSAP + ScrollTrigger, i18n ES/EN, accesibilidad WCAG 2.2, SEO, Open Graph y navegación jerárquica por acordeón.',
-    longDescriptionEn: 'Professional portfolio v9.1.0 built with Next.js 15, React 19, TypeScript 5.9 and Tailwind CSS 4. Includes Lenis smooth scroll, GSAP + ScrollTrigger animations, ES/EN i18n, WCAG 2.2 accessibility, SEO, Open Graph and hierarchical accordion navigation.',
+    longDescription: 'Portafolio profesional v9.1.1 construido con Next.js 15, React 19, TypeScript 5.9 y Tailwind CSS 4. Incluye smooth scroll con Lenis, animaciones GSAP + ScrollTrigger, i18n ES/EN, accesibilidad WCAG 2.2, SEO, Open Graph y navegación jerárquica por acordeón.',
+    longDescriptionEn: 'Professional portfolio v9.1.1 built with Next.js 15, React 19, TypeScript 5.9 and Tailwind CSS 4. Includes Lenis smooth scroll, GSAP + ScrollTrigger animations, ES/EN i18n, WCAG 2.2 accessibility, SEO, Open Graph and hierarchical accordion navigation.',
     techStack: ['Next.js 15', 'TypeScript 5.9', 'React 19', 'Tailwind CSS 4', 'GSAP', 'Lenis', 'Vercel'],
     features: ['Smooth scroll con Lenis + GSAP ScrollTrigger', 'i18n ES/EN con Context provider', 'WCAG 2.2 Nivel A–AAA', 'Navegación por acordeón jerárquico', 'Responsive mobile-first'],
     featuresEn: ['Lenis smooth scroll + GSAP ScrollTrigger', 'ES/EN i18n with Context provider', 'WCAG 2.2 Level A–AAA', 'Hierarchical accordion navigation', 'Responsive mobile-first'],

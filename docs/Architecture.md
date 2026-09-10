@@ -1,6 +1,10 @@
 # Arquitectura del Proyecto / Project Architecture
 
-> `danielcastillo-portfolio` v9.1.0
+> `danielcastillo-portfolio` v9.1.1
+
+<div align="center">
+  <i>Cambiar de idioma / Change language:</i> <a href="#español-méxico">Español (México)</a> | <a href="#english-united-states">English (United States)</a>
+</div>
 
 ---
 
@@ -19,8 +23,6 @@
 | Linting | ESLint + eslint-config-next | 9.x / 15.x |
 
 ### Estructura de directorios
-
-```
 danielcastillo-portfolio/
 ├── docs/                    # Wiki del proyecto (GFM)
 │   ├── Home.md
@@ -67,12 +69,12 @@ danielcastillo-portfolio/
 │   │   ├── theme-toggle.tsx
 │   │   └── whatsapp-float.tsx
 │   └── lib/
-│       ├── data.ts           # Single Source of Truth v9.1.0
-│       ├── i18n.ts           # Traducciones ES/EN estáticas
+│       ├── data.ts          # Single Source of Truth v9.1.1
+│       ├── i18n.ts          # Traducciones ES/EN estáticas
 │       ├── i18n-provider.tsx # Context provider para i18n
 │       ├── smooth-scroll.tsx # Lenis + sincronización con GSAP ticker
 │       ├── theme-provider.tsx
-│       └── use-reveal.ts     # Motor de entrada/salida GSAP ScrollTrigger
+│       └── use-reveal.ts    # Motor de entrada/salida GSAP ScrollTrigger
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
@@ -80,8 +82,6 @@ danielcastillo-portfolio/
 ├── next.config.ts
 ├── package.json
 └── tailwind.config.ts
-```
-
 ### Principios de diseño
 
 - **Single Source of Truth:** toda la información del portafolio vive en `src/lib/data.ts`.
@@ -92,16 +92,10 @@ danielcastillo-portfolio/
 - **Visor PDF multi-estrategia:** iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen (sin diálogo de confirmación).
 
 ### Flujo de datos
-
-```
 data.ts (SSoT)
-    └─→ Componentes React (consumen constantes tipadas)
-         └─→ i18n-provider (useT hook → traducciones ES/EN)
-              └─→ ThemeProvider (clase .dark en <html>)
-```
-
----
-
+└─→ Componentes React (consumen constantes tipadas)
+└─→ i18n-provider (useT hook → traducciones ES/EN)
+└─→ ThemeProvider (clase .dark en )
 ---
 
 ## English (United States)

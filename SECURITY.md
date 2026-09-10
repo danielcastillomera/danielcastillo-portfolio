@@ -1,12 +1,18 @@
 # Política de Seguridad / Security Policy
 
+<div align="center">
+  <i>Cambiar de idioma / Change language:</i> <a href="#español-méxico">Español (México)</a> | <a href="#english-united-states">English (United States)</a>
+</div>
+
+---
+
 ## Español (México)
 
 ### Versiones soportadas
 
 | Versión | Soporte de seguridad |
 |---------|----------------------|
-| 9.1.0   | ✅ Activa (versión actual) |
+| 9.1.1   | ✅ Activa (versión actual) |
 | 7.5.x   | ⚠️ Solo correcciones críticas |
 | < 7.5.x | ❌ Sin soporte |
 
@@ -53,15 +59,13 @@ No aplica a:
 
 ---
 
----
-
 ## English (United States)
 
 ### Supported Versions
 
 | Version | Security Support |
 |---------|-----------------|
-| 9.1.0   | ✅ Active (current version) |
+| 9.1.1   | ✅ Active (current version) |
 | 7.5.x   | ⚠️ Critical fixes only |
 | < 7.5.x | ❌ No support |
 

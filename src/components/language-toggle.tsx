@@ -3,7 +3,7 @@
 import { useI18n } from '@/lib/i18n-provider';
 
 /**
- * LanguageToggle v9.1.0
+ * LanguageToggle v9.1.1
  *
  * Selector de idioma simplificado: un interruptor de dos estados (ES/EN)
  * sin banderas ni imágenes de países, evitando representaciones nacionales

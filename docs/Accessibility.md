@@ -1,6 +1,10 @@
 # Accesibilidad / Accessibility
 
-> `danielcastillo-portfolio` v9.1.0 · WCAG 2.1 Level AA
+> `danielcastillo-portfolio` v9.1.1 · WCAG 2.1 Level AA
+
+<div align="center">
+  <i>Cambiar de idioma / Change language:</i> <a href="#español-méxico">Español (México)</a> | <a href="#english-united-states">English (United States)</a>
+</div>
 
 ---
 
@@ -45,8 +49,6 @@ Solo las imágenes (`img`, `.protected-image`) y los iconos tienen `user-select:
 
 - `prefers-reduced-motion`: desactiva animaciones de partículas y transiciones en `hero.tsx`.
 - `prefers-color-scheme`: detecta automáticamente el tema claro/oscuro en el primer acceso.
-
----
 
 ---
 

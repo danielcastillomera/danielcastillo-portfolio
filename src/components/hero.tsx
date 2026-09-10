@@ -89,8 +89,9 @@ export default function Hero() {
             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent-400 via-accent-500 to-orange-500 opacity-50 blur-md" aria-hidden="true" />
             {/*
               La imagen original es 799×1238px (ratio ~0.645).
-              En el héroe la mostramos como círculo — la foto se centra en object-top
-              para mostrar el rostro correctamente.
+              En el héroe se muestra como círculo — object-top centra
+              verticalmente en el rostro; el desplazamiento horizontal
+              corrige el encuadre para que el rostro quede centrado.
             */}
             <div className="relative h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden ring-4 ring-white dark:ring-navy-900 shadow-2xl">
               <ProtectedImage
@@ -98,7 +99,7 @@ export default function Hero() {
                 alt={`Foto de perfil de ${PERSONAL.name}`}
                 width={144}
                 height={223}
-                className="h-full w-full object-cover object-top"
+                className="h-full w-full object-cover object-[65%_0%]"
                 priority
               />
             </div>

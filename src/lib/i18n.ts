@@ -1,5 +1,5 @@
 /**
- * i18n — Sistema de Internacionalización v9.1.0
+ * i18n — Sistema de Internacionalización v9.1.1
  * Soporta: Español (es) | English (en)
  * Redacción en primera persona — estándar portafolios 2024-2026
  */

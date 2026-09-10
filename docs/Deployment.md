@@ -1,6 +1,10 @@
 # Despliegue / Deployment
 
-> `danielcastillo-portfolio` v9.1.0
+> `danielcastillo-portfolio` v9.1.1
+
+<div align="center">
+  <i>Cambiar de idioma / Change language:</i> <a href="#español-méxico">Español (México)</a> | <a href="#english-united-states">English (United States)</a>
+</div>
 
 ---
 

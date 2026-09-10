@@ -1,10 +1,10 @@
 <div align="center">
 
-# Daniel Fernando Castillo Mera - Portafolio Web v9.1.0
+# Daniel Fernando Castillo Mera — Portafolio Web v9.1.1
 
 **Full Stack Software Engineer | AI-Assisted Developer**
 
-[![Version](https://img.shields.io/badge/version-9.1.0-F59E0B?style=for-the-badge)](https://github.com/danielcastillomera/danielcastillo-portfolio/releases)
+[![Version](https://img.shields.io/badge/version-9.1.1-F59E0B?style=for-the-badge)](https://github.com/danielcastillomera/danielcastillo-portfolio/releases)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)

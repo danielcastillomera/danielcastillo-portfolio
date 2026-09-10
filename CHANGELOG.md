@@ -3,23 +3,43 @@
 > Todos los cambios notables de este proyecto se documentan en este archivo.
 > El formato sigue [Keep a Changelog](https://keepachangelog.com/es/1.0.0/) y el versionado sigue [Semantic Versioning](https://semver.org/lang/es/).
 
+<div align="center">
+  <i>Cambiar de idioma / Change language:</i> <a href="#español-méxico">Español (México)</a> | <a href="#english-united-states">English (United States)</a>
+</div>
+
 ---
 
-## v9.1.0 - Fix crítico de botones, logos reales de certificaciones, GSAP bidireccional, eliminación del Preloader, limpieza profunda de código muerto
+## Español (México)
 
-### Corregido — Crítico
+### v9.1.1 - Hotfixes: causa raíz de animaciones GSAP prematuras, badges del footer reparados, encuadre de foto en el Hero
+
+#### Corregido — Crítico
+
+- **`use-reveal.ts` — causa raíz de "elementos ya visibles"**: se identificó y eliminó el temporizador de seguridad que forzaba `opacity: 1` de forma incondicional a los 650ms de cada sección, independientemente de si el usuario había llegado a esa parte de la página. Esto hacía que casi todo el contenido apareciera casi de inmediato tras la carga, mostrando solo un pequeño salto en lugar de una animación real disparada por scroll. Reescrito con `gsap.fromTo()`: el nodo arranca en `opacity: 0, y: 50` y GSAP ScrollTrigger calcula su estado real (visible u oculto) al montar, sin timers artificiales. `toggleActions: 'play reverse play reverse'` se mantiene sin condición: toda sección se desliza hacia arriba al bajar el scroll y se revierte al subir.
+- **Icono WCAG 2.2 del footer**: reemplazado por el SVG de accesibilidad provisto, con `fill="currentColor"` y clases `text-black dark:text-white` — negro en modo claro, blanco en modo oscuro.
+- **Icono PWA Ready del footer**: reemplazado por el ícono de icons8 con la clase `dark:invert`, ajustado a 12×12px para alinear con el resto de insignias del array.
+
+#### Modificado
+
+- **Foto de perfil del Hero**: corregido el encuadre horizontal (`object-[65%_0%]`) para centrar el rostro dentro del marco circular — antes aparecía ligeramente desplazado hacia la izquierda.
+
+---
+
+### v9.1.0 - Fix crítico de botones, logos reales de certificaciones, GSAP bidireccional, eliminación del Preloader, limpieza profunda de código muerto
+
+#### Corregido — Crítico
 
 - **Botones inoperantes en PC** (WhatsApp, "Ver credencial", "Ver documento"): eliminada por completo la ofuscación en Base64 (`handleSecureRedirect` / `security.ts`). Reemplazada por enlaces `<a target="_blank" rel="noopener noreferrer">` tradicionales en `whatsapp-float.tsx`, `contact.tsx`, `footer.tsx` y `certifications.tsx`. Prioridad: funcionamiento garantizado al 100% en todos los dispositivos, sin dependencia de hidratación de JavaScript.
 - **Preloader eliminado**: quitados `preloader.tsx` y `preload-context.tsx` y toda referencia a ellos en `layout.tsx` y `smooth-scroll.tsx`. La página ya no bloquea su vista inicial con una pantalla de carga artificial.
 
-### Añadido
+#### Añadido
 
 - **Logos reales de certificaciones**: Anthropic Education, VMEdu/SCRUMstudy, Microsoft, AWS y HarvardX integrados como imágenes en `/public/certs-logos/`, reemplazando el icono genérico de "escudo" tanto en las medallas del Hero como en las tarjetas de la sección Certificaciones.
-- **GSAP ScrollTrigger bidireccional**: `useReveal` ahora anima con `toggleActions: 'play reverse play reverse'` por defecto — las secciones se deslizan hacia arriba al bajar el scroll y hacia abajo al subir, en todos los dispositivos.
+- **GSAP ScrollTrigger bidireccional**: `useReveal` ahora anima con `toggleActions: 'play reverse play reverse'` por defecto — las secciones se deslizan hacia arriba al bajar el scroll y hacia abajo al subir, en todos dispositivos.
 - **Entrada del Hero y del marquee**: animación `fade-in-up` disparada al cargar la página, sin depender del scroll.
 - **Botón "Ver"** con icono de ojo (no emoji) en Dashboard Enterprise, POSTS-COMMENTS-MANAGER y Portafolio, enlazando a sus URLs de producción reales.
 
-### Modificado
+#### Modificado
 
 - **Emisor corregido**: "Building with the Claude API" ahora indica "Anthropic Education" como entidad emisora.
 - **Header**: nombre partido en dos líneas ("Daniel Fernando" / "Castillo Mera").
@@ -30,7 +50,7 @@
 - **Proyectos**: eliminado el truncado "+N" de etiquetas de stack tecnológico — se muestran todas con `flex-wrap`.
 - **Logros y resultados**: eliminado el ítem de proyecto universitario obsoleto; los 4 contadores numéricos ahora inician en 1 y su animación dura 3.2s (antes 1.6s desde 0).
 
-### Eliminado
+#### Eliminado
 
 - **Componente `skills.tsx`** y las secciones "Mis capacidades — Habilidades técnicas" y "En Aprendizaje / Exploratorio" en su totalidad.
 - **Código muerto en `data.ts`**: `SKILL_CATEGORIES`, `EXPLORATORY_SKILLS`, `ADDITIONAL_SKILLS` (sección de Ventas ya inactiva desde v9.0.0).
@@ -39,334 +59,189 @@
 
 ---
 
-## v9.0.0 - Refactor mayor: GSAP + Lenis, navegación por acordeón, certificaciones estilo LinkedIn, enlaces ofuscados en Base64, nueva identidad profesional
+### v9.0.0 - Refactor mayor: GSAP + Lenis, navegación por acordeón, certificaciones estilo LinkedIn, enlaces ofuscados en Base64, nueva identidad profesional
 
-### Añadido
+#### Añadido
 
 - **Lenis**: smooth scroll global (PC y móvil) sincronizado con el ticker de GSAP.
-- **GSAP + ScrollTrigger**: motor de animación de entrada ("fade-in-up") integrado en el hook `useReveal`, con red de seguridad por temporizador heredada de versiones anteriores — ninguna sección puede quedar invisible de forma permanente.
-- **`PreloadProvider`**: contexto de precarga que espera fuentes web e imágenes críticas antes de revelar el contenido, evitando parpadeos y saltos de layout.
-- **Navegación por acordeón/dropdown**: jerarquía completa de 8 categorías principales con subcategorías (Sobre mí, Stack tecnológico, Servicios, Proyectos, Certificaciones), con anclas de scroll dedicadas en cada sección.
-- **Insignias de certificaciones en el Hero**: vista previa de las 3 certificaciones principales (Building with the Claude API, Scrum Fundamentals Certified, Cloud Computing & Azure VMware Solution).
-- **Contadores numéricos animados**: en "Logros y resultados destacados", impulsados por GSAP (módulos, proyectos, certificaciones, experiencias laborales).
-- **Certificaciones estilo LinkedIn**: tarjetas con empresa emisora, fecha de expedición, ID de credencial y botón de verificación — con datos reales y códigos de credencial verificables.
-- **`handleSecureRedirect`**: utilidad de navegación segura que decodifica URLs en Base64 en el momento del clic, aplicada a WhatsApp, credenciales de certificación y la Carta de Recomendación.
-- **Reglas anti-scraping**: `user-select: none` y `user-drag: none` extendidas a todos los elementos `img` y `svg` del sitio.
-- **Logo institucional**: Universidad de Guayaquil optimizado e integrado en la tarjeta de Educación.
+- **GSAP + ScrollTrigger**: motor de animación de entrada ("fade-in-up") integrado en el hook `useReveal`.
+- **`PreloadProvider`**: contexto de precarga.
+- **Navegación por acordeón/dropdown**: jerarquía completa de 8 categorías principales con subcategorías.
+- **Insignias de certificaciones en el Hero**.
+- **Contadores numéricos animados**: impulsados por GSAP.
+- **Certificaciones estilo LinkedIn**: tarjetas con empresa emisora, fecha de expedición, ID de credencial y botón de verificación.
+- **`handleSecureRedirect`**: utilidad de navegación segura (ofuscación).
+- **Reglas anti-scraping**: `user-select: none` y `user-drag: none`.
+- **Logo institucional**: Universidad de Guayaquil optimizado.
 
-### Modificado
+#### Modificado
 
-- **Identidad profesional**: título actualizado a "Full Stack Software Engineer | AI-Assisted Developer" en metadatos, Schema.org y todo el contenido relacionado.
-- **Selector de idioma**: simplificado a un interruptor ES/EN sin banderas ni imágenes de países.
-- **Sección "Sobre mí"**: biografía ampliada, tarjetas de capacidades/educación/idiomas con anclas de navegación independientes.
-- **Certificaciones**: eliminado el visor de PDF embebido en favor del formato de credencial profesional; la Carta de Recomendación mantiene su propio enlace seguro.
-- **`page.tsx`**: orden de secciones alineado 1:1 con la jerarquía del menú de navegación.
-- **Diseño global**: centrado consistente (`flex flex-col items-center`, `text-center`) en todas las secciones principales.
+- **Identidad profesional**: título actualizado a "Full Stack Software Engineer | AI-Assisted Developer".
+- **Selector de idioma**: simplificado a un interruptor ES/EN.
+- **Sección "Sobre mí"**: biografía ampliada.
+- **Certificaciones**: eliminado el visor de PDF embebido en favor del formato de credencial profesional.
+- **`page.tsx`**: orden de secciones alineado 1:1 con el menú.
+- **Diseño global**: centrado consistente en todas las secciones principales.
 
-### Corregido
+#### Corregido
 
-- **Enlace de LinkedIn**: URL obsoleta corregida en el Schema.org JSON-LD (quedaba desactualizada desde una versión anterior).
-- **Coherencia de contenido**: eliminada referencia a un proyecto que ya no forma parte del portafolio.
+- **Enlace de LinkedIn**: URL obsoleta corregida en el Schema.org.
 
 ---
 
-## v8.0.0 - Animaciones Framer Motion, WhatsApp siempre visible, solo 4 proyectos, nuevo perfil profesional, logro STI, LinkedIn actualizado
+### v8.0.0 - Animaciones Framer Motion, WhatsApp siempre visible, solo 4 proyectos, nuevo perfil profesional, logro STI, LinkedIn actualizado
 
-### Añadido
+#### Añadido
+- **Framer Motion v12** (MIT License).
+- **Iconos inline en botones de proyectos**.
+- **Logro cuantificado en STI**.
 
-- **Framer Motion v12** (MIT License): animaciones de entrada suaves con `motion.div` en Hero (nombre H1, badge), Projects (cards con `whileHover: { y: -4 }`), y About. Todas las animaciones respetan `prefers-reduced-motion`.
-- **Iconos inline en botones de proyectos**: GitHub, Figma y Documento — Icon+Texto en todos los botones para mejor UX.
-- **Logro cuantificado en STI**: "Automatizó el flujo de respuestas y atención al cliente mediante Meta Business Suite, incrementando en un 20% la efectividad en la contratación de servicios."
-
-### Modificado
-
-- **`whatsapp-float.tsx`**: botón WhatsApp siempre visible en todos los dispositivos (eliminada condición de scroll).
+#### Modificado
+- **`whatsapp-float.tsx`**: botón WhatsApp siempre visible.
 - **`contact.tsx`**: eliminado botón "Escríbeme por WhatsApp" debajo de las cuadrículas.
-- **`PROJECTS`**: reducido a exactamente 4 proyectos: Dashboard Enterprise, POSTS-COMMENTS-MANAGER, Portafolio Personal Profesional, Análisis Heurístico CNE. Eliminados: Invoice Manager, Proyecto POE.
+- **`PROJECTS`**: reducido a exactamente 4 proyectos.
 - **`PERSONAL.role`**: `'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development'`.
-- **`PERSONAL.linkedin`**: actualizado a `https://www.linkedin.com/in/daniel-fernando-castillo-mera`.
-- **`about-me.tsx`**: nuevo texto "Acerca de mí" con perfil 7mo semestre, enfoque .NET/C#/TypeScript/Angular, UI/UX e IA. Stats: `7/10` semestre, `v8.0.0`, `4` proyectos.
-- **`i18n.ts`** `footer.role` ES+EN: `'Full Stack Software Engineer | .NET · TypeScript · Angular | UI/UX Design | AI-Assisted Development'`.
-- **`package.json`**: versión `8.0.0`.
+- **`PERSONAL.linkedin`**: actualizado.
 
 ---
 
-## v7.6.9 - Fix definitivo de contenido invisible en móvil (root cause), banderas correctas en selector de idioma
+### v7.6.9 - Fix definitivo de contenido invisible en móvil, banderas correctas
 
-### Corregido — Causa raíz del bug recurrente de visibilidad en móvil
+#### Corregido — Causa raíz del bug
+- **`use-reveal.ts`** — Identificada y corregida la causa raíz del bug de secciones permanentes en `opacity: 0`.
 
-- **`use-reveal.ts`** — Identificada y corregida la causa raíz del bug reportado en versiones anteriores: secciones completas (especialmente "Formación continua y credibilidad / Certificados y talleres" y "Carta de Recomendación") permanecían en `opacity: 0` de forma PERMANENTE en ciertos dispositivos móviles. Causas combinadas: `rootMargin` negativo (`-60px` inferior) que reducía la zona de disparo del `IntersectionObserver`, `threshold` alto (0.15) difícil de alcanzar en secciones altas o al final del documento, viewport dinámico de Safari/Chrome móvil (la barra de direcciones cambia la altura real disponible), y layout shifts por carga progresiva de imágenes.
-- **Red de seguridad por temporizador**: se añadió un `setTimeout` de 600 ms que garantiza la visibilidad de TODO el contenido sin importar el comportamiento del `IntersectionObserver`, el dispositivo o el navegador. El observer se mantiene únicamente como mejora visual progresiva (reveal-on-scroll); la visibilidad del contenido ya NUNCA depende exclusivamente de él. Patrón estándar de "progressive enhancement con fallback garantizado".
-- **`rootMargin`/`threshold` por defecto ajustados**: de `0.15` / `-60px` a `0.05` / `+120px` — zona de disparo más generosa y permisiva en todos los dispositivos.
-- Resultado: eliminado el "scroll infinito" (cuadros vacíos) y la desaparición permanente de secciones en móvil, sin excepción de tamaño de dispositivo.
-
-### Corregido — Banderas del selector de idioma
-
-- **`language-toggle.tsx`** — Corregidas las 10 banderas SVG:
-  - **Ecuador y Colombia**: proporción de franjas corregida de 1:1:1 a 2:1:1 (amarillo doble altura, correcto según la bandera real).
-  - **Argentina**: de placeholder genérico a bicolor celeste/blanco real con Sol de Mayo simplificado.
-  - **Perú**: de placeholder genérico a tribanda vertical rojo-blanco-rojo real.
-  - **Chile**: de placeholder genérico a blanco/rojo con cantón azul y estrella real.
-  - **España**: de placeholder genérico a tribanda horizontal rojo-amarillo-rojo (proporción 1:2:1) real.
-  - **Reino Unido**: de placeholder genérico a Union Jack simplificado pero geométricamente correcto (diagonales + cruz de San Jorge).
-  - **Canadá**: de placeholder genérico a tribanda vertical roja-blanca-roja con hoja de arce estilizada.
+#### Corregido — Banderas
+- **`language-toggle.tsx`** — Corregidas las 10 banderas SVG.
 
 ---
 
-## v7.6.8 - Nombre H1, language toggle SVG flags, Exploratorio móvil fix, título profesional completo, traducciones EN, POSTS-COMMENTS-MANAGER, Angular/NestJS/MongoDB en skills
+### v7.6.8 - Nombre H1, language toggle SVG flags, Exploratorio móvil fix
 
-### Añadido
+#### Añadido
+- **Hero**: nombre completo.
+- **Proyecto `posts-comments-manager`**.
 
-- **Hero**: nombre completo "Daniel Fernando Castillo Mera" en una sola línea encima del badge de disponibilidad. Color blanco en modo oscuro, negro en modo claro.
-- **`language-toggle.tsx`**: panel hover rediseñado con "Español EC" primero, label "Cambiar idioma", opciones ES/EN, y enlace "Cambiar país/región". Modal de selección de país/región con 10 países (bandera + nombre + idioma), dropdown interactivo, botones Cancelar/Aplicar.
-- **Hipervínculos globales** (`globals.css`): hipervínculos de texto color `#1F79C8`; hover: color `#C7511F` + subrayado. Variante `data-link-subtle` para links que mantienen color base pero cambian a `#C7511F` en hover.
-- **Proyecto `posts-comments-manager`**: Angular 18+, NestJS 10, MongoDB Atlas, Docker Compose. Prueba de laboratorio 4 días — Albatros Honduras. 18-05-2026 al 21-05-2026. v1.0.6.
-- **`EXPLORATORY_SKILLS`**: campos `nameEn` y `descEn` en todos los items (28 tecnologías).
-
-### Modificado
-
-- **`data.ts`** `PERSONAL.role` y `PERSONAL.roleShort`: actualizados a `Junior Full Stack Software Engineer | Community Manager | Next.js · TypeScript · Supabase · PostgreSQL · Tailwind CSS`.
-- **`i18n.ts`** `footer.role` ES + EN: actualizados al nuevo título.
-- **`skills.tsx`** sección Exploratorio: grid unificado idéntico en móvil y desktop (eliminado scroll horizontal de chips). Animaciones de entrada escalonadas, hover 3D lift + glow radial + `line-clamp-2` en descripción. Usa `nameEn`/`descEn` según locale.
-- **`data.ts`** experiencias Soprisa: fechas corregidas a `03-04-2023 — 29-09-2023`.
+#### Modificado
+- **`skills.tsx`** sección Exploratorio unificada.
 
 ---
 
-## v7.6.7 - Vista previa PDF estática pre-renderizada (sin loading, funciona en todos los dispositivos)
+### v7.6.7 - Vista previa PDF estática pre-renderizada
 
-### Añadido
+#### Añadido
+- **`/public/certs-preview/`** e imágenes PNG estáticas para PDFs.
 
-- **`/public/certs-preview/`** — Imágenes PNG de la página 1 de cada PDF, generadas en build-time con Ghostscript r150 dpi + ImageMagick (redimensionadas a 900px, calidad 85, strip metadatos). Archivos: `cs50x.png`, `uees-talks.png`, `taller-pc.png`, `biorobotics.png`, `carta-recomendacion.png`.
-- **`PdfStaticPreview`** (`certifications.tsx`) — Nuevo componente de vista previa basado en `next/image` con las imágenes estáticas. Cero dependencias en runtime: sin PDF.js, sin fetch, sin iframe, sin canvas. Next.js sirve las imágenes en WebP/AVIF según el dispositivo con lazy loading nativo. El click/tap abre el PDF completo vía `/api/pdf`.
-
-### Modificado
-
-- **`certifications.tsx`** — `PdfCanvasViewer` (PDF.js canvas) reemplazado por `PdfStaticPreview` (next/image estático). Eliminadas todas las dependencias de PDF.js, `useCallback`, `useRef` de canvas. Componente resultante es puro, sin estado de carga, sin efectos de red en runtime.
-- **`package.json`** — Versión `7.6.7`.
-
-### Corregido
-
-- **Android Chrome**: spinner infinito resuelto — ya no hay carga de PDF.js CDN ni fetch en runtime.
-- **PC/Desktop**: vista previa que dejó de funcionar en v7.6.6 resuelta — imagen estática se muestra inmediatamente.
-- **iOS Safari**: funciona igual que desktop — next/image con `loading="lazy"` nativo.
-- **Todos los dispositivos**: vista previa visible instantáneamente sin ningún estado de carga.
+#### Corregido
+- **Android Chrome & iOS Safari**: spinner infinito y bloqueos resueltos.
 
 ---
 
-## v7.6.6 - Fix definitivo PDF canvas Android/iOS, Exploratorio móvil chips horizontal, CSP actualizado
+### v7.6.6 - Fix definitivo PDF canvas Android/iOS
 
-### Añadido
+#### Añadido
+- **`PdfCanvasViewer`**: renderizador PDF basado en PDF.js v3.11.174.
 
-- **`PdfCanvasViewer`** (`certifications.tsx`): renderizador PDF basado en **PDF.js v3.11.174** sobre `<canvas>`. Elimina por completo el uso de `<iframe>` y `<embed>`. Carga PDF.js dinámicamente desde CDN (unpkg) sin romper SSR. Fetch del PDF desde la API route interna `/api/pdf`. Renderiza la página 1 con DPR correcto (máx. 2x). Usa `IntersectionObserver` para renderizar solo cuando el componente es visible (performance). Muestra spinner con texto "Cargando PDF…" y estado de error con botón "Abrir ↗" como fallback. Compatible 100%: Android Chrome/Firefox/Samsung Internet, iOS Safari 16+, Desktop.
-- **`scrollbar-hide`** (`globals.css`): clase utilitaria para ocultar la scrollbar manteniendo el scroll funcional (Chrome/Safari/Firefox/Edge).
-
-### Modificado
-
-- **`skills.tsx`** — Sección "En Aprendizaje / Exploratorio" rediseñada para móvil: en pantallas `< sm` muestra chips compactos con scroll horizontal tipo carrusel (`overflow-x-auto`, `snap-x`) sin texto descriptivo para no ocupar demasiado espacio. En `sm+` (tablet/desktop) mantiene el grid de tarjetas con nombre + descripción. Contador de tecnologías visible.
-- **`next.config.ts`** — CSP actualizado: `script-src` incluye `https://cdnjs.cloudflare.com https://unpkg.com` para PDF.js CDN. `object-src 'none'` y `frame-src 'none'` — ya no se usan iframes/embeds para PDFs.
-- **`certifications.tsx`** — `InlinePdfPreview` reemplazado por `PdfCanvasViewer`. Eliminada detección iOS (ya no necesaria, canvas funciona en todos los dispositivos).
-
-### Corregido
-
-- **Android Chrome**: PDF ya no muestra "Este contenido está bloqueado" — el canvas renderiza directamente sin depender de X-Frame-Options.
-- **iOS Safari**: PDF renderizado en canvas — sin necesidad de mensaje informativo.
-- **Sección Exploratorio en móvil**: ya no se ve como una lista interminable — chips compactos con scroll horizontal.
+#### Corregido
+- **Android Chrome / iOS**: PDF ya no muestra "Este contenido está bloqueado".
 
 ---
 
-## v7.6.5 - Corrección de textos en español, fix PDF móvil iOS, badges "En desarrollo" unificados, versiones en tech-grid
+### v7.6.5 - Corrección de textos en español, fix PDF móvil iOS
 
-### Añadido
-
-- **Detección iOS en `InlinePdfPreview`**: cuando el dispositivo es iOS Safari (iPhone, iPad, iPod), se muestra un panel informativo con botón "Abrir ↗" prominente en lugar del `<iframe>` (que iOS no soporta para PDFs inline). Solución definitiva al problema de visualización de PDFs en móvil iOS.
-- **Versiones en Tech Grid**: agregadas versiones faltantes en la sección "Conjunto de tecnologías" (Supabase v2, PostgreSQL v16, SQL Server v2022, Git v2.49).
-
-### Modificado
-
-- **`i18n.ts`** — Sección `es` completamente traducida al español: taglines del hero, `sectionLabel`, `title`, `subtitle`, `ctaServices`, `scroll`, `irAlFinal`, `irAlInicio`, `capabilities`, `items`, etiquetas de secciones (About, Experience, Services, Projects, Skills, Certifications, Contact, Cookies, Footer, TechGrid, A11y, Misc). Eliminados textos en inglés que aparecían en modo español.
-- **`projects.tsx`** — Badge de estado unificado: todos los proyectos "En desarrollo" usan el mismo diseño naranja animado (borde, fondo y punto `animate-pulse`) igual que el proyecto destacado. Proyectos con estado "Terminado"/"Completed" usan badge verde consistente.
-- **`data.ts`** — Estado `'Completado'` renombrado a `'Terminado'` (ES) manteniendo `'Completed'` en EN. Versión del portafolio actualizada a `v7.6.5` en el proyecto `portfolio-web`.
-- **`about-me.tsx`** — Versión del stat actualizada a `v7.6.5`.
-- **`layout.tsx`** — Descripción SEO actualizada a `v7.6.5`.
-- **`package.json`** — Versión `7.6.5`.
-- **`docs/`** — Todos los archivos wiki actualizados a v7.6.5: `Home.md`, `Architecture.md`, `Accessibility.md`, `Deployment.md`, `I18n.md`.
+#### Añadido
+- **Detección iOS en `InlinePdfPreview`**.
+- **Versiones en Tech Grid**.
 
 ---
 
-## v7.6.4 — Visor PDF con API route interna, TS build fixes, nuevo trabajo, logros, skills y taglines
+### v7.6.4 — Visor PDF con API route interna
 
-### Añadido
-- **API route interna `/api/pdf?file=`** (`src/app/api/pdf/route.ts`) — sirve PDFs desde el mismo origen con headers `Content-Disposition: inline` y whitelist de archivos permitidos. Elimina definitivamente el error "Contenido bloqueado" en móvil y desktop. No requiere Google Docs proxy ni configuración CSP especial.
-- **Nuevo trabajo: Community Manager — Agro Industrias Warsa C.A.** (24-04-2026 — Presente) en `data.ts`: creación del perfil TikTok, contenido multimedia y campañas TikTok Ads B2B.
-- **Nuevo logro**: "Construí la presencia en TikTok de Agro Industrias Warsa C.A." en `achievements.tsx` (ES y EN).
-- **Skills exploratorias nuevas**: Angular, Laravel, Spring Boot, Bootstrap, Android Studio/Kotlin, Swift/Xcode (iOS), MongoDB, Oracle Database XE + SQL Developer, TDD, diseño de MVP, ElevenLabs, HeyGen, CapCut (PC y móvil). `EXPLORATORY_SKILLS` expandido con descripciones técnicas completas.
-- **Taglines del hero actualizados**: nuevas frases sobre Clean Code, Agile/Scrum/Git, modos aleatorio, frases "enganchadoras" para clientes.
-
-### Modificado
-- **`certifications.tsx`** — usa `InlinePdfPreview` con `<iframe src="/api/pdf?file=...">` (mismo origen). Funciona en Android Chrome, iOS Safari, desktop — sin diálogos de confirmación, sin CSP bloqueado.
-- **`data.ts`** — typo corregido: `Soluciones Técnicas Industriales D.C` → `Soluciones Técnicas Industriales D.C.`; PDFs de certificados reemplazados por versiones definitivas.
-- Versión `7.6.4` en todos los archivos.
-- **TypeScript fix 1** — `translations` en `i18n.ts` tipado como `Record<Locale, any>` para eliminar error `"Property 'en' does not exist on type..."`.
-- **TypeScript fix 2** — `t.about.items.map((item: string) =>` — parámetro tipado explícitamente para eliminar `"Parameter 'item' implicitly has an 'any' type"`.
-- **`package.json`** — eliminada dependencia `react-pdf` (no utilizada); añadidos `eslint` + `eslint-config-next` para build limpio.
-- **SKILL_CATEGORIES actualizado** — skills nuevas: Facturación electrónica SRI (XML v2.1.0), LaTeX/Overleaf, Prompt Engineering/AI Dev, CapCut, Clean Code/SOLID/DRY/KISS.
-
-### Eliminado
-- PDFs anteriores reemplazados por versiones definitivas sin cambio de nombre de archivo.
+#### Añadido
+- **API route interna `/api/pdf?file=`**.
+- **Nuevo trabajo: Community Manager**.
 
 ---
 
-## v7.6.3 — Visor PDF iframe móvil, widget accesibilidad mejorado, banderas en PC, espaciado y carta aparte
+### v7.6.3 — Visor PDF iframe móvil, widget accesibilidad
 
-### Añadido
-- **Sub-sección "Carta de Recomendación"** separada de los certificados, con datos completos (emisor, lugar, fecha) y vista previa PDF.
-
-### Modificado
-- **`certifications.tsx`** — visor PDF cambia de `<object>` a `<iframe>` directo (mejor compatibilidad móvil); iOS Safari sigue usando Google Docs proxy; botón "Abrir" con borde/marco amber; título sección actualizado a "FORMACIÓN CONTINUA Y CREDIBILIDAD / Certificados y talleres".
-- **`accessibility-widget.tsx`** — botón "✕" para cerrar; títulos de opciones en `#F59E0B` negrita; etiquetas Normal/Grande/Extra grande sin negrita; botón "Restaurar" con borde `#F59E0B`; texto WCAG en negrita.
-- **`globals.css`** — `a11y-reduced-motion` usa `animation: none !important` en lugar de solo `duration: 0.01ms`; también detiene `marquee-track`, `animate-ping`, `animate-pulse`, `animate-spin`, `animate-float`, `animate-bounce`.
-- **`language-toggle.tsx`** — bandera del país visible en PC y móvil en el botón principal (no solo en el dropdown).
-- **`achievements.tsx`** — separador cambia de " — " a ": " entre el highlight y el texto.
-- **`i18n.ts`** — sección certificaciones: ES "Formación continua y credibilidad / Certificados y talleres"; EN "Continuous training & credibility / Certificates & Workshops".
-- **Espaciado de secciones** — `py-24 sm:py-32` → `py-16 sm:py-24` en todas las secciones para reducir espacios en blanco excesivos.
-- Versión `7.6.3`.
+#### Añadido
+- **Sub-sección "Carta de Recomendación"** separada.
 
 ---
 
-## v7.6.2 — Vista previa PDF inline, selección de texto habilitada, puntos finales y wiki en docs/
+### v7.6.2 — Vista previa PDF inline
 
-### Añadido
-- **Vista previa PDF inline** en cada tarjeta de certificación (`InlinePdfPreview`): se muestra debajo de "Estado", centrada, sin botón "Ver documento", tamaño adaptativo con `clamp(280px, 45vw, 420px)`, sin opción de descarga. Estrategia por dispositivo: iOS Safari → Google Docs proxy; Android/Desktop → `<object>` mismo origen.
-- **Carpeta `docs/`** con archivos wiki en GitHub Flavored Markdown (GFM): `Home.md`, `Architecture.md`, `Accessibility.md`, `Deployment.md`, `I18n.md`. Cada archivo bilingüe ES/EN.
-
-### Modificado
-- **`globals.css`** — `body` cambia de `user-select: none` a `user-select: text` (fix WCAG 1.3.4 y UX). Solo `img`, `.protected-image` y `.protected-image-wrapper` mantienen protección.
-- **`src/lib/data.ts`** — Puntos finales añadidos a todos los `items` e `itemsEn` de `SERVICE_CATEGORIES` y `ADDITIONAL_SKILLS` que eran frases sin punto.
-- **Scrum Fundamentals Certified (SFC™)** — ubicación corregida a "Estados Unidos (en línea)" / "United States (online)".
-- **`certifications.tsx`** — reescritura completa con `InlinePdfPreview` embebido en la tarjeta; eliminado modal y botón "Ver documento".
-- Versión `7.6.2` en `package.json`, `data.ts`, `about-me.tsx`, `manifest.json`, `layout.tsx`.
-
-### Eliminado
-- `WIKI.md` (raíz) — reemplazado por `docs/Home.md` y estructura completa en `docs/`.
+#### Añadido
+- **Vista previa PDF inline**.
+- **Carpeta `docs/`** con archivos wiki.
 
 ---
 
-## [7.6.1] — 2026-04-25 — Visor PDF Android, centrado de foto, fb:app_id, Scrum SFC y assets actualizados
+### v7.6.1 — Visor PDF Android, centrado de foto
 
-### Añadido
-- **Certificación Scrum Fundamentals Certified (SFC™)** — SCRUMstudy®, Avondale Arizona (en línea), 25-04-2026, estado: en curso.
-- **`fb:app_id`** en `layout.tsx` — meta tag requerida para depuración del Open Graph Debugger de Meta y distribución correcta del contenido compartido en Facebook/WhatsApp.
-
-### Modificado
-- **`certifications.tsx`** — visor PDF Android corregido: Android Chrome ya no usa Google Docs proxy (que causaba el diálogo "Abrir" intermedio); ahora usa `<object>` con URL del mismo origen → visualización inmediata al primer tap sin confirmación del sistema. Solo iOS Safari sigue usando Google Docs proxy.
-- **`hero.tsx`** — foto de perfil centrada correctamente en el círculo: `object-center` (antes `object-top` causaba descentrado horizontal).
-- **`public/og-image.png`** — reemplazado por el archivo definitivo adjunto.
-- **`public/icons/accessibility.svg`** — reemplazado por el SVG definitivo adjunto.
-- **`public/icons/tiktok-ads.png`** — reemplazado por el PNG definitivo adjunto.
-- **`data.ts`** — `tiktok-ads.svg` → `tiktok-ads.png`; versión v7.6.1.
-- **`package.json`** — versión `7.6.1`.
-- **`manifest.json`** — versión v7.6.1.
-
-### Eliminado
-- `public/icons/tiktok-ads.svg` — reemplazado por PNG definitivo.
+#### Añadido
+- **Certificación Scrum Fundamentals Certified (SFC™)**.
 
 ---
 
-## [7.6.0] — 2026-04-25 — Iconos SVG, indicador scroll adaptativo, visor PDF, correcciones UI/UX
+### v7.6.0 — Iconos SVG, indicador scroll adaptativo
 
-### Añadido
-- Meta tags OG con dimensiones explícitas: `og:image:width`, `og:image:height`, `og:image:type`, `<link rel="preload" as="image">`.
-- Scroll indicator adaptativo: móvil=teléfono+dedo, tablet=tablet+flecha, desktop=ratón clásico.
-
-### Modificado
-- `accessibility-widget.tsx` — botón usa SVG adjunto via `<Image>` sin deformación.
-- `tiktok-ads.svg` — SVG vectorial puro (sin raster embebido).
-- `certifications.tsx` — sin botón de descarga; `loading="eager"` para renderizado inmediato.
-- `scroll-buttons.tsx` — tooltip `bg-gray-700` en modo claro, `bg-navy-700` en oscuro.
-- `navbar.tsx` — `whitespace-nowrap` para "Sobre mí" en una sola línea.
-- `achievements.tsx` — primera letra en mayúscula en todos los highlights.
-- Versión `7.6.0`.
+#### Añadido
+- Meta tags OG con dimensiones explícitas.
+- Scroll indicator adaptativo.
 
 ---
 
-## v7.5.5 — Visor PDF, OG image, favicons, logros y limpieza de assets
+### v7.5.5 — Visor PDF, OG image, favicons, logros
 
-### Añadido
-- Sección "Logros y resultados destacados" (9 logros, bilingüe).
-- Visor PDF multi-estrategia: `<object>` → `<embed>` → Google Docs (iOS) → nueva pestaña.
-- `achievements.tsx`, cabeceras HTTP para PDFs, favicons sin recorte, archivos de repositorio.
-
-### Modificado
-- Corregido error de build `Can not repeat "path" without a prefix and suffix`.
-- `.section-title { color: #F59E0B }`, múltiples rewrites de componentes.
-- Versión `7.5.5`.
+#### Añadido
+- Sección "Logros y resultados destacados".
+- Visor PDF multi-estrategia.
 
 ---
 
-## v7.5.0 — Portafolio bilingüe completo con temas, accesibilidad y despliegue en Vercel
+### v7.5.0 — Portafolio bilingüe completo
 
-### Añadido
-- Portafolio web profesional completo con soporte bilingüe ES/EN, temas, WCAG 2.1 AA, Vercel.
-
----
+#### Añadido
+- Portafolio web profesional completo.
 
 ---
 
-# Changelog (English)
+## English (United States)
 
-> All notable changes to this project are documented in this file.
-> Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and versioning follows [Semantic Versioning](https://semver.org/).
+### v7.6.1 — Android PDF viewer, photo centering, fb:app_id, Scrum SFC and updated assets
 
----
-
-## v7.6.1 — Android PDF viewer, photo centering, fb:app_id, Scrum SFC and updated assets
-
-### Added
+#### Added
 - **Scrum Fundamentals Certified (SFC™)** — SCRUMstudy®, Avondale Arizona (online), 25-04-2026, status: in progress.
-- **`fb:app_id`** in `layout.tsx` — meta tag required for Meta's Open Graph Debugger and correct content distribution on Facebook/WhatsApp.
+- **`fb:app_id`** in `layout.tsx` — meta tag required for Meta's Open Graph Debugger.
 
-### Changed
-- **`certifications.tsx`** — Android PDF viewer fixed: Android Chrome no longer uses Google Docs proxy (which caused the intermediate "Open" dialog); now uses `<object>` with same-origin URL → immediate display on first tap without system confirmation. Only iOS Safari still uses Google Docs proxy.
-- **`hero.tsx`** — profile photo correctly centered in circle: `object-center` (previously `object-top` caused horizontal misalignment).
+#### Changed
+- **`certifications.tsx`** — Android PDF viewer fixed using `<object>`.
+- **`hero.tsx`** — profile photo correctly centered in circle.
 - **`public/og-image.png`** — replaced with definitive uploaded file.
-- **`public/icons/accessibility.svg`** — replaced with definitive uploaded SVG.
-- **`public/icons/tiktok-ads.png`** — replaced with definitive uploaded PNG.
-- **`data.ts`** — `tiktok-ads.svg` → `tiktok-ads.png`; version v7.6.1.
-- **`package.json`** — version `7.6.1`.
-
-### Removed
-- `public/icons/tiktok-ads.svg` — replaced by definitive PNG.
 
 ---
 
-## v7.6.0 — SVG icons, adaptive scroll indicator, PDF viewer, UI/UX fixes
+### v7.6.0 — SVG icons, adaptive scroll indicator, PDF viewer, UI/UX fixes
 
-### Added
+#### Added
 - OG meta tags with explicit dimensions and social media pre-cache.
 - Adaptive scroll indicator by device type.
 
-### Changed
-- Accessibility button uses uploaded SVG via `<Image>` without distortion.
-- Scroll buttons tooltip adapts to light/dark mode.
-- Navbar `whitespace-nowrap` fixes "Sobre mí" single-line display.
-- Achievements highlights capitalized.
-- Version `7.6.0`.
+#### Changed
+- Accessibility button uses uploaded SVG.
 
 ---
 
-## v7.5.5 — PDF viewer, OG image, favicons, achievements and asset cleanup
+### v7.5.5 — PDF viewer, OG image, favicons, achievements and asset cleanup
 
-### Added
-- "Achievements & Notable Results" section (9 items, bilingual).
-- Multi-strategy PDF viewer, favicons, repository documentation files.
-
-### Changed
-- Fixed build error in `next.config.ts`. Section title amber color. Multiple component rewrites.
-- Version `7.5.5`.
+#### Added
+- "Achievements & Notable Results" section.
+- Multi-strategy PDF viewer.
 
 ---
 
-## v7.5.0 — Complete bilingual portfolio with themes, accessibility and Vercel deployment
+### v7.5.0 — Complete bilingual portfolio with themes, accessibility and Vercel deployment
 
-### Added
+#### Added
 - Complete professional portfolio with bilingual ES/EN support, light/dark theme, WCAG 2.1 AA, Vercel deployment.
