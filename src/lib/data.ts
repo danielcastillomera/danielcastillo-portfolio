@@ -1,5 +1,5 @@
 /**
- * Portfolio Data — Single Source of Truth v9.0.0
+ * Portfolio Data — Single Source of Truth v9.1.0
  * Daniel Fernando Castillo Mera
  * Primera persona · achievement-oriented (estándar portafolios 2023-2026)
  */
@@ -16,7 +16,6 @@ export const PERSONAL = {
   age: 21,
   birthDate: '23 de febrero de 2005',
   whatsapp: 'https://api.whatsapp.com/send?phone=593981076185&text=Hola%20Daniel%20%F0%9F%91%8B',
-  whatsappB64: 'aHR0cHM6Ly9hcGkud2hhdHNhcHAuY29tL3NlbmQ/cGhvbmU9NTkzOTgxMDc2MTg1JnRleHQ9SG9sYSUyMERhbmllbCUyMCVGMCU5RiU5MSU4Qg==',
   github: 'https://github.com/danielcastillomera',
   linkedin: 'https://www.linkedin.com/in/daniel-fernando-castillo-mera',
   instagram: 'https://www.instagram.com/danielcastillomera',
@@ -42,14 +41,12 @@ export const NAV_LINKS: NavLink[] = [
   {
     href: '#stack-tecnologico', labelKey: 'stack',
     subs: [
-      { href: '#lenguajes',           labelKey: 'subLenguajes' },
-      { href: '#stack-frontend',      labelKey: 'subFrontend' },
-      { href: '#stack-backend',       labelKey: 'subBackend' },
-      { href: '#stack-database',      labelKey: 'subDatabase' },
-      { href: '#stack-tools',         labelKey: 'subTools' },
-      { href: '#stack-marketing',     labelKey: 'subMarketing' },
-      { href: '#stack-uiux',          labelKey: 'subUiux' },
-      { href: '#stack-exploratorio',  labelKey: 'subExploratorio' },
+      { href: '#lenguajes',      labelKey: 'subLenguajes' },
+      { href: '#stack-frontend', labelKey: 'subFrontend' },
+      { href: '#stack-backend',  labelKey: 'subBackend' },
+      { href: '#stack-database', labelKey: 'subDatabase' },
+      { href: '#stack-tools',    labelKey: 'subTools' },
+      { href: '#stack-design',   labelKey: 'subDesign' },
     ],
   },
   {
@@ -276,7 +273,7 @@ export interface Project {
   description: string; descriptionEn: string;
   longDescription: string; longDescriptionEn: string;
   techStack: string[]; features: string[]; featuresEn: string[];
-  links: { label: string; labelEn: string; url: string; icon: 'github' | 'external' | 'demo' | 'figma' | 'document' }[];
+  links: { label: string; labelEn: string; url: string; icon: 'github' | 'external' | 'demo' | 'figma' | 'document' | 'view' }[];
   highlight: boolean; type: 'individual' | 'grupal'; githubApiUrl?: string;
 }
 
@@ -310,7 +307,10 @@ export const PROJECTS: Project[] = [
       'Complete management: Customers, Purchases, Sales, Orders, Inventory',
       'Technical documentation in Overleaf/LaTeX',
     ],
-    links: [{ label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/dashboard-enterprise', icon: 'github' }],
+    links: [
+      { label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/dashboard-enterprise', icon: 'github' },
+      { label: 'Ver', labelEn: 'View', url: 'https://dashboard-enterprise-kappa.vercel.app', icon: 'view' },
+    ],
     highlight: true, type: 'individual',
     githubApiUrl: 'https://raw.githubusercontent.com/danielcastillomera/dashboard-enterprise/main/package.json',
   },
@@ -339,21 +339,27 @@ export const PROJECTS: Project[] = [
       'Unit tests: Jest (NestJS) + Jasmine (Angular)',
       'Docker + Docker Compose containerization',
     ],
-    links: [{ label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/POSTS-COMMENTS-MANAGER', icon: 'github' }],
+    links: [
+      { label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/POSTS-COMMENTS-MANAGER', icon: 'github' },
+      { label: 'Ver', labelEn: 'View', url: 'https://posts-comments-manager.vercel.app', icon: 'view' },
+    ],
     highlight: false, type: 'individual',
   },
   /* ── 3. Portafolio Personal Profesional ── */
   {
-    id: 'portfolio-web', title: 'Portafolio Personal Profesional', version: 'v9.0.0',
+    id: 'portfolio-web', title: 'Portafolio Personal Profesional', version: 'v9.1.0',
     status: 'En desarrollo', statusEn: 'In development',
     description: 'Portafolio profesional con animaciones GSAP + Lenis, i18n ES/EN completo, WCAG 2.2, navegación por acordeón y diseño responsive mobile-first.',
     descriptionEn: 'Professional portfolio with GSAP + Lenis animations, full ES/EN i18n, WCAG 2.2, accordion navigation and responsive mobile-first design.',
-    longDescription: 'Portafolio profesional v9.0.0 construido con Next.js 15, React 19, TypeScript 5.9 y Tailwind CSS 4. Incluye smooth scroll con Lenis, animaciones GSAP + ScrollTrigger, i18n ES/EN, accesibilidad WCAG 2.2, SEO, Open Graph y navegación jerárquica por acordeón.',
-    longDescriptionEn: 'Professional portfolio v9.0.0 built with Next.js 15, React 19, TypeScript 5.9 and Tailwind CSS 4. Includes Lenis smooth scroll, GSAP + ScrollTrigger animations, ES/EN i18n, WCAG 2.2 accessibility, SEO, Open Graph and hierarchical accordion navigation.',
+    longDescription: 'Portafolio profesional v9.1.0 construido con Next.js 15, React 19, TypeScript 5.9 y Tailwind CSS 4. Incluye smooth scroll con Lenis, animaciones GSAP + ScrollTrigger, i18n ES/EN, accesibilidad WCAG 2.2, SEO, Open Graph y navegación jerárquica por acordeón.',
+    longDescriptionEn: 'Professional portfolio v9.1.0 built with Next.js 15, React 19, TypeScript 5.9 and Tailwind CSS 4. Includes Lenis smooth scroll, GSAP + ScrollTrigger animations, ES/EN i18n, WCAG 2.2 accessibility, SEO, Open Graph and hierarchical accordion navigation.',
     techStack: ['Next.js 15', 'TypeScript 5.9', 'React 19', 'Tailwind CSS 4', 'GSAP', 'Lenis', 'Vercel'],
     features: ['Smooth scroll con Lenis + GSAP ScrollTrigger', 'i18n ES/EN con Context provider', 'WCAG 2.2 Nivel A–AAA', 'Navegación por acordeón jerárquico', 'Responsive mobile-first'],
     featuresEn: ['Lenis smooth scroll + GSAP ScrollTrigger', 'ES/EN i18n with Context provider', 'WCAG 2.2 Level A–AAA', 'Hierarchical accordion navigation', 'Responsive mobile-first'],
-    links: [{ label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/danielcastillo-portfolio', icon: 'github' }],
+    links: [
+      { label: 'Ir a repositorio', labelEn: 'Repository', url: 'https://github.com/danielcastillomera/danielcastillo-portfolio', icon: 'github' },
+      { label: 'Ver', labelEn: 'View', url: 'https://danielcastillo-portfolio.vercel.app', icon: 'view' },
+    ],
     highlight: false, type: 'individual',
   },
   /* ── 4. Análisis Heurístico y Rediseño UI/UX — CNE ── */
@@ -375,79 +381,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-/* ═══ SKILLS ═══ */
-export interface SkillCategory {
-  name: string; nameEn: string; iconSrc: string; iconAlt: string;
-  skills: { name: string; level: number }[];
-}
-
-export const SKILL_CATEGORIES: SkillCategory[] = [
-  { name: 'Frontend', nameEn: 'Frontend', iconSrc: '', iconAlt: 'Frontend',
-    skills: [
-      { name: 'React / Next.js', level: 80 },
-      { name: 'Angular 18+ (Signals, RxJS)', level: 72 },
-      { name: 'TypeScript', level: 78 },
-      { name: 'Tailwind CSS', level: 85 },
-      { name: 'HTML5 / CSS3', level: 90 },
-      { name: 'Responsive Design', level: 85 },
-      { name: 'Angular Signals + Forms', level: 70 },
-      { name: 'RxJS (Observables, Operators)', level: 68 },
-    ],
-  },
-  { name: 'Backend', nameEn: 'Backend', iconSrc: '', iconAlt: 'Backend',
-    skills: [
-      { name: 'NestJS 10 (Módulos, Guards, Pipes)', level: 72 },
-      { name: 'Next.js API Routes / Server Actions', level: 75 },
-      { name: 'Node.js + Express.js', level: 70 },
-      { name: 'Prisma ORM', level: 75 },
-      { name: 'Mongoose (MongoDB ODM)', level: 68 },
-      { name: 'REST APIs (CRUD + paginación real)', level: 82 },
-      { name: 'JWT — Autenticación stateless', level: 72 },
-      { name: 'Zod / class-validator', level: 72 },
-    ],
-  },
-  { name: 'Base de Datos & Cloud', nameEn: 'Database & Cloud', iconSrc: '', iconAlt: 'DB',
-    skills: [
-      { name: 'Supabase + PostgreSQL', level: 80 },
-      { name: 'MongoDB / MongoDB Atlas', level: 70 },
-      { name: 'Supabase Auth + RLS', level: 75 },
-      { name: 'SQL Server (SSMS)', level: 65 },
-      { name: 'Oracle SQL Developer', level: 60 },
-      { name: 'Vercel Deployment', level: 82 },
-    ],
-  },
-  { name: 'Herramientas & Metodologías', nameEn: 'Tools & Methodologies', iconSrc: '', iconAlt: 'Tools',
-    skills: [
-      { name: 'Docker + Docker Compose', level: 68 },
-      { name: 'Git / GitHub', level: 85 },
-      { name: 'Agile / Scrum', level: 75 },
-      { name: 'Clean Code / SOLID / DRY', level: 75 },
-      { name: 'Tests unitarios (Jest · Jasmine)', level: 65 },
-      { name: 'Microsoft 365', level: 80 },
-      { name: 'WCAG 2.2 Accesibilidad', level: 70 },
-    ],
-  },
-  { name: 'Community Manager & Marketing Digital', nameEn: 'Community Manager & Digital Marketing', iconSrc: '', iconAlt: 'Marketing',
-    skills: [
-      { name: 'Meta Business Suite', level: 80 },
-      { name: 'Facebook & Instagram Ads', level: 75 },
-      { name: 'TikTok Ads', level: 70 },
-      { name: 'Gestión de Redes Sociales', level: 85 },
-      { name: 'Creación de Contenido', level: 80 },
-      { name: 'OBS Studio', level: 72 },
-    ],
-  },
-  { name: 'Diseño UI/UX', nameEn: 'UI/UX Design', iconSrc: '', iconAlt: 'UI/UX',
-    skills: [
-      { name: 'Figma', level: 75 },
-      { name: 'Prototipado', level: 70 },
-      { name: 'Evaluación Heurística (Nielsen)', level: 72 },
-      { name: 'Material Design', level: 70 },
-      { name: 'Diseño Responsive', level: 85 },
-    ],
-  },
-];
-
 /* ═══ CERTIFICATIONS — diseño estilo LinkedIn ═══ */
 export interface Certification {
   id: string;
@@ -456,7 +389,8 @@ export interface Certification {
   issueDate: string; issueDateEn: string;
   expirationDate?: string; expirationDateEn?: string;
   credentialId?: string;
-  credentialUrlB64?: string;
+  credentialUrl?: string;
+  logo?: string;
   inProgress: boolean;
   pdfFile?: string;
 }
@@ -466,12 +400,13 @@ export const CERTIFICATIONS: Certification[] = [
     id: 'claude-api',
     title: 'Building with the Claude API',
     titleEn: 'Building with the Claude API',
-    issuer: 'Anthropic',
-    issuerEn: 'Anthropic',
+    issuer: 'Anthropic Education',
+    issuerEn: 'Anthropic Education',
     issueDate: 'Agosto 2026',
     issueDateEn: 'August 2026',
     credentialId: 'irkq6k39bkwt',
-    credentialUrlB64: 'aHR0cHM6Ly92ZXJpZnkuc2tpbGxqYXIuY29tL2MvaXJrcTZrMzlia3d0',
+    credentialUrl: 'https://verify.skilljar.com/c/irkq6k39bkwt',
+    logo: '/certs-logos/anthropicresearch_logo.jpg',
     inProgress: false,
   },
   {
@@ -483,7 +418,8 @@ export const CERTIFICATIONS: Certification[] = [
     issueDate: 'Agosto 2026',
     issueDateEn: 'August 2026',
     credentialId: '1181435',
-    credentialUrlB64: 'aHR0cHM6Ly93d3cuc2NydW1zdHVkeS5jb20vY2VydGlmaWNhdGlvbi92ZXJpZnk/dHlwZT1TRkMmbnVtYmVyPTExODE0MzU=',
+    credentialUrl: 'https://www.scrumstudy.com/certification/verify?type=SFC&number=1181435',
+    logo: '/certs-logos/vabro_vmedu_logo.jpg',
     inProgress: false,
   },
   {
@@ -495,7 +431,8 @@ export const CERTIFICATIONS: Certification[] = [
     issueDate: 'Agosto 2026',
     issueDateEn: 'August 2026',
     credentialId: 'B9E430E7B75342CF',
-    credentialUrlB64: 'aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL2FwaS9hY2hpZXZlbWVudHMvc2hhcmUvZW4tdXMvRGFuaWVsRmVybmFuZG9DYXN0aWxsb01lcmEtNTgyNi9ZNDVXSkM3Uj9zaGFyaW5nSWQ9QjlFNDMwRTdCNzUzNDJDRg==',
+    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/DanielFernandoCastilloMera-5826/Y45WJC7R?sharingId=B9E430E7B75342CF',
+    logo: '/certs-logos/microsoft_logo.jpg',
     inProgress: false,
   },
   {
@@ -506,6 +443,7 @@ export const CERTIFICATIONS: Certification[] = [
     issuerEn: 'Amazon Web Services',
     issueDate: 'Agosto 2026',
     issueDateEn: 'August 2026',
+    logo: '/certs-logos/amazon_web_services_logo.jpg',
     inProgress: true,
   },
   {
@@ -516,6 +454,7 @@ export const CERTIFICATIONS: Certification[] = [
     issuerEn: 'Microsoft',
     issueDate: 'Agosto 2026',
     issueDateEn: 'August 2026',
+    logo: '/certs-logos/microsoft_logo.jpg',
     inProgress: true,
   },
   {
@@ -526,6 +465,7 @@ export const CERTIFICATIONS: Certification[] = [
     issuerEn: 'HarvardX',
     issueDate: 'Enero 2026',
     issueDateEn: 'January 2026',
+    logo: '/certs-logos/harvard_x_logo.jpg',
     inProgress: true,
   },
 ];
@@ -539,7 +479,7 @@ export const RECOMMENDATION_LETTER: Certification = {
   issuerEn: 'Agro Industrias Warsa C.A. — Eng. Elías Ward Adum, General Manager',
   issueDate: '20 abril 2026',
   issueDateEn: 'April 20, 2026',
-  credentialUrlB64: 'L2FwaS9wZGY/ZmlsZT1jYXJ0YS1yZWNvbWVuZGFjaW9uLnBkZg==',
+  credentialUrl: '/api/pdf?file=carta-recomendacion.pdf',
   inProgress: false,
   pdfFile: '/certs/carta-recomendacion.pdf',
 };
@@ -593,61 +533,3 @@ export const ACHIEVEMENT_STATS = [
   { value: 4,  suffix: '',  label: 'Experiencias laborales', labelEn: 'Work experiences' },
 ];
 
-/* ═══ EXPLORATORY SKILLS ═══ */
-export const EXPLORATORY_SKILLS = [
-  // ── Frameworks y lenguajes ──
-  { name: 'Angular', nameEn: 'Angular', desc: 'Framework frontend TypeScript de Google para aplicaciones web de escala empresarial.', descEn: "Google's TypeScript frontend framework for enterprise-scale web applications.", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg' },
-  { name: 'Laravel', nameEn: 'Laravel', desc: 'Framework PHP para backend web robusto y elegante, con Eloquent ORM y Blade templating.', descEn: 'PHP framework for robust and elegant web backend, with Eloquent ORM and Blade templating.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
-  { name: 'Spring Boot', nameEn: 'Spring Boot', desc: 'Framework Java para backend empresarial con inyección de dependencias, REST y seguridad.', descEn: 'Java framework for enterprise backend with dependency injection, REST and security.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
-  { name: 'Bootstrap', nameEn: 'Bootstrap', desc: 'Framework CSS para diseño responsive rápido y componentes UI predefinidos.', descEn: 'CSS framework for fast responsive design and predefined UI components.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg' },
-  // ── Desarrollo móvil ──
-  { name: 'Android Studio / Kotlin', nameEn: 'Android Studio / Kotlin', desc: 'IDE oficial de Google para desarrollo de aplicaciones nativas Android con Kotlin y Jetpack Compose.', descEn: "Google's official IDE for native Android app development with Kotlin and Jetpack Compose.", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg' },
-  { name: 'Swift / Xcode (iOS)', nameEn: 'Swift / Xcode (iOS)', desc: 'Lenguaje y entorno de Apple para desarrollo de aplicaciones nativas iOS y iPadOS.', descEn: "Apple's language and environment for native iOS and iPadOS app development.", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg' },
-  { name: 'Flutter / Dart', nameEn: 'Flutter / Dart', desc: 'SDK de Google para apps multiplataforma (Android, iOS, Web) con un solo codebase.', descEn: "Google's SDK for cross-platform apps (Android, iOS, Web) with a single codebase.", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
-  // ── Cloud y DevOps ──
-  { name: 'Cloud Computing — AWS', nameEn: 'Cloud Computing — AWS', desc: 'Amazon Web Services: EC2, S3, Lambda, RDS, IAM. Computación en la nube para arquitecturas escalables.', descEn: 'Amazon Web Services: EC2, S3, Lambda, RDS, IAM. Cloud computing for scalable architectures.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
-  { name: 'Docker', nameEn: 'Docker', desc: 'Empaquetado y containerización de aplicaciones para entornos reproducibles.', descEn: 'Application packaging and containerization for reproducible environments.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
-  { name: 'GitHub Actions', nameEn: 'GitHub Actions', desc: 'CI/CD, automatización de pipelines de build, test y deploy.', descEn: 'CI/CD, automation of build, test and deploy pipelines.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg' },
-  // ── Bases de datos ──
-  { name: 'MongoDB', nameEn: 'MongoDB', desc: 'Base de datos NoSQL orientada a documentos JSON, ideal para datos no estructurados.', descEn: 'JSON document-oriented NoSQL database, ideal for unstructured data.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
-  { name: 'Oracle Database XE + SQL Developer', nameEn: 'Oracle Database XE + SQL Developer', desc: 'Base de datos relacional empresarial Oracle Express Edition con herramienta SQL Developer para modelado y consultas.', descEn: 'Oracle Express Edition enterprise relational database with SQL Developer tool for modeling and queries.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
-  { name: 'Redis', nameEn: 'Redis', desc: 'Caché en memoria y optimización de rendimiento para aplicaciones de alta demanda.', descEn: 'In-memory cache and performance optimization for high-demand applications.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
-  // ── Testing y calidad ──
-  { name: 'TDD — Test Driven Development', nameEn: 'TDD — Test Driven Development', desc: 'Metodología de desarrollo guiado por pruebas: Jest/Vitest (frontend), JUnit/Mockito (backend). Red → Green → Refactor.', descEn: 'Test-driven development methodology: Jest/Vitest (frontend), JUnit/Mockito (backend). Red → Green → Refactor.', icon: null },
-  { name: 'Jest / Vitest', nameEn: 'Jest / Vitest', desc: 'Pruebas unitarias e integración para proyectos JavaScript/TypeScript.', descEn: 'Unit and integration testing for JavaScript/TypeScript projects.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg' },
-  // ── Producto ──
-  { name: 'Diseño de MVP', nameEn: 'MVP Design', desc: 'Creación de un Producto Mínimo Viable (MVP): definición del problema, propuesta de valor, prototipado y validación rápida con usuarios reales.', descEn: 'Creation of a Minimum Viable Product (MVP): problem definition, value proposition, prototyping and rapid validation with real users.', icon: null },
-  // ── Backend / APIs ──
-  { name: 'Node.js + Express.js', nameEn: 'Node.js + Express.js', desc: 'Backend runtime y framework server-side para APIs REST de alto rendimiento.', descEn: 'Backend runtime and server-side framework for high-performance REST APIs.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
-  { name: 'GraphQL', nameEn: 'GraphQL', desc: 'Lenguaje de consulta para APIs: alternativa flexible a REST con tipado fuerte.', descEn: 'API query language: flexible alternative to REST with strong typing.', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
-  { name: 'WebSockets / Socket.io', nameEn: 'WebSockets / Socket.io', desc: 'Comunicación bidireccional en tiempo real para chats, notificaciones y dashboards live.', descEn: 'Real-time bidirectional communication for chats, notifications and live dashboards.', icon: null },
-  { name: 'JWT (JSON Web Tokens)', nameEn: 'JWT (JSON Web Tokens)', desc: 'Autenticación stateless y transmisión segura de información entre servicios.', descEn: 'Stateless authentication and secure information transmission between services.', icon: null },
-  // ── IA y contenido ──
-  { name: 'Prompt Engineering / AI Dev', nameEn: 'Prompt Engineering / AI Dev', desc: 'Desarrollo asistido por IA: GitHub Copilot, Claude Code, Cursor, Vibe Coding.', descEn: 'AI-assisted development: GitHub Copilot, Claude Code, Cursor, Vibe Coding.', icon: null },
-  { name: 'ElevenLabs', nameEn: 'ElevenLabs', desc: 'Plataforma de síntesis de voz y clonación de voz con IA para contenido de audio profesional.', descEn: 'AI voice synthesis and cloning platform for professional audio content.', icon: null },
-  { name: 'HeyGen', nameEn: 'HeyGen', desc: 'Plataforma de generación de videos con avatares de IA para marketing y comunicación.', descEn: 'AI avatar video generation platform for marketing and communication.', icon: null },
-  { name: 'CapCut (PC y móvil)', nameEn: 'CapCut (PC & Mobile)', desc: 'Editor de video multiplataforma para contenido en redes sociales con herramientas de IA integradas.', descEn: 'Cross-platform video editor for social media content with integrated AI tools.', icon: null },
-  // ── Arquitectura ──
-  { name: 'Microservicios', nameEn: 'Microservices', desc: 'Diseño y arquitectura de sistemas distribuidos orientados a microservicios con comunicación REST y eventos.', descEn: 'Design and architecture of distributed microservices-oriented systems with REST and event communication.', icon: null },
-  { name: 'Render / Hostinger', nameEn: 'Render / Hostinger', desc: 'Plataformas alternativas de despliegue y hosting en la nube.', descEn: 'Alternative cloud deployment and hosting platforms.', icon: null },
-  { name: 'ABAP / SAP · COBOL', nameEn: 'ABAP / SAP · COBOL', desc: 'Lenguajes y plataformas legacy/enterprise para sistemas de misión crítica.', descEn: 'Legacy/enterprise languages and platforms for mission-critical systems.', icon: null },
-];
-
-export const ADDITIONAL_SKILLS = {
-  ventas: {
-    title: 'Ventas, Servicio y Atención al Cliente',
-    titleEn: 'Sales, Service & Customer Support',
-    items: [
-      'Gestión de relaciones con clientes (CRM) en entornos corporativos reales',
-      'Comunicación efectiva, resolución de problemas y trabajo bajo presión',
-      'Cumplimiento de objetivos comerciales y gestión del tiempo multitarea',
-      'Atención postventa y coordinación con proveedores',
-    ],
-    itemsEn: [
-      'Customer relationship management (CRM) in real corporate environments',
-      'Effective communication, problem resolution and work under pressure',
-      'Commercial goal achievement and multitask time management',
-      'After-sales support and vendor coordination',
-    ],
-  },
-} as const;

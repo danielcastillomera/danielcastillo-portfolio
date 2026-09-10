@@ -9,23 +9,21 @@ if (typeof window !== 'undefined') {
   ScrollTrigger.config({ ignoreMobileResize: true });
 }
 
-interface UseRevealOptions { threshold?: number; rootMargin?: string; once?: boolean; }
+interface UseRevealOptions { once?: boolean; }
 
 /**
- * useReveal — motor de entrada "fade-in-up" basado en GSAP ScrollTrigger.
+ * useReveal — motor de entrada/salida "fade-in-up" bidireccional, impulsado
+ * por GSAP ScrollTrigger. La sección se desliza hacia arriba al entrar en
+ * viewport bajando el scroll, y se desliza de vuelta al salir subiendo el
+ * scroll, repitiéndose en cada paso por el umbral.
  *
- * Expone la misma API pública ({ ref, isVisible }) que consumen todos los
- * componentes de sección, de modo que la migración a GSAP no requiere tocar
- * la lógica interna de cada uno.
- *
- * Incluye una red de seguridad heredada del fix de contenido invisible en
- * móvil: si ScrollTrigger no llega a disparar por cualquier motivo (cálculo
- * de altura de viewport dinámico, layout shift por imágenes, etc.), un
- * temporizador fuerza `isVisible = true` a los 650ms. La visibilidad del
- * contenido nunca depende exclusivamente de la animación.
+ * `isVisible` se mantiene como bandera de un solo disparo (con red de
+ * seguridad por temporizador) para uso exclusivo de componentes que
+ * escalonan la aparición de elementos internos; la opacidad/posición real
+ * del contenedor la controla GSAP directamente sobre el nodo referenciado.
  */
 export function useReveal(options: UseRevealOptions = {}) {
-  const { once = true } = options;
+  const { once = false } = options;
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -35,23 +33,46 @@ export function useReveal(options: UseRevealOptions = {}) {
     if (typeof window === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setIsVisible(true);
+      if (el) gsap.set(el, { opacity: 1, y: 0 });
       return;
     }
 
-    const fallback = window.setTimeout(() => setIsVisible(true), 650);
+    const fallback = window.setTimeout(() => {
+      setIsVisible(true);
+      if (el) gsap.set(el, { opacity: 1, y: 0 });
+    }, 650);
 
     if (!el) return () => window.clearTimeout(fallback);
 
-    const trigger = ScrollTrigger.create({
+    const revealFlag = ScrollTrigger.create({
       trigger: el,
       start: 'top 90%',
-      once,
+      once: true,
       onEnter: () => { setIsVisible(true); window.clearTimeout(fallback); },
     });
 
-    return () => { trigger.kill(); window.clearTimeout(fallback); };
+    gsap.set(el, { opacity: 0, y: 44 });
+    const tween = gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        end: 'bottom 12%',
+        toggleActions: once ? 'play none none none' : 'play reverse play reverse',
+      },
+    });
+
+    return () => {
+      revealFlag.kill();
+      tween.scrollTrigger?.kill();
+      tween.kill();
+      window.clearTimeout(fallback);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [once]);
 
   return { ref, isVisible };
 }

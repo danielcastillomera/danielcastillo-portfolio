@@ -10,7 +10,7 @@ export default function Services() {
   return (
     <section id="servicios" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="services-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/60 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
-      <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center">
         <div className="mb-16 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.services.sectionLabel}</span>
           <h2 id="services-heading" className="mt-3 text-3xl font-bold tracking-tight section-title sm:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>{t.services.title}</h2>

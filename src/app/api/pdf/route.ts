@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import path from 'path';
 
-const ALLOWED = new Set([
-  'cs50x.pdf', 'uees-talks.pdf', 'taller-pc.pdf',
-  'biorobotics.pdf', 'carta-recomendacion.pdf',
-]);
+const ALLOWED = new Set(['carta-recomendacion.pdf']);
 
 export async function GET(request: NextRequest) {
   const file = request.nextUrl.searchParams.get('file') ?? '';

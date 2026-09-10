@@ -1,6 +1,6 @@
 # Accesibilidad / Accessibility
 
-> `danielcastillo-portfolio` v9.0.0 · WCAG 2.1 Level AA
+> `danielcastillo-portfolio` v9.1.0 · WCAG 2.1 Level AA
 
 ---
 

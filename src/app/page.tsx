@@ -4,7 +4,6 @@ import TechMarquee from '@/components/tech-marquee';
 import AboutMe from '@/components/about-me';
 import Achievements from '@/components/achievements';
 import TechGrid from '@/components/tech-grid';
-import Skills from '@/components/skills';
 import Services from '@/components/services';
 import Projects from '@/components/projects';
 import Experience from '@/components/experience';
@@ -26,7 +25,6 @@ export default function HomePage() {
         <AboutMe />
         <Achievements />
         <TechGrid />
-        <Skills />
         <Services />
         <Projects />
         <Experience />

@@ -4,7 +4,6 @@ import { createContext, useContext, useEffect, useRef, type ReactNode } from 're
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { usePreload } from './preload-context';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +23,6 @@ const HEADER_OFFSET = -84;
 
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
-  const { isReady } = usePreload();
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,13 +47,18 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  /* Refresca ScrollTrigger cuando el contenido termina de cargar (evita
-     medidas de altura incorrectas por fuentes/imagénes aún no listas). */
+  /* Recalcula las posiciones de ScrollTrigger una vez que fuentes e
+     imágenes han terminado de cargar, evitando desfases de altura por
+     contenido que aún se está pintando. */
   useEffect(() => {
-    if (!isReady) return;
-    const id = window.requestAnimationFrame(() => ScrollTrigger.refresh());
-    return () => window.cancelAnimationFrame(id);
-  }, [isReady]);
+    const refresh = () => ScrollTrigger.refresh();
+    if (document.readyState === 'complete') {
+      const id = window.requestAnimationFrame(refresh);
+      return () => window.cancelAnimationFrame(id);
+    }
+    window.addEventListener('load', refresh);
+    return () => window.removeEventListener('load', refresh);
+  }, []);
 
   /* Intercepta clics en anchors internos (#id) para usar el scroll de Lenis
      en lugar del scroll nativo del navegador — mantiene la inercia suave

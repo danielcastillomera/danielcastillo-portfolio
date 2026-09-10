@@ -95,7 +95,7 @@ export default function AboutMe() {
   return (
     <section id="sobre-mi" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="about-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
-      <div ref={sectionRef} className={`relative mx-auto max-w-5xl px-6 lg:px-8 flex flex-col items-center text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div ref={sectionRef} className="relative mx-auto max-w-5xl px-6 lg:px-8 flex flex-col items-center text-center">
 
         <div className="mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{t.about.sectionLabel}</span>

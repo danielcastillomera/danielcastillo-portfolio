@@ -1,6 +1,6 @@
 # Arquitectura del Proyecto / Project Architecture
 
-> `danielcastillo-portfolio` v9.0.0
+> `danielcastillo-portfolio` v9.1.0
 
 ---
 
@@ -38,6 +38,8 @@ danielcastillo-portfolio/
 │   └── manifest.json        # PWA manifest
 ├── src/
 │   ├── app/
+│   │   ├── api/
+│   │   │   └── pdf/route.ts  # Proxy seguro para la Carta de Recomendación
 │   │   ├── globals.css      # Estilos globales y variables CSS
 │   │   ├── layout.tsx       # Root layout con metadata SEO completa
 │   │   ├── page.tsx         # Página principal — composición de secciones
@@ -46,6 +48,7 @@ danielcastillo-portfolio/
 │   │   ├── accessibility-widget.tsx
 │   │   ├── about-me.tsx
 │   │   ├── achievements.tsx
+│   │   ├── certification-badges.tsx
 │   │   ├── certifications.tsx
 │   │   ├── contact.tsx
 │   │   ├── cookie-consent.tsx
@@ -59,17 +62,17 @@ danielcastillo-portfolio/
 │   │   ├── protected-image.tsx
 │   │   ├── scroll-buttons.tsx
 │   │   ├── services.tsx
-│   │   ├── skills.tsx
 │   │   ├── tech-grid.tsx
 │   │   ├── tech-marquee.tsx
 │   │   ├── theme-toggle.tsx
 │   │   └── whatsapp-float.tsx
 │   └── lib/
-│       ├── data.ts           # Single Source of Truth v9.0.0
+│       ├── data.ts           # Single Source of Truth v9.1.0
 │       ├── i18n.ts           # Traducciones ES/EN estáticas
 │       ├── i18n-provider.tsx # Context provider para i18n
+│       ├── smooth-scroll.tsx # Lenis + sincronización con GSAP ticker
 │       ├── theme-provider.tsx
-│       └── use-reveal.ts     # Hook de animación por scroll
+│       └── use-reveal.ts     # Motor de entrada/salida GSAP ScrollTrigger
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md

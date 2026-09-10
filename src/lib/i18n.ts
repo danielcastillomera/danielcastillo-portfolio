@@ -1,5 +1,5 @@
 /**
- * i18n — Sistema de Internacionalización v9.0.0
+ * i18n — Sistema de Internacionalización v9.1.0
  * Soporta: Español (es) | English (en)
  * Redacción en primera persona — estándar portafolios 2024-2026
  */
@@ -15,8 +15,7 @@ export const translations = {
       language: 'EN', languageLabel: 'Switch to English',
       subLoQueHago: 'Lo que hago', subEducacion: 'Educación', subIdiomas: 'Idiomas', subLogros: 'Logros y resultados destacados',
       subLenguajes: 'Lenguajes', subFrontend: 'Frontend', subBackend: 'Backend', subDatabase: 'Base de Datos & Cloud',
-      subTools: 'Herramientas & Metodologías', subMarketing: 'Community Manager & Marketing Digital',
-      subUiux: 'Diseño UI/UX', subExploratorio: 'En Aprendizaje / Exploratorio',
+      subTools: 'Herramientas', subDesign: 'Diseño & Marketing',
       subSolucionesDigitales: 'Soluciones Digitales', subSolucionesTecnicas: 'Soluciones Técnicas',
       subProyDashboard: 'Dashboard Enterprise', subProyPosts: 'POSTS-COMMENTS-MANAGER',
       subProyPortfolio: 'Portafolio Personal Profesional', subProyCne: 'Análisis Heurístico y Rediseño UI/UX — CNE',
@@ -37,7 +36,6 @@ export const translations = {
         'Soluciones digitales reales — documentadas, seguras y desplegadas.',
       ],
       subtitle: 'Desde dashboards multi-tenant hasta facturación electrónica SRI — desarrollo software con estándares de la industria, disponible para contratación inmediata.',
-      subtitleLine: 'Full Stack Software Engineer | AI-Assisted Developer, Universidad de Guayaquil, 7mo de 10 semestres, 21 años · Guayaquil, Ecuador',
       ctaServices: 'Ver mis servicios', ctaGitHub: 'GitHub',
       scroll: 'Desplazar', irAlFinal: 'Ir al final', irAlInicio: 'Ir al inicio',
     },
@@ -47,15 +45,16 @@ export const translations = {
       statsVersion: 'Versión del portafolio', statsSemester: 'Semestre actual',
       capabilities: 'Lo que hago',
       items: [
+        'Full-stack con Angular 18+ + NestJS 10 + MongoDB Atlas + Docker',
         'Sistemas empresariales multi-tenant (Dashboard Enterprise v3.4.0)',
         'Facturación electrónica SRI Ecuador (XML v2.1.0)',
-        'Full-stack con Angular 18+ + NestJS 10 + MongoDB Atlas + Docker',
         'REST APIs con validación robusta (Zod, class-validator, Prisma, RLS)',
-        'JWT, interceptores, pipes y directivas reutilizables',
-        'Interfaces responsivas y accesibles (WCAG 2.2)',
-        'Community Manager: Meta Ads, TikTok Ads, Instagram Ads',
         'Clean Code, SOLID, DRY, KISS, Agile/Scrum',
-        'Inglés B1 — Escrito, escucha y hablado',
+        'Interfaces responsivas y accesibles (WCAG 2.2)',
+        'JWT, interceptores, pipes y directivas reutilizables',
+        'UI/UX: evaluación Heurística de Nielsen, principios de Material Design, psicología visual, Figma y prototipado',
+        'Servicio de reparación y mantenimiento de: PC, laptop e impresoras',
+        'Community Manager: Meta Ads, TikTok Ads, Instagram Ads',
       ],
     },
     experience: {
@@ -70,14 +69,6 @@ export const translations = {
       sectionLabel: 'Mi trabajo', title: 'Proyectos destacados',
       individual: 'Proyecto Individual', group: 'Proyecto Grupal',
       techStack: 'Conjunto de tecnologías', features: 'Características clave',
-    },
-    skills: {
-      sectionLabel: 'Mis capacidades', title: 'Habilidades técnicas',
-      exploratory: 'En Aprendizaje / Exploratorio',
-      categories: {
-        frontend: 'Frontend', backend: 'Backend', database: 'Base de Datos & Cloud',
-        tools: 'Herramientas & Metodologías', marketing: 'Community Manager & Marketing Digital', uiux: 'Diseño UI/UX',
-      },
     },
     certifications: {
       sectionLabel: 'Formación continua y credibilidad', title: 'Certificaciones',
@@ -138,8 +129,7 @@ export const translations = {
       language: 'ES', languageLabel: 'Cambiar a Español',
       subLoQueHago: 'What I do', subEducacion: 'Education', subIdiomas: 'Languages', subLogros: 'Achievements & key results',
       subLenguajes: 'Languages', subFrontend: 'Frontend', subBackend: 'Backend', subDatabase: 'Database & Cloud',
-      subTools: 'Tools & Methodologies', subMarketing: 'Community Manager & Digital Marketing',
-      subUiux: 'UI/UX Design', subExploratorio: 'Learning / Exploratory',
+      subTools: 'Tools', subDesign: 'Design & Marketing',
       subSolucionesDigitales: 'Digital Solutions', subSolucionesTecnicas: 'Technical Solutions',
       subProyDashboard: 'Dashboard Enterprise', subProyPosts: 'POSTS-COMMENTS-MANAGER',
       subProyPortfolio: 'Personal Professional Portfolio', subProyCne: 'Heuristic Analysis & UI/UX Redesign — CNE',
@@ -160,7 +150,6 @@ export const translations = {
         'Real digital solutions — documented, secure and deployed.',
       ],
       subtitle: 'From multi-tenant dashboards to SRI electronic invoicing — I develop software with industry standards, ready for immediate hire.',
-      subtitleLine: 'Full Stack Software Engineer | AI-Assisted Developer, University of Guayaquil, 7th of 10 semesters, 21 years old · Guayaquil, Ecuador',
       ctaServices: 'View my services', ctaGitHub: 'GitHub',
       scroll: 'Scroll', irAlFinal: 'Go to bottom', irAlInicio: 'Go to top',
     },
@@ -170,15 +159,16 @@ export const translations = {
       statsVersion: 'Portfolio version', statsSemester: 'Current semester',
       capabilities: 'What I do',
       items: [
+        'Full-stack with Angular 18+ + NestJS 10 + MongoDB Atlas + Docker',
         'Multi-tenant enterprise systems (Dashboard Enterprise v3.4.0)',
         'SRI Ecuador electronic invoicing (XML v2.1.0)',
-        'Full-stack with Angular 18+ + NestJS 10 + MongoDB Atlas + Docker',
         'REST APIs with robust validation (Zod, class-validator, Prisma, RLS)',
-        'JWT authentication, interceptors, custom pipes & directives',
-        'Responsive & accessible interfaces (WCAG 2.2)',
-        'Community Manager: Meta Ads, TikTok Ads, Instagram Ads',
         'Clean Code, SOLID, DRY, KISS, Agile/Scrum',
-        'English B1 — Written, listening and spoken',
+        'Responsive & accessible interfaces (WCAG 2.2)',
+        'JWT, interceptors, custom pipes and reusable directives',
+        'UI/UX: Nielsen heuristic evaluation, Material Design principles, visual psychology, Figma and prototyping',
+        'Repair and maintenance service for PCs, laptops and printers',
+        'Community Manager: Meta Ads, TikTok Ads, Instagram Ads',
       ],
     },
     experience: {
@@ -193,14 +183,6 @@ export const translations = {
       sectionLabel: 'My work', title: 'Featured projects',
       individual: 'Individual Project', group: 'Group Project',
       techStack: 'Tech stack', features: 'Key features',
-    },
-    skills: {
-      sectionLabel: 'My capabilities', title: 'Technical skills',
-      exploratory: 'Learning / Exploratory',
-      categories: {
-        frontend: 'Frontend', backend: 'Backend', database: 'Database & Cloud',
-        tools: 'Tools & Methodologies', marketing: 'Community Manager & Digital Marketing', uiux: 'UI/UX Design',
-      },
     },
     certifications: {
       sectionLabel: 'Continuous training & credibility', title: 'Certifications',

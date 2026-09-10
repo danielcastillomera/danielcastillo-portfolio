@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { ThemeProvider } from '@/lib/theme-provider';
 import { I18nProvider } from '@/lib/i18n-provider';
-import { PreloadProvider } from '@/lib/preload-context';
 import { SmoothScrollProvider } from '@/lib/smooth-scroll';
-import Preloader from '@/components/preloader';
 import './globals.css';
 
 export const viewport: Viewport = {
@@ -119,10 +117,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#main-content" className="skip-link">Saltar al contenido principal</a>
         <I18nProvider>
           <ThemeProvider>
-            <PreloadProvider>
-              <Preloader />
-              <SmoothScrollProvider>{children}</SmoothScrollProvider>
-            </PreloadProvider>
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
           </ThemeProvider>
         </I18nProvider>
         <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('contextmenu',function(e){if(e.target.closest('.protected-image-wrapper')||e.target.tagName==='IMG'){e.preventDefault()}});document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'||e.target.closest('.protected-image-wrapper')){e.preventDefault()}});window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();return false});window.addEventListener('appinstalled',function(e){e.preventDefault()});` }} />

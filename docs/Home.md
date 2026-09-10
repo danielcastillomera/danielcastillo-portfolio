@@ -1,13 +1,13 @@
-# Daniel Castillo Portfolio — Wiki v9.0.0
+# Daniel Castillo Portfolio — Wiki v9.1.0
 
 > Documentación técnica oficial del proyecto `danielcastillo-portfolio`.
-> Versión actual: **9.0.0** · Última actualización: 2026-04-30
+> Versión actual: **9.1.0** · Última actualización: 2026-04-30
 
 ---
 
 ## Español (México)
 
-### Bienvenida
+### Bienvenido
 
 Esta wiki contiene la documentación técnica completa del portafolio web profesional de **Daniel Fernando Castillo Mera**. Está estructurada para facilitar el mantenimiento, la escalabilidad y la incorporación de nuevos colaboradores o evaluadores técnicos.
 
@@ -27,13 +27,14 @@ Esta wiki contiene la documentación técnica completa del portafolio web profes
 
 - **URL de producción:** https://danielcastillo-portfolio.vercel.app
 - **Repositorio:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Versión actual:** 9.0.0
+- **Versión actual:** 9.1.0
 - **Licencia:** Propiedad intelectual de Daniel Fernando Castillo Mera
 
 ### Historial de versiones rápido
 
 | Versión | Resumen |
 |---------|---------|
+| 9.1.0 | Fix crítico de botones (revertido Base64), logos reales, GSAP bidireccional, Preloader eliminado |
 | 9.0.0 | Refactor mayor: GSAP + Lenis, navegación por acordeón, certificaciones estilo LinkedIn, enlaces ofuscados |
 | 8.0.0 | Framer Motion, WhatsApp siempre visible, 4 proyectos, perfil .NET/Angular/AI, logro STI |
 | 7.6.9 | Fix definitivo contenido invisible móvil (root cause), banderas correctas selector idioma |
@@ -73,13 +74,14 @@ This wiki contains the complete technical documentation for **Daniel Fernando Ca
 
 - **Production URL:** https://danielcastillo-portfolio.vercel.app
 - **Repository:** https://github.com/danielcastillomera/danielcastillo-portfolio
-- **Current version:** 9.0.0
+- **Current version:** 9.1.0
 - **License:** Intellectual property of Daniel Fernando Castillo Mera
 
 ### Quick Version History
 
 | Version | Summary |
 |---------|---------|
+| 9.1.0 | Critical button fix (Base64 reverted), real logos, bidirectional GSAP, Preloader removed |
 | 9.0.0 | Major refactor: GSAP + Lenis, accordion navigation, LinkedIn-style certifications, obfuscated links |
 | 8.0.0 | Framer Motion, always-visible WhatsApp, 4 projects, .NET/Angular/AI profile, STI achievement |
 | 7.6.9 | Definitive fix for invisible content on mobile (root cause), correct language-switcher flags |

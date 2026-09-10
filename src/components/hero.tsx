@@ -98,7 +98,7 @@ export default function Hero() {
                 alt={`Foto de perfil de ${PERSONAL.name}`}
                 width={144}
                 height={223}
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-top"
                 priority
               />
             </div>
@@ -138,10 +138,6 @@ export default function Hero() {
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-900 dark:text-gray-100 sm:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.15s' }}>
           {t.hero.subtitle}
-        </p>
-
-        <p className="mt-5 max-w-2xl text-sm font-medium text-gray-700 dark:text-gray-300 sm:text-base animate-slide-up" style={{ animationDelay: '0.25s' }}>
-          {t.hero.subtitleLine}
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>

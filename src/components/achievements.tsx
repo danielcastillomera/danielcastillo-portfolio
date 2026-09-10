@@ -64,12 +64,6 @@ const ACHIEVEMENTS_ES = [
     highlight: 'Presencia en TikTok de Agro Industrias Warsa C.A.',
     text: 'Construí la presencia en la red social TikTok de Agro Industrias Warsa C.A., incluyendo la gestión de contenido y campañas de publicidad pagada activas en TikTok.',
   },
-  {
-    id: 'mvc',
-    icon: '🎓',
-    highlight: 'PROYECTO-UNIFICADO-AVANCE en C# con patrón MVC',
-    text: 'Desarrollé PROYECTO-UNIFICADO-AVANCE en C# aplicando patrón de diseño MVC en proyecto colaborativo universitario — actualmente en desarrollo activo.',
-  },
 ];
 
 const ACHIEVEMENTS_EN = [
@@ -127,12 +121,6 @@ const ACHIEVEMENTS_EN = [
     highlight: 'TikTok presence for Agro Industrias Warsa C.A.',
     text: 'I built the TikTok social media presence for Agro Industrias Warsa C.A., including content management and active paid advertising campaigns on TikTok.',
   },
-  {
-    id: 'mvc',
-    icon: '🎓',
-    highlight: 'PROYECTO-UNIFICADO-AVANCE in C# with MVC pattern',
-    text: 'I developed PROYECTO-UNIFICADO-AVANCE in C# applying the MVC design pattern in a collaborative university project — currently in active development.',
-  },
 ];
 
 function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
@@ -145,11 +133,11 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
       el.textContent = `${value}${suffix}`;
       return;
     }
-    const counter = { n: 0 };
+    const counter = { n: 1 };
     const tween = gsap.to(counter, {
       n: value,
-      duration: 1.6,
-      ease: 'power2.out',
+      duration: 3.2,
+      ease: 'power1.inOut',
       scrollTrigger: { trigger: el, start: 'top 92%', once: true },
       onUpdate: () => { el.textContent = `${Math.round(counter.n)}${suffix}`; },
     });
@@ -159,7 +147,7 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
   return (
     <div className="flex flex-col items-center text-center">
       <span ref={ref} className="text-3xl sm:text-4xl font-extrabold text-accent-500 tabular-nums" style={{ fontFamily: 'var(--font-display)' }}>
-        0{suffix}
+        1{suffix}
       </span>
       <span className="mt-1 text-xs font-medium text-gray-600 dark:text-gray-400 max-w-[9rem]">{label}</span>
     </div>
@@ -177,7 +165,7 @@ export default function Achievements() {
   return (
     <section id="logros" className="relative py-16 sm:py-24 scroll-mt-20" aria-labelledby="achievements-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-navy-900/20 to-transparent" aria-hidden="true" />
-      <div ref={ref} className={`relative mx-auto max-w-7xl px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
         <div className="mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">{sectionLabel}</span>

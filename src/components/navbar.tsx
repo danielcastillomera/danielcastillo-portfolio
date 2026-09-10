@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { PERSONAL, NAV_LINKS } from '@/lib/data';
+import { NAV_LINKS } from '@/lib/data';
 import { useT } from '@/lib/i18n-provider';
 import ThemeToggle from './theme-toggle';
 import LanguageToggle from './language-toggle';
@@ -46,10 +46,11 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
           <a
             href="#inicio"
-            className="shrink-0 text-sm font-extrabold tracking-tight text-gray-900 dark:text-white"
+            className="shrink-0 text-sm font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            {PERSONAL.name.split(' ').slice(0, 2).join(' ')}
+            <span className="block">Daniel Fernando</span>
+            <span className="block">Castillo Mera</span>
           </a>
 
           {/* Desktop nav */}

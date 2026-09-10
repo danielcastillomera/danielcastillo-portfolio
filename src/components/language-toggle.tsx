@@ -3,7 +3,7 @@
 import { useI18n } from '@/lib/i18n-provider';
 
 /**
- * LanguageToggle v9.0.0
+ * LanguageToggle v9.1.0
  *
  * Selector de idioma simplificado: un interruptor de dos estados (ES/EN)
  * sin banderas ni imágenes de países, evitando representaciones nacionales
@@ -25,7 +25,7 @@ export default function LanguageToggle() {
         className={`rounded-md px-2.5 py-1 transition-colors ${
           locale === 'es'
             ? 'bg-accent-500 text-black'
-            : 'text-gray-500 dark:text-navy-300 hover:text-amber-500'
+            : 'text-gray-500 dark:text-navy-300 hover:text-amber-500 hover:underline hover:decoration-amber-500 underline-offset-2'
         }`}
       >
         ES
@@ -37,7 +37,7 @@ export default function LanguageToggle() {
         className={`rounded-md px-2.5 py-1 transition-colors ${
           locale === 'en'
             ? 'bg-accent-500 text-black'
-            : 'text-gray-500 dark:text-navy-300 hover:text-amber-500'
+            : 'text-gray-500 dark:text-navy-300 hover:text-amber-500 hover:underline hover:decoration-amber-500 underline-offset-2'
         }`}
       >
         EN

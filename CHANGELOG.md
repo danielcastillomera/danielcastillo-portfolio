@@ -5,6 +5,40 @@
 
 ---
 
+## v9.1.0 - Fix crítico de botones, logos reales de certificaciones, GSAP bidireccional, eliminación del Preloader, limpieza profunda de código muerto
+
+### Corregido — Crítico
+
+- **Botones inoperantes en PC** (WhatsApp, "Ver credencial", "Ver documento"): eliminada por completo la ofuscación en Base64 (`handleSecureRedirect` / `security.ts`). Reemplazada por enlaces `<a target="_blank" rel="noopener noreferrer">` tradicionales en `whatsapp-float.tsx`, `contact.tsx`, `footer.tsx` y `certifications.tsx`. Prioridad: funcionamiento garantizado al 100% en todos los dispositivos, sin dependencia de hidratación de JavaScript.
+- **Preloader eliminado**: quitados `preloader.tsx` y `preload-context.tsx` y toda referencia a ellos en `layout.tsx` y `smooth-scroll.tsx`. La página ya no bloquea su vista inicial con una pantalla de carga artificial.
+
+### Añadido
+
+- **Logos reales de certificaciones**: Anthropic Education, VMEdu/SCRUMstudy, Microsoft, AWS y HarvardX integrados como imágenes en `/public/certs-logos/`, reemplazando el icono genérico de "escudo" tanto en las medallas del Hero como en las tarjetas de la sección Certificaciones.
+- **GSAP ScrollTrigger bidireccional**: `useReveal` ahora anima con `toggleActions: 'play reverse play reverse'` por defecto — las secciones se deslizan hacia arriba al bajar el scroll y hacia abajo al subir, en todos los dispositivos.
+- **Entrada del Hero y del marquee**: animación `fade-in-up` disparada al cargar la página, sin depender del scroll.
+- **Botón "Ver"** con icono de ojo (no emoji) en Dashboard Enterprise, POSTS-COMMENTS-MANAGER y Portafolio, enlazando a sus URLs de producción reales.
+
+### Modificado
+
+- **Emisor corregido**: "Building with the Claude API" ahora indica "Anthropic Education" como entidad emisora.
+- **Header**: nombre partido en dos líneas ("Daniel Fernando" / "Castillo Mera").
+- **Selector de idioma**: subrayado ámbar (`#F59E0B`) al pasar el cursor sobre el idioma no seleccionado.
+- **Footer**: copyright con año único dinámico (`© {añoActual}`); insignias (WCAG 2.2, PWA, SEO, GDPR, CSP/HSTS, i18n) reescritas con SVG inline — se corrigió una mezcla accidental de emojis pasados como `src` de imagen que rompía su renderizado.
+- **Hero**: posición de la foto de perfil ajustada a `object-top` para centrar el rostro correctamente; eliminado el párrafo largo de subtítulo bajo el nombre.
+- **Sección "Sobre mí"**: lista "Lo que hago" reescrita con el listado exacto solicitado.
+- **Proyectos**: eliminado el truncado "+N" de etiquetas de stack tecnológico — se muestran todas con `flex-wrap`.
+- **Logros y resultados**: eliminado el ítem de proyecto universitario obsoleto; los 4 contadores numéricos ahora inician en 1 y su animación dura 3.2s (antes 1.6s desde 0).
+
+### Eliminado
+
+- **Componente `skills.tsx`** y las secciones "Mis capacidades — Habilidades técnicas" y "En Aprendizaje / Exploratorio" en su totalidad.
+- **Código muerto en `data.ts`**: `SKILL_CATEGORIES`, `EXPLORATORY_SKILLS`, `ADDITIONAL_SKILLS` (sección de Ventas ya inactiva desde v9.0.0).
+- **Archivos de certificados obsoletos**: PDFs e imágenes de certificaciones que ya no forman parte de la sección (se conserva únicamente la Carta de Recomendación).
+- **`security.ts`**: utilidad de ofuscación Base64 retirada tras confirmarse que priorizar la funcionalidad de los botones era la solución correcta.
+
+---
+
 ## v9.0.0 - Refactor mayor: GSAP + Lenis, navegación por acordeón, certificaciones estilo LinkedIn, enlaces ofuscados en Base64, nueva identidad profesional
 
 ### Añadido

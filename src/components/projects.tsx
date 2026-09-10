@@ -29,6 +29,13 @@ const ExternalIcon = () => (
   </svg>
 );
 
+const EyeIcon = () => (
+  <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
+
 function LinkButton({ link, locale }: { link: { label: string; labelEn: string; url: string; icon: string }; locale: string }) {
   const label = locale === 'en' ? link.labelEn : link.label;
 
@@ -36,6 +43,7 @@ function LinkButton({ link, locale }: { link: { label: string; labelEn: string; 
     github:   <GitHubIcon className="w-4 h-4 shrink-0" />,
     figma:    <FigmaIcon />,
     document: <DocumentIcon />,
+    view:     <EyeIcon />,
     demo:     <ExternalIcon />,
     external: <ExternalIcon />,
   };
@@ -45,6 +53,7 @@ function LinkButton({ link, locale }: { link: { label: string; labelEn: string; 
     github:   'border-gray-300 dark:border-navy-600 text-gray-700 dark:text-gray-200 hover:border-gray-800 dark:hover:border-white hover:bg-gray-100 dark:hover:bg-white/10',
     figma:    'border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-500/10',
     document: 'border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-500/10',
+    view:     'border-emerald-400/50 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10',
     demo:     'border-accent-500/50 text-accent-600 dark:text-accent-400 hover:bg-accent-500/10',
     external: 'border-accent-500/50 text-accent-600 dark:text-accent-400 hover:bg-accent-500/10',
   };
@@ -55,7 +64,7 @@ function LinkButton({ link, locale }: { link: { label: string; labelEn: string; 
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 touch-manipulation ${cls}`}
+      className={`relative z-10 inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 touch-manipulation ${cls}`}
       aria-label={label}
     >
       {icon}
@@ -226,16 +235,11 @@ export default function Projects() {
                 {locale === 'en' ? project.descriptionEn : project.description}
               </p>
               <div className="flex flex-wrap gap-1.5 mb-4">
-                {project.techStack.slice(0, 5).map(tech => (
+                {project.techStack.map(tech => (
                   <span key={tech} className="rounded-full bg-gray-100 dark:bg-navy-800 px-2 py-0.5 text-[10px] font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-navy-700">
                     {tech}
                   </span>
                 ))}
-                {project.techStack.length > 5 && (
-                  <span className="rounded-full bg-accent-500/10 px-2 py-0.5 text-[10px] font-bold text-accent-500 border border-accent-500/20">
-                    +{project.techStack.length - 5}
-                  </span>
-                )}
               </div>
               <div className="flex gap-2 flex-wrap mt-auto">
                 {project.links.map(l => <LinkButton key={l.url} link={l} locale={locale} />)}
