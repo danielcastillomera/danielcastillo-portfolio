@@ -1,6 +1,6 @@
 <div align="center">
 
-# Daniel Fernando Castillo Mera — Portafolio Web v9.1.0
+# Daniel Fernando Castillo Mera - Portafolio Web v9.1.0
 
 **Full Stack Software Engineer | AI-Assisted Developer**
 
@@ -33,6 +33,63 @@ Portafolio web profesional de nivel Enterprise desarrollado con **Next.js 15**, 
 - **Bilingüe** — Español e Inglés con toggle en tiempo real, sin recarga de página.
 - **Accesibilidad y SEO** — Widget interactivo WCAG 2.1 AA, `opengraph-image.tsx` dinámico, JSON-LD Schema.org y sitemap automático.
 - **Seguridad** — CSP, HSTS y prevención de scraping web (CSS `user-select: none` y ofuscación estructural).
+
+### Estructura de Secciones
+
+| Sección | Componente | Descripción |
+|---|---|---|
+| **Inicio** | `hero.tsx` | Presentación con efecto typewriter, fondo animado y medallas de certificaciones. |
+| **Sobre mí** | `about-me.tsx` | Biografía técnica, educación (Universidad de Guayaquil) y stack principal. |
+| **Logros** | `achievements.tsx` | Resultados en producción con animaciones de conteo (GSAP CountUp). |
+| **Tecnologías** | `tech-grid.tsx` | Stack técnico organizado en lenguajes, frontend, backend y cloud. |
+| **Servicios** | `services.tsx` | Soluciones digitales e infraestructura técnica ofrecidas. |
+| **Proyectos** | `projects.tsx` | Dashboard Enterprise, APIs REST, con enlaces a repositorios y despliegues. |
+| **Experiencia** | `experience.tsx` | Trayectoria laboral estructurada en timeline. |
+| **Certificaciones**| `certifications.tsx` | Credenciales oficiales (Anthropic, Scrum, Microsoft, AWS, HarvardX). |
+| **Contacto** | `contact.tsx` | Enlaces a LinkedIn, GitHub, Email y WhatsApp directo. |
+
+<details open>
+<summary><strong>📁 Ver Estructura del Proyecto (Árbol de Directorios)</strong></summary>
+
+```text
+danielcastillo-portfolio/
+├── public/
+│   ├── images/         # Logos de certificaciones y UX
+│   ├── icons/          # Iconos SVG para stack tecnológico
+│   ├── favicon.ico     # Favicons
+│   ├── profile.png     # Foto de perfil optimizada
+│   └── manifest.json   # PWA manifest
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── opengraph-image.tsx # Generación dinámica de OG Image
+│   │   └── sitemap.ts
+│   ├── components/
+│   │   ├── accessibility-widget.tsx
+│   │   ├── about-me.tsx
+│   │   ├── achievements.tsx
+│   │   ├── certifications.tsx
+│   │   ├── contact.tsx
+│   │   ├── experience.tsx
+│   │   ├── footer.tsx
+│   │   ├── hero.tsx
+│   │   ├── navbar.tsx          # Menú acordeón responsivo
+│   │   ├── projects.tsx
+│   │   ├── tech-grid.tsx
+│   │   ├── tech-marquee.tsx
+│   │   └── whatsapp-float.tsx
+│   └── lib/
+│       ├── data.ts             # Base de datos centralizada
+│       ├── i18n.ts
+│       ├── smooth-scroll.tsx   # Lenis Provider
+│       └── use-reveal.ts       # GSAP ScrollTrigger Hook
+├── CHANGELOG.md
+├── README.md
+└── package.json
+```
+</details>
 
 ### Instalación local
 
@@ -67,6 +124,63 @@ Enterprise-level professional web portfolio built with **Next.js 15**, **TypeScr
 - **Bilingual** — Spanish and English with real-time toggle, no page reload required.
 - **Accessibility & SEO** — WCAG 2.1 AA interactive widget, dynamic `opengraph-image.tsx`, JSON-LD Schema.org, and auto sitemap.
 - **Security** — CSP, HSTS, and web scraping prevention (CSS `user-select: none` and structural obfuscation).
+
+### Section Structure
+
+| Section | Component | Description |
+|---|---|---|
+| **Hero** | `hero.tsx` | Introduction with typewriter effect, animated background, and cert badges. |
+| **About me** | `about-me.tsx` | Technical bio, education, and core stack. |
+| **Achievements**| `achievements.tsx` | Production results with counting animations (GSAP CountUp). |
+| **Technologies**| `tech-grid.tsx` | Tech stack organized by languages, frontend, backend, and cloud. |
+| **Services** | `services.tsx` | Digital solutions and technical infrastructure offered. |
+| **Projects** | `projects.tsx` | Dashboard Enterprise, REST APIs, with repository and live links. |
+| **Experience** | `experience.tsx` | Work history structured in a timeline. |
+| **Certifications**| `certifications.tsx` | Official credentials (Anthropic, Scrum, Microsoft, AWS, HarvardX). |
+| **Contact** | `contact.tsx` | Links to LinkedIn, GitHub, Email, and direct WhatsApp. |
+
+<details open>
+<summary><strong>📁 View Project Structure (Directory Tree)</strong></summary>
+
+```text
+danielcastillo-portfolio/
+├── public/
+│   ├── images/         # Certification logos and UX assets
+│   ├── icons/          # SVG icons for tech stack
+│   ├── favicon.ico     # Favicons
+│   ├── profile.png     # Optimized profile photo
+│   └── manifest.json   # PWA manifest
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── opengraph-image.tsx # Dynamic OG Image generation
+│   │   └── sitemap.ts
+│   ├── components/
+│   │   ├── accessibility-widget.tsx
+│   │   ├── about-me.tsx
+│   │   ├── achievements.tsx
+│   │   ├── certifications.tsx
+│   │   ├── contact.tsx
+│   │   ├── experience.tsx
+│   │   ├── footer.tsx
+│   │   ├── hero.tsx
+│   │   ├── navbar.tsx          # Responsive accordion menu
+│   │   ├── projects.tsx
+│   │   ├── tech-grid.tsx
+│   │   ├── tech-marquee.tsx
+│   │   └── whatsapp-float.tsx
+│   └── lib/
+│       ├── data.ts             # Centralized database
+│       ├── i18n.ts
+│       ├── smooth-scroll.tsx   # Lenis Provider
+│       └── use-reveal.ts       # GSAP ScrollTrigger Hook
+├── CHANGELOG.md
+├── README.md
+└── package.json
+```
+</details>
 
 ### Local Installation
 
